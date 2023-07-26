@@ -7,6 +7,10 @@ const routes: Routes = [
     path: '',
     component: CustomLayoutComponent,
     children: []
+  },
+  {
+    path: 'servicos',
+    loadChildren: () => import('./servicos/servicos.module').then(m => m.ServicosModule)
   }
 ];
 

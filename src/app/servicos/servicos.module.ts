@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ServicosRoutingModule } from './servicos-routing.module';
-import { ServicosComponent } from './servicos/servicos.component';
+import { ServicosComponent } from './servicos.component';
 
 
 @NgModule({
