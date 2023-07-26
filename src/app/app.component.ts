@@ -13,6 +13,8 @@ import { SplashScreenService } from '../@vex/services/splash-screen.service';
 import { Style, StyleService } from '../@vex/services/style.service';
 import { ConfigName } from '../@vex/interfaces/config-name.model';
 
+import icWork from '@iconify/icons-ic/baseline-work';
+
 @Component({
   selector: 'vex-root',
   templateUrl: './app.component.html',
@@ -82,7 +84,13 @@ export class AppComponent {
         label: 'Painel',
         route: '/painel',
         icon: icLayers
-      }
+      },
+      {
+        type: 'link',
+        label: 'Serviços',
+        route: '/servicos',
+        icon: icWork
+      },
     ];
   }
 }
