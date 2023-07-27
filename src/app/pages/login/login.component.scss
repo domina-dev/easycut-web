@@ -1,4 +1,4 @@
-.card{
+.card {
   max-width: 450px;
   min-height: 565px;
   border-radius: 10px;
@@ -10,57 +10,71 @@
   align-items: center;
 
 }
+.mat-icon-button .mat-icon {
+  display: flex !important;
+  font-size: 24px;
+}
 
-.body-2{
+.olho{
+min-height: 40px;
+min-width: 40px;
+}
+
+.body-2 {
   color: rgba(0, 0, 0, 0.425);
   margin-top: -2px;
   font-size: 14px;
 }
-mat-form-field{
+
+mat-form-field {
   width: 400px;
 }
-.email, .password{
+
+.email,
+.password {
   margin-left: 7px;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.445);
   font-weight: 500;
 }
 
-mat-hint{
+mat-hint {
   font-size: 12px;
   margin-left: 5px;
   margin-top: -3px;
   color: rgba(0, 0, 0, 0.815);
 }
 
-mat-error{
+mat-error {
   margin-left: 5px;
   margin-top: -2px;
   font-size: 12px;
 }
 
-.caption{
+.caption {
   font-size: 14px;
   margin-top: 5px;
   margin-left: 10px;
 }
 
-.caption2{
+.caption2 {
   font-size: 12px;
+  margin-top: 5px;
 }
 
-.camptionx{
+.camptionx {
   padding-bottom: 10px;
 }
 
-.singin{
+.singin {
   border-radius: 18px;
   background-color: #6366f1;
 }
 
-.text-secondary{
+.text-secondary {
   font-size: 15px;
 }
-.secondary2{
+
+.secondary2 {
   margin-top: -14px;
 }
