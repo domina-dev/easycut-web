@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { ServicosModule } from './pages/servicos/servicos.module';
+import { AgendaModule } from './pages/agenda/agenda.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +19,7 @@ import { ServicosModule } from './pages/servicos/servicos.module';
     BrowserAnimationsModule,
     HttpClientModule,
     ServicosModule,
-
-
+    AgendaModule,
 
     // Vex
     VexModule,
