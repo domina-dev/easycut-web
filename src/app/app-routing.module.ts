@@ -6,8 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: CustomLayoutComponent,
-    children: []
+    children: [
+      {
+        path: 'agendamentos',
+        loadChildren: () => import('./pages/agendamentos/agendamentos.module').then(m => m.AgendamentosModule)
+      },
+    ]
   }
+
 ];
 
 @NgModule({

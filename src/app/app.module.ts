@@ -8,6 +8,7 @@ import { VexModule } from '../@vex/vex.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
+import { AgendamentosModule } from './pages/agendamentos/agendamentos.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { AgendaModule } from './pages/agenda/agenda.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AgendaModule,
+    AgendamentosModule,
     
     // Vex
     VexModule,

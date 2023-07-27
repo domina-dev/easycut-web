@@ -4,10 +4,8 @@ import { AgendamentosComponent } from './agendamentos.component';
 
 const routes: Routes = [
   {
-
     path: '',
     component: AgendamentosComponent
-
   }
 ];
 

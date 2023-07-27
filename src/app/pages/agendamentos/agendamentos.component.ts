@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vex-agendamentos',
+  selector: 'agendamentos',
   templateUrl: './agendamentos.component.html',
   styleUrls: ['./agendamentos.component.scss']
 })
