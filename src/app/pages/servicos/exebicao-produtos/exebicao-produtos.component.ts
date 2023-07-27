@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vex-exebicao-produtos',
+  selector: 'exebicao-produtos',
   templateUrl: './exebicao-produtos.component.html',
   styleUrls: ['./exebicao-produtos.component.scss']
 })

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExebicaoServicosComponent } from './exebicao-servicos.component';
 
 const routes: Routes = [
-  { path: 'serviços', component: ExebicaoServicosComponent}
+  { path: '', component: ExebicaoServicosComponent}
 ];
 
 @NgModule({

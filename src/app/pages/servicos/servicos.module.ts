@@ -4,6 +4,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ServicosRoutingModule } from './servicos-routing.module';
 import { ServicosComponent } from './servicos.component';
+import { ExebicaoServicosModule } from './exebicao-servicos/exebicao-servicos.module';
+import { ExebicaoProdutosModule } from './exebicao-produtos/exebicao-produtos.module';
+import { ExebicaoPromocoesModule } from './exebicao-promocoes/exebicao-promocoes.module';
 
 
 @NgModule({
@@ -14,18 +17,10 @@ import { ServicosComponent } from './servicos.component';
     CommonModule,
     ServicosRoutingModule,
     MatTabsModule,
+    ExebicaoServicosModule,
+    ExebicaoProdutosModule,
+    ExebicaoPromocoesModule
   ]
 })
 export class ServicosModule { }
 
-@servicos({
-  selector: 'servicos.component',
-  templateUrl: 'servicos.component.html',
-  standalone: true,
-  imports: [MatTabsModule],
-})
-export class TabGroupBasicExample {}
-
-function servicos(arg0: { selector: string; templateUrl: string; standalone: boolean; imports: (typeof MatTabsModule)[]; }): (target: typeof TabGroupBasicExample) => void | typeof TabGroupBasicExample {
-  throw new Error('Function not implemented.');
-}

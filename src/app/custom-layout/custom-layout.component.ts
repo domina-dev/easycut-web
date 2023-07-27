@@ -38,5 +38,6 @@ export class CustomLayoutComponent implements OnInit {
     this.layoutService.configpanelOpen$.pipe(
       untilDestroyed(this)
     ).subscribe(open => open ? this.configpanel.open() : this.configpanel.close());
+    this.router.navigate(['/'])
   }
 }

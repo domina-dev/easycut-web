@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExebicaoPromocoesComponent } from './exebicao-promocoes.component';
 
 const routes: Routes = [
-  { path: 'promoçoes', component: ExebicaoPromocoesComponent}
+  { path: '', component: ExebicaoPromocoesComponent}
 ];
 
 @NgModule({

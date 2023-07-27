@@ -12,6 +12,7 @@ import { ExebicaoServicosComponent } from './exebicao-servicos.component';
   imports: [
     CommonModule,
     ExebicaoServicosRoutingModule
-  ]
+  ],
+  exports: [ExebicaoServicosComponent]
 })
 export class ExebicaoServicosModule { }

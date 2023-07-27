@@ -1,3 +1,4 @@
+import { Router, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '../../@vex/layout/layout.module';
@@ -20,7 +21,8 @@ import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module
     FooterModule,
     ConfigPanelModule,
     SidebarModule,
-    QuickpanelModule
+    QuickpanelModule,
+    RouterModule,
   ]
 })
 export class CustomLayoutModule {
