@@ -3,28 +3,34 @@
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <!-- Aplicação do produto -->
+    <ng-container matColumnDef="aplicacao">
+        <th mat-header-cell *matHeaderCellDef> Aplicação</th>
+        <td mat-cell *matCellDef="let element"> {{element.aplicacao}} </td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <!-- Name Produto -->
+    <ng-container matColumnDef="nameProduct">
+        <th mat-header-cell *matHeaderCellDef> Nome do Produto </th>
+        <td mat-cell *matCellDef="let element"> {{element.nameProduct}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <!-- Descrição do produto -->
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Descrição do Produto </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
+    <!-- Quantidade do produto -->
+    <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef> Preço </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+    </ng-container>
+
+    <!-- Preço do produto -->
+    <ng-container matColumnDef="preco">
         <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
     </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -33,6 +39,6 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                 showFirstLastButtons 
-                aria-label="Select page of periodic elements">
+                aria-label="Selecionar página do produto">
     </mat-paginator>
 </div>
