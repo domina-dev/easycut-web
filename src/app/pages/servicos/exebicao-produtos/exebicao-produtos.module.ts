@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ExebicaoProdutosRoutingModule } from './exebicao-produtos-routing.module';
 import { ExebicaoProdutosComponent } from './exebicao-produtos.component';
 
+// Paginação e Tabela
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
@@ -11,7 +15,9 @@ import { ExebicaoProdutosComponent } from './exebicao-produtos.component';
   ],
   imports: [
     CommonModule,
-    ExebicaoProdutosRoutingModule
+    ExebicaoProdutosRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   exports: [ExebicaoProdutosComponent]
 })
