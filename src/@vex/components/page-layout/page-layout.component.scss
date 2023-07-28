@@ -16,8 +16,8 @@
   .vex-page-layout-header {
     background-color: rgba($color: #1a202e, $alpha: 0.95);
     margin-bottom: calc(var(--page-layout-toolbar-height) * -1);
-    padding-top: 2%;
-
+    padding-top: 3%;
+    padding-bottom: 1%;
     // padding-bottom: var(--page-layout-toolbar-height);
   }
 
@@ -25,10 +25,10 @@
     > * > .mat-tab-group .mat-tab-label,
     > .mat-tab-group .mat-tab-label {
       height: var(--page-layout-toolbar-height);
-      font-size: 15pt;
+      font-size: 12pt;
       &.mat-tab-label-active {
         opacity: 0.7;
-        font-size: 20pt;
+        font-size: 15pt;
       }
     }
   }
@@ -37,7 +37,7 @@
 .vex-page-layout-header {
   h2{font-size: 30pt;
     color: rgba($color: #ffffff, $alpha: 0.7);
-    width: 500px;
+    width: 800px;
     text-align: center;
     //  padding-left: 10%;
   }
