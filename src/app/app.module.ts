@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,6 +9,7 @@ import { AppComponent } from './app.component';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { ServicosModule } from './pages/servicos/servicos.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
+import { LoginModule } from './pages/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +20,7 @@ import { AgendaModule } from './pages/agenda/agenda.module';
     HttpClientModule,
     ServicosModule,
     AgendaModule,
+    LoginModule,
 
     // Vex
     VexModule,

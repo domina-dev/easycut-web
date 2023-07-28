@@ -12,11 +12,12 @@ const routes: Routes = [
         path: 'servicos',
         loadChildren: () => import('./pages/servicos/servicos.module').then(m => m.ServicosModule)
       }
-
     ]
   },
-
-
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+  }
 ];
 
 @NgModule({
