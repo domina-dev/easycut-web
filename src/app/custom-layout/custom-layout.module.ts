@@ -20,7 +20,7 @@ import { QuickpanelModule } from '../../@vex/layout/quickpanel/quickpanel.module
     FooterModule,
     ConfigPanelModule,
     SidebarModule,
-    QuickpanelModule
+    QuickpanelModule,
   ]
 })
 export class CustomLayoutModule {

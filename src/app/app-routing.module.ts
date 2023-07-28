@@ -6,7 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: CustomLayoutComponent,
-    children: []
+    children: [
+      {
+        path: 'servicos',
+        loadChildren: () => import('./pages/servicos/servicos.module').then(m => m.ServicosModule)
+      }
+    ]
   },
   {
     path: 'login',
