@@ -9,7 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./exebicao-produtos.component.scss']
 })
 export class ExebicaoProdutosComponent implements AfterViewInit {
-  displayedColumns: string[] = ['aplicacao', 'nameProduct', 'description', 'preco'];
+  displayedColumns: string[] = ['aplicacao', 'nameProduct', 'description', 'quantidade', 'preco', 'icon'];
   dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,17 +23,17 @@ export interface ListaProdutos {
   aplicacao: string;
   nameProduct: string;
   description: string;
-  // position: number;
   quantidade: string;
   preco: string;
+  icon: string;
 }
 
 const ELEMENT_DATA: ListaProdutos[] = [
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
-  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00'},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
+  {aplicacao:'Cabelo' ,nameProduct: 'Pomada Modeladora Blacpool', description: 'BLACKPOOL proporciona uma aparência mais natu', quantidade: '46 unidades', preco: 'R$ 30,00', icon: ''},
 ];
