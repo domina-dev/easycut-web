@@ -41,6 +41,10 @@ export class ServicosComponent implements OnInit {
         break;
 
       default:
+        this.servicos = true
+        this.produtos = false
+        this.promocoes = false
+        this.legenda = SERVICOS
         break;
     }
   }
