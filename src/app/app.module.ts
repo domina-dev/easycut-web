@@ -10,6 +10,11 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { ServicosModule } from './pages/servicos/servicos.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
 import { LoginModule } from './pages/login/login.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +26,11 @@ import { LoginModule } from './pages/login/login.module';
     ServicosModule,
     AgendaModule,
     LoginModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+
 
     // Vex
     VexModule,
