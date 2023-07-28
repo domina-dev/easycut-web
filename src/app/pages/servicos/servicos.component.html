@@ -2,14 +2,13 @@
 
   <vex-page-layout-header fxLayout="column" fxLayoutAlign="right start">
     <div vexContainer>
-      <h2 class="title m-0">Meus Produtos</h2>
-      <!-- <vex-breadcrumbs [crumbs]="['Page Layouts', 'Card', 'Large Header & Tabbed']"></vex-breadcrumbs> -->
+      <h2 class="title m-0"> {{legenda}} </h2>
     </div>
   </vex-page-layout-header>
 
   <vex-page-layout-content vexContainer>
     <div class="card">
-      <mat-tab-group>
+      <mat-tab-group (selectedTabChange)="trocaLegenda($event)">
         <mat-tab label="Serviços">
           <div class="p-6">
             <exebicao-servicos></exebicao-servicos>
