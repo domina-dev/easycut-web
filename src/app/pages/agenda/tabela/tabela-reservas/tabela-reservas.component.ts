@@ -15,7 +15,7 @@ export class TabelaReservasComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['cliente', 'produto', 'quantidade', 'valor', 'dtRetirada'];
+  displayedColumns: string[] = ['cliente', 'produto', 'quantidade', 'valor', 'dtRetirada', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   
 }
@@ -25,7 +25,8 @@ export interface PeriodicElement {
   cliente: string;
   quantidade: string;
   valor: string;
-  dtRetirada: string
+  dtRetirada: string;
+
 }
 
 
