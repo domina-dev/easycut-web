@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
-import { ServicosComponent } from './pages/servicos/servicos.component';
 
 const routes: Routes = [
   {

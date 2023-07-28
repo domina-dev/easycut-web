@@ -12,6 +12,7 @@ import { ExebicaoProdutosComponent } from './exebicao-produtos.component';
   imports: [
     CommonModule,
     ExebicaoProdutosRoutingModule
-  ]
+  ],
+  exports: [ExebicaoProdutosComponent]
 })
 export class ExebicaoProdutosModule { }
