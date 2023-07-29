@@ -6,6 +6,8 @@ import { AgendamentosComponent } from './agendamentos.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ExibicaoAgendamentosModule } from './exibicao-agendamentos/exibicao-agendamentos.module';
 import { ExibicaoReservasModule } from './exibicao-reservas/exibicao-reservas.module';
+import { PageLayoutModule } from "../../../@vex/components/page-layout/page-layout.module";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,9 @@ import { ExibicaoReservasModule } from './exibicao-reservas/exibicao-reservas.mo
     MatTabsModule,
     ExibicaoAgendamentosModule,
     ExibicaoReservasModule,
+    PageLayoutModule,
+    FlexLayoutModule,
+
   ]
 })
 export class AgendamentosModule { }
