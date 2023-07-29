@@ -1,11 +1,11 @@
 var express = require('express')
 var app = express()
-var port = process.env.PORT || 4200
+var port = process.env.PORT||'4202'
 app.use(express.static('./dist/vex'));
 app.get('/',function(req,res){
     res.sendFile('index.html', {root: 'dist/vex/'}
   );
 })
-app.listen(process.env.PORT || 4200, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(port, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
