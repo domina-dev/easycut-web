@@ -14,6 +14,7 @@ import { Style, StyleService } from '../@vex/services/style.service';
 import { ConfigName } from '../@vex/interfaces/config-name.model';
 
 import icWork from '@iconify/icons-ic/baseline-work';
+import { CommomService } from './services/commom/commom.service';
 
 @Component({
   selector: 'vex-root',
@@ -32,13 +33,14 @@ export class AppComponent {
               private layoutService: LayoutService,
               private route: ActivatedRoute,
               private navigationService: NavigationService,
-              private splashScreenService: SplashScreenService) {
+              private splashScreenService: SplashScreenService,
+              private commomService: CommomService) {
     Settings.defaultLocale = this.localeId;
 
     if (this.platform.BLINK) {
       this.renderer.addClass(this.document.body, 'is-blink');
     }
-
+    this.healthCheck();
     /**
      * Customize the template to your needs with the ConfigService
      * Example:
@@ -93,5 +95,13 @@ export class AppComponent {
       },
       
     ];
+  }
+
+  healthCheck(){
+    this.commomService.healthCheck().subscribe(response=>{
+      console.log(response);
+    }, (error)=>{
+      console.log(error);
+    })
   }
 }
