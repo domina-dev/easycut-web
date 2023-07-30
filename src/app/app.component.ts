@@ -91,6 +91,7 @@ export class AppComponent {
         route: '/servicos',
         icon: icWork
       },
+      
     ];
   }
 }
