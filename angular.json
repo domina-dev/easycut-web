@@ -110,13 +110,12 @@
                   "with": "src/environments/environment.dev.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -136,8 +135,15 @@
           "configurations": {
             "production": {
               "browserTarget": "vex:build:production"
+            },
+            "homolog": {
+              "browserTarget": "vex:build:homolog"
+            },
+            "development": {
+              "browserTarget": "vex:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
