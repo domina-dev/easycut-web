@@ -115,14 +115,7 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "3mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
