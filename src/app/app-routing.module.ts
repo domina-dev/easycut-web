@@ -6,14 +6,27 @@ const routes: Routes = [
   {
     path: '',
     component: CustomLayoutComponent,
-    children: []
+    children: [
+      {
+        path: 'agendamentos',
+        loadChildren: () => import('./pages/agendamentos/agendamentos.module').then(m => m.AgendamentosModule)
+      },
+      {
+        path: 'servicos',
+        loadChildren: () => import('./pages/servicos/servicos.module').then(m => m.ServicosModule)
+      }
+    ]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
 
   {
     path: 'tabela',
     loadChildren: () => import('./pages/agenda/tabela/tabela-reservas/tabela-reservas.module').then(m => m.TabelaReservasModule)
-  },
-];
+  }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
