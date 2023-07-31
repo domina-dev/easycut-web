@@ -40,7 +40,6 @@ export class AppComponent {
     if (this.platform.BLINK) {
       this.renderer.addClass(this.document.body, 'is-blink');
     }
-    this.healthCheck();
     /**
      * Customize the template to your needs with the ConfigService
      * Example:
