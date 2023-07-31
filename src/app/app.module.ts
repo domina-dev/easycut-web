@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
 
+
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

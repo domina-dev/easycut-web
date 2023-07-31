@@ -7,7 +7,12 @@ const routes: Routes = [
     path: '',
     component: CustomLayoutComponent,
     children: []
-  }
+  },
+
+  {
+    path: 'tabela',
+    loadChildren: () => import('./pages/agenda/tabela/tabela-reservas/tabela-reservas.module').then(m => m.TabelaReservasModule)
+  },
 ];
 
 @NgModule({
