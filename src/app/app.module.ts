@@ -15,10 +15,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CaixaComponent } from './pages/caixa/caixa.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CaixaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
