@@ -1,0 +1,53 @@
+table {
+  width: 100%;
+}
+
+.example-panel-pendente.mat-select-panel {
+  background: rgba(255, 208, 0, 0.842);
+}
+
+.example-panel-aceito.mat-select-panel {
+  background: rgba(0, 172, 0, 0.849);
+}
+
+.example-panel-recusado.mat-select-panel {
+  background: rgba(201, 1, 1, 0.788);
+}
+
+
+
+th{
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: black !important;
+
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: rgba(218, 215, 215, 0.815);
+  border-radius: 8px !important;
+}
+
+.mat-form-field-flex{
+  margin-top: 3px;
+  display: inline-flex;
+  text-align: center !important;
+  align-items: center !important;
+  width: 80% !important;
+  padding: 0 !important;
+}
+
+.mat-form-field-wrapper{
+  padding: 0;
+}
+
+.mat-select-arrow-wrapper {
+  height: 1px !important;
+  flex-shrink: 0;
+  display: flex !important;
+  align-items: center;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+  padding: 0.1em 0 0.75em 0 !important;
+}

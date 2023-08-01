@@ -1,1 +1,56 @@
-<p>exibicao-agendamentos works!</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef> Cliente </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.cliente}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="servico">
+      <th mat-header-cell *matHeaderCellDef> Serviço </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.servico}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tempo">
+      <th mat-header-cell *matHeaderCellDef> Tempo </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.tempo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef> Valor </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.valor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef> Data </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.data}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="responsavel">
+      <th mat-header-cell *matHeaderCellDef> Responsável </th>
+      <td mat-cell *matCellDef="let agendamentos"> {{agendamentos.responsavel}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="botao" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let agendamentos">
+        <mat-form-field appearance="fill" class="statusform">
+          <mat-select [formControl]="panelColor"
+                      panelClass="example-panel-{{panelColor.value}}">
+            <mat-option value="pendente">Pendente</mat-option>
+            <mat-option value="aceito">Aceito</mat-option>
+            <mat-option value="recusado">Recusado</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[6, 10, 15]"
+                 showFirstLastButtons
+                 aria-label="Selecione as páginas de Clientes">
+  </mat-paginator>
+</div>
