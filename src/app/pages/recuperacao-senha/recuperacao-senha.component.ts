@@ -20,14 +20,15 @@ export class RecuperacaoSenhaComponent implements OnInit {
 
   icMail = icMail;
 
-  constructor(private router: Router,
-              private fb: FormBuilder,
-              private snackbar: MatSnackBar
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private snackbar: MatSnackBar
 
   ) { }
 
   ngOnInit() {
-    this.form;  this.fb.group({
+    this.form; this.fb.group({
       email: ['', Validators.required]
     });
   }

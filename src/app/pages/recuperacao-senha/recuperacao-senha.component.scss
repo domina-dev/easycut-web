@@ -20,6 +20,7 @@
 
 mat-form-field {
   width: 350px;
+  margin-bottom: -10px;
 }
 
 .email{
@@ -27,6 +28,13 @@ mat-form-field {
   font-size: 15px;
   color: rgba(0, 0, 0, 0.445);
   font-weight: 500;
+
+}
+mat-hint {
+  font-size: 13px;
+  margin-left: 5px;
+  margin-top: -3px;
+  color: rgba(0, 0, 0, 0.815);
 }
 .text-secondary {
   font-size: 15px;
@@ -34,5 +42,11 @@ mat-form-field {
 
 .secondary2 {
   margin-top: 30px;
+  color: #7f81fc;
 }
 
+.recSen{
+  margin-top: 28px;
+  border-radius: 18px;
+  background-color: #6366f1;
+}
