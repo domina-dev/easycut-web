@@ -34,7 +34,7 @@
     <ng-container matColumnDef="botao" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let agendamentos">
-        <mat-form-field appearance="fill" class="statusform">
+        <mat-form-field appearance="fill">
           <mat-select [formControl]="panelColor"
                       panelClass="example-panel-{{panelColor.value}}">
             <mat-option value="pendente">Pendente</mat-option>

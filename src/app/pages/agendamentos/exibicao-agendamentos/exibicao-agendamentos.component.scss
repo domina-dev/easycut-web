@@ -3,15 +3,15 @@ table {
 }
 
 .example-panel-pendente.mat-select-panel {
-  background: rgba(255, 208, 0, 0.842);
+  background: rgb(255, 208, 0);
 }
 
 .example-panel-aceito.mat-select-panel {
-  background: rgba(0, 172, 0, 0.849);
+  background: rgb(0, 172, 0);
 }
 
 .example-panel-recusado.mat-select-panel {
-  background: rgba(201, 1, 1, 0.788);
+  background: rgb(201, 1, 1);
 }
 
 
@@ -24,8 +24,12 @@ th{
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex{
-  background-color: rgba(218, 215, 215, 0.815);
+  background-color: rgba(199, 199, 199, 0.548);
   border-radius: 8px !important;
+}
+
+.mat-form-field-underline{
+  opacity: 0 !important;
 }
 
 .mat-form-field-flex{
@@ -51,3 +55,5 @@ th{
 .mat-form-field-appearance-fill .mat-form-field-infix {
   padding: 0.1em 0 0.75em 0 !important;
 }
+
+
