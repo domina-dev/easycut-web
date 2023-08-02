@@ -1,1 +1,101 @@
-<p>exebicao-servicos works!</p>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Aplicação do Serviço -->
+        <ng-container matColumnDef="aplicacao">
+            <th class="color-title" mat-header-cell *matHeaderCellDef> Aplicação</th>
+            <td mat-cell *matCellDef="let element"> {{element.aplicacao}} </td>
+        </ng-container>
+
+        <!-- Serviço -->
+        <ng-container matColumnDef="servico">
+            <th class="color-title" mat-header-cell *matHeaderCellDef> Nome do Serviço </th>
+            <td mat-cell *matCellDef="let element"> {{element.servico}} </td>
+        </ng-container>
+
+        <!-- Descrição do Serviço -->
+        <ng-container matColumnDef="descricao">
+            <th class="color-title" mat-header-cell *matHeaderCellDef> Descrição do Serviço </th>
+            <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+        </ng-container>
+
+        <!-- Tempo do Serviço -->
+        <ng-container matColumnDef="tempo">
+            <th class="color-title" mat-header-cell *matHeaderCellDef> Tempo </th>
+            <td mat-cell *matCellDef="let element"> {{element.tempo}} </td>
+        </ng-container>
+
+        <!-- Preço do Serviço -->
+        <ng-container matColumnDef="preco">
+            <th class="color-title" mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
+        </ng-container>
+
+        <!-- Ícone da tabela -->
+        <ng-container matColumnDef="icone">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
+                    <mat-icon class="icon-color">visibility_off</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
+                    <mat-icon color="primary"> border_color</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
+                    <mat-icon color="warn">delete</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="ícone Button">
+                    <mat-icon class="icon-color">confirmation_number</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                showFirstLastButtons 
+                aria-label="Selecionar página do produto">
+    </mat-paginator>
+</div>
+<!--<div class="mat-elevation-z8">
+
+    
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="servico">
+        <th mat-header-cell *matHeaderCellDef> Serviços </th>
+        <td mat-cell *matCellDef="let servicos"> {{servicos.servico}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="produto">
+        <th mat-header-cell *matHeaderCellDef> Produtos </th>
+        <td mat-cell *matCellDef="let servicos"> {{servicos.produto}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let servicos"> {{servicos.descricao}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+        <td mat-cell *matCellDef="let servicos"> {{servicos.quantidade}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef> Valor </th>
+        <td mat-cell *matCellDef="let servicos"> {{servicos.valor}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  -->
