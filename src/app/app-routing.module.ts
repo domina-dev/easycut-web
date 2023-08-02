@@ -20,11 +20,6 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
-  },
-
-  {
-    path: 'tabela',
-    loadChildren: () => import('./pages/agenda/tabela/tabela-reservas/tabela-reservas.module').then(m => m.TabelaReservasModule)
   }
 ]
 
