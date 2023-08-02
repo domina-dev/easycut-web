@@ -2,47 +2,59 @@ table {
   width: 100%;
 }
 
-.example-panel-pendente.mat-select-panel {
-  background: rgb(255, 208, 0);
+.pendente{
+  background: rgb(231, 189, 2);
+  width: 55%;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  border-radius: 8px;
 }
 
-.example-panel-aceito.mat-select-panel {
+.aceito {
   background: rgb(0, 172, 0);
+  width: 55%;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  border-radius: 8px;
 }
 
-.example-panel-recusado.mat-select-panel {
+.recusado {
   background: rgb(201, 1, 1);
+  width: 55%;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  border-radius: 8px;
 }
-
-
 
 th{
   font-size: 14.5px !important;
   font-weight: 700 !important;
   color: black !important;
-
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex{
-  background-color: rgba(199, 199, 199, 0.548);
-  border-radius: 8px !important;
+  background-color: transparent;
 }
 
 .mat-form-field-underline{
   opacity: 0 !important;
+  padding: 0 !important;
 }
 
-.mat-form-field-flex{
-  margin-top: 3px;
-  display: inline-flex;
-  text-align: center !important;
-  align-items: center !important;
-  width: 80% !important;
+.mat-form-field {
   padding: 0 !important;
 }
 
 .mat-form-field-wrapper{
   padding: 0;
+}
+
+td.mat-cell:last-of-type{
+  padding-right: 0 !important;
+  display: flex !important;
 }
 
 .mat-select-arrow-wrapper {
@@ -52,8 +64,8 @@ th{
   align-items: center;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-infix {
-  padding: 0.1em 0 0.75em 0 !important;
+.mat-form-field-infix {
+  border: 0 !important;
 }
 
 

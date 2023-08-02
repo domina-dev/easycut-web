@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {FormControl} from '@angular/forms';
 
 
 @Component({
@@ -13,8 +12,6 @@ import {FormControl} from '@angular/forms';
 export class ExibicaoAgendamentosComponent implements AfterViewInit {
   displayedColumns: string[] = ['cliente', 'servico', 'tempo', 'valor', 'data', 'responsavel', 'botao'];
   dataSource = new MatTableDataSource<Agendamentos>(CLIENTE_DATA);
-
-  panelColor = new FormControl('pendente');
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -35,14 +32,15 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
     valor: string;
     data: string;
     responsavel: string;
+    status: string;
   }
     const CLIENTE_DATA: Agendamentos[] = [
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
-      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes',},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'recusado'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'aceito'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'pendente'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'aceito'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'pendente'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'aceito'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'pendente'},
+      {cliente: 'João Pedro Fiuza', servico: 'Cabelo + barba', tempo: '60 min', valor: 'R$ 80,00', data: '13/03/2023', responsavel: 'Vito Nunes', status: 'aceito'},
     ];
