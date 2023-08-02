@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ExibicaoReservasRoutingModule } from './exibicao-reservas-routing.module';
 import { ExibicaoReservasComponent } from './exibicao-reservas.component';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 
 @NgModule({
@@ -11,7 +14,8 @@ import { ExibicaoReservasComponent } from './exibicao-reservas.component';
   ],
   imports: [
     CommonModule,
-    ExibicaoReservasRoutingModule
+    ExibicaoReservasRoutingModule,
+    MatTableModule
   ],
   exports:[
   ExibicaoReservasComponent,
