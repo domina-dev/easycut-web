@@ -1,7 +1,7 @@
-import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
 
 const routes: Routes = [
   {

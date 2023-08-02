@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
-import icMail from '@iconify/icons-ic/twotone-mail';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import icMail from '@iconify/icons-ic/twotone-mail';
 
-
+import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
 
 @Component({
   selector: 'vex-recuperacao-senha',
@@ -17,23 +15,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RecuperacaoSenhaComponent implements OnInit {
 
   form: FormGroup;
-
   icMail = icMail;
 
   constructor(
-    private router: Router,
     private fb: FormBuilder,
     private snackbar: MatSnackBar
-
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required]
     });
    }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   enviar() {
     if (!this.form.get('email').value ) {
@@ -41,7 +34,6 @@ export class RecuperacaoSenhaComponent implements OnInit {
       duration: 10000
     });
     } else {this.fechar()}
-
   }
   fechar() {
     this.snackbar.dismiss()
