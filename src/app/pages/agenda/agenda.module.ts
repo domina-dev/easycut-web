@@ -7,12 +7,11 @@ import { AgendaComponent } from './agenda.component';
 
 @NgModule({
   declarations: [
-    AgendaComponent,
+    AgendaComponent
   ],
   imports: [
     CommonModule,
-    AgendaRoutingModule,
-
+    AgendaRoutingModule
   ]
 })
 export class AgendaModule { }

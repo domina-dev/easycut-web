@@ -9,7 +9,6 @@ import { ExibicaoReservasModule } from './exibicao-reservas/exibicao-reservas.mo
 import { PageLayoutModule } from "../../../@vex/components/page-layout/page-layout.module";
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
 @NgModule({
   declarations: [
     AgendamentosComponent
