@@ -25,19 +25,25 @@ export class RecuperacaoSenhaComponent implements OnInit {
     private fb: FormBuilder,
     private snackbar: MatSnackBar
 
-  ) { }
-
-  ngOnInit() {
-    this.form; this.fb.group({
+  ) {
+    this.form = this.fb.group({
       email: ['', Validators.required]
     });
+   }
+
+  ngOnInit() {
+
   }
 
-  send() {
-    this.router.navigate(['/']);
-    this.snackbar.open('Não podemos recuperar sua senha, sem seu e-mail.', 'DIGITE UM E-MAIL VALIDO', {
+  enviar() {
+    if (!this.form.get('email').value ) {
+      this.snackbar.open('Não podemos recuperar sua senha, sem seu e-mail.', 'DIGITE UM E-MAIL VALIDO', {
       duration: 10000
     });
-  }
+    } else {this.fechar()}
 
+  }
+  fechar() {
+    this.snackbar.dismiss()
+  }
 }
