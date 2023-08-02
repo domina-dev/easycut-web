@@ -9,7 +9,16 @@ import { AppComponent } from './app.component';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { ServicosModule } from './pages/servicos/servicos.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
+import { AgendamentosModule } from './pages/agendamentos/agendamentos.module';
 import { LoginModule } from './pages/login/login.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +29,13 @@ import { LoginModule } from './pages/login/login.module';
     HttpClientModule,
     ServicosModule,
     AgendaModule,
+    AgendamentosModule,
     LoginModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+
 
     // Vex
     VexModule,
