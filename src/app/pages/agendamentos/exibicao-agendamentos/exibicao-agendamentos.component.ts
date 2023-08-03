@@ -1,6 +1,6 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -10,10 +10,12 @@ import {MatTableDataSource} from '@angular/material/table';
   encapsulation: ViewEncapsulation.None,
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit {
+[x: string]: any;
   displayedColumns: string[] = ['cliente', 'servico', 'tempo', 'valor', 'data', 'responsavel', 'botao'];
   dataSource = new MatTableDataSource<Agendamentos>(CLIENTE_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+currentStatus: any;
 
   constructor() {
 
