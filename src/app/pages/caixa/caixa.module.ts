@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CaixaRoutingModule } from './caixa-routing.module';
-import { NovaVendaComponent } from './nova-venda/nova-venda.component';
-import { FluxoCaixaComponent } from './fluxo-caixa/fluxo-caixa.component';
-import { HistoricoVendasComponent } from './historico-vendas/historico-vendas.component';
+import { CaixaComponent } from './caixa.component';
+// import { NovaVendaComponent } from './nova-venda/nova-venda.component';
+// import { FluxoCaixaComponent } from './fluxo-caixa/fluxo-caixa.component';
+// import { HistoricoVendasComponent } from './historico-vendas/historico-vendas.component';
 import { NovaVendaModule } from './nova-venda/nova-venda.module';
 import { FluxoCaixaModule } from './fluxo-caixa/fluxo-caixa.module';
 import { HistoricoVendasModule } from './historico-vendas/historico-vendas.module';
@@ -14,9 +15,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
-    NovaVendaComponent,
-    FluxoCaixaComponent,
-    HistoricoVendasComponent
+    CaixaComponent
   ],
   imports: [
     CommonModule,
@@ -25,8 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     FluxoCaixaModule,
     HistoricoVendasModule,
     PageLayoutModule,
-    FlexLayoutModule, 
-    MatTabsModule,   
+    FlexLayoutModule,
+    MatTabsModule,
   ]
 })
 export class CaixaModule { }

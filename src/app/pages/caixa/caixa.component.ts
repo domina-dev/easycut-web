@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+const NOVAVENDA = "Nova Venda"
+const FLUXODECAIXA = "Fluxo de Caixa"
+const HISTORICO = "Histórico de vendas"
 
 @Component({
   selector: 'caixa',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./caixa.component.scss']
 })
 export class CaixaComponent implements OnInit {
+  legenda: string = NOVAVENDA
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+   trocaLegenda($event) {
+    this.legenda = $event.index == 0 ? NOVAVENDA : FLUXODECAIXA ; HISTORICO
+
   }
 
 }

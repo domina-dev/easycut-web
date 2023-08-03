@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vex-nova-venda',
+  selector: 'nova-venda',
   templateUrl: './nova-venda.component.html',
   styleUrls: ['./nova-venda.component.scss']
 })

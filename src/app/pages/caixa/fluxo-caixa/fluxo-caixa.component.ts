@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vex-fluxo-caixa',
+  selector: 'fluxo-caixa',
   templateUrl: './fluxo-caixa.component.html',
   styleUrls: ['./fluxo-caixa.component.scss']
 })

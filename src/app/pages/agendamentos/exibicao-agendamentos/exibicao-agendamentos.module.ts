@@ -13,7 +13,7 @@ import { ExibicaoAgendamentosComponent } from './exibicao-agendamentos.component
     CommonModule,
     ExibicaoAgendamentosRoutingModule
   ],
-  exports:[
+  exports: [
     ExibicaoAgendamentosComponent
   ]
 })

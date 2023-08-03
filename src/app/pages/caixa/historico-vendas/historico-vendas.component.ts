@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'vex-historico-vendas',
+  selector: 'historico-vendas',
   templateUrl: './historico-vendas.component.html',
   styleUrls: ['./historico-vendas.component.scss']
 })
