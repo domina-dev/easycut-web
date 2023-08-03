@@ -9,15 +9,17 @@ const HISTORICO = "Histórico de vendas"
   styleUrls: ['./caixa.component.scss']
 })
 export class CaixaComponent implements OnInit {
-  legenda: string = NOVAVENDA
+  legenda: string 
 
-  constructor() { }
+  constructor() { 
+    this.legenda = NOVAVENDA
+  }
 
   ngOnInit(): void {
   }
 
    trocaLegenda($event) {
-    this.legenda = $event.index == 0 ? NOVAVENDA : FLUXODECAIXA ; HISTORICO
+    this.legenda = $event.index == 0 ? NOVAVENDA : $event.index == 1 ? FLUXODECAIXA : HISTORICO
 
   }
 
