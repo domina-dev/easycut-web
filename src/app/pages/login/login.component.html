@@ -19,7 +19,7 @@
       <div fxFlex="auto" fxLayout="column">
         <mat-form-field fxFlex="grow">
           <mat-label class="email">E-Mail</mat-label>
-          <input formControlName="email" matInput required />
+          <input formControlName="email" matInput required  [(ngModel)]="usuario.email"/>
           <mat-error *ngIf="form.get('email').hasError('required')"
             >Precisamos de um endereço de e-mail para realizar seu login</mat-error>
         </mat-form-field>
@@ -30,6 +30,7 @@
             formControlName="password"
             matInput
             required
+            [(ngModel)]="usuario.senha"
           />
           <button
             class="olho"
