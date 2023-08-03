@@ -20,33 +20,7 @@ export class ServicosComponent implements OnInit {
   }
 
   trocaLegenda($event) {
-    switch ($event.index) {
-      case 0:
-        this.servicos = true
-        this.produtos = false
-        this.promocoes = false
-        this.legenda = SERVICOS
-        break;
-      case 1:
-        this.servicos = false
-        this.produtos = true
-        this.promocoes = false
-        this.legenda = PRODUTOS
-        break;
-      case 2:
-        this.servicos = false
-        this.produtos = false
-        this.promocoes = true
-        this.legenda = PROMOCOES
-        break;
-
-      default:
-        this.servicos = true
-        this.produtos = false
-        this.promocoes = false
-        this.legenda = SERVICOS
-        break;
-    }
+    this.legenda = $event.index == 0 ? SERVICOS : $event.index == 1 ? PRODUTOS : PROMOCOES
+            }
   }
-}
 

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ExebicaoProdutosRoutingModule } from './exebicao-produtos-routing.module';
-import { ExebicaoProdutosComponent } from './exebicao-produtos.component';
+import { ExibicaoProdutosRoutingModule } from './exibicao-produtos-routing.module';
+import { ExibicaoProdutosComponent } from './exibicao-produtos.component';
 
 // Paginação e Tabela
 import { MatTableModule } from '@angular/material/table';
@@ -11,18 +11,17 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 // Ícone
 import { MatIconModule } from '@angular/material/icon';
 
-
 @NgModule({
   declarations: [
-    ExebicaoProdutosComponent
+    ExibicaoProdutosComponent
   ],
   imports: [
     CommonModule,
-    ExebicaoProdutosRoutingModule,
+    ExibicaoProdutosRoutingModule,
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
   ],
-  exports: [ExebicaoProdutosComponent]
+  exports: [ExibicaoProdutosComponent]
 })
-export class ExebicaoProdutosModule { }
+export class ExibicaoProdutosModule { }
