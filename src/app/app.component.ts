@@ -15,6 +15,8 @@ import { ConfigName } from '../@vex/interfaces/config-name.model';
 
 import icWork from '@iconify/icons-ic/baseline-work';
 import { CommomService } from './services/commom/commom.service';
+import icCashier from '@iconify/icons-ic/attach-money';
+import icAssigment from '@iconify/icons-ic/twotone-assignment';
 
 @Component({
   selector: 'vex-root',
@@ -92,7 +94,19 @@ export class AppComponent {
         route: '/servicos',
         icon: icWork
       },
-      
+      {
+        type: 'link',
+        label: 'Caixa',
+        route: '/caixa',
+        icon: icCashier
+      },
+      {
+        type: 'link',
+        label: 'Agendamentos',
+        route: '/agendamentos',
+        icon: icAssigment
+      },
+
     ];
   }
 

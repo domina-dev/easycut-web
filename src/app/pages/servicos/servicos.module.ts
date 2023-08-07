@@ -4,9 +4,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 import { ServicosRoutingModule } from './servicos-routing.module';
 import { ServicosComponent } from './servicos.component';
-import { ExebicaoServicosModule } from './exebicao-servicos/exebicao-servicos.module';
-import { ExebicaoProdutosModule } from './exebicao-produtos/exebicao-produtos.module';
-import { ExebicaoPromocoesModule } from './exebicao-promocoes/exebicao-promocoes.module';
+import { ExibicaoServicosModule } from './exibicao-servicos/exibicao-servicos.module';
+import { ExibicaoProdutosModule } from './exibicao-produtos/exibicao-produtos.module';
+import { ExibicaoPromocoesModule } from './exibicao-promocoes/exibicao-promocoes.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContainerModule } from '../../../@vex/directives/container/container.module';
@@ -22,9 +22,9 @@ import { BreadcrumbsModule } from "../../../@vex/components/breadcrumbs/breadcru
         CommonModule,
         ServicosRoutingModule,
         MatTabsModule,
-        ExebicaoServicosModule,
-        ExebicaoProdutosModule,
-        ExebicaoPromocoesModule,
+        ExibicaoServicosModule,
+        ExibicaoProdutosModule,
+        ExibicaoPromocoesModule,
         FlexLayoutModule,
         ContainerModule,
         PageLayoutModule,
