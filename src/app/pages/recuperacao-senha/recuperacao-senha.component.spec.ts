@@ -10,7 +10,7 @@ describe('RecuperacaoSenhaComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ RecuperacaoSenhaComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
