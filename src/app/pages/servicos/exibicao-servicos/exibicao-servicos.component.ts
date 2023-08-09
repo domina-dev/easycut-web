@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExibicaoServicosComponent implements OnInit {
 
+  verLista: boolean = true;
+  verGrade: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  vizualizar(){
+    this.verLista = !this.verLista
+    this.verGrade = !this.verGrade
   }
 
 }
