@@ -1,6 +1,5 @@
-var express = require('express')
-var app = express()
-var port = process.env.PORT || 3000
+let express = require('express')
+let app = express()
 app.use(express.static('./dist/vex'));
 app.get('/', function (req, res) {
   res.sendFile('index.html', { root: 'dist/vex/' }
