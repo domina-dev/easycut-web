@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { MenuItem } from '../interfaces/menu-item.interface';
 import { trackById } from '../../../../utils/track-by';
 import icPerson from '@iconify/icons-ic/twotone-person';
@@ -33,7 +33,7 @@ export interface OnlineStatus {
   styleUrls: ['./toolbar-user-dropdown.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarUserDropdownComponent implements OnInit {
+export class ToolbarUserDropdownComponent {
 
   items: MenuItem[] = [
     {
@@ -111,9 +111,6 @@ export class ToolbarUserDropdownComponent implements OnInit {
 
   constructor(private cd: ChangeDetectorRef,
               private popoverRef: PopoverRef<ToolbarUserDropdownComponent>) { }
-
-  ngOnInit() {
-  }
 
   setStatus(status: OnlineStatus) {
     this.activeStatus = status;

@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnDestroy } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
     class: 'vex-sidebar'
   }
 })
-export class SidebarComponent implements OnDestroy {
+export class SidebarComponent{
 
   @Input() position: 'left' | 'right' = 'left';
   @Input() invisibleBackdrop: boolean;
@@ -54,6 +54,4 @@ export class SidebarComponent implements OnDestroy {
   close() {
     this.opened = false;
   }
-
-  ngOnDestroy(): void {}
 }

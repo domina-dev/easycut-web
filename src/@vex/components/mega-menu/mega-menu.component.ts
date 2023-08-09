@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import icLayers from '@iconify/icons-ic/twotone-layers';
 import icAssigment from '@iconify/icons-ic/twotone-assignment';
 import { Icon } from '@visurel/iconify-angular';
@@ -23,7 +23,7 @@ export interface MegaMenuPage {
   selector: 'vex-mega-menu',
   templateUrl: './mega-menu.component.html'
 })
-export class MegaMenuComponent implements OnInit {
+export class MegaMenuComponent{
 
   features: MegaMenuFeature[] = [
     {
@@ -102,9 +102,6 @@ export class MegaMenuComponent implements OnInit {
   ];
 
   constructor(private popoverRef: PopoverRef<MegaMenuComponent>) { }
-
-  ngOnInit() {
-  }
 
   close() {
     this.popoverRef.close();

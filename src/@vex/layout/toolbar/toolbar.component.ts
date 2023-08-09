@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, Input } from '@angular/core';
 import { LayoutService } from '../../services/layout.service';
 import icBookmarks from '@iconify/icons-ic/twotone-bookmarks';
 import emojioneUS from '@iconify/icons-emojione/flag-for-flag-united-states';
@@ -24,7 +24,7 @@ import icSearch from '@iconify/icons-ic/twotone-search';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
   @Input() mobileQuery: boolean;
 
@@ -57,9 +57,6 @@ export class ToolbarComponent implements OnInit {
               private configService: ConfigService,
               private navigationService: NavigationService,
               private popoverService: PopoverService) { }
-
-  ngOnInit() {
-  }
 
   openQuickpanel() {
     this.layoutService.openQuickpanel();

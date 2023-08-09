@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -10,7 +10,7 @@ import { TableColumn } from '../../../interfaces/table-column.interface';
   selector: 'vex-widget-table',
   templateUrl: './widget-table.component.html'
 })
-export class WidgetTableComponent<T> implements OnInit, OnChanges, AfterViewInit {
+export class WidgetTableComponent<T> implements OnChanges, AfterViewInit {
 
   @Input() data: T[];
   @Input() columns: TableColumn<T>[];
@@ -24,10 +24,6 @@ export class WidgetTableComponent<T> implements OnInit, OnChanges, AfterViewInit
 
   icMoreHoriz = icMoreHoriz;
   icCloudDownload = icCloudDownload;
-
-  constructor() { }
-
-  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.columns) {

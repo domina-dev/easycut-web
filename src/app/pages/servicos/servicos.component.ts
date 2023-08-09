@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 const SERVICOS = "Meus Serviços"
 const PRODUTOS = "Meus Produtos"
 const PROMOCOES = "Minhas Promoções"
@@ -8,19 +8,18 @@ const PROMOCOES = "Minhas Promoções"
   styleUrls: ['./servicos.component.scss'],
 
 })
-export class ServicosComponent implements OnInit {
+export class ServicosComponent {
   servicos: boolean = true
   produtos: boolean = false
   promocoes: boolean = false
   legenda: string = SERVICOS
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   trocaLegenda($event) {
-    this.legenda = $event.index == 0 ? SERVICOS : $event.index == 1 ? PRODUTOS : PROMOCOES
-            }
+    this.legenda = $event.index == 0 ? SERVICOS : this.produtoOuPromocao($event)
   }
+
+  private produtoOuPromocao($event: any): string {
+    return $event.index == 1 ? PRODUTOS : PROMOCOES;
+  }
+}
 
