@@ -22,5 +22,5 @@ jobs:
           -Dsonar.organization=ondlinesolutions
           -Dsonar.projectKey=OndlineSolutions_easycut-web
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
