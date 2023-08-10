@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { ExibicaoServicosRoutingModule } from './exibicao-servicos-routing.module';
 import { ExibicaoServicosComponent } from './exibicao-servicos.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { ExibicaoServicosComponent } from './exibicao-servicos.component';
   ],
   imports: [
     CommonModule,
-    ExibicaoServicosRoutingModule
+    ExibicaoServicosRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatIconModule
   ],
   exports: [ExibicaoServicosComponent]
 })

@@ -1,6 +1,6 @@
 <div [class.boxed]="isBoxed$ | async"
-     [class.horizontal-layout]="!(isLayoutVertical$ | async)"
-     [class.is-mobile]="!(isDesktop$ | async)"
+     [class.horizontal-layout]="(isLayoutVertical$ | async)===false"
+     [class.is-mobile]="(isDesktop$ | async)===false"
      [class.vertical-layout]="isLayoutVertical$ | async"
      [class.has-fixed-footer]="(isFooterFixed$ | async) && isFooterVisible$ | async"
      [class.has-footer]="isFooterVisible$ | async"
@@ -18,15 +18,15 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav
                  [disableClose]="isDesktop$ | async"
-                 [fixedInViewport]="!(isDesktop$ | async)"
-                 [mode]="!(isDesktop$ | async) || (isLayoutVertical$ | async) ? 'over' : 'side'"
-                 [opened]="(isDesktop$ | async) && !(isLayoutVertical$ | async)"
+                 [fixedInViewport]="(isDesktop$ | async) === false"
+                 [mode]="(isDesktop$ | async)===false || (isLayoutVertical$ | async) ? 'over' : 'side'"
+                 [opened]="(isDesktop$ | async) && (isLayoutVertical$ | async)===false"
                  class="sidenav">
       <ng-container *ngTemplateOutlet="sidenavRef"></ng-container>
     </mat-sidenav>
 
     <mat-sidenav #quickpanel
-                 [fixedInViewport]="!(isDesktop$ | async)"
+                 [fixedInViewport]="(isDesktop$ | async)===false"
                  class="quickpanel"
                  mode="over"
                  position="end">

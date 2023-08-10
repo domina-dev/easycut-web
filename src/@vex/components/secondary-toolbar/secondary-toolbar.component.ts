@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './secondary-toolbar.component.html',
   styleUrls: ['./secondary-toolbar.component.scss']
 })
-export class SecondaryToolbarComponent implements OnInit {
+export class SecondaryToolbarComponent {
 
   @Input() current: string;
   @Input() crumbs: string[];
@@ -18,6 +18,4 @@ export class SecondaryToolbarComponent implements OnInit {
 
   constructor(private configService: ConfigService) { }
 
-  ngOnInit() {
-  }
 }

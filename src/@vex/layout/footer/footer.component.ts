@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 import icFeedback from '@iconify/icons-ic/twotone-feedback';
 import icBusinessCenter from '@iconify/icons-ic/twotone-business-center';
 import icPhoneInTalk from '@iconify/icons-ic/twotone-phone-in-talk';
@@ -9,7 +9,7 @@ import icMail from '@iconify/icons-ic/twotone-mail';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit, OnDestroy {
+export class FooterComponent{
 
   @Input() customTemplate: TemplateRef<any>;
   iconFooter = icFeedback;
@@ -17,11 +17,4 @@ export class FooterComponent implements OnInit, OnDestroy {
   icPhoneInTalk = icPhoneInTalk;
   icMail = icMail;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy(): void {}
 }

@@ -1,23 +1,21 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
-  selector: 'exibicao-agendamentos',
+  selector: 'vex-exibicao-agendamentos',
   templateUrl: './exibicao-agendamentos.component.html',
   styleUrls: ['./exibicao-agendamentos.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit {
+[x: string]: any;
   displayedColumns: string[] = ['cliente', 'servico', 'tempo', 'valor', 'data', 'responsavel', 'botao'];
   dataSource = new MatTableDataSource<Agendamentos>(CLIENTE_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  constructor() {
-
-   }
+currentStatus: any;
 
    ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

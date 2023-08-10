@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Usuario } from './../../model/usuario';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
     fadeInUp400ms
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   form: FormGroup;
 
@@ -27,25 +28,27 @@ export class LoginComponent implements OnInit {
   icVisibility = icVisibility;
   icVisibilityOff = icVisibilityOff;
 
+  public usuario = new Usuario();
+
+
   constructor(private router: Router,
               private fb: FormBuilder,
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar
-  ) {}
 
-  ngOnInit() {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  ) {    this.form = this.fb.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  });}
 
   send() {
+    console.log(this.usuario)
     this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
-      duration: 10000
+    this.snackbar.open('Seu login foi efetuado com sucesso. Parabéns!', 'Obrigado', {
+      duration: 5000
     });
   }
+
 
   toggleVisibility() {
     if (this.visible) {

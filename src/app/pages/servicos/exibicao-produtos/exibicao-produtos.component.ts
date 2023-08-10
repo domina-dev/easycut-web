@@ -3,7 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
-  selector: 'exibicao-produtos',
+  selector: 'vex-exibicao-produtos',
   templateUrl: './exibicao-produtos.component.html',
   styleUrls: ['./exibicao-produtos.component.scss']
 })
