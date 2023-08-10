@@ -1,7 +1,8 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "projects/**/*",
+    "highlight.directive.ts"
   ],
   "overrides": [
     {
@@ -35,7 +36,8 @@
             "prefix": "vex",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/no-host-metadata-property": ["error", { "allowStatic": true }]
       }
     },
     {
