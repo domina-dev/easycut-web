@@ -19,6 +19,8 @@ import icLock from '@iconify/icons-ic/twotone-lock';
 import icNotificationsOff from '@iconify/icons-ic/twotone-notifications-off';
 import { Icon } from '@visurel/iconify-angular';
 import { PopoverRef } from '../../../../components/popover/popover-ref';
+import { ConstrucaoModalComponent } from 'src/app/modais/construcao-modal/construcao-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface OnlineStatus {
   id: 'online' | 'away' | 'dnd' | 'offline';
@@ -110,14 +112,24 @@ export class ToolbarUserDropdownComponent {
   icNotificationsOff = icNotificationsOff;
 
   constructor(private cd: ChangeDetectorRef,
-              private popoverRef: PopoverRef<ToolbarUserDropdownComponent>) { }
+              private popoverRef: PopoverRef<ToolbarUserDropdownComponent>,
+              public dialog: MatDialog) { }
 
   setStatus(status: OnlineStatus) {
     this.activeStatus = status;
     this.cd.markForCheck();
   }
 
-  close() {
+  close(item?: MenuItem) {
     this.popoverRef.close();
+    if(item) this.openModal(item);
+  }
+  openModal(item: MenuItem){
+    if(item.id == '1'){
+      const dialogRef = this.dialog.open(ConstrucaoModalComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) console.log(result);
+      });
+    }
   }
 }
