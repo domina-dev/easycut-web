@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Icon } from '@visurel/iconify-angular';
 import faCaretUp from '@iconify/icons-fa-solid/caret-up';
 import faCaretDown from '@iconify/icons-fa-solid/caret-down';
@@ -14,7 +14,7 @@ import { scaleInOutAnimation } from '../../../animations/scale-in-out.animation'
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [scaleInOutAnimation]
 })
-export class WidgetQuickValueCenterComponent implements OnInit {
+export class WidgetQuickValueCenterComponent {
 
   @Input() icon: Icon;
   @Input() value: string;
@@ -31,9 +31,6 @@ export class WidgetQuickValueCenterComponent implements OnInit {
   showButton: boolean;
 
   constructor(private _bottomSheet: MatBottomSheet) { }
-
-  ngOnInit() {
-  }
 
   openSheet() {
     this._bottomSheet.open(ShareBottomSheetComponent);

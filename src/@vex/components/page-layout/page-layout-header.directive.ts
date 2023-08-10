@@ -8,7 +8,5 @@ import { Directive } from '@angular/core';
 })
 export class PageLayoutHeaderDirective {
 
-  constructor() { }
-
 }
 

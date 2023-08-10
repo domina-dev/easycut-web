@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import icHome from '@iconify/icons-ic/twotone-home';
 import { trackByValue } from '../../utils/track-by';
 
@@ -20,16 +20,10 @@ import { trackByValue } from '../../utils/track-by';
     </div>
   `
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
   @Input() crumbs: string[] = [];
 
   trackByValue = trackByValue;
   icHome = icHome;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 }

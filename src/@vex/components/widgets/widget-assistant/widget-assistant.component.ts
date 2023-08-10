@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import icCheckCircle from '@iconify/icons-ic/twotone-check-circle';
 
 @Component({
@@ -6,13 +6,8 @@ import icCheckCircle from '@iconify/icons-ic/twotone-check-circle';
   templateUrl: './widget-assistant.component.html',
   styleUrls: ['./widget-assistant.component.scss']
 })
-export class WidgetAssistantComponent implements OnInit {
+export class WidgetAssistantComponent {
 
   icCheckCircle = icCheckCircle;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

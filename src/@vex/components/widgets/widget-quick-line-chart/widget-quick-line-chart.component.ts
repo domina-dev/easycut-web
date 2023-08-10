@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ApexOptions } from '../../chart/chart.component';
 import { defaultChartOptions } from '../../../utils/default-chart-options';
 import { Icon } from '@visurel/iconify-angular';
@@ -13,7 +13,7 @@ import { scaleInOutAnimation } from '../../../animations/scale-in-out.animation'
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [scaleInOutAnimation]
 })
-export class WidgetQuickLineChartComponent implements OnInit {
+export class WidgetQuickLineChartComponent {
 
   @Input() icon: Icon;
   @Input() value: string;
@@ -32,9 +32,6 @@ export class WidgetQuickLineChartComponent implements OnInit {
   icShare = icShare;
 
   constructor(private _bottomSheet: MatBottomSheet) { }
-
-  ngOnInit() {
-  }
 
   openSheet() {
     this._bottomSheet.open(ShareBottomSheetComponent);

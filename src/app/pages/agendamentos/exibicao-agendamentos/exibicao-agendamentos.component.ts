@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
-  selector: 'exibicao-agendamentos',
+  selector: 'vex-exibicao-agendamentos',
   templateUrl: './exibicao-agendamentos.component.html',
   styleUrls: ['./exibicao-agendamentos.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -16,10 +16,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 currentStatus: any;
-
-  constructor() {
-
-   }
 
    ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

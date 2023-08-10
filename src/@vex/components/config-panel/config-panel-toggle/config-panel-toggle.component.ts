@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import icSettings from '@iconify/icons-ic/twotone-settings';
 
 @Component({
@@ -6,15 +6,9 @@ import icSettings from '@iconify/icons-ic/twotone-settings';
   templateUrl: './config-panel-toggle.component.html',
   styleUrls: ['./config-panel-toggle.component.scss']
 })
-export class ConfigPanelToggleComponent implements OnInit {
+export class ConfigPanelToggleComponent {
 
   @Output() openConfig = new EventEmitter();
 
   icSettings = icSettings;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

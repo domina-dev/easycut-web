@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { PopoverService } from '../../../components/popover/popover.service';
 import { ToolbarNotificationsDropdownComponent } from './toolbar-notifications-dropdown/toolbar-notifications-dropdown.component';
 import icNotificationsActive from '@iconify/icons-ic/twotone-notifications-active';
@@ -9,7 +9,7 @@ import icNotificationsActive from '@iconify/icons-ic/twotone-notifications-activ
   styleUrls: ['./toolbar-notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarNotificationsComponent implements OnInit {
+export class ToolbarNotificationsComponent {
 
   @ViewChild('originRef', { static: true, read: ElementRef }) originRef: ElementRef;
 
@@ -18,8 +18,6 @@ export class ToolbarNotificationsComponent implements OnInit {
 
   constructor(private popover: PopoverService,
               private cd: ChangeDetectorRef) {}
-
-  ngOnInit() {}
 
   showPopover() {
     this.dropdownOpen = true;

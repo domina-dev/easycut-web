@@ -4,7 +4,7 @@
 
 <ng-template #toolbarRef>
   <vex-toolbar [hasShadow]="toolbarShadowEnabled$ | async"
-               [mobileQuery]="!(isDesktop$ | async)"
+               [mobileQuery]="(isDesktop$ | async)===false"
                class="vex-toolbar"></vex-toolbar>
 </ng-template>
 
@@ -20,8 +20,6 @@
             [quickpanelRef]="quickpanelRef"
             [sidenavRef]="sidenavRef"
             [toolbarRef]="toolbarRef"></vex-layout>
-
-<!-- <vex-config-panel-toggle (openConfig)="configpanel.open()"></vex-config-panel-toggle> -->
 
 <!-- CONFIGPANEL -->
 <vex-sidebar #configpanel [invisibleBackdrop]="true" position="right">

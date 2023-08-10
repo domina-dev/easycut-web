@@ -51,7 +51,7 @@ export class SidenavItemComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes && changes.hasOwnProperty('item') && this.isDropdown(this.item)) {
+    if (changes?.hasOwnProperty('item') && this.isDropdown(this.item)) {
       this.onRouteChange();
     }
   }
