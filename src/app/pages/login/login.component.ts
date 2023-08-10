@@ -1,5 +1,5 @@
 import { Usuario } from './../../model/usuario';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -18,7 +18,7 @@ import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
     fadeInUp400ms
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   form: FormGroup;
 
@@ -40,10 +40,6 @@ export class LoginComponent implements OnInit {
     email: ['', Validators.required],
     password: ['', Validators.required]
   });}
-
-  ngOnInit() {
-
-  }
 
   send() {
     console.log(this.usuario)
