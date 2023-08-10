@@ -1,16 +1,23 @@
-import { Directive, EventEmitter, Input, NgZone, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { HighlightResult } from './highlight.model';
-import { HighlightService } from './highlight.service';
+import {
+  Directive,
+  EventEmitter,
+  Input,
+  NgZone,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from "@angular/core";
+import { HighlightResult } from "./highlight.model";
+import { HighlightService } from "./highlight.service";
 
 @Directive({
-  selector: '[vexHighlight]',
+  selector: "[vexHighlight]",
   host: {
-    '[class.hljs]': 'true',
-    '[innerHTML]': 'highlightedCode'
+    "[class.hljs]": "true",
+    "[innerHTML]": "highlightedCode",
   },
 })
 export class HighlightDirective implements OnChanges {
-
   /** Highlighted Code */
   highlightedCode: string;
 
@@ -20,13 +27,15 @@ export class HighlightDirective implements OnChanges {
   @Input() languages: string[];
 
   /** Highlight code input */
-  @Input('vexHighlight') code;
+  @Input("vexHighlight") code;
 
   /** Stream that emits when code string is highlighted */
   @Output() highlighted = new EventEmitter<HighlightResult>();
 
-  constructor(private _highlightService: HighlightService, private _zone: NgZone) {
-  }
+  constructor(
+    private _highlightService: HighlightService,
+    private _zone: NgZone,
+  ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (

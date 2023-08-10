@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { WidgetLargeGoalChartComponent } from './widget-large-goal-chart.component';
+import { WidgetLargeGoalChartComponent } from "./widget-large-goal-chart.component";
 
-describe('WidgetLargeGoalChartComponent', () => {
+describe("WidgetLargeGoalChartComponent", () => {
   let component: WidgetLargeGoalChartComponent;
   let fixture: ComponentFixture<WidgetLargeGoalChartComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WidgetLargeGoalChartComponent]
-    })
-      .compileComponents();
+      declarations: [WidgetLargeGoalChartComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('WidgetLargeGoalChartComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

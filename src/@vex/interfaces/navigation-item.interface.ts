@@ -1,10 +1,12 @@
+import { Icon } from "@visurel/iconify-angular";
 
-import { Icon } from '@visurel/iconify-angular';
-
-export type NavigationItem = NavigationLink | NavigationDropdown | NavigationSubheading;
+export type NavigationItem =
+  | NavigationLink
+  | NavigationDropdown
+  | NavigationSubheading;
 
 export interface NavigationLink {
-  type: 'link';
+  type: "link";
   route: string | any;
   fragment?: string;
   label: string;
@@ -18,7 +20,7 @@ export interface NavigationLink {
 }
 
 export interface NavigationDropdown {
-  type: 'dropdown';
+  type: "dropdown";
   label: string;
   icon?: Icon;
   children: Array<NavigationLink | NavigationDropdown>;
@@ -30,7 +32,7 @@ export interface NavigationDropdown {
 }
 
 export interface NavigationSubheading {
-  type: 'subheading';
+  type: "subheading";
   label: string;
   children: Array<NavigationLink | NavigationDropdown>;
 }

@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { CustomLayoutComponent } from './custom-layout.component';
+import { CustomLayoutComponent } from "./custom-layout.component";
 
-describe('CustomLayoutComponent', () => {
+describe("CustomLayoutComponent", () => {
   let component: CustomLayoutComponent;
   let fixture: ComponentFixture<CustomLayoutComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CustomLayoutComponent]
-    })
-      .compileComponents();
+      declarations: [CustomLayoutComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CustomLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

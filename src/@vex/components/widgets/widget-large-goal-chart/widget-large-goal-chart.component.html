@@ -16,30 +16,56 @@
       <h2 class="display-2 font-bold m-0">{{ total }}</h2>
       <h3 class="title font-medium mt-2 mb-0">Sales this month</h3>
 
-      <div class="mt-6" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-        <div class="w-8 h-8 rounded text-green bg-green-light"
-             fxFlex="none"
-             fxLayout="row"
-             fxLayoutAlign="center center">
-          <ic-icon [icon]="faCaretUp" height="20px" inline="true" width="20px"></ic-icon>
+      <div
+        class="mt-6"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="16px"
+      >
+        <div
+          class="w-8 h-8 rounded text-green bg-green-light"
+          fxFlex="none"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <ic-icon
+            [icon]="faCaretUp"
+            height="20px"
+            inline="true"
+            width="20px"
+          ></ic-icon>
         </div>
 
-        <p class="text-secondary m-0"><span class="font-medium text-green">11% more sales</span> in comparison to
-          last
-          month.</p>
+        <p class="text-secondary m-0">
+          <span class="font-medium text-green">11% more sales</span> in
+          comparison to last month.
+        </p>
       </div>
 
-      <div class="mt-4" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-        <div class="w-8 h-8 rounded text-red bg-red-light"
-             fxFlex="none"
-             fxLayout="row"
-             fxLayoutAlign="center center">
-          <ic-icon [icon]="faCaretDown" height="20px" inline="true" width="20px"></ic-icon>
+      <div
+        class="mt-4"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxLayoutGap="16px"
+      >
+        <div
+          class="w-8 h-8 rounded text-red bg-red-light"
+          fxFlex="none"
+          fxLayout="row"
+          fxLayoutAlign="center center"
+        >
+          <ic-icon
+            [icon]="faCaretDown"
+            height="20px"
+            inline="true"
+            width="20px"
+          ></ic-icon>
         </div>
 
-        <p class="text-secondary m-0"><span class="font-medium text-red">-2% revenue per sale</span> in comparison
-          to
-          last month.</p>
+        <p class="text-secondary m-0">
+          <span class="font-medium text-red">-2% revenue per sale</span> in
+          comparison to last month.
+        </p>
       </div>
 
       <div class="mt-6" fxFlex="auto" fxLayout="column" fxLayoutAlign="end">

@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FooterComponent } from './footer.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { IconModule } from '@visurel/iconify-angular';
-import { ContainerModule } from '../../directives/container/container.module';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FooterComponent } from "./footer.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatButtonModule } from "@angular/material/button";
+import { IconModule } from "@visurel/iconify-angular";
+import { ContainerModule } from "../../directives/container/container.module";
 
 @NgModule({
   imports: [
@@ -12,10 +12,9 @@ import { ContainerModule } from '../../directives/container/container.module';
     FlexLayoutModule,
     MatButtonModule,
     IconModule,
-    ContainerModule
+    ContainerModule,
   ],
   declarations: [FooterComponent],
-  exports: [FooterComponent]
+  exports: [FooterComponent],
 })
-export class FooterModule {
-}
+export class FooterModule {}
