@@ -14,7 +14,6 @@ export class ExibicaoServicosComponent implements AfterViewInit {
   verLista: boolean = true;
   verGrade: boolean = false;
 
-  constructor() { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
