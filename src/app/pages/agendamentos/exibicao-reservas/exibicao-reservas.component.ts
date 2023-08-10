@@ -1,19 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 
 
 @Component({
-  selector: 'exibicao-reservas',
+  selector: 'vex-exibicao-reservas',
   templateUrl: './exibicao-reservas.component.html',
   styleUrls: ['./exibicao-reservas.component.scss']
 })
-export class ExibicaoReservasComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class ExibicaoReservasComponent {
 
   displayedColumns: string[] = ['cliente', 'produto', 'quantidade', 'valor', 'dtRetirada', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);

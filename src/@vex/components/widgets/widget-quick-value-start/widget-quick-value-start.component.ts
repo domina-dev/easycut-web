@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Icon } from '@visurel/iconify-angular';
 import icHelp from '@iconify/icons-ic/help-outline';
 import icShare from '@iconify/icons-ic/twotone-share';
@@ -13,7 +13,7 @@ import { ShareBottomSheetComponent } from '../../share-bottom-sheet/share-bottom
   templateUrl: './widget-quick-value-start.component.html',
   animations: [scaleInOutAnimation]
 })
-export class WidgetQuickValueStartComponent implements OnInit {
+export class WidgetQuickValueStartComponent {
 
   @Input() icon: Icon;
   @Input() value: string;
@@ -30,9 +30,6 @@ export class WidgetQuickValueStartComponent implements OnInit {
   showButton: boolean;
 
   constructor(private _bottomSheet: MatBottomSheet) { }
-
-  ngOnInit() {
-  }
 
   openSheet() {
     this._bottomSheet.open(ShareBottomSheetComponent);

@@ -21,11 +21,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
 
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ConstrucaoModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +45,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-
+    MatDialogModule,
 
     // Vex
     VexModule,

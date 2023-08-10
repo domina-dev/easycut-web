@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { first, map } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import icClose from '@iconify/icons-ic/twotone-close';
   templateUrl: './config-panel.component.html',
   styleUrls: ['./config-panel.component.scss']
 })
-export class ConfigPanelComponent implements OnInit {
+export class ConfigPanelComponent {
 
   configs = this.configService.configs;
   colorVariables = colorVariables;
@@ -48,9 +48,6 @@ export class ConfigPanelComponent implements OnInit {
               private layoutService: LayoutService,
               @Inject(DOCUMENT) private document: Document,
               private route: ActivatedRoute) { }
-
-  ngOnInit() {
-  }
 
   setConfig(layout: ConfigName, style: Style) {
     this.configService.setConfig(layout);

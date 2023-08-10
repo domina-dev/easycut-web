@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { PopoverService } from '../../../components/popover/popover.service';
 import { ToolbarUserDropdownComponent } from './toolbar-user-dropdown/toolbar-user-dropdown.component';
 import icPerson from '@iconify/icons-ic/twotone-person';
@@ -8,16 +8,13 @@ import icPerson from '@iconify/icons-ic/twotone-person';
   templateUrl: './toolbar-user.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarUserComponent implements OnInit {
+export class ToolbarUserComponent {
 
   dropdownOpen: boolean;
   icPerson = icPerson;
 
   constructor(private popover: PopoverService,
               private cd: ChangeDetectorRef) { }
-
-  ngOnInit() {
-  }
 
   showPopover(originRef: HTMLElement) {
     this.dropdownOpen = true;

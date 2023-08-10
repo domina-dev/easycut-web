@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import icMail from '@iconify/icons-ic/twotone-mail';
@@ -12,7 +12,7 @@ import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInUp400ms]
 })
-export class RecuperacaoSenhaComponent implements OnInit {
+export class RecuperacaoSenhaComponent {
 
   form: FormGroup;
   icMail = icMail;
@@ -25,8 +25,6 @@ export class RecuperacaoSenhaComponent implements OnInit {
       email: ['', Validators.required]
     });
    }
-
-  ngOnInit() {}
 
   enviar() {
     if (!this.form.get('email').value ) {

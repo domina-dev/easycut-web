@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Notification } from '../interfaces/notification.interface';
 import { DateTime } from 'luxon';
 import { trackById } from '../../../../utils/track-by';
@@ -20,7 +20,7 @@ import icFileCopy from '@iconify/icons-ic/twotone-file-copy';
   templateUrl: './toolbar-notifications-dropdown.component.html',
   styleUrls: ['./toolbar-notifications-dropdown.component.scss']
 })
-export class ToolbarNotificationsDropdownComponent implements OnInit {
+export class ToolbarNotificationsDropdownComponent {
 
   notifications: Notification[] = [
     {
@@ -87,10 +87,5 @@ export class ToolbarNotificationsDropdownComponent implements OnInit {
   icClearAll = icClearAll;
   icNotificationsOff = icNotificationsOff;
   trackById = trackById;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

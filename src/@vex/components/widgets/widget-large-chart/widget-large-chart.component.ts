@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import icMoreHoriz from '@iconify/icons-ic/twotone-more-horiz';
 import icCloudDownload from '@iconify/icons-ic/twotone-cloud-download';
 import { ApexOptions } from '../../chart/chart.component';
@@ -10,7 +10,7 @@ import { createDateArray } from '../../../utils/create-date-array';
   templateUrl: './widget-large-chart.component.html',
   styleUrls: ['./widget-large-chart.component.scss']
 })
-export class WidgetLargeChartComponent implements OnInit {
+export class WidgetLargeChartComponent {
 
   @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
   @Input() options: ApexOptions = defaultChartOptions({
@@ -64,10 +64,5 @@ export class WidgetLargeChartComponent implements OnInit {
 
   icMoreHoriz = icMoreHoriz;
   icCloudDownload = icCloudDownload;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
