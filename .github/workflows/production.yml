@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      - homolog
+      - develop
+      - sonar
   pull_request:
       types: [opened, synchronize, reopened]
 name: Main Workflow
