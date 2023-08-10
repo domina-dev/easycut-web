@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - master
+      - homolog
+      - develop
+      - sonar
+      - feature*
   pull_request:
       types: [opened, synchronize, reopened]
 name: Main Workflow
@@ -11,9 +15,6 @@ jobs:
   sonarcloud:
     runs-on: ubuntu-latest
     steps:
-    - name: Lint Action
-      uses: wearerequired/lint-action@v2.3.0
-
     - uses: actions/checkout@v3
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
