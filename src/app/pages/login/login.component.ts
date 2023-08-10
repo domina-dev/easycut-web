@@ -1,4 +1,3 @@
-import { Usuario } from './../../model/usuario';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,7 +6,7 @@ import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 
 import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
-
+import { Usuario } from './../../model/usuario';
 
 @Component({
   selector: 'vex-login',
@@ -30,7 +29,6 @@ export class LoginComponent {
 
   public usuario = new Usuario();
 
-
   constructor(private router: Router,
               private fb: FormBuilder,
               private cd: ChangeDetectorRef,
@@ -48,7 +46,6 @@ export class LoginComponent {
       duration: 5000
     });
   }
-
 
   toggleVisibility() {
     if (this.visible) {

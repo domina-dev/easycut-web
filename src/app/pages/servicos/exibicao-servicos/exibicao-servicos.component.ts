@@ -11,11 +11,20 @@ export class ExibicaoServicosComponent implements AfterViewInit {
   displayedColumns: string[] = ['aplicacao', 'servico', 'descricao', 'tempo', 'preco', 'icone'];
   dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
 
+  verLista: boolean = true;
+  verGrade: boolean = false;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  vizualizar(){
+    this.verLista = !this.verLista
+    this.verGrade = !this.verGrade
+  }
+
 }
 
 export interface ListaServicos {
