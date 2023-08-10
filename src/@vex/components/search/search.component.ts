@@ -47,8 +47,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.layoutService.closeSearch();
-    this.searchCtrl.setValue(undefined);
-    this.searchService.isOpenSubject.next(false);
+    this.close();
   }
 }
