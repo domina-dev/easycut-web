@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
@@ -6,11 +6,8 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss']
 })
-export class ProgressBarComponent implements OnInit {
+export class ProgressBarComponent{
 
   constructor(public loader: LoadingBarService) { }
-
-  ngOnInit() {
-  }
 
 }

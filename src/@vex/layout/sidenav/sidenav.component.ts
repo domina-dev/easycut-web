@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { trackByRoute } from '../../utils/track-by';
 import { NavigationService } from '../../services/navigation.service';
 import icRadioButtonChecked from '@iconify/icons-ic/twotone-radio-button-checked';
@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent {
 
   @Input() collapsed: boolean;
   collapsedOpen$ = this.layoutService.sidenavCollapsedOpen$;
@@ -28,9 +28,6 @@ export class SidenavComponent implements OnInit {
   constructor(private navigationService: NavigationService,
               private layoutService: LayoutService,
               private configService: ConfigService) { }
-
-  ngOnInit() {
-  }
 
   onMouseEnter() {
     this.layoutService.collapseOpenSidenav();

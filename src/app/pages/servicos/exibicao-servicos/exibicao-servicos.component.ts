@@ -1,22 +1,18 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'exibicao-servicos',
+  selector: 'vex-exibicao-servicos',
   templateUrl: './exibicao-servicos.component.html',
   styleUrls: ['./exibicao-servicos.component.scss']
 })
-export class ExibicaoServicosComponent implements OnInit, AfterViewInit {
+export class ExibicaoServicosComponent implements AfterViewInit {
   displayedColumns: string[] = ['aplicacao', 'servico', 'descricao', 'tempo', 'preco', 'icone'];
   dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }

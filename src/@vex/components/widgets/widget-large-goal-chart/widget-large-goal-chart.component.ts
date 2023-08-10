@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import icMoreHoriz from '@iconify/icons-ic/twotone-more-horiz';
 import icCloudDownload from '@iconify/icons-ic/twotone-cloud-download';
 import faCaretUp from '@iconify/icons-fa-solid/caret-up';
@@ -11,7 +11,7 @@ import { createDateArray } from '../../../utils/create-date-array';
   selector: 'vex-widget-large-goal-chart',
   templateUrl: './widget-large-goal-chart.component.html'
 })
-export class WidgetLargeGoalChartComponent implements OnInit {
+export class WidgetLargeGoalChartComponent {
 
   @Input() total: number;
   @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
@@ -54,10 +54,5 @@ export class WidgetLargeGoalChartComponent implements OnInit {
   icCloudDownload = icCloudDownload;
   faCaretUp = faCaretUp;
   faCaretDown = faCaretDown;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

@@ -1,6 +1,6 @@
 <div class="secondary-toolbar-placeholder">&nbsp;</div>
 
-<div [ngClass]="{ 'fixed': fixed$ | async, 'w-full': !(fixed$ | async) }"
+<div [ngClass]="{ 'fixed': fixed$ | async, 'w-full': (fixed$ | async)===false }"
      class="secondary-toolbar shadow-b py-1 z-40 border-t"
      fxLayout="row">
   <div class="px-gutter" fxFlex="auto" fxLayout="row" fxLayoutAlign="start center" vexContainer>

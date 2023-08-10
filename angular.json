@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "ff6e96d9-d7c0-4ade-a458-f3ee3c6ccd03"
+    "analytics": "ff6e96d9-d7c0-4ade-a458-f3ee3c6ccd03",
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -171,6 +172,15 @@
             "production": {
               "devServerTarget": "vex:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }

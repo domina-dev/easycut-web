@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationItem, NavigationLink } from '../../interfaces/navigation-item.interface';
 import { filter, map, startWith } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { trackByRoute } from '../../utils/track-by';
   templateUrl: './navigation-item.component.html',
   styleUrls: ['./navigation-item.component.scss']
 })
-export class NavigationItemComponent implements OnInit {
+export class NavigationItemComponent {
 
   @Input() item: NavigationItem;
 
@@ -27,9 +27,6 @@ export class NavigationItemComponent implements OnInit {
 
   constructor(private navigationService: NavigationService,
               private router: Router) { }
-
-  ngOnInit() {
-  }
 
   hasActiveChilds(parent: NavigationItem): boolean {
     if (this.isLink(parent)) {

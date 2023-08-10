@@ -20,16 +20,10 @@ import { trackByValue } from '../../utils/track-by';
     </div>
   `
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
   @Input() crumbs: string[] = [];
 
   trackByValue = trackByValue;
   icHome = icHome;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 }
