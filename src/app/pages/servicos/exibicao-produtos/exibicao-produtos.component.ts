@@ -11,6 +11,14 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
   displayedColumns: string[] = ['aplicacao', 'nomeProduto', 'descricao', 'quantidade', 'preco', 'icone'];
   dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
 
+  verLista: boolean = true;
+  verGrade: boolean = false;
+
+  visualizar(){
+    this.verLista = !this.verLista
+    this.verGrade = !this.verGrade
+  }
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {

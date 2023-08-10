@@ -10,6 +10,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 // Ícone
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
+    MatSelectModule
   ],
   exports: [ExibicaoProdutosComponent]
 })
