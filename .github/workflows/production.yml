@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - master
-      - homolog
-      - develop
       - sonar
-      - feature/*
 
   pull_request:
       types: [opened, synchronize, reopened]
