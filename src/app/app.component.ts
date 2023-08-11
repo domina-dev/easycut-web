@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID, OnInit, Renderer2 } from "@angular/core";
+import { Component, Inject, LOCALE_ID, Renderer2 } from "@angular/core";
 import { ConfigService } from "../@vex/services/config.service";
 import { Settings } from "luxon";
 import { DOCUMENT } from "@angular/common";
