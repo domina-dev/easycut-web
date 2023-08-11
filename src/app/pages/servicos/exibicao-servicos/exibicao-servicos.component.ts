@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { LoginComponent } from '../../login/login.component';
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -8,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit {
+
   displayedColumns: string[] = ['aplicacao', 'servico', 'descricao', 'tempo', 'preco', 'icone'];
   dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
 
@@ -15,9 +19,16 @@ export class ExibicaoServicosComponent implements AfterViewInit {
   verGrade: boolean = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+matDialogActions: any;
+
+  constructor (public dialog: MatDialog) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  openDialog() {
+    this.dialog.open(CadastrarEditarServicoComponent);
   }
 
   vizualizar(){

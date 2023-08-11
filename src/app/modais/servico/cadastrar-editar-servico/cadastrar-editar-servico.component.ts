@@ -7,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarEditarServicoComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
-
 }
