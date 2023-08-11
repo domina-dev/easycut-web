@@ -2,7 +2,7 @@ name: "2 - [DEV] clean code and PR"
 on:
   pull_request:
     types: [closed]
-    branches: [develop]
+    branches: [aws/develop]
 # on:
 #   push:
 #     branches:
@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: pull-request
-    uses: diillson/auto-pull-request@v1.0.1
+    uses: OndlineSolutions/easycut-web
       with:
-        destination_branch: "homolog"
+        destination_branch: homolog
         pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
         merge-method: squash

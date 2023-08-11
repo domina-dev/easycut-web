@@ -4,8 +4,8 @@ on:
     branches:
     - master
     - homolog
+    - awsdevelop
     - develop
-    - sonar
     - feature/*
 
   pull_request:
