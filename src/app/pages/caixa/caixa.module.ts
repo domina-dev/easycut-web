@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { CaixaRoutingModule } from './caixa-routing.module';
 import { CaixaComponent } from './caixa.component';
-// import { NovaVendaComponent } from './nova-venda/nova-venda.component';
-// import { FluxoCaixaComponent } from './fluxo-caixa/fluxo-caixa.component';
-// import { HistoricoVendasComponent } from './historico-vendas/historico-vendas.component';
 import { NovaVendaModule } from './nova-venda/nova-venda.module';
 import { FluxoCaixaModule } from './fluxo-caixa/fluxo-caixa.module';
 import { HistoricoVendasModule } from './historico-vendas/historico-vendas.module';

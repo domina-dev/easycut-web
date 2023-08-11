@@ -8,9 +8,9 @@ describe('CaixaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CaixaComponent ]
+      declarations: [CaixaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

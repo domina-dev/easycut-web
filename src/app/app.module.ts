@@ -16,10 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { CaixaComponent } from './pages/caixa/caixa.component';
 import { MatTableModule } from '@angular/material/table';
 
-
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -27,7 +23,6 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ServicosModule,
     AgendaModule,
     AgendamentosModule,
     LoginModule,
