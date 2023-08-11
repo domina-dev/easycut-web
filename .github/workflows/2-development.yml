@@ -3,11 +3,6 @@ on:
   pull_request:
     types: [closed]
     branches: [awsdevelop]
-# on:
-#   push:
-#     branches:
-#     - feature/*
-
 
 jobs:
   pull-request:
