@@ -13,14 +13,11 @@ jobs:
       id: open-pr
       uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
       with:
-        destination_branch: "awshomolog"
-        pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
-        github_token: ${{ secrets.EASY_TOKEN }}
-    - name: output-url
-      run: echo ${{steps.open-pr.outputs.pr_url}}
-    - name: output-number
-      run: echo ${{steps.open-pr.outputs.pr_number}}
-    - name: output-created
-      run: echo ${{steps.open-pr.outputs.pr_created}}
-    - name: output-has-changed-files
-      run: echo ${{steps.open-pr.outputs.has_changed_files}}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        target_branch: awshomolog
+        title: AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG
+        body: "**Automated pull request**"
+        reviewer: vitorfiler
+        assignee: vitorfiler
+        get_diff: true
+        allow_no_diff: false
