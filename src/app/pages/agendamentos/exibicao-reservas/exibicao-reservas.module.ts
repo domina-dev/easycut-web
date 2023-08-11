@@ -6,10 +6,6 @@ import { ExibicaoReservasComponent } from './exibicao-reservas.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 
-
-
-
-
 @NgModule({
   declarations: [
     ExibicaoReservasComponent
@@ -24,4 +20,4 @@ import { MatSelectModule } from '@angular/material/select';
   ExibicaoReservasComponent,
   ]
 })
-export class ExibicaoReservasModule { }
+export class ExibicaoReservasModule {}

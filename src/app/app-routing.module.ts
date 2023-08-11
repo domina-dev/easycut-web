@@ -1,40 +1,51 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { CustomLayoutComponent } from "./custom-layout/custom-layout.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: CustomLayoutComponent,
     children: [
       {
-        path: 'agendamentos',
-        loadChildren: () => import('./pages/agendamentos/agendamentos.module').then(m => m.AgendamentosModule)
+        path: "agendamentos",
+        loadChildren: () =>
+          import("./pages/agendamentos/agendamentos.module").then(
+            (m) => m.AgendamentosModule,
+          ),
       },
       {
-        path: 'servicos',
-        loadChildren: () => import('./pages/servicos/servicos.module').then(m => m.ServicosModule)
-      }
-    ]
+        path: "servicos",
+        loadChildren: () =>
+          import("./pages/servicos/servicos.module").then(
+            (m) => m.ServicosModule,
+          ),
+      },
+    ],
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    path: "login",
+    loadChildren: () =>
+      import("./pages/login/login.module").then((m) => m.LoginModule),
   },
   {
-    path: 'recupercao-senha',
-    loadChildren: () => import('./pages/recuperacao-senha/recuperacao-senha.module').then(m => m.RecuperacaoSenhaModule)
-  }
-]
+    path: "recuperacao-senha",
+    loadChildren: () =>
+      import("./pages/recuperacao-senha/recuperacao-senha.module").then(
+        (m) => m.RecuperacaoSenhaModule,
+      ),
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    // preloadingStrategy: PreloadAllModules,
-    scrollPositionRestoration: 'enabled',
-    relativeLinkResolution: 'corrected',
-    anchorScrolling: 'enabled'
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      // preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: "enabled",
+      relativeLinkResolution: "corrected",
+      anchorScrolling: "enabled",
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

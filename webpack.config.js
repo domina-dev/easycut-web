@@ -1,17 +1,17 @@
-const path = require('path');
+const path = require("path");
 
 let sassImplementation;
 try {
   // tslint:disable-next-line:no-implicit-dependencies
-  sassImplementation = require('node-sass');
+  sassImplementation = require("node-sass");
 } catch {
-  sassImplementation = require('sass');
+  sassImplementation = require("sass");
 }
 
 module.exports = {
   // Fix for: https://github.com/recharts/recharts/issues/1463
   node: {
-    fs: 'empty'
+    fs: "empty",
   },
   module: {
     rules: [
@@ -19,27 +19,25 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss',
-              syntax: 'postcss-scss',
-              plugins: () => [
-                require('tailwindcss')
-              ]
-            }
+              ident: "postcss",
+              syntax: "postcss-scss",
+              plugins: () => [require("tailwindcss")],
+            },
           },
           {
-            loader: 'sass-loader',
+            loader: "sass-loader",
             options: {
               implementation: sassImplementation,
               sourceMap: false,
               sassOptions: {
-                precision: 8
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+                precision: 8,
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

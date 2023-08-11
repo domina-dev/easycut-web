@@ -1,5 +1,4 @@
 .vex-layout-ares {
-
   --footer-background: var(--background-base);
   --sidenav-background: var(--background-base);
   --toolbar-background: var(--background-base);
@@ -75,9 +74,9 @@
   }
 
   &.vex-style-default {
-    --sidenav-item-background-active: theme('backgroundColor.primary.DEFAULT');
-    --sidenav-item-color-active: theme('textColor.primary-contrast');
+    --sidenav-item-background-active: theme("backgroundColor.primary.DEFAULT");
+    --sidenav-item-color-active: theme("textColor.primary-contrast");
     --sidenav-item-dropdown-color-hover: var(--text-color);
-    --sidenav-item-icon-color-active: theme('textColor.primary-contrast');
+    --sidenav-item-icon-color-active: theme("textColor.primary-contrast");
   }
 }
