@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: pull-request
       id: open-pr
-      uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
+      uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1.10.6
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         target_branch: awshomolog
