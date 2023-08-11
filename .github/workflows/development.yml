@@ -1,0 +1,21 @@
+name: "2 - [DEV] clean code and PR"
+on:
+  pull_request:
+    types: [closed]
+    branches: [develop]
+# on:
+#   push:
+#     branches:
+#     - feature/*
+
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: OndlineSolutions/enable-pull-request-automerge@v3
+      with:
+        token: ${{ secrets.EASY_TOKEN }}
+        pull-request-number: ${{ github.event.pull_request.number }}
+        pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
+        merge-method: squash
