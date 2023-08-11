@@ -1,3 +1,4 @@
+name: "1 - [FEAT] clean code"
 on:
   # Trigger analysis when pushing in master or pull requests, and when creating
   # a pull request.
@@ -5,9 +6,6 @@ on:
     branches:
       - feature/*
 
-  pull_request:
-    types: [opened, synchronize, reopened]
-name: Main Workflow
 jobs:
   sonar:
     runs-on: ubuntu-latest
