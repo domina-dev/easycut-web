@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 const AGENDAMENTOS = "Meus Agendamentos";
 const RESERVAS = "Minhas Reservas";
 
@@ -8,6 +8,7 @@ const RESERVAS = "Minhas Reservas";
   styleUrls: ["./agendamentos.component.scss"],
 })
 export class AgendamentosComponent {
+  
   legenda: string = AGENDAMENTOS;
 
   trocaLegenda($event) {
