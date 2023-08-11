@@ -8,6 +8,7 @@
     "heroku-postbuild": "ng build --aot --configuration=${ENV}",
     "test": "ng test",
     "lint": "ng lint",
+    "format": "npx prettier . --write",
     "e2e": "ng e2e"
   },
   "engines": {

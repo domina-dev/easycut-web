@@ -1,9 +1,9 @@
-name: "2 - [DEV] Varredura develop"
+name: "4 - [DEV] Varredura homolog"
 on:
   pull_request:
     types: [opened, synchronize, reopened]
     branches:
-      - develop
+      - homolog
 
 jobs:
   sonar:

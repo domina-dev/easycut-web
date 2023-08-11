@@ -1,51 +1,64 @@
-name: "1 - [FEAT] clean code"
+name: "1 - [FEAT] Varredura de Features"
 on:
   push:
     branches:
-    - master
-    - homolog
-    - develop
-    - sonar
-    - feature/*
-
-  pull_request:
-    types: [opened, synchronize, reopened]
-
+      - feature/*
 jobs:
   sonar:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      with:
-        args: >
-          -Dsonar.organization=ondlinesolutions -Dsonar.projectKey=OndlineSolutions_easycut-web
-      env:
-        GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=ondlinesolutions -Dsonar.projectKey=OndlineSolutions_easycut-web
+        env:
+          GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  lint:
+  formatacao:
     name: Run linters
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check out Git repository
-      uses: actions/checkout@v2
+      - name: Check out Git repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
 
-    # ESLint and Prettier must be in `package.json`
-    - name: Install Node.js dependencies
-      run: npm ci
+      # ESLint and Prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: npm ci
 
-    - name: Run linters
-      uses: wearerequired/lint-action@v2
-      with:
-        prettier: true
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          prettier: true
+
+  pull-request:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    needs: [formatacao, sonar]
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull-request
+        id: open-pr
+        uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          destination_branch: "develop"
+          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-DEVELOP"
+          body: "**Automated pull request**"
+          pr_reviewer: vitorfiler
+          pr_assignee: vitorfiler
+          pr_label: automatic
+          get_diff: true
+          allow_no_diff: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
