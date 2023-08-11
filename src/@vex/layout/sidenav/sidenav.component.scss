@@ -18,10 +18,12 @@
       ::ng-deep {
         .sidenav-items {
           .item-icon {
-            margin-inline-end: var(--sidenav-item-padding)
+            margin-inline-end: var(--sidenav-item-padding);
           }
 
-          .subheading, .item-badge, .item-label {
+          .subheading,
+          .item-badge,
+          .item-label {
             opacity: 0;
           }
         }
@@ -33,7 +35,9 @@
     }
 
     ::ng-deep {
-      .subheading, .item-badge, .item-label {
+      .subheading,
+      .item-badge,
+      .item-label {
         transition: all 200ms var(--trans-ease-out-timing-function);
       }
     }
@@ -56,7 +60,11 @@
   width: 100%;
 
   .title {
-    transition: padding var(--trans-ease-out-duration) var(--trans-ease-out-timing-function), opacity var(--trans-ease-out-duration) var(--trans-ease-out-timing-function);
+    transition:
+      padding var(--trans-ease-out-duration)
+        var(--trans-ease-out-timing-function),
+      opacity var(--trans-ease-out-duration)
+        var(--trans-ease-out-timing-function);
   }
 }
 

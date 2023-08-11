@@ -25,10 +25,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
   lint:
     name: Run linters
     runs-on: ubuntu-latest
-    needs: [sonar]
+
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
@@ -46,14 +47,14 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
-
+          
   pull-request:
     runs-on: ubuntu-latest
     needs: [ lint,sonar ]
     steps:
     - uses: actions/checkout@v3
     - name: pull-request
-    uses: diillson/auto-pull-request@v1.0.1
+    uses: actions/auto-pull-request@v1.0.1
       with:
         destination_branch: "homolog"
         pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"

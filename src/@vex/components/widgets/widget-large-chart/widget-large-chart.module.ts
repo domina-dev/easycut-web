@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { WidgetLargeChartComponent } from './widget-large-chart.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { IconModule } from '@visurel/iconify-angular';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ChartModule } from '../../chart/chart.module';
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { WidgetLargeChartComponent } from "./widget-large-chart.component";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { IconModule } from "@visurel/iconify-angular";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ChartModule } from "../../chart/chart.module";
 
 @NgModule({
   declarations: [WidgetLargeChartComponent],
@@ -16,9 +15,8 @@ import { ChartModule } from '../../chart/chart.module';
     MatButtonModule,
     IconModule,
     FlexLayoutModule,
-    ChartModule
+    ChartModule,
   ],
-  exports: [WidgetLargeChartComponent]
+  exports: [WidgetLargeChartComponent],
 })
-export class WidgetLargeChartModule {
-}
+export class WidgetLargeChartModule {}

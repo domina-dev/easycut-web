@@ -1,8 +1,13 @@
-import { ElementRef, Injectable, Injector } from '@angular/core';
-import { ConnectionPositionPair, Overlay, OverlayConfig, PositionStrategy } from '@angular/cdk/overlay';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { PopoverContent, PopoverRef } from './popover-ref';
-import { PopoverComponent } from './popover.component';
+import { ElementRef, Injectable, Injector } from "@angular/core";
+import {
+  ConnectionPositionPair,
+  Overlay,
+  OverlayConfig,
+  PositionStrategy,
+} from "@angular/cdk/overlay";
+import { ComponentPortal, PortalInjector } from "@angular/cdk/portal";
+import { PopoverContent, PopoverRef } from "./popover-ref";
+import { PopoverComponent } from "./popover.component";
 
 export interface PopoverParams<T> {
   width?: string | number;
@@ -16,13 +21,34 @@ export interface PopoverParams<T> {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class PopoverService {
-  constructor(private overlay: Overlay, private injector: Injector) { }
+  constructor(
+    private overlay: Overlay,
+    private injector: Injector,
+  ) {}
 
-  open<T>({ origin, content, data, width, height, position, offsetX, offsetY }: PopoverParams<T>): PopoverRef<T> {
-    const overlayRef = this.overlay.create(this.getOverlayConfig({ origin, width, height, position, offsetX, offsetY }));
+  open<T>({
+    origin,
+    content,
+    data,
+    width,
+    height,
+    position,
+    offsetX,
+    offsetY,
+  }: PopoverParams<T>): PopoverRef<T> {
+    const overlayRef = this.overlay.create(
+      this.getOverlayConfig({
+        origin,
+        width,
+        height,
+        position,
+        offsetX,
+        offsetY,
+      }),
+    );
     const popoverRef = new PopoverRef<T>(overlayRef, content, data);
 
     const injector = this.createInjector(popoverRef, this.injector);
@@ -36,25 +62,43 @@ export class PopoverService {
     return new PortalInjector(injector, tokens);
   }
 
-  private getOverlayConfig({ origin, width, height, position, offsetX, offsetY }): OverlayConfig {
+  private getOverlayConfig({
+    origin,
+    width,
+    height,
+    position,
+    offsetX,
+    offsetY,
+  }): OverlayConfig {
     return new OverlayConfig({
       hasBackdrop: true,
       width,
       height,
-      backdropClass: 'popover-backdrop',
-      positionStrategy: this.getOverlayPosition({ origin, position, offsetX, offsetY }),
-      scrollStrategy: this.overlay.scrollStrategies.reposition()
+      backdropClass: "popover-backdrop",
+      positionStrategy: this.getOverlayPosition({
+        origin,
+        position,
+        offsetX,
+        offsetY,
+      }),
+      scrollStrategy: this.overlay.scrollStrategies.reposition(),
     });
   }
 
-  private getOverlayPosition({ origin, position, offsetX, offsetY }): PositionStrategy {
-    const positionStrategy = this.overlay.position()
+  private getOverlayPosition({
+    origin,
+    position,
+    offsetX,
+    offsetY,
+  }): PositionStrategy {
+    const positionStrategy = this.overlay
+      .position()
       .flexibleConnectedTo(origin)
       .withPositions(position || this.getPositions())
       .withFlexibleDimensions(true)
       .withDefaultOffsetY(offsetY || 0)
       .withDefaultOffsetX(offsetX || 0)
-      .withTransformOriginOn('.popover')
+      .withTransformOriginOn(".popover")
       .withPush(true);
 
     return positionStrategy;
@@ -63,18 +107,17 @@ export class PopoverService {
   private getPositions(): ConnectionPositionPair[] {
     return [
       {
-        originX: 'center',
-        originY: 'top',
-        overlayX: 'center',
-        overlayY: 'bottom'
+        originX: "center",
+        originY: "top",
+        overlayX: "center",
+        overlayY: "bottom",
       },
       {
-        originX: 'center',
-        originY: 'bottom',
-        overlayX: 'center',
-        overlayY: 'top',
+        originX: "center",
+        originY: "bottom",
+        overlayX: "center",
+        overlayY: "top",
       },
     ];
   }
-
 }

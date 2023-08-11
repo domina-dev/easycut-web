@@ -19,9 +19,16 @@
       <div fxFlex="auto" fxLayout="column">
         <mat-form-field fxFlex="grow">
           <mat-label class="email">E-Mail</mat-label>
-          <input formControlName="email" matInput required  [(ngModel)]="usuario.email"/>
+          <input
+            formControlName="email"
+            matInput
+            required
+            [(ngModel)]="usuario.email"
+          />
           <mat-error *ngIf="form.get('email').hasError('required')"
-            >Precisamos de um endereço de e-mail para realizar seu login</mat-error>
+            >Precisamos de um endereço de e-mail para realizar seu
+            login</mat-error
+          >
         </mat-form-field>
         <mat-form-field fxFlex="grow">
           <mat-label class="password">Senha</mat-label>
@@ -40,12 +47,21 @@
             matTooltip="Alternar"
             type="button"
           >
-            <mat-icon class="eye" *ngIf="visible" [icIcon]="icVisibility"></mat-icon>
-            <mat-icon class="eye" *ngIf="!visible" [icIcon]="icVisibilityOff"></mat-icon>
+            <mat-icon
+              class="eye"
+              *ngIf="visible"
+              [icIcon]="icVisibility"
+            ></mat-icon>
+            <mat-icon
+              class="eye"
+              *ngIf="!visible"
+              [icIcon]="icVisibilityOff"
+            ></mat-icon>
           </button>
           <mat-hint>Clique no olho para exibir a senha</mat-hint>
           <mat-error *ngIf="form.get('password').hasError('required')"
-            >Precisamos de uma senha para realizar seu login</mat-error>
+            >Precisamos de uma senha para realizar seu login</mat-error
+          >
         </mat-form-field>
       </div>
 
@@ -55,7 +71,8 @@
         fxLayoutAlign="space-between center"
       >
         <mat-checkbox class="caption" color="primary">Lembrar-me</mat-checkbox>
-        <a [routerLink]="['/forgot-password']" class="caption2">Esqueceu sua senha?</a
+        <a [routerLink]="['/recuperacao-senha']" class="caption2"
+          >Esqueceu sua senha?</a
         >
       </div>
 
@@ -66,12 +83,15 @@
         mat-raised-button
         type="button"
       >
-      ENTRAR
+        ENTRAR
       </button>
 
       <div class="text-secondary text-center">Não tem uma conta?</div>
       <div class="text-secondary secondary2 text-center">
-      <span><strong><a  href="'/register'">Clique aqui </a></strong> para criar uma</span>
+        <span
+          ><strong><a href="'/register'">Clique aqui </a></strong> para criar
+          uma</span
+        >
       </div>
     </div>
   </div>
