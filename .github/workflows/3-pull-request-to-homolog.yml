@@ -19,8 +19,9 @@ jobs:
           destination_branch: "homolog"
           pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
           body: "**Automated pull request**"
-          reviewer: vitorfiler
-          assignee: vitorfiler
+          pr_reviewer: vitorfiler
+          pr_assignee: vitorfiler
+          pr_label: automatic
           get_diff: true
           allow_no_diff: false
         env:
