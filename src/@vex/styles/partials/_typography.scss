@@ -1,4 +1,4 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Typography
 
 /*
@@ -25,31 +25,38 @@
   @include mat.typography-level($config, display-2);
 }
 
-.display-1, h1 {
+.display-1,
+h1 {
   @include mat.typography-level($config, display-1);
 }
 
-.headline, h2 {
+.headline,
+h2 {
   @include mat.typography-level($config, headline);
 }
 
-.title, h3 {
+.title,
+h3 {
   @include mat.typography-level($config, title);
 }
 
-.subheading-2, h4 {
+.subheading-2,
+h4 {
   @include mat.typography-level($config, subheading-2);
 }
 
-.subheading-1, h5 {
+.subheading-1,
+h5 {
   @include mat.typography-level($config, subheading-1);
 }
 
-.body-2, h6 {
+.body-2,
+h6 {
   @include mat.typography-level($config, body-2);
 }
 
-.body-1, p {
+.body-1,
+p {
   @include mat.typography-level($config, body-1);
 }
 

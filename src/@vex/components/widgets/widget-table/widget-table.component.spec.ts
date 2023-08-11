@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { WidgetTableComponent } from './widget-table.component';
+import { WidgetTableComponent } from "./widget-table.component";
 
-describe('WidgetTableComponent', () => {
+describe("WidgetTableComponent", () => {
   let component: WidgetTableComponent;
   let fixture: ComponentFixture<WidgetTableComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WidgetTableComponent]
-    })
-      .compileComponents();
+      declarations: [WidgetTableComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('WidgetTableComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

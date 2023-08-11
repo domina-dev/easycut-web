@@ -1,0 +1,27 @@
+name: "3 - [DEV] PR Para Homologação"
+on:
+  pull_request:
+    types: [closed]
+    branches: [homolog]
+
+jobs:
+  pull-request:
+    if: "github.event.pull_request.merged == true"
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: pull-request
+        id: open-pr
+        uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          destination_branch: "master"
+          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
+          body: "**Automated pull request**"
+          reviewer: vitorfiler
+          assignee: vitorfiler
+          get_diff: true
+          allow_no_diff: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}

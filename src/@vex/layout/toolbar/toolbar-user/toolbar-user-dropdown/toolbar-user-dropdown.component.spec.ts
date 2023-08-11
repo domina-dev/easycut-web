@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ToolbarUserDropdownComponent } from './toolbar-user-dropdown.component';
+import { ToolbarUserDropdownComponent } from "./toolbar-user-dropdown.component";
 
-describe('ToolbarUserDropdownComponent', () => {
+describe("ToolbarUserDropdownComponent", () => {
   let component: ToolbarUserDropdownComponent;
   let fixture: ComponentFixture<ToolbarUserDropdownComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ToolbarUserDropdownComponent]
-    })
-      .compileComponents();
+      declarations: [ToolbarUserDropdownComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ToolbarUserDropdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

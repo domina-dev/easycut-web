@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { ShareBottomSheetComponent } from './share-bottom-sheet.component';
+import { ShareBottomSheetComponent } from "./share-bottom-sheet.component";
 
-describe('ShareBottomSheetComponent', () => {
+describe("ShareBottomSheetComponent", () => {
   let component: ShareBottomSheetComponent;
   let fixture: ComponentFixture<ShareBottomSheetComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ShareBottomSheetComponent]
-    })
-      .compileComponents();
+      declarations: [ShareBottomSheetComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('ShareBottomSheetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

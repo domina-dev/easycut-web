@@ -13,21 +13,20 @@
   padding-right: var(--padding);
   position: relative;
   z-index: var(--footer-z-index);
-  height: 80px;
 }
 
 .info h2 {
   font-weight: bolder;
 }
 
-@media screen and (max-width: 550px){
+@media screen and (max-width: 550px) {
   .info {
     margin-left: -20%;
     // padding-top: 35%;
   }
 }
 
-@media screen and (min-width: 550px){  
+@media screen and (min-width: 550px) {
   .info {
     text-align: center;
     margin-left: 300px;

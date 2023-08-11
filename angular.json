@@ -1,7 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "ff6e96d9-d7c0-4ade-a458-f3ee3c6ccd03"
+    "analytics": "ff6e96d9-d7c0-4ade-a458-f3ee3c6ccd03",
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -33,10 +34,7 @@
               "src/CHANGELOG.md",
               "src/.htaccess"
             ],
-            "styles": [
-              "src/@vex/styles/tailwind.scss",
-              "src/styles.scss"
-            ],
+            "styles": ["src/@vex/styles/tailwind.scss", "src/styles.scss"],
             "scripts": [],
             "allowedCommonJsDependencies": [
               "simplebar",
@@ -151,13 +149,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
@@ -171,6 +164,12 @@
             "production": {
               "devServerTarget": "vex:serve:production"
             }
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
