@@ -9,18 +9,18 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: pull-request
-      id: open-pr
-      uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
-      with:
-        github_token: ${{ secrets.PERSONAL_TOKEN }}
-        target_branch: awshomolog
-        title: AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG
-        body: "**Automated pull request**"
-        reviewer: vitorfiler
-        assignee: vitorfiler
-        get_diff: true
-        allow_no_diff: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: pull-request
+        id: open-pr
+        uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
+        with:
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          destination_branch: "homolog"
+          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
+          body: "**Automated pull request**"
+          reviewer: vitorfiler
+          assignee: vitorfiler
+          get_diff: true
+          allow_no_diff: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
