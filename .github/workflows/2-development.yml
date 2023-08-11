@@ -2,7 +2,7 @@ name: "2 - [DEV] clean code and PR"
 on:
   pull_request:
     types: [closed]
-    branches: - awsdevelop
+    branches: [awsdevelop]
 # on:
 #   push:
 #     branches:
