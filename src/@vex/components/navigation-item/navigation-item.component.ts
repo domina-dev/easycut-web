@@ -1,23 +1,25 @@
-import { Component, Input } from '@angular/core';
-import { NavigationItem, NavigationLink } from '../../interfaces/navigation-item.interface';
-import { filter, map, startWith } from 'rxjs/operators';
-import { NavigationEnd, Router } from '@angular/router';
-import { NavigationService } from '../../services/navigation.service';
-import { trackByRoute } from '../../utils/track-by';
+import { Component, Input } from "@angular/core";
+import {
+  NavigationItem,
+  NavigationLink,
+} from "../../interfaces/navigation-item.interface";
+import { filter, map, startWith } from "rxjs/operators";
+import { NavigationEnd, Router } from "@angular/router";
+import { NavigationService } from "../../services/navigation.service";
+import { trackByRoute } from "../../utils/track-by";
 
 @Component({
-  selector: 'vex-navigation-item',
-  templateUrl: './navigation-item.component.html',
-  styleUrls: ['./navigation-item.component.scss']
+  selector: "vex-navigation-item",
+  templateUrl: "./navigation-item.component.html",
+  styleUrls: ["./navigation-item.component.scss"],
 })
 export class NavigationItemComponent {
-
   @Input() item: NavigationItem;
 
   isActive$ = this.router.events.pipe(
-    filter(event => event instanceof NavigationEnd),
+    filter((event) => event instanceof NavigationEnd),
     startWith(null),
-    map(() => (item: NavigationItem) => this.hasActiveChilds(item))
+    map(() => (item: NavigationItem) => this.hasActiveChilds(item)),
   );
 
   isLink = this.navigationService.isLink;
@@ -25,8 +27,10 @@ export class NavigationItemComponent {
   isSubheading = this.navigationService.isSubheading;
   trackByRoute = trackByRoute;
 
-  constructor(private navigationService: NavigationService,
-              private router: Router) { }
+  constructor(
+    private navigationService: NavigationService,
+    private router: Router,
+  ) {}
 
   hasActiveChilds(parent: NavigationItem): boolean {
     if (this.isLink(parent)) {
@@ -34,7 +38,7 @@ export class NavigationItemComponent {
     }
 
     if (this.isDropdown(parent) || this.isSubheading(parent)) {
-      return parent.children.some(child => {
+      return parent.children.some((child) => {
         if (this.isDropdown(child)) {
           return this.hasActiveChilds(child);
         }
@@ -50,7 +54,7 @@ export class NavigationItemComponent {
     return false;
   }
 
-  isFunction(prop: NavigationLink['route']) {
+  isFunction(prop: NavigationLink["route"]) {
     return prop instanceof Function;
   }
 }

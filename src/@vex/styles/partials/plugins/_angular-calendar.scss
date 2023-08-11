@@ -17,12 +17,12 @@
 
   .cal-cell-row {
     &:hover {
-      background: var(--background-hover)
+      background: var(--background-hover);
     }
 
     .cal-cell {
       &:hover {
-        background: var(--background-hover)
+        background: var(--background-hover);
       }
 
       &.cal-open {
@@ -89,7 +89,8 @@
   }
 }
 
-.cal-week-view, .cal-day-view {
+.cal-week-view,
+.cal-day-view {
   background: var(--background-card);
 
   .cal-header {
@@ -108,7 +109,8 @@
     }
   }
 
-  .cal-day-headers .cal-header:hover, .cal-day-headers .cal-drag-over {
+  .cal-day-headers .cal-header:hover,
+  .cal-day-headers .cal-drag-over {
     background-color: var(--background-hover);
   }
 
@@ -133,7 +135,6 @@
   .cal-time-events {
     .cal-day-columns {
       .cal-hour-segment {
-
         &:hover {
           background: var(--background-hover);
         }
@@ -183,7 +184,6 @@
       }
     }
   }
-
 }
 
 .cal-event-title {

@@ -1,10 +1,12 @@
 @media print {
-  html, body {
+  html,
+  body {
     height: auto !important;
     overflow: initial !important;
   }
 
-  .vex-toolbar, .sidenav {
+  .vex-toolbar,
+  .sidenav {
     display: none !important;
   }
 

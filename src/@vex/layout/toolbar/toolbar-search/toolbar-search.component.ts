@@ -1,18 +1,23 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
-import icSearch from '@iconify/icons-ic/twotone-search';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  ViewChild,
+} from "@angular/core";
+import icSearch from "@iconify/icons-ic/twotone-search";
 
 @Component({
-  selector: 'vex-toolbar-search',
-  templateUrl: './toolbar-search.component.html',
-  styleUrls: ['./toolbar-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "vex-toolbar-search",
+  templateUrl: "./toolbar-search.component.html",
+  styleUrls: ["./toolbar-search.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarSearchComponent {
-
   isOpen: boolean;
   icSearch = icSearch;
 
-  @ViewChild('input', { read: ElementRef, static: true }) input: ElementRef;
+  @ViewChild("input", { read: ElementRef, static: true }) input: ElementRef;
 
   constructor(private cd: ChangeDetectorRef) {}
 

@@ -1,19 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { IconModule } from '@visurel/iconify-angular';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { IconModule } from "@visurel/iconify-angular";
 
-import { RecuperacaoSenhaRoutingModule } from './recuperacao-senha-routing.module';
-import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
+import { RecuperacaoSenhaRoutingModule } from "./recuperacao-senha-routing.module";
+import { RecuperacaoSenhaComponent } from "./recuperacao-senha.component";
 
 @NgModule({
-  declarations: [
-    RecuperacaoSenhaComponent
-  ],
+  declarations: [RecuperacaoSenhaComponent],
   imports: [
     CommonModule,
     RecuperacaoSenhaRoutingModule,
@@ -22,7 +20,7 @@ import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
     MatInputModule,
     MatButtonModule,
     IconModule,
-    MatIconModule
-  ]
+    MatIconModule,
+  ],
 })
-export class RecuperacaoSenhaModule { }
+export class RecuperacaoSenhaModule {}

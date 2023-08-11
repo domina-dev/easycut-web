@@ -8,11 +8,11 @@ import {
   OnChanges,
   OnInit,
   SimpleChanges,
-  ViewChild
-} from '@angular/core';
-import { asapScheduler } from 'rxjs';
+  ViewChild,
+} from "@angular/core";
+import { asapScheduler } from "rxjs";
 // @ts-ignore
-import ApexCharts from 'apexcharts';
+import ApexCharts from "apexcharts";
 
 export interface ApexOptions {
   annotations?: ApexAnnotations;
@@ -39,23 +39,21 @@ export interface ApexOptions {
 }
 
 @Component({
-  selector: 'vex-chart',
-  template: `
-    <div #chart></div>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "vex-chart",
+  template: ` <div #chart></div> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent implements OnInit, OnChanges {
-
   @Input() options: ApexOptions;
   @Input() series: ApexAxisChartSeries | ApexNonAxisChartSeries;
   @Input() autoUpdateSeries = true;
   public chart: ApexCharts;
-  @ViewChild('chart', { static: true }) private chartElement: ElementRef;
+  @ViewChild("chart", { static: true }) private chartElement: ElementRef;
 
-  constructor(private cd: ChangeDetectorRef,
-              private ngZone: NgZone) {}
-
+  constructor(
+    private cd: ChangeDetectorRef,
+    private ngZone: NgZone,
+  ) {}
 
   ngOnInit() {
     asapScheduler.schedule(() => {
@@ -65,7 +63,10 @@ export class ChartComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     asapScheduler.schedule(() => {
-      if (this.autoUpdateSeries && Object.keys(changes).filter(c => c !== 'series').length === 0) {
+      if (
+        this.autoUpdateSeries &&
+        Object.keys(changes).filter((c) => c !== "series").length === 0
+      ) {
         this.chart.updateSeries(this.series, true);
         return;
       }
@@ -90,7 +91,7 @@ export class ChartComponent implements OnInit, OnChanges {
     this.ngZone.runOutsideAngular(() => {
       this.chart = new ApexCharts(
         this.chartElement.nativeElement,
-        this.options
+        this.options,
       );
 
       this.render();

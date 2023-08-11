@@ -1,16 +1,23 @@
-import { Inject, Injectable } from '@angular/core';
-import { HIGHLIGHT_OPTIONS, HighlightConfig, HighlightLanguage, HighlightOptions, HighlightResult } from './highlight.model';
-import * as hljs from 'highlight.js';
+import { Inject, Injectable } from "@angular/core";
+import {
+  HIGHLIGHT_OPTIONS,
+  HighlightConfig,
+  HighlightLanguage,
+  HighlightOptions,
+  HighlightResult,
+} from "./highlight.model";
+import * as hljs from "highlight.js";
 
 @Injectable()
 export class HighlightService {
-
   constructor(@Inject(HIGHLIGHT_OPTIONS) options: HighlightOptions) {
     if (options) {
       // Register HighlightJS languages
-      options.languages().map((language: HighlightLanguage) =>
-        this.registerLanguage(language.name, language.func)
-      );
+      options
+        .languages()
+        .map((language: HighlightLanguage) =>
+          this.registerLanguage(language.name, language.func),
+        );
       if (options.config) {
         // Set global config if present
         this.configure(options.config);
@@ -18,7 +25,7 @@ export class HighlightService {
     }
     // Throw an error if no languages were registered.
     if (this.listLanguages().length < 1) {
-      throw new Error('[HighlightJS]: No languages were registered!');
+      throw new Error("[HighlightJS]: No languages were registered!");
     }
   }
 
@@ -31,7 +38,12 @@ export class HighlightService {
    * @param continuation An optional mode stack representing unfinished parsing.
    * When present, the function will restart parsing from this state instead of initializing a new one
    */
-  highlight(name: string, value: string, ignoreIllegals: boolean, continuation?: any): HighlightResult {
+  highlight(
+    name: string,
+    value: string,
+    ignoreIllegals: boolean,
+    continuation?: any,
+  ): HighlightResult {
     return hljs.highlight(name, value, ignoreIllegals, continuation);
   }
 

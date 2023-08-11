@@ -1,42 +1,47 @@
 <div class="screen-table">
-    <table aria-label="tabela-reservas" mat-table id="table" [dataSource]="dataSource">
+  <table
+    aria-label="tabela-reservas"
+    mat-table
+    id="table"
+    [dataSource]="dataSource"
+  >
+    <ng-container matColumnDef="cliente">
+      <th mat-header-cell *matHeaderCellDef>Cliente</th>
+      <td mat-cell *matCellDef="let element">{{ element.cliente }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="cliente">
-        <th mat-header-cell *matHeaderCellDef> Cliente </th>
-        <td mat-cell *matCellDef="let element"> {{element.cliente}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="produto">
-        <th mat-header-cell *matHeaderCellDef> Produto </th>
-        <td mat-cell *matCellDef="let element"> {{element.produto}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="quantidade">
-        <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="valor">
-        <th mat-header-cell *matHeaderCellDef> Valor </th>
-        <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
-      </ng-container>
+    <ng-container matColumnDef="produto">
+      <th mat-header-cell *matHeaderCellDef>Produto</th>
+      <td mat-cell *matCellDef="let element">{{ element.produto }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="dtRetirada">
-        <th mat-header-cell *matHeaderCellDef> Data retirada </th>
-        <td mat-cell *matCellDef="let element"> {{element.dtRetirada}} </td>
-      </ng-container>
+    <ng-container matColumnDef="quantidade">
+      <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+      <td mat-cell *matCellDef="let element">{{ element.quantidade }}</td>
+    </ng-container>
 
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element"><select id="">
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef>Valor</th>
+      <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dtRetirada">
+      <th mat-header-cell *matHeaderCellDef>Data retirada</th>
+      <td mat-cell *matCellDef="let element">{{ element.dtRetirada }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <select id="">
           <option value="aguar.retirada">Aguar.retirada</option>
           <option value="cancelado">Cancelado</option>
           <option value="entregue">Entregue</option>
-        </select></td>
-      </ng-container>
+        </select>
+      </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

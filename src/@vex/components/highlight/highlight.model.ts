@@ -1,6 +1,8 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken } from "@angular/core";
 
-export const HIGHLIGHT_OPTIONS = new InjectionToken<HighlightOptions>('HIGHLIGHT_OPTIONS');
+export const HIGHLIGHT_OPTIONS = new InjectionToken<HighlightOptions>(
+  "HIGHLIGHT_OPTIONS",
+);
 
 export interface HighlightOptions {
   languages?: () => HighlightLanguage[];
