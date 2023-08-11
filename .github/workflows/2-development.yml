@@ -20,3 +20,4 @@ jobs:
       with:
         destination_branch: "homolog"
         pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
+        github_token: ${{ secrets.EASY_TOKEN }}
