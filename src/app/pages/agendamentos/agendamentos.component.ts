@@ -8,7 +8,6 @@ const RESERVAS = "Minhas Reservas";
   styleUrls: ["./agendamentos.component.scss"],
 })
 export class AgendamentosComponent {
-  
   legenda: string = AGENDAMENTOS;
 
   trocaLegenda($event) {
