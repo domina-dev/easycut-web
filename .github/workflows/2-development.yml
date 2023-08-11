@@ -18,6 +18,6 @@ jobs:
       id: open-pr
       uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
       with:
-        destination_branch: "homolog"
+        destination_branch: "awshomolog"
         pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
         github_token: ${{ secrets.EASY_TOKEN }}
