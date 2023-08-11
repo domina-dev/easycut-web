@@ -14,6 +14,7 @@ jobs:
       uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        user_agent: vitorfiler
         target_branch: awshomolog
         title: AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG
         body: "**Automated pull request**"
