@@ -4,7 +4,7 @@ on:
     branches:
     - master
     - homolog
-    - develop
+    - aws/develop
     - sonar
     - feature/*
 
