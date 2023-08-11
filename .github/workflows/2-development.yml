@@ -10,13 +10,13 @@ on:
 
 
 jobs:
-  automerge:
+  pull-request:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: pull-request
-    uses: OndlineSolutions/easycut-web
-    with:
-      destination_branch: homolog
-      pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
-      merge-method: squash
+      id: open-pr
+      uses: OndlineSolutions/easycut-web
+      with:
+        destination_branch: "homolog"
+        pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
