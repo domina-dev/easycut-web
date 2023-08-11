@@ -9,6 +9,11 @@ on:
 
   pull_request:
     types: [opened, synchronize, reopened]
+    branches:
+    - master
+    - homolog
+    - develop
+    - feature/*
 
 jobs:
   sonar:
