@@ -13,9 +13,10 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     steps:
-    - uses: OndlineSolutions/enable-pull-request-automerge@v3
+    - uses: actions/checkout@v3
+    - name: pull-request
+    uses: diillson/auto-pull-request@v1.0.1
       with:
-        token: ${{ secrets.EASY_TOKEN }}
-        pull-request-number: ${{ github.event.pull_request.number }}
+        destination_branch: "homolog"
         pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
         merge-method: squash
