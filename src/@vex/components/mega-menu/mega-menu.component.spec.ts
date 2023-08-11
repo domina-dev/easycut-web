@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { MegaMenuComponent } from './mega-menu.component';
+import { MegaMenuComponent } from "./mega-menu.component";
 
-describe('MegaMenuComponent', () => {
+describe("MegaMenuComponent", () => {
   let component: MegaMenuComponent;
   let fixture: ComponentFixture<MegaMenuComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [MegaMenuComponent]
-    })
-      .compileComponents();
+      declarations: [MegaMenuComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('MegaMenuComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,23 +1,25 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PopoverService } from '../../../components/popover/popover.service';
-import { ToolbarUserDropdownComponent } from './toolbar-user-dropdown/toolbar-user-dropdown.component';
-import icPerson from '@iconify/icons-ic/twotone-person';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from "@angular/core";
+import { PopoverService } from "../../../components/popover/popover.service";
+import { ToolbarUserDropdownComponent } from "./toolbar-user-dropdown/toolbar-user-dropdown.component";
+import icPerson from "@iconify/icons-ic/twotone-person";
 
 @Component({
-  selector: 'vex-toolbar-user',
-  templateUrl: './toolbar-user.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "vex-toolbar-user",
+  templateUrl: "./toolbar-user.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ToolbarUserComponent implements OnInit {
-
+export class ToolbarUserComponent {
   dropdownOpen: boolean;
   icPerson = icPerson;
 
-  constructor(private popover: PopoverService,
-              private cd: ChangeDetectorRef) { }
-
-  ngOnInit() {
-  }
+  constructor(
+    private popover: PopoverService,
+    private cd: ChangeDetectorRef,
+  ) {}
 
   showPopover(originRef: HTMLElement) {
     this.dropdownOpen = true;
@@ -29,18 +31,18 @@ export class ToolbarUserComponent implements OnInit {
       offsetY: 12,
       position: [
         {
-          originX: 'center',
-          originY: 'top',
-          overlayX: 'center',
-          overlayY: 'bottom'
+          originX: "center",
+          originY: "top",
+          overlayX: "center",
+          overlayY: "bottom",
         },
         {
-          originX: 'end',
-          originY: 'bottom',
-          overlayX: 'end',
-          overlayY: 'top',
+          originX: "end",
+          originY: "bottom",
+          overlayX: "end",
+          overlayY: "top",
         },
-      ]
+      ],
     });
 
     popoverRef.afterClosed$.subscribe(() => {

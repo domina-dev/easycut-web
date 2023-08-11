@@ -1,8 +1,7 @@
 <vex-page-layout mode="card">
-
   <vex-page-layout-header fxLayout="column" fxLayoutAlign="right start">
     <div vexContainer>
-      <h2 class="title m-0"> {{legenda}} </h2>
+      <h2 class="title m-0">{{ legenda }}</h2>
     </div>
   </vex-page-layout-header>
 
@@ -11,24 +10,20 @@
       <mat-tab-group (selectedTabChange)="trocaLegenda($event)">
         <mat-tab label="Serviços">
           <div class="p-6">
-            <exebicao-servicos></exebicao-servicos>
+            <vex-exibicao-servicos></vex-exibicao-servicos>
           </div>
         </mat-tab>
         <mat-tab label="Produtos">
           <div class="p-6">
-            <exebicao-produtos></exebicao-produtos>
+            <vex-exibicao-produtos></vex-exibicao-produtos>
           </div>
         </mat-tab>
         <mat-tab label="Promoções">
           <div class="p-6">
-            <exebicao-promocoes></exebicao-promocoes>
+            <vex-exibicao-promocoes></vex-exibicao-promocoes>
           </div>
         </mat-tab>
       </mat-tab-group>
     </div>
   </vex-page-layout-content>
-
 </vex-page-layout>
-
-
-

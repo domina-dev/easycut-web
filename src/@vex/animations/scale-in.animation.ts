@@ -1,15 +1,18 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from "@angular/animations";
 
 export function scaleInAnimation(duration: number) {
-  return trigger('scaleIn', [
-    transition(':enter', [
+  return trigger("scaleIn", [
+    transition(":enter", [
       style({
-        transform: 'scale(0)'
+        transform: "scale(0)",
       }),
-      animate(`${duration}ms cubic-bezier(0.35, 0, 0.25, 1)`, style({
-        transform: 'scale(1)'
-      }))
-    ])
+      animate(
+        `${duration}ms cubic-bezier(0.35, 0, 0.25, 1)`,
+        style({
+          transform: "scale(1)",
+        }),
+      ),
+    ]),
   ]);
 }
 

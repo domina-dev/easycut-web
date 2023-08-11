@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { NavigationItemComponent } from './navigation-item.component';
+import { NavigationItemComponent } from "./navigation-item.component";
 
-describe('NavigationItemComponent', () => {
+describe("NavigationItemComponent", () => {
   let component: NavigationItemComponent;
   let fixture: ComponentFixture<NavigationItemComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationItemComponent]
-    })
-      .compileComponents();
+      declarations: [NavigationItemComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NavigationItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

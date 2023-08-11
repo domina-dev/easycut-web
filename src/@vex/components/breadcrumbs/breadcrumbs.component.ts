@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import icHome from '@iconify/icons-ic/twotone-home';
-import { trackByValue } from '../../utils/track-by';
+import { Component, Input } from "@angular/core";
+import icHome from "@iconify/icons-ic/twotone-home";
+import { trackByValue } from "../../utils/track-by";
 
 @Component({
-  selector: 'vex-breadcrumbs',
+  selector: "vex-breadcrumbs",
   template: `
     <div class="flex items-center">
       <vex-breadcrumb>
@@ -18,18 +18,11 @@ import { trackByValue } from '../../utils/track-by';
         </vex-breadcrumb>
       </ng-container>
     </div>
-  `
+  `,
 })
-export class BreadcrumbsComponent implements OnInit {
-
+export class BreadcrumbsComponent {
   @Input() crumbs: string[] = [];
 
   trackByValue = trackByValue;
   icHome = icHome;
-
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 }
