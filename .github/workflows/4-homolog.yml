@@ -1,8 +1,10 @@
-name: "1 - [FEAT] Varredura de Features"
+name: "4 - [DEV] Varredura homolog"
 on:
-  push:
+  pull_request:
+    types: [opened, synchronize, reopened]
     branches:
-      - feature/*
+      - homolog
+
 jobs:
   sonar:
     runs-on: ubuntu-latest
@@ -40,25 +42,3 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           prettier: true
-
-  pull-request:
-    permissions: write-all
-    runs-on: ubuntu-latest
-    needs: [formatacao, sonar]
-    steps:
-      - uses: actions/checkout@v3
-      - name: pull-request
-        id: open-pr
-        uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
-        with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
-          destination_branch: "develop"
-          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-DEVELOP"
-          body: "**Automated pull request**"
-          reviewer: vitorfiler
-          assignee: vitorfiler
-          label: automatic
-          get_diff: true
-          allow_no_diff: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
