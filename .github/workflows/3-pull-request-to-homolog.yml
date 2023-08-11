@@ -1,4 +1,4 @@
-name: "3 - [DEV] PR Para Homologação"
+name: "3 - [HOM] PR Para Homologação"
 on:
   pull_request:
     types: [closed]
