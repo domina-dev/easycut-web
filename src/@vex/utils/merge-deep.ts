@@ -5,13 +5,13 @@
  * @author inspired by [jhildenbiddle](https://stackoverflow.com/a/48218209).
  */
 export function mergeDeep(target, source) {
-  const isObject = (obj) => obj && typeof obj === 'object';
+  const isObject = (obj) => obj && typeof obj === "object";
 
   if (!isObject(target) || !isObject(source)) {
     return source;
   }
 
-  Object.keys(source).forEach(key => {
+  Object.keys(source).forEach((key) => {
     const targetValue = target[key];
     const sourceValue = source[key];
 

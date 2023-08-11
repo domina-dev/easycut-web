@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MegaMenuComponent } from './mega-menu.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
-import { IconModule } from '@visurel/iconify-angular';
-import { RouterModule } from '@angular/router';
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MegaMenuComponent } from "./mega-menu.component";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatButtonModule } from "@angular/material/button";
+import { IconModule } from "@visurel/iconify-angular";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [MegaMenuComponent],
@@ -14,9 +13,9 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatButtonModule,
     IconModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [MegaMenuComponent],
-  entryComponents: [MegaMenuComponent]
+  entryComponents: [MegaMenuComponent],
 })
-export class MegaMenuModule { }
+export class MegaMenuModule {}

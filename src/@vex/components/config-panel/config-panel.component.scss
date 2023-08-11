@@ -33,7 +33,6 @@
 }
 
 .layout-image {
-
   &:hover {
     .layout-image-overlay {
       background: rgba(0, 0, 0, 0.7);
@@ -64,10 +63,12 @@
 .vex-color-picker {
   transition: var(--trans-ease-out);
 
-  &:hover, &.selected {
+  &:hover,
+  &.selected {
     background: currentColor !important;
 
-    p, div {
+    p,
+    div {
       color: white;
     }
   }
@@ -76,7 +77,6 @@
     transition: var(--trans-ease-out);
   }
 }
-
 
 .color {
   align-items: center;

@@ -1,4 +1,4 @@
-import { Icon } from '@visurel/iconify-angular';
+import { Icon } from "@visurel/iconify-angular";
 
 export interface MenuItem {
   id: string;

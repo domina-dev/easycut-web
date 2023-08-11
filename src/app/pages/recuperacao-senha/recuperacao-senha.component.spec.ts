@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
+import { RecuperacaoSenhaComponent } from "./recuperacao-senha.component";
 
-describe('RecuperacaoSenhaComponent', () => {
+describe("RecuperacaoSenhaComponent", () => {
   let component: RecuperacaoSenhaComponent;
   let fixture: ComponentFixture<RecuperacaoSenhaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecuperacaoSenhaComponent ]
-    })
-      .compileComponents();
+      declarations: [RecuperacaoSenhaComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('RecuperacaoSenhaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
