@@ -21,3 +21,5 @@ jobs:
         assignee: vitorfiler
         get_diff: true
         allow_no_diff: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
