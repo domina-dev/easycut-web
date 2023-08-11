@@ -28,8 +28,7 @@ jobs:
   lint:
     name: Run linters
     runs-on: ubuntu-latest
-    needs: [sonar]
-    
+  
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
