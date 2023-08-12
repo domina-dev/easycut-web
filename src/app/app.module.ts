@@ -24,11 +24,13 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { ConstrucaoModalComponent } from "./modais/construcao-modal/construcao-modal.component";
+import { PlanosComponent } from "./modais/planos/planos.component";
 
+// Modal
 import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [AppComponent, ConstrucaoModalComponent],
+  declarations: [AppComponent, ConstrucaoModalComponent, PlanosComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
