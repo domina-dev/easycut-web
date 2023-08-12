@@ -1,19 +1,19 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import { DateTime } from "luxon";
+import { Pipe, PipeTransform } from '@angular/core';
+import { DateTime } from 'luxon';
 
 @Pipe({
-  name: "relativeDateTime",
+    name: 'relativeDateTime'
 })
 export class RelativeDateTimePipe implements PipeTransform {
-  transform(value: DateTime | null | string, ...args: any[]): any {
-    if (!value) {
-      return;
-    }
+    transform(value: DateTime | null | string, ...args: any[]): any {
+        if (!value) {
+            return;
+        }
 
-    if (!(value instanceof DateTime)) {
-      value = DateTime.fromISO(value);
-    }
+        if (!(value instanceof DateTime)) {
+            value = DateTime.fromISO(value);
+        }
 
-    return value.toRelative();
-  }
+        return value.toRelative();
+    }
 }

@@ -36,7 +36,7 @@ In this section, we are going to install Angular-CLI and it's prerequisites and 
 
 > Before we can install Angular-CLI we will have to get a few thing set up first. To run Angular-CLI we will need to install this prerequisite first:
 
-- **NodeJS** v10 or newer
+-   **NodeJS** v10 or newer
 
 [A detailed instruction on how to install NodeJS is available here.](//docs.npmjs.com/getting-started/installing-node)
 
@@ -140,35 +140,35 @@ Here's an example inside the AppComponent:
 
 ```typescript
 @Component({
-  selector: "vex-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+    selector: 'vex-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = "vex";
+    title = 'vex';
 
-  constructor(private navigationService: NavigationService) {
-    this.navigationService.items = [
-      {
-        label: "Subheading",
-      },
-      {
-        label: "Item with a Link",
-        route: "/my-link",
-        icon: icAssigment,
-      },
-      {
-        label: "Dropdown Item",
-        icon: icAdd,
-        children: [
-          {
-            label: "Item with Link inside Dropdown",
-            route: "/custom-link",
-          },
-        ],
-      },
-    ];
-  }
+    constructor(private navigationService: NavigationService) {
+        this.navigationService.items = [
+            {
+                label: 'Subheading'
+            },
+            {
+                label: 'Item with a Link',
+                route: '/my-link',
+                icon: icAssigment
+            },
+            {
+                label: 'Dropdown Item',
+                icon: icAdd,
+                children: [
+                    {
+                        label: 'Item with Link inside Dropdown',
+                        route: '/custom-link'
+                    }
+                ]
+            }
+        ];
+    }
 }
 ```
 
@@ -178,27 +178,27 @@ export class AppComponent {
 
 To generate our first `component` we simply open up a terminal and navigate in our Angular-App. Now we simply run `ng g component client` and we get a new component in `/src/app/client` with the following files:
 
-- `client.component.ts`
-- `client.component.html`
-- `client.component.css`
-- `client.component.spec.ts`
+-   `client.component.ts`
+-   `client.component.html`
+-   `client.component.css`
+-   `client.component.spec.ts`
 
 The files `client.component.ts` and `client.component.spec.ts` contain the most code, the other files only contain placeholders.
 
 **client.component.ts**
 
 ```typescript
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-client",
-  templateUrl: "client.component.html",
-  styleUrls: ["client.component.css"],
+    selector: 'app-client',
+    templateUrl: 'client.component.html',
+    styleUrls: ['client.component.css']
 })
 export class ClientComponent implements OnInit {
-  constructor() {}
+    constructor() {}
 
-  ngOnInit() {}
+    ngOnInit() {}
 }
 ```
 
@@ -222,11 +222,11 @@ Afterward we will find two generated files in our specified folder: `client.serv
 **client.service.ts**
 
 ```typescript
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ClientService {
-  constructor() {}
+    constructor() {}
 }
 ```
 
