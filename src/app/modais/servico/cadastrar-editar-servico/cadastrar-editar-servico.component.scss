@@ -1,0 +1,49 @@
+.form {
+  padding: 5px;
+  #title {
+    margin-bottom: 15px;
+    font-size: 30pt;
+  }
+  #inpN {
+    width: 100%;
+  }
+  .tempoEs {
+    display: flex;
+    justify-content: space-between;
+    #tempoEst {
+      float: left;
+      height: 2px;
+      width: 55%;
+    }
+    #categoria {
+      width: 40%;
+    }
+    .minutos {
+      display: inline;
+      float: right;
+      height: 3px;
+      font-size: 10pt;
+      margin-top: -19px;
+    }
+  }
+  #descricao {
+    width: 100%;
+  }
+  .valor {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5%;
+    .intval {
+      margin-right: 5%;
+      max-width: 50%;
+    }
+    #valor {
+      float: right;
+      width: 86%;
+    }
+    #valorP {
+      float: right;
+      width: 86%;
+    }
+  }
+}
