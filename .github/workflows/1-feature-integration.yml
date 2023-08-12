@@ -41,8 +41,6 @@ jobs:
               continue-on-error: false
             - name: Run linters
               uses: wearerequired/lint-action@v2
-              with:
-                  prettier: true
 
     pull-request:
         permissions: write-all
