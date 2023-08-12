@@ -1,15 +1,16 @@
 // Modal
 .planos-precos {
-  padding: 30px;
+  // padding: 20px;
   width: 100%;
   max-width: 1200px;
   top: 20px;
   left: 15%;
-  z-index: 9999;
+  z-index: 2;
   .planos {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    min-width: 800px;
     .card {
       text-align: center;
       .btn-plano {
