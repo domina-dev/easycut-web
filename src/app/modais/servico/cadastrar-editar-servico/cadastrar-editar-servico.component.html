@@ -1,4 +1,5 @@
 <div class="form">
+
   <!-- Titulo do modal -->
   <div
     class="px-6 py-4 border-b"
@@ -8,8 +9,11 @@
   >
     <h2 class="title m-0">Novo Serviço</h2>
   </div>
+
+  <!-- modal -->
   <mat-dialog-content>
     <form class="example-form">
+
       <!-- Nome do servico -->
       <div class="nome">
         <mat-form-field class="example-full-width" id="inpN">
@@ -17,6 +21,7 @@
           <input matInput required />
         </mat-form-field>
       </div>
+
       <!-- Tempo estimado -->
       <div class="tempoEs">
         <mat-form-field id="tempoEst">
@@ -30,6 +35,7 @@
           />
           <span matTextPrefix class="minutos">Minutos&nbsp;</span>
         </mat-form-field>
+
         <!-- Categoria -->
         <mat-form-field id="categoria">
           <mat-label>Categoria</mat-label>
@@ -39,6 +45,7 @@
           </mat-select>
         </mat-form-field>
       </div>
+
       <!-- area de descricao -->
       <div class="descricao">
         <mat-form-field class="example-full-width" id="descricao">
@@ -50,14 +57,17 @@
           />
         </mat-form-field>
       </div>
+
       <!-- toggle de valor promocional -->
       <div class="toggle">
         <mat-slide-toggle
           ><b>Este serviço mostrará o valor promocional</b></mat-slide-toggle
         >
       </div>
+
       <!-- valor e valor promocional -->
       <div class="valor">
+
         <!-- valor -->
         <mat-form-field floatLabel="always" class="intval">
           <mat-label>Valor</mat-label>
@@ -70,6 +80,7 @@
             placeholder="0"
           />
         </mat-form-field>
+
         <!-- valor promocional -->
         <mat-form-field floatLabel="always" class="intval">
           <mat-label>Valor Promocional</mat-label>
@@ -84,8 +95,9 @@
         </mat-form-field>
       </div>
     </form>
-    <!-- botoes adicionar e cancelar -->
   </mat-dialog-content>
+
+  <!-- botoes adicionar e cancelar -->
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancelar</button>
     <button
