@@ -3,6 +3,7 @@ on:
     push:
         branches:
             - feature/*
+            - release/*
 jobs:
     sonar:
         runs-on: ubuntu-latest
