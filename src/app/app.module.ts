@@ -9,7 +9,6 @@ import { VexModule } from "../@vex/vex.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CustomLayoutModule } from "./custom-layout/custom-layout.module";
-import { ServicosModule } from "./pages/servicos/servicos.module";
 import { AgendaModule } from "./pages/agenda/agenda.module";
 import { AgendamentosModule } from "./pages/agendamentos/agendamentos.module";
 import { LoginModule } from "./pages/login/login.module";
@@ -34,7 +33,6 @@ import { MatDialogModule } from "@angular/material/dialog";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ServicosModule,
     AgendaModule,
     AgendamentosModule,
     LoginModule,
