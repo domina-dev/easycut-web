@@ -20,10 +20,10 @@ export class AgendamentosComponent implements OnInit {
 
   //Início Modal Planos
   ngOnInit(): void {
-    this.openDialog();
+    this.abrirModalPlanos();
   }
 
-  openDialog() {
+  abrirModalPlanos() {
     const dialogRef = this.dialog.open(PlanosComponent);
 
     dialogRef.afterClosed().subscribe(result => {

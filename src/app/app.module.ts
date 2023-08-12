@@ -56,7 +56,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     CustomLayoutModule,
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: "en-GB" },
+    { provide: MAT_DATE_LOCALE, useValue: "pt-BR" },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
