@@ -1,23 +1,23 @@
 <vex-page-layout mode="card">
-  <vex-page-layout-header fxLayout="column" fxLayoutAlign="right start">
-    <div vexContainer>
-      <h2 class="title m-0">{{ legenda }}</h2>
-    </div>
-  </vex-page-layout-header>
-  <vex-page-layout-content vexContainer>
-    <div class="card">
-      <mat-tab-group (selectedTabChange)="trocaLegenda($event)">
-        <mat-tab label="Agendamentos">
-          <div class="p-6">
-            <vex-exibicao-agendamentos></vex-exibicao-agendamentos>
-          </div>
-        </mat-tab>
-        <mat-tab label="Reservas">
-          <div class="p-6">
-            <vex-exibicao-reservas></vex-exibicao-reservas>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </vex-page-layout-content>
+    <vex-page-layout-header fxLayout="column" fxLayoutAlign="right start">
+        <div vexContainer>
+            <h2 class="title m-0">{{ legenda }}</h2>
+        </div>
+    </vex-page-layout-header>
+    <vex-page-layout-content vexContainer>
+        <div class="card">
+            <mat-tab-group (selectedTabChange)="trocaLegenda($event)">
+                <mat-tab label="Agendamentos">
+                    <div class="p-6">
+                        <vex-exibicao-agendamentos></vex-exibicao-agendamentos>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Reservas">
+                    <div class="p-6">
+                        <vex-exibicao-reservas></vex-exibicao-reservas>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </vex-page-layout-content>
 </vex-page-layout>
