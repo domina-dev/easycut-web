@@ -1,48 +1,48 @@
 import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  ViewChild,
-} from "@angular/core";
-import { MatTableDataSource } from "@angular/material/table";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import icMoreHoriz from "@iconify/icons-ic/twotone-more-horiz";
-import icCloudDownload from "@iconify/icons-ic/twotone-cloud-download";
-import { TableColumn } from "../../../interfaces/table-column.interface";
+    AfterViewInit,
+    Component,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    ViewChild
+} from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import icMoreHoriz from '@iconify/icons-ic/twotone-more-horiz';
+import icCloudDownload from '@iconify/icons-ic/twotone-cloud-download';
+import { TableColumn } from '../../../interfaces/table-column.interface';
 
 @Component({
-  selector: "vex-widget-table",
-  templateUrl: "./widget-table.component.html",
+    selector: 'vex-widget-table',
+    templateUrl: './widget-table.component.html'
 })
 export class WidgetTableComponent<T> implements OnChanges, AfterViewInit {
-  @Input() data: T[];
-  @Input() columns: TableColumn<T>[];
-  @Input() pageSize = 6;
+    @Input() data: T[];
+    @Input() columns: TableColumn<T>[];
+    @Input() pageSize = 6;
 
-  visibleColumns: Array<keyof T | string>;
-  dataSource = new MatTableDataSource<T>();
+    visibleColumns: Array<keyof T | string>;
+    dataSource = new MatTableDataSource<T>();
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  icMoreHoriz = icMoreHoriz;
-  icCloudDownload = icCloudDownload;
+    icMoreHoriz = icMoreHoriz;
+    icCloudDownload = icCloudDownload;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.columns) {
-      this.visibleColumns = this.columns.map((column) => column.property);
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes.columns) {
+            this.visibleColumns = this.columns.map((column) => column.property);
+        }
+
+        if (changes.data) {
+            this.dataSource.data = this.data;
+        }
     }
 
-    if (changes.data) {
-      this.dataSource.data = this.data;
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
     }
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 }
