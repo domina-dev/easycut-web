@@ -56,6 +56,7 @@ jobs:
                   pr_title: 'Auto Merge Request into DEVELOP from ${{ github.ref_name }}'
                   body: '**Automated pull request**'
                   pr_label: automatic
+                  pr_assignee: ${{ github.actor }}
                   get_diff: true
                   allow_no_diff: false
               env:
