@@ -25,9 +25,10 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { ConstrucaoModalComponent } from "./modais/construcao-modal/construcao-modal.component";
 
 import { MatDialogModule } from "@angular/material/dialog";
+import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
 
 @NgModule({
-  declarations: [AppComponent, ConstrucaoModalComponent],
+  declarations: [AppComponent, ConstrucaoModalComponent, CadastrarEditarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
