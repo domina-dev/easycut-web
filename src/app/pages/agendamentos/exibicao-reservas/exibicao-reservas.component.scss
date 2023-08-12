@@ -4,7 +4,7 @@ table {
   width: 100%;
 }
 
-.aguar-retirada{
+.aguar-retirada {
   background: rgb(252, 225, 104);
   width: 55%;
   display: flex;
@@ -31,17 +31,17 @@ table {
   border-radius: 8px;
 }
 
-th{
+th {
   font-size: 14.5px !important;
   font-weight: 700 !important;
   color: black !important;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex{
+.mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: transparent;
 }
 
-.mat-form-field-underline{
+.mat-form-field-underline {
   opacity: 0 !important;
   padding: 0 !important;
 }
@@ -50,11 +50,11 @@ th{
   padding: 0 !important;
 }
 
-.mat-form-field-wrapper{
+.mat-form-field-wrapper {
   padding: 0;
 }
 
-td.mat-cell:last-of-type{
+td.mat-cell:last-of-type {
   padding-right: 0 !important;
   display: flex !important;
 }
@@ -70,6 +70,6 @@ td.mat-cell:last-of-type{
   border: 0 !important;
 }
 
-.select-option{
+.select-option {
   width: 112px;
 }
