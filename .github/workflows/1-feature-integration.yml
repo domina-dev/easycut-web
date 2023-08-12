@@ -36,15 +36,13 @@ jobs:
             # ESLint and Prettier must be in `package.json`
               continue-on-error: false
             - name: Install Node.js dependencies
-              run: npm ci
-              
+            - run: npm ci
+            - run: npm run format
               continue-on-error: false
             - name: Run linters
               uses: wearerequired/lint-action@v2
               with:
-                  prettier_options: --write
                   prettier: true
-                  github_token: ${{ secrets.PERSONAL_TOKEN }}
 
     pull-request:
         permissions: write-all
