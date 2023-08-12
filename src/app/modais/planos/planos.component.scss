@@ -1,6 +1,5 @@
 // Modal
 .planos-precos {
-  // padding: 20px;
   width: 100%;
   max-width: 1200px;
   top: 20px;
@@ -10,15 +9,9 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-width: 800px;
+    width: 800px;
     .card {
       text-align: center;
-      .btn-plano {
-        color: #ffffff;
-        background-color: #807f97;
-        padding: 10px;
-        border-radius: 20px;
-      }
     }
   }
 }
