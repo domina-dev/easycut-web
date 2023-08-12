@@ -1,4 +1,4 @@
-name: "3 - [DEV] PR Para Homologação"
+name: "5 - [PROD] PR Para Homologação"
 on:
   pull_request:
     types: [closed]
@@ -17,10 +17,11 @@ jobs:
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           destination_branch: "master"
-          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-HOMOLOG"
+          pr_title: "AUTOMATIC-MERGE-${{ github.ref_name }}-MASTER"
           body: "**Automated pull request**"
-          reviewer: vitorfiler
-          assignee: vitorfiler
+          pr_reviewer: vitorfiler
+          pr_assignee: vitorfiler
+          pr_label: automatic
           get_diff: true
           allow_no_diff: false
         env:

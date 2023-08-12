@@ -1,4 +1,4 @@
-name: "4 - [DEV] Varredura homolog"
+name: "4 - [HOM] Varredura homolog"
 on:
   pull_request:
     types: [opened, synchronize, reopened]
