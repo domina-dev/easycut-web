@@ -1,65 +1,100 @@
 <div class="form">
   <!-- Titulo do modal -->
-<div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
-  <h2 class="title m-0">Novo Serviço</h2>
-</div>
-<mat-dialog-content>
-  <form class="example-form">
-    <!-- Nome do servico -->
-    <div class="nome">
-      <mat-form-field class="example-full-width" id="inpN">
-        <mat-label>Nome do serviço</mat-label>
-        <input matInput required>
-      </mat-form-field>
-    </div>
-    <!-- Tempo estimado -->
-    <div class="tempoEs">
-      <mat-form-field id="tempoEst">
-        <mat-label>Tempo Estimado</mat-label>
-        <input type="text" matInput placeholder="Digite o Tempo" maxlength="3" required>
-        <span matTextPrefix class="minutos">Minutos&nbsp;</span>
-      </mat-form-field>
-      <!-- Categoria -->
-      <mat-form-field id="categoria">
-        <mat-label>Categoria</mat-label>
-        <mat-select required>
-          <mat-option value="option">Cabelo</mat-option>
-          <mat-option value="option">Barba</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <!-- area de descricao -->
-    <div class="descricao">
-      <mat-form-field class="example-full-width" id="descricao">
-        <mat-label>Descrição do serviço</mat-label>
-        <input matInput placeholder="Ex. Tipo de corte, tipo de barba..." required>
-      </mat-form-field>
-    </div>
-    <!-- toggle de valor promocional -->
-    <div class="toggle">
-      <mat-slide-toggle><b>Este serviço mostrará o valor promocional</b></mat-slide-toggle>
-    </div>
-    <!-- valor e valor promocional -->
-    <div class="valor">
-      <!-- valor -->
-      <mat-form-field floatLabel="always" class="intval" >
-        <mat-label>Valor</mat-label>
-        <span matTextPrefix>R$&nbsp;</span>
-        <input id="valor" matInput type="number" class="example-right-align" placeholder="0">
-      </mat-form-field>
-    <!-- valor promocional -->
-      <mat-form-field floatLabel="always" class="intval">
-        <mat-label>Valor Promocional</mat-label>
-        <span matTextPrefix>R$&nbsp;</span>
-        <input id="valorP" matInput type="number" class="example-right-align" placeholder="0">
-      </mat-form-field>
-    </div>
-  </form>
-  <!-- botoes adicionar e cancelar -->
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" mat-raised-button color="primary">Adicionar</button>
-</mat-dialog-actions>
-
+  <div
+    class="px-6 py-4 border-b"
+    id="title"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
+    <h2 class="title m-0">Novo Serviço</h2>
+  </div>
+  <mat-dialog-content>
+    <form class="example-form">
+      <!-- Nome do servico -->
+      <div class="nome">
+        <mat-form-field class="example-full-width" id="inpN">
+          <mat-label>Nome do serviço</mat-label>
+          <input matInput required />
+        </mat-form-field>
+      </div>
+      <!-- Tempo estimado -->
+      <div class="tempoEs">
+        <mat-form-field id="tempoEst">
+          <mat-label>Tempo Estimado</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Digite o Tempo"
+            maxlength="3"
+            required
+          />
+          <span matTextPrefix class="minutos">Minutos&nbsp;</span>
+        </mat-form-field>
+        <!-- Categoria -->
+        <mat-form-field id="categoria">
+          <mat-label>Categoria</mat-label>
+          <mat-select required>
+            <mat-option value="option">Cabelo</mat-option>
+            <mat-option value="option">Barba</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- area de descricao -->
+      <div class="descricao">
+        <mat-form-field class="example-full-width" id="descricao">
+          <mat-label>Descrição do serviço</mat-label>
+          <input
+            matInput
+            placeholder="Ex. Tipo de corte, tipo de barba..."
+            required
+          />
+        </mat-form-field>
+      </div>
+      <!-- toggle de valor promocional -->
+      <div class="toggle">
+        <mat-slide-toggle
+          ><b>Este serviço mostrará o valor promocional</b></mat-slide-toggle
+        >
+      </div>
+      <!-- valor e valor promocional -->
+      <div class="valor">
+        <!-- valor -->
+        <mat-form-field floatLabel="always" class="intval">
+          <mat-label>Valor</mat-label>
+          <span matTextPrefix>R$&nbsp;</span>
+          <input
+            id="valor"
+            matInput
+            type="number"
+            class="example-right-align"
+            placeholder="0"
+          />
+        </mat-form-field>
+        <!-- valor promocional -->
+        <mat-form-field floatLabel="always" class="intval">
+          <mat-label>Valor Promocional</mat-label>
+          <span matTextPrefix>R$&nbsp;</span>
+          <input
+            id="valorP"
+            matInput
+            type="number"
+            class="example-right-align"
+            placeholder="0"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+    <!-- botoes adicionar e cancelar -->
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      mat-raised-button
+      color="primary"
+    >
+      Adicionar
+    </button>
+  </mat-dialog-actions>
 </div>

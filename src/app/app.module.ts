@@ -17,7 +17,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -27,10 +27,14 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { ConstrucaoModalComponent } from "./modais/construcao-modal/construcao-modal.component";
 
 import { MatDialogModule } from "@angular/material/dialog";
-import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { CadastrarEditarServicoComponent } from "src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component";
 
 @NgModule({
-  declarations: [AppComponent, ConstrucaoModalComponent, CadastrarEditarServicoComponent],
+  declarations: [
+    AppComponent,
+    ConstrucaoModalComponent,
+    CadastrarEditarServicoComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

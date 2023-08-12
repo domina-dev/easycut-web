@@ -42,9 +42,11 @@ export class CustomLayoutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.layoutService.configpanelOpen$.pipe(
-      untilDestroyed(this)
-    ).subscribe(open => open ? this.configpanel.open() : this.configpanel.close());
-    this.router.navigate(['/servicos'])
+    this.layoutService.configpanelOpen$
+      .pipe(untilDestroyed(this))
+      .subscribe((open) =>
+        open ? this.configpanel.open() : this.configpanel.close(),
+      );
+    this.router.navigate(["/servicos"]);
   }
 }
