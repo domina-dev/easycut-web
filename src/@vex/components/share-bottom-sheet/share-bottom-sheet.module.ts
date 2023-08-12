@@ -1,12 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ShareBottomSheetComponent } from './share-bottom-sheet.component';
-import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { IconModule } from '@visurel/iconify-angular';
-
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ShareBottomSheetComponent } from "./share-bottom-sheet.component";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatListModule } from "@angular/material/list";
+import { RouterModule } from "@angular/router";
+import { MatIconModule } from "@angular/material/icon";
+import { IconModule } from "@visurel/iconify-angular";
 
 @NgModule({
   declarations: [ShareBottomSheetComponent],
@@ -16,12 +15,9 @@ import { IconModule } from '@visurel/iconify-angular';
     MatListModule,
     RouterModule,
     MatIconModule,
-    IconModule
+    IconModule,
   ],
-  exports: [
-    MatBottomSheetModule
-  ],
-  entryComponents: [ShareBottomSheetComponent]
+  exports: [MatBottomSheetModule],
+  entryComponents: [ShareBottomSheetComponent],
 })
-export class ShareBottomSheetModule {
-}
+export class ShareBottomSheetModule {}

@@ -1,19 +1,11 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*",
-    "highlight.directive.ts"
-  ],
+  "ignorePatterns": ["projects/**/*", "highlight.directive.ts"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -37,16 +29,15 @@
             "style": "kebab-case"
           }
         ],
-        "@angular-eslint/no-host-metadata-property": ["error", { "allowStatic": true }]
+        "@angular-eslint/no-host-metadata-property": [
+          "error",
+          { "allowStatic": true }
+        ]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]

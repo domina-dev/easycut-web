@@ -1,4 +1,4 @@
-import { DateTime } from 'luxon';
+import { DateTime } from "luxon";
 
 export function createDateArray(length: number) {
   const dates: number[] = [];
@@ -9,4 +9,3 @@ export function createDateArray(length: number) {
 
   return dates.reverse();
 }
-

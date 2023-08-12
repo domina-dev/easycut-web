@@ -3,7 +3,6 @@
 }
 
 .vex-page-layout-simple {
-
   .vex-page-layout-content {
     padding-bottom: var(--padding-gutter);
     padding-top: var(--padding-gutter);
@@ -34,7 +33,8 @@
 }
 
 .vex-page-layout-header {
-  h2{font-size: 30pt;
+  h2 {
+    font-size: 30pt;
     color: rgba($color: #ffffff, $alpha: 0.7);
     width: 800px;
     text-align: center;
@@ -44,7 +44,9 @@
   box-sizing: content-box !important;
   display: flex;
   flex-direction: row;
-  height: calc(var(--page-layout-header-height) - var(--page-layout-toolbar-height));
+  height: calc(
+    var(--page-layout-header-height) - var(--page-layout-toolbar-height)
+  );
   padding-left: var(--padding);
   padding-right: var(--padding);
   place-content: center flex-start;

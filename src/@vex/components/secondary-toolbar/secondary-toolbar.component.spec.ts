@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { SecondaryToolbarComponent } from './secondary-toolbar.component';
+import { SecondaryToolbarComponent } from "./secondary-toolbar.component";
 
-describe('SecondaryToolbarComponent', () => {
+describe("SecondaryToolbarComponent", () => {
   let component: SecondaryToolbarComponent;
   let fixture: ComponentFixture<SecondaryToolbarComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SecondaryToolbarComponent]
-    })
-      .compileComponents();
+      declarations: [SecondaryToolbarComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SecondaryToolbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

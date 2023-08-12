@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 
-import { WidgetQuickValueCenterComponent } from './widget-quick-value-center.component';
+import { WidgetQuickValueCenterComponent } from "./widget-quick-value-center.component";
 
-describe('WidgetQuickCenterComponent', () => {
+describe("WidgetQuickCenterComponent", () => {
   let component: WidgetQuickValueCenterComponent;
   let fixture: ComponentFixture<WidgetQuickValueCenterComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WidgetQuickValueCenterComponent]
-    })
-      .compileComponents();
+      declarations: [WidgetQuickValueCenterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('WidgetQuickCenterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

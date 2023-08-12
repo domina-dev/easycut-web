@@ -1,35 +1,37 @@
 // Campos de filtro da tabela
-.filter{
+.filter {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
-  .search{
+  .search {
     width: 100%;
     max-width: 35rem;
-    mat-form-field{
+    mat-form-field {
       border-bottom: 1px solid rgb(38, 43, 57);
       width: 100%;
     }
   }
-  .option, .dateStart, .dateEnd{
-    mat-form-field{
+  .option,
+  .dateStart,
+  .dateEnd {
+    mat-form-field {
       width: 57%;
     }
   }
-  .btnClear{
-    button{
+  .btnClear {
+    button {
       background-color: rgb(38, 43, 57);
       color: rgb(240, 255, 255);
     }
   }
-  .btnAdd{
-    button{
+  .btnAdd {
+    button {
       background-color: rgb(35, 207, 92);
       color: rgb(240, 255, 255);
     }
   }
-  mat-label{
+  mat-label {
     color: rgb(38, 43, 57);
   }
 }
@@ -38,7 +40,7 @@ table {
   width: 100%;
 }
 
-.pendente{
+.pendente {
   background: rgb(252, 225, 104);
   width: 55%;
   display: flex;
@@ -65,17 +67,17 @@ table {
   border-radius: 8px;
 }
 
-th{
+th {
   font-size: 14.5px !important;
   font-weight: 700 !important;
   color: black !important;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex{
+.mat-form-field-appearance-fill .mat-form-field-flex {
   background-color: transparent;
 }
 
-.mat-form-field-underline{
+.mat-form-field-underline {
   opacity: 0 !important;
   padding: 0 !important;
 }
@@ -84,11 +86,11 @@ th{
   padding: 0 !important;
 }
 
-.mat-form-field-wrapper{
+.mat-form-field-wrapper {
   padding: 0;
 }
 
-td.mat-cell:last-of-type{
+td.mat-cell:last-of-type {
   padding-right: 0 !important;
   display: flex !important;
 }
@@ -103,5 +105,3 @@ td.mat-cell:last-of-type{
 .mat-form-field-infix {
   border: 0 !important;
 }
-
-

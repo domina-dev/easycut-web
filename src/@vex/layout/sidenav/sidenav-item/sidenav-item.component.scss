@@ -14,7 +14,8 @@
   width: 100%;
   border-left: var(--sidenav-item-border);
 
-  &:hover, &.active {
+  &:hover,
+  &.active {
     background: var(--sidenav-item-background-active);
     border-left-color: var(--sidenav-item-border-color-active);
 
@@ -41,7 +42,12 @@
 @for $i from 1 through 6 {
   :host(.item-level-#{$i}) .item {
     background: var(--sidenav-item-dropdown-background);
-    padding-inline-start: calc(var(--sidenav-item-icon-size) + var(--sidenav-item-icon-gap) + var(--sidenav-item-padding) + (var(--sidenav-item-dropdown-gap) * #{$i - 1}));
+    padding-inline-start: calc(
+      var(--sidenav-item-icon-size) +
+        var(--sidenav-item-icon-gap) +
+        var(--sidenav-item-padding) +
+        (var(--sidenav-item-dropdown-gap) * #{$i - 1})
+    );
 
     &:hover {
       background: var(--sidenav-item-dropdown-background-hover);
@@ -49,7 +55,9 @@
   }
 }
 
-.item-icon, .item-label, .item-dropdown-icon {
+.item-icon,
+.item-label,
+.item-dropdown-icon {
   transition: inherit;
 }
 
@@ -89,7 +97,6 @@
 
 .item-dropdown {
   overflow: hidden;
-
 }
 
 .subheading {
