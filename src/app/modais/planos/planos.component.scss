@@ -1,0 +1,28 @@
+// Modal
+
+.planos-precos {
+  box-shadow: 2px 4px 9px -4px rgba(0, 0, 0, 1);
+  -webkit-box-shadow: 2px 4px 9px -4px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px 4px 9px -4px rgba(0, 0, 0, 1);
+  padding: 30px;
+  width: 100%;
+  max-width: 1200px;
+  position: absolute;
+  top: 20px;
+  left: 15%;
+  z-index: 9999;
+  .planos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .card {
+      text-align: center;
+      .btn-plano {
+        color: #ffffff;
+        background-color: #807f97;
+        padding: 10px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
