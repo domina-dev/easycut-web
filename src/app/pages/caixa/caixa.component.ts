@@ -15,12 +15,16 @@ export class CaixaComponent implements OnInit {
     this.legenda = NOVAVENDA
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {console.log("")
+}
+   trocaLegenda($event) {
+    
+    this.legenda = $event.index == 0 ? NOVAVENDA : this.caixaOuHistorico($event)
+
   }
 
-   trocaLegenda($event) {
-    this.legenda = $event.index == 0 ? NOVAVENDA : $event.index == 1 ? FLUXODECAIXA : HISTORICO
-
+  caixaOuHistorico($event:any){
+    return $event.index == 1 ? FLUXODECAIXA : HISTORICO;
   }
 
 }
