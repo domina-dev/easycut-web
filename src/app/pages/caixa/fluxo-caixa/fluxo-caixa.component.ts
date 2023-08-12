@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FluxoCaixaComponent implements OnInit {
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+        console.log('Method not implemented');
     }
 }
