@@ -20,6 +20,13 @@ const routes: Routes = [
                     import('./pages/servicos/servicos.module').then(
                         (m) => m.ServicosModule
                     )
+            },
+            {
+                path: 'caixa',
+                loadChildren: () =>
+                    import('./pages/caixa/caixa.module').then(
+                        (m) => m.CaixaModule
+                    )
             }
         ]
     },

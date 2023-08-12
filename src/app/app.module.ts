@@ -5,18 +5,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { VexModule } from '../@vex/vex.module';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { CustomLayoutModule } from './custom-layout/custom-layout.module';
-import { ServicosModule } from './pages/servicos/servicos.module';
-import { AgendaModule } from './pages/agenda/agenda.module';
-import { AgendamentosModule } from './pages/agendamentos/agendamentos.module';
-import { LoginModule } from './pages/login/login.module';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { VexModule } from "../@vex/vex.module";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { CustomLayoutModule } from "./custom-layout/custom-layout.module";
+import { AgendaModule } from "./pages/agenda/agenda.module";
+import { AgendamentosModule } from "./pages/agendamentos/agendamentos.module";
+import { LoginModule } from "./pages/login/login.module";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { MatTableModule } from "@angular/material/table";
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,26 +27,25 @@ import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-m
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-    declarations: [AppComponent, ConstrucaoModalComponent],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        ServicosModule,
-        AgendaModule,
-        AgendamentosModule,
-        LoginModule,
-        MatPaginatorModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        MatDialogModule,
+  declarations: [AppComponent, ConstrucaoModalComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AgendaModule,
+    AgendamentosModule,
+    LoginModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
 
         // Vex
         VexModule,
