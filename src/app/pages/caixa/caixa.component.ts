@@ -1,30 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-const NOVAVENDA = "Nova Venda"
-const FLUXODECAIXA = "Fluxo de Caixa"
-const HISTORICO = "Histórico de vendas"
+const NOVAVENDA = 'Nova Venda';
+const FLUXODECAIXA = 'Fluxo de Caixa';
+const HISTORICO = 'Histórico de vendas';
 
 @Component({
-  selector: 'caixa',
-  templateUrl: './caixa.component.html',
-  styleUrls: ['./caixa.component.scss']
+    selector: 'caixa',
+    templateUrl: './caixa.component.html',
+    styleUrls: ['./caixa.component.scss']
 })
 export class CaixaComponent implements OnInit {
-  legenda: string 
+    legenda: string;
 
-  constructor() { 
-    this.legenda = NOVAVENDA
-  }
+    constructor() {
+        this.legenda = NOVAVENDA;
+    }
 
-  ngOnInit(): void {console.log("")
-}
-   trocaLegenda($event) {
-    
-    this.legenda = $event.index == 0 ? NOVAVENDA : this.caixaOuHistorico($event)
+    ngOnInit(): void {
+        console.log('');
+    }
+    trocaLegenda($event) {
+        this.legenda =
+            $event.index == 0 ? NOVAVENDA : this.caixaOuHistorico($event);
+    }
 
-  }
-
-  caixaOuHistorico($event:any){
-    return $event.index == 1 ? FLUXODECAIXA : HISTORICO;
-  }
-
+    caixaOuHistorico($event: any) {
+        return $event.index == 1 ? FLUXODECAIXA : HISTORICO;
+    }
 }
