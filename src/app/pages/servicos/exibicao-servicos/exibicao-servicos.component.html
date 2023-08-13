@@ -78,19 +78,9 @@
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-icon-button aria-label="ícone Button" class="iconmenu">
-            <mat-icon class="icon-color">visibility_off</mat-icon>
-            <span>Exibir Produto</span>
-          </button>
-          <button mat-icon-button aria-label="ícone Button" class="iconmenu">
-            <mat-icon class="icon-color">confirmation_number</mat-icon>
-            <span>Tornar Promocional</span>
-          </button>
-        </mat-menu>
       </td>
     </ng-container>
-
+    
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
@@ -98,3 +88,14 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecionar página do produto">
   </mat-paginator>
 </div>
+
+<mat-menu #menu="matMenu">
+  <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+    <mat-icon class="icon-color">visibility_off</mat-icon>
+    <span>Exibir Produto</span>
+  </button>
+  <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+    <mat-icon class="icon-color">confirmation_number</mat-icon>
+    <span>Tornar Promocional</span>
+  </button>
+</mat-menu>
