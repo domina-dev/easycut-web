@@ -8,17 +8,16 @@ import { MatTableDataSource } from '@angular/material/table';
     styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit {
-  
-  displayedColumns: string[] = [
-    "aplicacao",
-    "servico",
-    "descricao",
-    "tempo",
-    "preco",
-    "icone",
-  ];
+    displayedColumns: string[] = [
+        'aplicacao',
+        'servico',
+        'descricao',
+        'tempo',
+        'preco',
+        'icone'
+    ];
 
-  dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
 
     verLista: boolean = true;
     verGrade: boolean = false;
