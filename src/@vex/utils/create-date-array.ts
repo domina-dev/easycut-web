@@ -1,11 +1,11 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
 export function createDateArray(length: number) {
-  const dates: number[] = [];
+    const dates: number[] = [];
 
-  for (let i = 0; i < length; i++) {
-    dates.push(+DateTime.local().minus({ day: i }).toJSDate());
-  }
+    for (let i = 0; i < length; i++) {
+        dates.push(+DateTime.local().minus({ day: i }).toJSDate());
+    }
 
-  return dates.reverse();
+    return dates.reverse();
 }

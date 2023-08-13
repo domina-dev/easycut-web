@@ -10,8 +10,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
 import { MatMenuModule } from '@angular/material/menu';
 
-import { ExibicaoServicosRoutingModule } from "./exibicao-servicos-routing.module";
-import { ExibicaoServicosComponent } from "./exibicao-servicos.component";
+import { ExibicaoServicosRoutingModule } from './exibicao-servicos-routing.module';
+import { ExibicaoServicosComponent } from './exibicao-servicos.component';
 
 @NgModule({
   declarations: [ExibicaoServicosComponent],
@@ -28,7 +28,7 @@ import { ExibicaoServicosComponent } from "./exibicao-servicos.component";
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   exports: [ExibicaoServicosComponent],
 })

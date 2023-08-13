@@ -1,30 +1,30 @@
 <!-- Filtro da tabela de servicos -->
 <div class="filter">
-  <div class="search">
-    <mat-form-field appearance="standard">
-      <mat-label>Pesquisar serviço</mat-label>
-      <input matInput />
-    </mat-form-field>
-  </div>
-  <div class="option">
-    <mat-form-field appearance="standard">
-      <mat-label>Categoria</mat-label>
-      <mat-select>
-        <mat-option value="one">Todas</mat-option>
-        <mat-option value="two">Cabelo</mat-option>
-        <mat-option value="three">Barba</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="btnAdd">
-    <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
-  </div>
-  <div class="viewPag">
-    <button mat-button (click)="vizualizar()">
-      <mat-icon *ngIf="verLista">view_list</mat-icon>
-      <mat-icon *ngIf="verGrade">view_module</mat-icon>
-    </button>
-  </div>
+    <div class="search">
+        <mat-form-field appearance="standard">
+            <mat-label>Pesquisar serviço</mat-label>
+            <input matInput />
+        </mat-form-field>
+    </div>
+    <div class="option">
+        <mat-form-field appearance="standard">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+                <mat-option value="one">Todas</mat-option>
+                <mat-option value="two">Cabelo</mat-option>
+                <mat-option value="three">Barba</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="btnAdd">
+        <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
+    </div>
+    <div class="viewPag">
+        <button mat-button (click)="vizualizar()">
+            <mat-icon *ngIf="verLista">view_list</mat-icon>
+            <mat-icon *ngIf="verGrade">view_module</mat-icon>
+        </button>
+    </div>
 </div>
 
 <!-- Tabela de serviços -->
@@ -37,27 +37,27 @@
       <td mat-cell *matCellDef="let element">{{ element.aplicacao }}</td>
     </ng-container>
 
-    <!-- Serviço -->
-    <ng-container matColumnDef="servico">
-      <th class="color-title" mat-header-cell *matHeaderCellDef>
-        Nome do Serviço
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.servico }}</td>
-    </ng-container>
+        <!-- Serviço -->
+        <ng-container matColumnDef="servico">
+            <th class="color-title" mat-header-cell *matHeaderCellDef>
+                Nome do Serviço
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.servico }}</td>
+        </ng-container>
 
-    <!-- Descrição do Serviço -->
-    <ng-container matColumnDef="descricao">
-      <th class="color-title" mat-header-cell *matHeaderCellDef>
-        Descrição do Serviço
-      </th>
-      <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
-    </ng-container>
+        <!-- Descrição do Serviço -->
+        <ng-container matColumnDef="descricao">
+            <th class="color-title" mat-header-cell *matHeaderCellDef>
+                Descrição do Serviço
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
+        </ng-container>
 
-    <!-- Tempo do Serviço -->
-    <ng-container matColumnDef="tempo">
-      <th class="color-title" mat-header-cell *matHeaderCellDef>Tempo</th>
-      <td mat-cell *matCellDef="let element">{{ element.tempo }}</td>
-    </ng-container>
+        <!-- Tempo do Serviço -->
+        <ng-container matColumnDef="tempo">
+            <th class="color-title" mat-header-cell *matHeaderCellDef>Tempo</th>
+            <td mat-cell *matCellDef="let element">{{ element.tempo }}</td>
+        </ng-container>
 
     <!-- Preço do Serviço -->
     <ng-container matColumnDef="preco">
