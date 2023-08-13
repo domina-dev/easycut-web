@@ -28,9 +28,9 @@
 </div>
 
 <!-- Tabela de serviços -->
-
 <div class="mat-elevation-z8">
   <table aria-label="tableServicos" mat-table [dataSource]="dataSource">
+
     <!-- Aplicação do Serviço -->
     <ng-container matColumnDef="aplicacao">
       <th class="color-title" mat-header-cell *matHeaderCellDef>Aplicação</th>
@@ -64,23 +64,30 @@
       <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
       <td mat-cell *matCellDef="let element">{{ element.preco }}</td>
     </ng-container>
-
+    
     <!-- Ícone da tabela -->
     <ng-container matColumnDef="icone">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
-          <mat-icon class="icon-color">visibility_off</mat-icon>
-        </button>
         <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
           <mat-icon color="primary"> border_color</mat-icon>
         </button>
         <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
           <mat-icon color="warn">delete</mat-icon>
         </button>
-        <button mat-icon-button aria-label="ícone Button">
-          <mat-icon class="icon-color">confirmation_number</mat-icon>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
         </button>
+        <mat-menu #menu="matMenu">
+          <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+            <mat-icon class="icon-color">visibility_off</mat-icon>
+            <span>Exibir Produto</span>
+          </button>
+          <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+            <mat-icon class="icon-color">confirmation_number</mat-icon>
+            <span>Tornar Promocional</span>
+          </button>
+        </mat-menu>
       </td>
     </ng-container>
 
@@ -88,10 +95,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Selecionar página do produto"
-  >
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecionar página do produto">
   </mat-paginator>
 </div>

@@ -8,6 +8,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTableModule } from "@angular/material/table";
+import { MatMenuModule } from '@angular/material/menu';
 
 import { ExibicaoServicosRoutingModule } from "./exibicao-servicos-routing.module";
 import { ExibicaoServicosComponent } from "./exibicao-servicos.component";
@@ -27,6 +28,7 @@ import { ExibicaoServicosComponent } from "./exibicao-servicos.component";
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
+    MatMenuModule
   ],
   exports: [ExibicaoServicosComponent],
 })

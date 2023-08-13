@@ -7,6 +7,7 @@ import { MatTableDataSource } from "@angular/material/table";
   templateUrl: "./exibicao-produtos.component.html",
   styleUrls: ["./exibicao-produtos.component.scss"],
 })
+
 export class ExibicaoProdutosComponent implements AfterViewInit {
   displayedColumns: string[] = [
     "aplicacao",
