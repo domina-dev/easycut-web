@@ -1,32 +1,31 @@
-
 <div class="filter">
     <div class="search">
-      <mat-form-field appearance="standard">
-        <mat-label>Pesquisar produto</mat-label>
-        <input matInput>
-      </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Pesquisar produto</mat-label>
+            <input matInput />
+        </mat-form-field>
     </div>
-    
+
     <div class="option">
-      <mat-form-field appearance="standard">
-        <mat-label>Categoria</mat-label>
-        <mat-select>
-          <mat-option value="one">Todas</mat-option>
-          <mat-option value="two">Cabelo</mat-option>
-          <mat-option value="three">Barba</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+                <mat-option value="one">Todas</mat-option>
+                <mat-option value="two">Cabelo</mat-option>
+                <mat-option value="three">Barba</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
     <div class="btnAdd">
-      <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
+        <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
     </div>
     <div class="viewPag">
-      <button mat-button (click)="visualizar()">
-        <mat-icon *ngIf="verLista">view_list</mat-icon>
-        <mat-icon *ngIf="verGrade">view_module</mat-icon>
-      </button>
+        <button mat-button (click)="visualizar()">
+            <mat-icon *ngIf="verLista">view_list</mat-icon>
+            <mat-icon *ngIf="verGrade">view_module</mat-icon>
+        </button>
     </div>
-  </div>
+</div>
 
 <div class="mat-elevation-z8">
     <table aria-label="tabela-produtos" mat-table [dataSource]="dataSource">
