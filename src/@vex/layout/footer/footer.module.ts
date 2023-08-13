@@ -7,15 +7,14 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ContainerModule } from '../../directives/container/container.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    IconModule,
-    ContainerModule
-  ],
-  declarations: [FooterComponent],
-  exports: [FooterComponent]
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        IconModule,
+        ContainerModule
+    ],
+    declarations: [FooterComponent],
+    exports: [FooterComponent]
 })
-export class FooterModule {
-}
+export class FooterModule {}

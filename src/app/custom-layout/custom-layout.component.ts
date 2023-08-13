@@ -8,36 +8,45 @@ import { ConfigService } from '../../@vex/services/config.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SidebarComponent } from '../../@vex/components/sidebar/sidebar.component';
 
-
 @UntilDestroy()
 @Component({
-  selector: 'vex-custom-layout',
-  templateUrl: './custom-layout.component.html',
-  styleUrls: ['./custom-layout.component.scss']
+    selector: 'vex-custom-layout',
+    templateUrl: './custom-layout.component.html',
+    styleUrls: ['./custom-layout.component.scss']
 })
 export class CustomLayoutComponent implements OnInit {
+    sidenavCollapsed$ = this.layoutService.sidenavCollapsed$;
+    isFooterVisible$ = this.configService.config$.pipe(
+        map((config) => config.footer.visible)
+    );
+    isDesktop$ = this.layoutService.isDesktop$;
 
-  sidenavCollapsed$ = this.layoutService.sidenavCollapsed$;
-  isFooterVisible$ = this.configService.config$.pipe(map(config => config.footer.visible));
-  isDesktop$ = this.layoutService.isDesktop$;
+    toolbarShadowEnabled$ = this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        startWith(null),
+        map(() =>
+            checkRouterChildsData(
+                this.router.routerState.root.snapshot,
+                (data) => data.toolbarShadowEnabled
+            )
+        )
+    );
 
-  toolbarShadowEnabled$ = this.router.events.pipe(
-    filter(event => event instanceof NavigationEnd),
-    startWith(null),
-    map(() => checkRouterChildsData(this.router.routerState.root.snapshot, data => data.toolbarShadowEnabled))
-  );
+    @ViewChild('configpanel', { static: true }) configpanel: SidebarComponent;
 
-  @ViewChild('configpanel', { static: true }) configpanel: SidebarComponent;
+    constructor(
+        private layoutService: LayoutService,
+        private configService: ConfigService,
+        private breakpointObserver: BreakpointObserver,
+        private router: Router
+    ) {}
 
-  constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private breakpointObserver: BreakpointObserver,
-              private router: Router) { }
-
-  ngOnInit() {
-    this.layoutService.configpanelOpen$.pipe(
-      untilDestroyed(this)
-    ).subscribe(open => open ? this.configpanel.open() : this.configpanel.close());
-    this.router.navigate(['/agendamentos'])
-  }
+    ngOnInit() {
+        this.layoutService.configpanelOpen$
+            .pipe(untilDestroyed(this))
+            .subscribe((open) =>
+                open ? this.configpanel.open() : this.configpanel.close()
+            );
+        this.router.navigate(['/agendamentos']);
+    }
 }

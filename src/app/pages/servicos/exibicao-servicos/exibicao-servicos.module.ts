@@ -12,25 +12,22 @@ import { MatTableModule } from '@angular/material/table';
 import { ExibicaoServicosRoutingModule } from './exibicao-servicos-routing.module';
 import { ExibicaoServicosComponent } from './exibicao-servicos.component';
 
-
 @NgModule({
-  declarations: [
-    ExibicaoServicosComponent
-  ],
-  imports: [
-    CommonModule,
-    ExibicaoServicosRoutingModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule
-  ],
-  exports: [ExibicaoServicosComponent]
+    declarations: [ExibicaoServicosComponent],
+    imports: [
+        CommonModule,
+        ExibicaoServicosRoutingModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatIconModule
+    ],
+    exports: [ExibicaoServicosComponent]
 })
-export class ExibicaoServicosModule { }
+export class ExibicaoServicosModule {}

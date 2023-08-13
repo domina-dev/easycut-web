@@ -15,26 +15,25 @@ import { HighlightService } from './highlight.service';
  * NOTE: The name of each language must match the file name its imported from
  */
 export function hljsLanguages() {
-  return [
-    { name: 'typescript', func: typescript as any },
-    { name: 'scss', func: scss as any },
-    { name: 'xml', func: xml as any }
-  ];
+    return [
+        { name: 'typescript', func: typescript as any },
+        { name: 'scss', func: scss as any },
+        { name: 'xml', func: xml as any }
+    ];
 }
 
 @NgModule({
-  providers: [
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        languages: hljsLanguages
-      } as HighlightOptions
-    },
-    HighlightService
-  ],
-  declarations: [HighlightDirective],
-  imports: [],
-  exports: [HighlightDirective],
+    providers: [
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                languages: hljsLanguages
+            } as HighlightOptions
+        },
+        HighlightService
+    ],
+    declarations: [HighlightDirective],
+    imports: [],
+    exports: [HighlightDirective]
 })
-export class HighlightModule {
-}
+export class HighlightModule {}

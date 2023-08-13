@@ -6,20 +6,21 @@ import logoFacebook from '@iconify/icons-logos/facebook';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
-  selector: 'vex-share-bottom-sheet',
-  templateUrl: './share-bottom-sheet.component.html',
-  styleUrls: ['./share-bottom-sheet.component.scss']
+    selector: 'vex-share-bottom-sheet',
+    templateUrl: './share-bottom-sheet.component.html',
+    styleUrls: ['./share-bottom-sheet.component.scss']
 })
 export class ShareBottomSheetComponent {
+    logoGmail = logoGmail;
+    logoWhatsApp = logoWhatsApp;
+    logoTwitter = logoTwitter;
+    logoFacebook = logoFacebook;
 
-  logoGmail = logoGmail;
-  logoWhatsApp = logoWhatsApp;
-  logoTwitter = logoTwitter;
-  logoFacebook = logoFacebook;
+    constructor(
+        private _bottomSheetRef: MatBottomSheetRef<ShareBottomSheetComponent>
+    ) {}
 
-  constructor(private _bottomSheetRef: MatBottomSheetRef<ShareBottomSheetComponent>) { }
-
-  close() {
-    this._bottomSheetRef.dismiss();
-  }
+    close() {
+        this._bottomSheetRef.dismiss();
+    }
 }

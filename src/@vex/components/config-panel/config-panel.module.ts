@@ -11,18 +11,17 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule,
-    MatRadioModule,
-    FlexLayoutModule,
-    MatSlideToggleModule,
-    MatRippleModule
-  ],
-  declarations: [ConfigPanelComponent, ConfigPanelToggleComponent],
-  exports: [ConfigPanelComponent, ConfigPanelToggleComponent]
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule,
+        MatRadioModule,
+        FlexLayoutModule,
+        MatSlideToggleModule,
+        MatRippleModule
+    ],
+    declarations: [ConfigPanelComponent, ConfigPanelToggleComponent],
+    exports: [ConfigPanelComponent, ConfigPanelToggleComponent]
 })
-export class ConfigPanelModule {
-}
+export class ConfigPanelModule {}

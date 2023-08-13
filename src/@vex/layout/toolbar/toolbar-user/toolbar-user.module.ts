@@ -12,24 +12,21 @@ import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [ToolbarUserComponent, ToolbarUserDropdownComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatIconModule,
-    MatRippleModule,
-    MatMenuModule,
-    MatButtonModule,
-    RelativeDateTimeModule,
-    RouterModule,
-    MatTooltipModule,
-    IconModule
-  ],
-  exports: [ToolbarUserComponent],
-  entryComponents: [ToolbarUserDropdownComponent]
+    declarations: [ToolbarUserComponent, ToolbarUserDropdownComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatIconModule,
+        MatRippleModule,
+        MatMenuModule,
+        MatButtonModule,
+        RelativeDateTimeModule,
+        RouterModule,
+        MatTooltipModule,
+        IconModule
+    ],
+    exports: [ToolbarUserComponent],
+    entryComponents: [ToolbarUserDropdownComponent]
 })
-export class ToolbarUserModule {
-}
-
+export class ToolbarUserModule {}

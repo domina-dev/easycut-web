@@ -8,16 +8,15 @@ import { IconModule } from '@visurel/iconify-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [SidenavItemComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatIconModule,
-    MatRippleModule,
-    IconModule,
-    FlexLayoutModule,
-  ],
-  exports: [SidenavItemComponent]
+    declarations: [SidenavItemComponent],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatIconModule,
+        MatRippleModule,
+        IconModule,
+        FlexLayoutModule
+    ],
+    exports: [SidenavItemComponent]
 })
-export class SidenavItemModule {
-}
+export class SidenavItemModule {}

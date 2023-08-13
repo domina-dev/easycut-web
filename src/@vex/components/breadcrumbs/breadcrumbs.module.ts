@@ -8,15 +8,14 @@ import { IconModule } from '@visurel/iconify-angular';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatIconModule,
-    FlexLayoutModule,
-    IconModule
-  ],
-  declarations: [BreadcrumbsComponent, BreadcrumbComponent],
-  exports: [BreadcrumbsComponent]
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatIconModule,
+        FlexLayoutModule,
+        IconModule
+    ],
+    declarations: [BreadcrumbsComponent, BreadcrumbComponent],
+    exports: [BreadcrumbsComponent]
 })
-export class BreadcrumbsModule {
-}
+export class BreadcrumbsModule {}

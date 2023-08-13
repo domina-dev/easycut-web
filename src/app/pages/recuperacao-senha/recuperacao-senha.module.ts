@@ -11,18 +11,16 @@ import { RecuperacaoSenhaRoutingModule } from './recuperacao-senha-routing.modul
 import { RecuperacaoSenhaComponent } from './recuperacao-senha.component';
 
 @NgModule({
-  declarations: [
-    RecuperacaoSenhaComponent
-  ],
-  imports: [
-    CommonModule,
-    RecuperacaoSenhaRoutingModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    IconModule,
-    MatIconModule
-  ]
+    declarations: [RecuperacaoSenhaComponent],
+    imports: [
+        CommonModule,
+        RecuperacaoSenhaRoutingModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        IconModule,
+        MatIconModule
+    ]
 })
-export class RecuperacaoSenhaModule { }
+export class RecuperacaoSenhaModule {}

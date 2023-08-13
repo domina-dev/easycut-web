@@ -5,20 +5,9 @@ import { ExibicaoReservasRoutingModule } from './exibicao-reservas-routing.modul
 import { ExibicaoReservasComponent } from './exibicao-reservas.component';
 import { MatTableModule } from '@angular/material/table';
 
-
-
-
 @NgModule({
-  declarations: [
-    ExibicaoReservasComponent
-  ],
-  imports: [
-    CommonModule,
-    ExibicaoReservasRoutingModule,
-    MatTableModule
-  ],
-  exports:[
-  ExibicaoReservasComponent,
-  ]
+    declarations: [ExibicaoReservasComponent],
+    imports: [CommonModule, ExibicaoReservasRoutingModule, MatTableModule],
+    exports: [ExibicaoReservasComponent]
 })
-export class ExibicaoReservasModule { }
+export class ExibicaoReservasModule {}

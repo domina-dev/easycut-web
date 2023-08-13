@@ -1,4 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -7,7 +9,6 @@ import { VexModule } from '../@vex/vex.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
-import { ServicosModule } from './pages/servicos/servicos.module';
 import { AgendaModule } from './pages/agenda/agenda.module';
 import { AgendamentosModule } from './pages/agendamentos/agendamentos.module';
 import { LoginModule } from './pages/login/login.module';
@@ -26,34 +27,34 @@ import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-m
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, ConstrucaoModalComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ServicosModule,
-    AgendaModule,
-    AgendamentosModule,
-    LoginModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatDialogModule,
+    declarations: [AppComponent, ConstrucaoModalComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        AgendaModule,
+        AgendamentosModule,
+        LoginModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogModule,
 
-    // Vex
-    VexModule,
-    CustomLayoutModule
-  ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
-  ],
-  bootstrap: [AppComponent]
+        // Vex
+        VexModule,
+        CustomLayoutModule
+    ],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

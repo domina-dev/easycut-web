@@ -10,21 +10,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [WidgetTableComponent],
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    FlexLayoutModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule
-  ],
-  exports: [WidgetTableComponent]
+    declarations: [WidgetTableComponent],
+    imports: [
+        CommonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        FlexLayoutModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule
+    ],
+    exports: [WidgetTableComponent]
 })
-export class WidgetTableModule {
-}
+export class WidgetTableModule {}

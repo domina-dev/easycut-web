@@ -14,69 +14,76 @@
 */
 
 .display-4 {
-  @include mat.typography-level($config, display-4);
+    @include mat.typography-level($config, display-4);
 }
 
 .display-3 {
-  @include mat.typography-level($config, display-3);
+    @include mat.typography-level($config, display-3);
 }
 
 .display-2 {
-  @include mat.typography-level($config, display-2);
+    @include mat.typography-level($config, display-2);
 }
 
-.display-1, h1 {
-  @include mat.typography-level($config, display-1);
+.display-1,
+h1 {
+    @include mat.typography-level($config, display-1);
 }
 
-.headline, h2 {
-  @include mat.typography-level($config, headline);
+.headline,
+h2 {
+    @include mat.typography-level($config, headline);
 }
 
-.title, h3 {
-  @include mat.typography-level($config, title);
+.title,
+h3 {
+    @include mat.typography-level($config, title);
 }
 
-.subheading-2, h4 {
-  @include mat.typography-level($config, subheading-2);
+.subheading-2,
+h4 {
+    @include mat.typography-level($config, subheading-2);
 }
 
-.subheading-1, h5 {
-  @include mat.typography-level($config, subheading-1);
+.subheading-1,
+h5 {
+    @include mat.typography-level($config, subheading-1);
 }
 
-.body-2, h6 {
-  @include mat.typography-level($config, body-2);
+.body-2,
+h6 {
+    @include mat.typography-level($config, body-2);
 }
 
-.body-1, p {
-  @include mat.typography-level($config, body-1);
+.body-1,
+p {
+    @include mat.typography-level($config, body-1);
 }
 
 .caption {
-  @include mat.typography-level($config, caption);
+    @include mat.typography-level($config, caption);
 }
 
 .text-xs {
-  letter-spacing: 0;
+    letter-spacing: 0;
 }
 
 .text-sm {
-  letter-spacing: -0.009em;
+    letter-spacing: -0.009em;
 }
 
 .text-base {
-  letter-spacing: -0.011em;
+    letter-spacing: -0.011em;
 }
 
 .text-lg {
-  letter-spacing: -0.014em;
+    letter-spacing: -0.014em;
 }
 
 .text-2xl {
-  letter-spacing: -0.019em;
+    letter-spacing: -0.019em;
 }
 
 .text-3xl {
-  letter-spacing: -0.021em;
+    letter-spacing: -0.021em;
 }

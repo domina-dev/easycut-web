@@ -7,18 +7,16 @@ import { IconModule } from '@visurel/iconify-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartModule } from '../../chart/chart.module';
 
-
 @NgModule({
-  declarations: [WidgetLargeChartComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    IconModule,
-    FlexLayoutModule,
-    ChartModule
-  ],
-  exports: [WidgetLargeChartComponent]
+    declarations: [WidgetLargeChartComponent],
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatButtonModule,
+        IconModule,
+        FlexLayoutModule,
+        ChartModule
+    ],
+    exports: [WidgetLargeChartComponent]
 })
-export class WidgetLargeChartModule {
-}
+export class WidgetLargeChartModule {}

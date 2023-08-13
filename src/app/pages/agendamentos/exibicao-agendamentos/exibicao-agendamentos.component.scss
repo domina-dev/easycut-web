@@ -1,108 +1,108 @@
 // Campos de filtro da tabela
-.filter{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  .search{
-    width: 100%;
-    max-width: 35rem;
-    mat-form-field{
-      border-bottom: 1px solid rgb(38, 43, 57);
-      width: 100%;
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    .search {
+        width: 100%;
+        max-width: 35rem;
+        mat-form-field {
+            border-bottom: 1px solid rgb(38, 43, 57);
+            width: 100%;
+        }
     }
-  }
-  .option, .dateStart, .dateEnd{
-    mat-form-field{
-      width: 57%;
+    .option,
+    .dateStart,
+    .dateEnd {
+        mat-form-field {
+            width: 57%;
+        }
     }
-  }
-  .btnClear{
-    button{
-      background-color: rgb(38, 43, 57);
-      color: rgb(240, 255, 255);
+    .btnClear {
+        button {
+            background-color: rgb(38, 43, 57);
+            color: rgb(240, 255, 255);
+        }
     }
-  }
-  .btnAdd{
-    button{
-      background-color: rgb(35, 207, 92);
-      color: rgb(240, 255, 255);
+    .btnAdd {
+        button {
+            background-color: rgb(35, 207, 92);
+            color: rgb(240, 255, 255);
+        }
     }
-  }
-  mat-label{
-    color: rgb(38, 43, 57);
-  }
+    mat-label {
+        color: rgb(38, 43, 57);
+    }
 }
 
 // Tabela de Agendamentos
 table {
-  width: 100%;
+    width: 100%;
 }
 
-.pendente{
-  background: rgb(252, 225, 104);
-  width: 55%;
-  display: flex;
-  margin-left: 10px;
-  margin-top: 3px;
-  border-radius: 8px;
+.pendente {
+    background: rgb(252, 225, 104);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
 }
 
 .aceito {
-  background: rgb(74, 197, 74);
-  width: 55%;
-  display: flex;
-  margin-left: 10px;
-  margin-top: 3px;
-  border-radius: 8px;
+    background: rgb(74, 197, 74);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
 }
 
 .recusado {
-  background: rgb(255, 103, 103);
-  width: 55%;
-  display: flex;
-  margin-left: 10px;
-  margin-top: 3px;
-  border-radius: 8px;
+    background: rgb(255, 103, 103);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
 }
 
-th{
-  font-size: 14.5px !important;
-  font-weight: 700 !important;
-  color: black !important;
+th {
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    color: black !important;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex{
-  background-color: transparent;
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
 }
 
-.mat-form-field-underline{
-  opacity: 0 !important;
-  padding: 0 !important;
+.mat-form-field-underline {
+    opacity: 0 !important;
+    padding: 0 !important;
 }
 
 .mat-form-field {
-  padding: 0 !important;
+    padding: 0 !important;
 }
 
-.mat-form-field-wrapper{
-  padding: 0;
+.mat-form-field-wrapper {
+    padding: 0;
 }
 
-td.mat-cell:last-of-type{
-  padding-right: 0 !important;
-  display: flex !important;
+td.mat-cell:last-of-type {
+    padding-right: 0 !important;
+    display: flex !important;
 }
 
 .mat-select-arrow-wrapper {
-  height: 1px !important;
-  flex-shrink: 0;
-  display: flex !important;
-  align-items: center;
+    height: 1px !important;
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center;
 }
 
 .mat-form-field-infix {
-  border: 0 !important;
+    border: 0 !important;
 }
-
-

@@ -9,21 +9,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { BreadcrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 import { ContainerModule } from '../../directives/container/container.module';
 
-
 @NgModule({
-  declarations: [SecondaryToolbarComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    IconModule,
-    RouterModule,
-    MatButtonModule,
-    MatIconModule,
-    BreadcrumbsModule,
-    ContainerModule
-  ],
-  exports: [SecondaryToolbarComponent]
+    declarations: [SecondaryToolbarComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        IconModule,
+        RouterModule,
+        MatButtonModule,
+        MatIconModule,
+        BreadcrumbsModule,
+        ContainerModule
+    ],
+    exports: [SecondaryToolbarComponent]
 })
-export class SecondaryToolbarModule {
-}
-
+export class SecondaryToolbarModule {}
