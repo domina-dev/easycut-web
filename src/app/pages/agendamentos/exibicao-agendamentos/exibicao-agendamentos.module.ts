@@ -15,28 +15,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
-
 @NgModule({
-  declarations: [
-    ExibicaoAgendamentosComponent
-  ],
-  imports: [
-    CommonModule,
-    ExibicaoAgendamentosRoutingModule,
-    MatButtonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatDatepickerModule,
-  ],
-  exports:[
-    ExibicaoAgendamentosComponent
-  ]
+    declarations: [ExibicaoAgendamentosComponent],
+    imports: [
+        CommonModule,
+        ExibicaoAgendamentosRoutingModule,
+        MatButtonModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatDatepickerModule
+    ],
+    exports: [ExibicaoAgendamentosComponent]
 })
-export class ExibicaoAgendamentosModule { }
+export class ExibicaoAgendamentosModule {}

@@ -13,24 +13,25 @@ import { MatRippleModule } from '@angular/material/core';
 import { ToolbarNotificationsDropdownComponent } from './toolbar-notifications-dropdown/toolbar-notifications-dropdown.component';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [ToolbarNotificationsComponent, ToolbarNotificationsDropdownComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    PopoverModule,
-    FlexLayoutModule,
-    MatTabsModule,
-    MatMenuModule,
-    RelativeDateTimeModule,
-    RouterModule,
-    MatRippleModule,
-    IconModule
-  ],
-  exports: [ToolbarNotificationsComponent],
-  entryComponents: [ToolbarNotificationsDropdownComponent]
+    declarations: [
+        ToolbarNotificationsComponent,
+        ToolbarNotificationsDropdownComponent
+    ],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        PopoverModule,
+        FlexLayoutModule,
+        MatTabsModule,
+        MatMenuModule,
+        RelativeDateTimeModule,
+        RouterModule,
+        MatRippleModule,
+        IconModule
+    ],
+    exports: [ToolbarNotificationsComponent],
+    entryComponents: [ToolbarNotificationsDropdownComponent]
 })
-export class ToolbarNotificationsModule {
-}
+export class ToolbarNotificationsModule {}

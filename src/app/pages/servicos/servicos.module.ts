@@ -10,14 +10,11 @@ import { ExibicaoPromocoesModule } from './exibicao-promocoes/exibicao-promocoes
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContainerModule } from '../../../@vex/directives/container/container.module';
-import { PageLayoutModule } from "../../../@vex/components/page-layout/page-layout.module";
-import { BreadcrumbsModule } from "../../../@vex/components/breadcrumbs/breadcrumbs.module";
-
+import { PageLayoutModule } from '../../../@vex/components/page-layout/page-layout.module';
+import { BreadcrumbsModule } from '../../../@vex/components/breadcrumbs/breadcrumbs.module';
 
 @NgModule({
-    declarations: [
-        ServicosComponent
-    ],
+    declarations: [ServicosComponent],
     imports: [
         CommonModule,
         ServicosRoutingModule,
@@ -31,5 +28,4 @@ import { BreadcrumbsModule } from "../../../@vex/components/breadcrumbs/breadcru
         BreadcrumbsModule
     ]
 })
-export class ServicosModule { }
-
+export class ServicosModule {}

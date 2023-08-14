@@ -4,12 +4,8 @@ import { PopoverComponent } from './popover.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
-  declarations: [PopoverComponent],
-  imports: [
-    CommonModule,
-    OverlayModule
-  ],
-  entryComponents: [PopoverComponent]
+    declarations: [PopoverComponent],
+    imports: [CommonModule, OverlayModule],
+    entryComponents: [PopoverComponent]
 })
-export class PopoverModule {
-}
+export class PopoverModule {}

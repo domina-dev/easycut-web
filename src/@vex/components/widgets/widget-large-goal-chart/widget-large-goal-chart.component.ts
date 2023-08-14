@@ -8,51 +8,49 @@ import { defaultChartOptions } from '../../../utils/default-chart-options';
 import { createDateArray } from '../../../utils/create-date-array';
 
 @Component({
-  selector: 'vex-widget-large-goal-chart',
-  templateUrl: './widget-large-goal-chart.component.html'
+    selector: 'vex-widget-large-goal-chart',
+    templateUrl: './widget-large-goal-chart.component.html'
 })
 export class WidgetLargeGoalChartComponent {
+    @Input() total: number;
+    @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
+    @Input() options: ApexOptions = defaultChartOptions({
+        grid: {
+            show: true,
+            strokeDashArray: 3,
+            padding: {
+                left: 16
+            }
+        },
+        chart: {
+            type: 'line',
+            height: 300,
+            sparkline: {
+                enabled: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        stroke: {
+            width: 4
+        },
+        labels: createDateArray(12),
+        xaxis: {
+            type: 'datetime',
+            labels: {
+                show: true
+            }
+        },
+        yaxis: {
+            labels: {
+                show: true
+            }
+        }
+    });
 
-  @Input() total: number;
-  @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
-  @Input() options: ApexOptions = defaultChartOptions({
-    grid: {
-      show: true,
-      strokeDashArray: 3,
-      padding: {
-        left: 16
-      }
-    },
-    chart: {
-      type: 'line',
-      height: 300,
-      sparkline: {
-        enabled: false
-      },
-      zoom: {
-        enabled: false
-      }
-    },
-    stroke: {
-      width: 4
-    },
-    labels: createDateArray(12),
-    xaxis: {
-      type: 'datetime',
-      labels: {
-        show: true
-      }
-    },
-    yaxis: {
-      labels: {
-        show: true
-      }
-    }
-  });
-
-  icMoreHoriz = icMoreHoriz;
-  icCloudDownload = icCloudDownload;
-  faCaretUp = faCaretUp;
-  faCaretDown = faCaretDown;
-
+    icMoreHoriz = icMoreHoriz;
+    icCloudDownload = icCloudDownload;
+    faCaretUp = faCaretUp;
+    faCaretDown = faCaretDown;
 }

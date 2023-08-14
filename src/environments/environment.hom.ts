@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  url_api: "https://easycut-hml.herokuapp.com"
+    production: false,
+    url_api: 'https://easycut-hml.herokuapp.com'
 };

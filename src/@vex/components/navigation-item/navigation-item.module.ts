@@ -7,18 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { MatRippleModule } from '@angular/material/core';
 
-
 @NgModule({
-  declarations: [NavigationItemComponent],
-  imports: [
-    CommonModule,
-    MatMenuModule,
-    IconModule,
-    MatIconModule,
-    RouterModule,
-    MatRippleModule
-  ],
-  exports: [NavigationItemComponent]
+    declarations: [NavigationItemComponent],
+    imports: [
+        CommonModule,
+        MatMenuModule,
+        IconModule,
+        MatIconModule,
+        RouterModule,
+        MatRippleModule
+    ],
+    exports: [NavigationItemComponent]
 })
-export class NavigationItemModule {
-}
+export class NavigationItemModule {}

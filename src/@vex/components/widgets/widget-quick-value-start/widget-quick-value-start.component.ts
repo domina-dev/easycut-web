@@ -9,29 +9,28 @@ import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ShareBottomSheetComponent } from '../../share-bottom-sheet/share-bottom-sheet.component';
 
 @Component({
-  selector: 'vex-widget-quick-value-start',
-  templateUrl: './widget-quick-value-start.component.html',
-  animations: [scaleInOutAnimation]
+    selector: 'vex-widget-quick-value-start',
+    templateUrl: './widget-quick-value-start.component.html',
+    animations: [scaleInOutAnimation]
 })
 export class WidgetQuickValueStartComponent {
+    @Input() icon: Icon;
+    @Input() value: string;
+    @Input() label: string;
+    @Input() change: number;
+    @Input() changeSuffix: string;
+    @Input() helpText: string;
 
-  @Input() icon: Icon;
-  @Input() value: string;
-  @Input() label: string;
-  @Input() change: number;
-  @Input() changeSuffix: string;
-  @Input() helpText: string;
+    icTrendingUp = icTrendingUp;
+    icTrendingDown = icTrendingDown;
+    icHelp = icHelp;
+    icShare = icShare;
 
-  icTrendingUp = icTrendingUp;
-  icTrendingDown = icTrendingDown;
-  icHelp = icHelp;
-  icShare = icShare;
+    showButton: boolean;
 
-  showButton: boolean;
+    constructor(private _bottomSheet: MatBottomSheet) {}
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
-
-  openSheet() {
-    this._bottomSheet.open(ShareBottomSheetComponent);
-  }
+    openSheet() {
+        this._bottomSheet.open(ShareBottomSheetComponent);
+    }
 }

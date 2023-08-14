@@ -16,27 +16,25 @@ import { NavigationItemModule } from '../../components/navigation-item/navigatio
 import { MegaMenuModule } from '../../components/mega-menu/mega-menu.module';
 import { ContainerModule } from '../../directives/container/container.module';
 
-
 @NgModule({
-  declarations: [ToolbarComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatRippleModule,
-    ToolbarNotificationsModule,
-    ToolbarUserModule,
-    ToolbarSearchModule,
-    IconModule,
-    NavigationModule,
-    RouterModule,
-    NavigationItemModule,
-    MegaMenuModule,
-    ContainerModule
-  ],
-  exports: [ToolbarComponent]
+    declarations: [ToolbarComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        MatRippleModule,
+        ToolbarNotificationsModule,
+        ToolbarUserModule,
+        ToolbarSearchModule,
+        IconModule,
+        NavigationModule,
+        RouterModule,
+        NavigationItemModule,
+        MegaMenuModule,
+        ContainerModule
+    ],
+    exports: [ToolbarComponent]
 })
-export class ToolbarModule {
-}
+export class ToolbarModule {}

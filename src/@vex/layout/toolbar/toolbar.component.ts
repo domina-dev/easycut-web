@@ -20,74 +20,83 @@ import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.componen
 import icSearch from '@iconify/icons-ic/twotone-search';
 
 @Component({
-  selector: 'vex-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+    selector: 'vex-toolbar',
+    templateUrl: './toolbar.component.html',
+    styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+    @Input() mobileQuery: boolean;
 
-  @Input() mobileQuery: boolean;
+    @Input()
+    @HostBinding('class.shadow-b')
+    hasShadow: boolean;
 
-  @Input()
-  @HostBinding('class.shadow-b')
-  hasShadow: boolean;
+    navigationItems = this.navigationService.items;
 
-  navigationItems = this.navigationService.items;
+    isHorizontalLayout$ = this.configService.config$.pipe(
+        map((config) => config.layout === 'horizontal')
+    );
+    isVerticalLayout$ = this.configService.config$.pipe(
+        map((config) => config.layout === 'vertical')
+    );
+    isNavbarInToolbar$ = this.configService.config$.pipe(
+        map((config) => config.navbar.position === 'in-toolbar')
+    );
+    isNavbarBelowToolbar$ = this.configService.config$.pipe(
+        map((config) => config.navbar.position === 'below-toolbar')
+    );
 
-  isHorizontalLayout$ = this.configService.config$.pipe(map(config => config.layout === 'horizontal'));
-  isVerticalLayout$ = this.configService.config$.pipe(map(config => config.layout === 'vertical'));
-  isNavbarInToolbar$ = this.configService.config$.pipe(map(config => config.navbar.position === 'in-toolbar'));
-  isNavbarBelowToolbar$ = this.configService.config$.pipe(map(config => config.navbar.position === 'below-toolbar'));
+    icSearch = icSearch;
+    icBookmarks = icBookmarks;
+    emojioneUS = emojioneUS;
+    emojioneDE = emojioneDE;
+    icMenu = icMenu;
+    icPersonAdd = icPersonAdd;
+    icAssignmentTurnedIn = icAssignmentTurnedIn;
+    icBallot = icBallot;
+    icDescription = icDescription;
+    icAssignment = icAssignment;
+    icReceipt = icReceipt;
+    icDoneAll = icDoneAll;
+    icArrowDropDown = icArrowDropDown;
 
-  icSearch = icSearch;
-  icBookmarks = icBookmarks;
-  emojioneUS = emojioneUS;
-  emojioneDE = emojioneDE;
-  icMenu = icMenu;
-  icPersonAdd = icPersonAdd;
-  icAssignmentTurnedIn = icAssignmentTurnedIn;
-  icBallot = icBallot;
-  icDescription = icDescription;
-  icAssignment = icAssignment;
-  icReceipt = icReceipt;
-  icDoneAll = icDoneAll;
-  icArrowDropDown = icArrowDropDown;
+    constructor(
+        private layoutService: LayoutService,
+        private configService: ConfigService,
+        private navigationService: NavigationService,
+        private popoverService: PopoverService
+    ) {}
 
-  constructor(private layoutService: LayoutService,
-              private configService: ConfigService,
-              private navigationService: NavigationService,
-              private popoverService: PopoverService) { }
+    openQuickpanel() {
+        this.layoutService.openQuickpanel();
+    }
 
-  openQuickpanel() {
-    this.layoutService.openQuickpanel();
-  }
+    openSidenav() {
+        this.layoutService.openSidenav();
+    }
 
-  openSidenav() {
-    this.layoutService.openSidenav();
-  }
+    openMegaMenu(origin: ElementRef | HTMLElement) {
+        this.popoverService.open({
+            content: MegaMenuComponent,
+            origin,
+            position: [
+                {
+                    originX: 'start',
+                    originY: 'bottom',
+                    overlayX: 'start',
+                    overlayY: 'top'
+                },
+                {
+                    originX: 'end',
+                    originY: 'bottom',
+                    overlayX: 'end',
+                    overlayY: 'top'
+                }
+            ]
+        });
+    }
 
-  openMegaMenu(origin: ElementRef | HTMLElement) {
-    this.popoverService.open({
-      content: MegaMenuComponent,
-      origin,
-      position: [
-        {
-          originX: 'start',
-          originY: 'bottom',
-          overlayX: 'start',
-          overlayY: 'top'
-        },
-        {
-          originX: 'end',
-          originY: 'bottom',
-          overlayX: 'end',
-          overlayY: 'top',
-        },
-      ]
-    });
-  }
-
-  openSearch() {
-    this.layoutService.openSearch();
-  }
+    openSearch() {
+        this.layoutService.openSearch();
+    }
 }

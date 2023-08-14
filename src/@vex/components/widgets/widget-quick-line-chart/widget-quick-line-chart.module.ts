@@ -8,20 +8,17 @@ import { IconModule } from '@visurel/iconify-angular';
 import { ShareBottomSheetModule } from '../../share-bottom-sheet/share-bottom-sheet.module';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @NgModule({
-  declarations: [WidgetQuickLineChartComponent],
-  imports: [
-    CommonModule,
-    ChartModule,
-    MatIconModule,
-    FlexLayoutModule,
-    IconModule,
-    ShareBottomSheetModule,
-    MatButtonModule
-  ],
-  exports: [WidgetQuickLineChartComponent]
+    declarations: [WidgetQuickLineChartComponent],
+    imports: [
+        CommonModule,
+        ChartModule,
+        MatIconModule,
+        FlexLayoutModule,
+        IconModule,
+        ShareBottomSheetModule,
+        MatButtonModule
+    ],
+    exports: [WidgetQuickLineChartComponent]
 })
-export class WidgetQuickLineChartModule {
-}
-
+export class WidgetQuickLineChartModule {}

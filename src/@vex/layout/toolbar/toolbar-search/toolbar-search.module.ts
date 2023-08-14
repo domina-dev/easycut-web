@@ -7,18 +7,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [ToolbarSearchComponent],
-  imports: [
-    CommonModule,
-    MatInputModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule
-  ],
-  exports: [ToolbarSearchComponent]
+    declarations: [ToolbarSearchComponent],
+    imports: [
+        CommonModule,
+        MatInputModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule
+    ],
+    exports: [ToolbarSearchComponent]
 })
-export class ToolbarSearchModule {
-}
+export class ToolbarSearchModule {}

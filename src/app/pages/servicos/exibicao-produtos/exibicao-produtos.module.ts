@@ -35,4 +35,4 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   exports: [ExibicaoProdutosComponent]
 })
-export class ExibicaoProdutosModule { }
+export class ExibicaoProdutosModule {}

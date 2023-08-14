@@ -6,17 +6,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { IconModule } from '@visurel/iconify-angular';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
-  declarations: [MegaMenuComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    IconModule,
-    RouterModule
-  ],
-  exports: [MegaMenuComponent],
-  entryComponents: [MegaMenuComponent]
+    declarations: [MegaMenuComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        IconModule,
+        RouterModule
+    ],
+    exports: [MegaMenuComponent],
+    entryComponents: [MegaMenuComponent]
 })
-export class MegaMenuModule { }
+export class MegaMenuModule {}

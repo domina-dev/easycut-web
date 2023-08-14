@@ -1,35 +1,35 @@
 :host {
-  bottom: 0;
-  display: block;
-  width: 100%;
-  z-index: var(--footer-z-index);
+    bottom: 0;
+    display: block;
+    width: 100%;
+    z-index: var(--footer-z-index);
 }
 
 .footer {
-  background: var(--footer-background);
-  color: var(--footer-color);
-  height: var(--footer-height);
-  padding-left: var(--padding);
-  padding-right: var(--padding);
-  position: relative;
-  z-index: var(--footer-z-index);
+    background: var(--footer-background);
+    color: var(--footer-color);
+    height: var(--footer-height);
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    position: relative;
+    z-index: var(--footer-z-index);
 }
 
 .info h2 {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
-@media screen and (max-width: 550px){
-  .info {
-    margin-left: -20%;
-    // padding-top: 35%;
-  }
+@media screen and (max-width: 550px) {
+    .info {
+        margin-left: -20%;
+        // padding-top: 35%;
+    }
 }
 
-@media screen and (min-width: 550px){  
-  .info {
-    text-align: center;
-    margin-left: 300px;
-    // margin-top: 15%;
-  }
+@media screen and (min-width: 550px) {
+    .info {
+        text-align: center;
+        margin-left: 300px;
+        // margin-top: 15%;
+    }
 }

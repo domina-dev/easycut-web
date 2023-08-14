@@ -7,18 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 import { ChartModule } from '../../chart/chart.module';
 
-
 @NgModule({
-  declarations: [WidgetLargeGoalChartComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule,
-    ChartModule
-  ],
-  exports: [WidgetLargeGoalChartComponent]
+    declarations: [WidgetLargeGoalChartComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule,
+        ChartModule
+    ],
+    exports: [WidgetLargeGoalChartComponent]
 })
-export class WidgetLargeGoalChartModule {
-}
+export class WidgetLargeGoalChartModule {}

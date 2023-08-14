@@ -6,34 +6,39 @@ import icMail from '@iconify/icons-ic/twotone-mail';
 import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
 
 @Component({
-  selector: 'recuperacao-senha',
-  templateUrl: './recuperacao-senha.component.html',
-  styleUrls: ['./recuperacao-senha.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInUp400ms]
+    selector: 'recuperacao-senha',
+    templateUrl: './recuperacao-senha.component.html',
+    styleUrls: ['./recuperacao-senha.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeInUp400ms]
 })
 export class RecuperacaoSenhaComponent {
+    form: FormGroup;
+    icMail = icMail;
 
-  form: FormGroup;
-  icMail = icMail;
+    constructor(
+        private fb: FormBuilder,
+        private snackbar: MatSnackBar
+    ) {
+        this.form = this.fb.group({
+            email: ['', Validators.required]
+        });
+    }
 
-  constructor(
-    private fb: FormBuilder,
-    private snackbar: MatSnackBar
-  ) {
-    this.form = this.fb.group({
-      email: ['', Validators.required]
-    });
-   }
-
-  enviar() {
-    if (!this.form.get('email').value ) {
-      this.snackbar.open('Não podemos recuperar sua senha, sem seu e-mail.', 'DIGITE UM E-MAIL VALIDO', {
-      duration: 10000
-    });
-    } else {this.fechar()}
-  }
-  fechar() {
-    this.snackbar.dismiss()
-  }
+    enviar() {
+        if (!this.form.get('email').value) {
+            this.snackbar.open(
+                'Não podemos recuperar sua senha, sem seu e-mail.',
+                'DIGITE UM E-MAIL VALIDO',
+                {
+                    duration: 10000
+                }
+            );
+        } else {
+            this.fechar();
+        }
+    }
+    fechar() {
+        this.snackbar.dismiss();
+    }
 }
