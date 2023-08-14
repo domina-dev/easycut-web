@@ -1,1 +1,85 @@
-<p>cadastrar-editar works!</p>
+<mat-dialog-content class="modal">
+  <div class="header">
+    <header>
+      <h1>Cadastro de novo cliente:</h1>
+      </header>
+  </div>
+  <form>
+
+     <div class="corpoform">
+   <a>Dados pessoais </a>
+   <div class="dados">
+     <div class="nome">
+     <mat-form-field appearance="fill">
+       <mat-label>Nome completo</mat-label>
+       <input matInput formControlName="nome">
+     </mat-form-field>
+     </div>
+     <div class="cpf">
+       <mat-form-field appearance="fill">
+         <mat-label>CPF</mat-label>
+         <input matInput formControlName="cpf">
+       </mat-form-field>
+     </div>
+     <div class="sexo">
+       <mat-form-field appearance="fill">
+         <mat-label>Sexo</mat-label>
+         <mat-select formControlName="sexo">
+           <mat-option value="masculino">masculino</mat-option>
+           <mat-option value="feminino">feminino</mat-option>
+         </mat-select>
+       </mat-form-field>
+     </div>
+     <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint class="mesdia">Mês/Dia/Ano Ex.: 07/26/1995</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field>
+    </div>
+   </div>
+
+   <a>Contato </a>
+   <div class="contato">
+     <div class="email">
+       <mat-form-field appearance="fill">
+         <mat-label>Email</mat-label>
+         <input matInput placeholder="pat@example.com" formControlName="email">
+       </mat-form-field>
+     </div>
+     <div class="telefone">
+     <mat-form-field class="example-full-width">
+       <mat-label>Telefone</mat-label>
+       <span matPrefix>+55 &nbsp;</span>
+       <input type="tel" matInput placeholder="38-99168-2950" formControlName="telefone">
+       <mat-icon matSuffix>phone</mat-icon>
+     </mat-form-field>
+   </div>
+   </div>
+
+   <a>Endereço </a>
+   <div class="endereço">
+     <div class="rua">
+     <mat-form-field class="example-full-width">
+       <mat-label>Nome da Rua</mat-label>
+       <textarea matInput formControlName="rua"></textarea>
+     </mat-form-field>
+   </div>
+     <div class="numero">
+     <td><mat-form-field class="numerofield">
+       <mat-label>Nº</mat-label>
+       <input matInput #postalCode maxlength="5" placeholder="Ex. 551" value="" formControlName="n">
+     </mat-form-field></td>
+   </div>
+   </div>
+
+     </div>
+   
+   </form>
+   <mat-dialog-actions align="end">
+    <button mat-stroked-button color="primary" class="cadastrar" mat-dialog-close>Cancelar</button>
+    <button mat-stroked-button color="primary" class="cadastrar" >Cadastrar</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

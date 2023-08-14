@@ -24,8 +24,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
 
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule} from "@angular/material/dialog";
 import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, ConstrucaoModalComponent, CadastrarEditarComponent],
@@ -47,6 +49,8 @@ import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatCheckboxModule,
+    MatCardModule,
 
         // Vex
         VexModule,

@@ -4,8 +4,10 @@ import {
     ViewChild,
     ViewEncapsulation
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
 
 @Component({
     selector: 'vex-exibicao-agendamentos',
@@ -31,6 +33,17 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
+    }
+
+    constructor(public dialog: MatDialog) {
+    }
+
+    openDialog() {
+      let dialogRef = this.dialog.open(CadastrarEditarComponent,
+        {
+          width: '90%',
+          height: '83%',
+        });
     }
 }
 
@@ -116,4 +129,5 @@ const CLIENTE_DATA: Agendamentos[] = [
         responsavel: 'Vito Nunes',
         status: 'aceito'
     }
+
 ];
