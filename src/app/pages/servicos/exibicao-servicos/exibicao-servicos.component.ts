@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatTableDataSource } from "@angular/material/table";
-import { CadastrarEditarServicoComponent } from "src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component";
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 
 @Component({
     selector: 'vex-exibicao-servicos',
@@ -23,23 +23,23 @@ export class ExibicaoServicosComponent implements AfterViewInit {
     verLista: boolean = true;
     verGrade: boolean = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  matDialogActions: any;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    matDialogActions: any;
 
-  constructor(public dialog: MatDialog) {}
+    constructor(public dialog: MatDialog) {}
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
 
-  openDialog() {
-    this.dialog.open(CadastrarEditarServicoComponent);
-  }
+    openDialog() {
+        this.dialog.open(CadastrarEditarServicoComponent);
+    }
 
-  vizualizar() {
-    this.verLista = !this.verLista;
-    this.verGrade = !this.verGrade;
-  }
+    vizualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
+    }
 }
 
 export interface ListaServicos {

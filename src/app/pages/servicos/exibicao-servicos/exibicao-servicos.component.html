@@ -1,32 +1,32 @@
 <!-- Filtro da tabela de servicos -->
 <div class="filter">
-  <div class="search">
-    <mat-form-field appearance="standard">
-      <mat-label>Pesquisar serviço</mat-label>
-      <input matInput />
-    </mat-form-field>
-  </div>
-  <div class="option">
-    <mat-form-field appearance="standard">
-      <mat-label>Categoria</mat-label>
-      <mat-select>
-        <mat-option value="one">Todas</mat-option>
-        <mat-option value="two">Cabelo</mat-option>
-        <mat-option value="three">Barba</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="btnAdd">
-    <button mat-button (click)="openDialog()">
-      Adicionar <mat-icon>add</mat-icon>
-    </button>
-  </div>
-  <div class="viewPag">
-    <button mat-button (click)="vizualizar()">
-      <mat-icon *ngIf="verLista">view_list</mat-icon>
-      <mat-icon *ngIf="verGrade">view_module</mat-icon>
-    </button>
-  </div>
+    <div class="search">
+        <mat-form-field appearance="standard">
+            <mat-label>Pesquisar serviço</mat-label>
+            <input matInput />
+        </mat-form-field>
+    </div>
+    <div class="option">
+        <mat-form-field appearance="standard">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+                <mat-option value="one">Todas</mat-option>
+                <mat-option value="two">Cabelo</mat-option>
+                <mat-option value="three">Barba</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="btnAdd">
+        <button mat-button (click)="openDialog()">
+            Adicionar <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div class="viewPag">
+        <button mat-button (click)="vizualizar()">
+            <mat-icon *ngIf="verLista">view_list</mat-icon>
+            <mat-icon *ngIf="verGrade">view_module</mat-icon>
+        </button>
+    </div>
 </div>
 
 <!-- Tabela de serviços -->
