@@ -13,26 +13,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
-
-
-
 @NgModule({
-  declarations: [
-    ExibicaoProdutosComponent
-  ],
-  imports: [
-    CommonModule,
-    ExibicaoProdutosRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule
-  ],
-  exports: [ExibicaoProdutosComponent]
+    declarations: [ExibicaoProdutosComponent],
+    imports: [
+        CommonModule,
+        ExibicaoProdutosRoutingModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule
+    ],
+    exports: [ExibicaoProdutosComponent]
 })
 export class ExibicaoProdutosModule {}

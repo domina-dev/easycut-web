@@ -18,20 +18,19 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
     ];
     dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
 
-  verLista: boolean = true;
-  verGrade: boolean = false;
+    verLista: boolean = true;
+    verGrade: boolean = false;
 
-  visualizar(){
-    this.verLista = !this.verLista
-    this.verGrade = !this.verGrade
-  }
+    visualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
+    }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
-
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
 }
 
 export interface ListaProdutos {
