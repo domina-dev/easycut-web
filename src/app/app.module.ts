@@ -1,8 +1,10 @@
 import { HttpClientModule } from "@angular/common/http";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
+
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 import { VexModule } from "../@vex/vex.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -23,15 +25,11 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule, MAT_DATE_LOCALE } from "@angular/material/core";
 import { ConstrucaoModalComponent } from "./modais/construcao-modal/construcao-modal.component";
-import { MatDialogModule } from "@angular/material/dialog";
 import { CadastrarEditarServicoComponent } from "src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ConstrucaoModalComponent,
-    CadastrarEditarServicoComponent,
-  ],
+  declarations: [AppComponent, ConstrucaoModalComponent,CadastrarEditarServicoComponent,],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,14 +53,14 @@ import { CadastrarEditarServicoComponent } from "src/app/modais/servico/cadastra
     FormsModule,
     ReactiveFormsModule,
 
-    // Vex
-    VexModule,
-    CustomLayoutModule,
-  ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: "en-GB" },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-  ],
-  bootstrap: [AppComponent],
+        // Vex
+        VexModule,
+        CustomLayoutModule,
+    ],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
