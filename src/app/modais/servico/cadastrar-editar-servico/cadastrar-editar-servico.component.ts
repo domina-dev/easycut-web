@@ -17,7 +17,4 @@ export class CadastrarEditarServicoComponent {
       valor: ["", Validators.required],
     });
   }
-  // ngOnInit(): void {
-  //   throw new Error("Method not implemented.");
-  // }
 }
