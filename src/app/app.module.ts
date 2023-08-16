@@ -25,9 +25,10 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginModalComponent } from './modais/primeiro-login/login-modal/login-modal.component';
 
 @NgModule({
-    declarations: [AppComponent, ConstrucaoModalComponent],
+    declarations: [AppComponent, ConstrucaoModalComponent, LoginModalComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

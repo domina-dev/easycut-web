@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginModalComponent } from 'src/app/modais/primeiro-login/login-modal/login-modal.component';
 const AGENDAMENTOS = 'Meus Agendamentos';
 const RESERVAS = 'Minhas Reservas';
 
@@ -13,4 +15,11 @@ export class AgendamentosComponent {
     trocaLegenda($event) {
         this.legenda = $event.index == 0 ? AGENDAMENTOS : RESERVAS;
     }
+
+    constructor(public dialog: MatDialog){
+    }
+
+    openDialog() {
+        const modal = this.dialog.open(LoginModalComponent);
+      }
 }
