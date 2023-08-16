@@ -32,9 +32,9 @@ table {
 }
 
 th {
-  font-size: 14.5px !important;
-  font-weight: 700 !important;
-  color: black !important;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: black;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -42,12 +42,12 @@ th {
 }
 
 .mat-form-field-underline {
-  opacity: 0 !important;
-  padding: 0 !important;
+  opacity: 0;
+  padding: 0;
 }
 
 .mat-form-field {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .mat-form-field-wrapper {
@@ -55,19 +55,19 @@ th {
 }
 
 td.mat-cell:last-of-type {
-  padding-right: 0 !important;
-  display: flex !important;
+  padding-right: 0;
+  display: flex;
 }
 
 .mat-select-arrow-wrapper {
-  height: 1px !important;
+  height: 1px;
   flex-shrink: 0;
-  display: flex !important;
+  display: flex;
   align-items: center;
 }
 
 .mat-form-field-infix {
-  border: 0 !important;
+  border: 0;
 }
 
 .select-option {

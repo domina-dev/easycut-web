@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
+import { Reservas } from "src/app/model/reservas";
 
 @Component({
   selector: "vex-exibicao-reservas",
@@ -15,24 +16,18 @@ export class ExibicaoReservasComponent {
     "dtRetirada",
     "status",
   ];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Reservas>(CLIENT_DATA);
 }
 
-export interface PeriodicElement {
-  produto: string;
-  cliente: string;
-  quantidade: string;
-  valor: string;
-  dtRetirada: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const CLIENT_DATA: Reservas[] = [
   {
     cliente: "João Batista Soares",
     produto: "Pomada modeladora Blackpool",
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'entregue'
   },
   {
     cliente: "João Batista Soares",
@@ -40,6 +35,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'aguar-retirada'
   },
   {
     cliente: "João Batista Soares",
@@ -47,6 +43,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'aguar-retirada'
   },
   {
     cliente: "João Batista Soares",
@@ -54,6 +51,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'cancelado'
   },
   {
     cliente: "João Batista Soares",
@@ -61,6 +59,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'entregue'
   },
   {
     cliente: "João Batista Soares",
@@ -68,6 +67,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'aguar-retirada'
   },
   {
     cliente: "João Batista Soares",
@@ -75,5 +75,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
     quantidade: "2 unidades",
     valor: "R$ 50,00",
     dtRetirada: "30/06/2021",
+    status: 'cancelado'
   },
 ];
