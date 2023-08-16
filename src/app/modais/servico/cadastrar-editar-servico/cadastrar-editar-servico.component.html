@@ -15,7 +15,7 @@
             <div [formGroup]="form" class="example-form">
                 <!-- Nome do servico -->
                 <div class="nome">
-                    <mat-form-field class="example-full-width" id="inpN">
+                    <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                         <mat-label class="nome">Nome do serviço</mat-label>
                         <input formControlName="nome" matInput required />
                         <mat-error
@@ -28,7 +28,7 @@
 
                 <!-- Tempo estimado -->
                 <div class="tempoEs">
-                    <mat-form-field id="tempoEst">
+                    <mat-form-field id="tempoEst" appearance="standard">
                         <mat-label>Tempo Estimado</mat-label>
                         <input
                             formControlName="tempo"
@@ -47,7 +47,7 @@
                     </mat-form-field>
 
                     <!-- Categoria -->
-                    <mat-form-field id="categoria">
+                    <mat-form-field id="categoria" appearance="standard">
                         <mat-label>Categoria</mat-label>
                         <mat-select formControlName="categoria" required>
                             <mat-option value="option">Cabelo</mat-option>
@@ -63,7 +63,7 @@
 
                 <!-- area de descricao -->
                 <div class="descricao">
-                    <mat-form-field class="example-full-width" id="descricao">
+                    <mat-form-field class="example-full-width" id="descricao" appearance="standard">
                         <mat-label>Descrição do serviço</mat-label>
                         <input
                             matInput
@@ -83,7 +83,7 @@
 
                 <!-- valor e valor promocional -->
                 <div class="valor">
-                    <mat-form-field floatLabel="always" class="intval">
+                    <mat-form-field floatLabel="always" class="intval" appearance="standard">
                         <mat-label>Valor</mat-label>
                         <span matTextPrefix>R$&nbsp;</span>
                         <input
@@ -102,7 +102,7 @@
                     </mat-form-field>
 
                     <!-- valor promocional -->
-                    <mat-form-field floatLabel="always" class="intval">
+                    <mat-form-field floatLabel="always" class="intval" appearance="standard">
                         <mat-label>Valor Promocional</mat-label>
                         <span matTextPrefix>R$&nbsp;</span>
                         <input
