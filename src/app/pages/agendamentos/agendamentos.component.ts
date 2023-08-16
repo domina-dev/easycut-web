@@ -16,13 +16,13 @@ export class AgendamentosComponent {
         this.legenda = $event.index == 0 ? AGENDAMENTOS : RESERVAS;
     }
 
-    constructor(public dialog: MatDialog){}
+    constructor(public dialog: MatDialog) {}
 
-    ngOnInit(): void{
+    ngOnInit(): void {
         this.openModalCadastro();
     }
 
     openModalCadastro() {
         const modal = this.dialog.open(LoginModalComponent);
-      }
+    }
 }
