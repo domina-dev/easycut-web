@@ -5,4 +5,4 @@ export interface Reservas {
     valor: string;
     dtRetirada: string;
     status: string;
-  }
+}

@@ -1,0 +1,36 @@
+<!-- Filtro da tabela -->
+<span>Selecione o período desejado</span>
+<div class="alinhar-filtro">
+    <div class="espacamento-filtro">
+        <mat-form-field appearance="standard">
+            <mat-label>Data Inicial</mat-label>
+            <input matInput [matDatepicker]="startDate" />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="startDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="espacamento-filtro">
+        <mat-form-field appearance="standard">
+            <mat-label>Data Final</mat-label>
+            <input matInput [matDatepicker]="endDate" />
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="endDate"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle value="bold">7 dias</mat-button-toggle>
+            <mat-button-toggle value="italic">15 dias</mat-button-toggle>
+            <mat-button-toggle value="underline">30 dias</mat-button-toggle>
+            <mat-button-toggle value="bold">3 meses</mat-button-toggle>
+            <mat-button-toggle value="italic">6 meses</mat-button-toggle>
+            <mat-button-toggle value="underline">12 meses</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>
