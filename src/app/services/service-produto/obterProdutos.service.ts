@@ -5,7 +5,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ObterProdutosService {
+  private readonly API = '';
 
-constructor(private HttpClient: HttpClient) { }
+  constructor(private HttpClient: HttpClient) { }
 
+  list() {
+    return this.HttpClient.get(this.API);
+  }
 }
