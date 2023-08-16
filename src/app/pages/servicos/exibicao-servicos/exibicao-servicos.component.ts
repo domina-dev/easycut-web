@@ -18,6 +18,7 @@ export class ExibicaoServicosComponent implements AfterViewInit {
         'preco',
         'icone'
     ];
+
     dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
 
     verLista: boolean = true;
