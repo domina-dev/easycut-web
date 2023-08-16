@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MatButtonModule } from '@angular/material/button';
         FormsModule,
         ReactiveFormsModule,
         MatInputModule,
+        MatMenuModule,
         MatButtonModule
     ],
     exports: [ExibicaoProdutosComponent]
