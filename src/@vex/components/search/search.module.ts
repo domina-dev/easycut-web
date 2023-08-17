@@ -6,17 +6,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
-  declarations: [SearchComponent],
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule,
-    ReactiveFormsModule
-  ],
-  exports: [SearchComponent]
+    declarations: [SearchComponent],
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule,
+        ReactiveFormsModule
+    ],
+    exports: [SearchComponent]
 })
-export class SearchModule {
-}
+export class SearchModule {}

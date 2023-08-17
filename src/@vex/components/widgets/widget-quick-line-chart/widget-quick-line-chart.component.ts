@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ApexOptions } from '../../chart/chart.component';
 import { defaultChartOptions } from '../../../utils/default-chart-options';
 import { Icon } from '@visurel/iconify-angular';
@@ -8,36 +8,31 @@ import icShare from '@iconify/icons-ic/twotone-share';
 import { scaleInOutAnimation } from '../../../animations/scale-in-out.animation';
 
 @Component({
-  selector: 'vex-widget-quick-line-chart',
-  templateUrl: './widget-quick-line-chart.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [scaleInOutAnimation]
+    selector: 'vex-widget-quick-line-chart',
+    templateUrl: './widget-quick-line-chart.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [scaleInOutAnimation]
 })
-export class WidgetQuickLineChartComponent implements OnInit {
+export class WidgetQuickLineChartComponent {
+    @Input() icon: Icon;
+    @Input() value: string;
+    @Input() label: string;
+    @Input() iconClass: string;
+    @Input() options: ApexOptions = defaultChartOptions({
+        chart: {
+            type: 'area',
+            height: 100
+        }
+    });
+    @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
 
-  @Input() icon: Icon;
-  @Input() value: string;
-  @Input() label: string;
-  @Input() iconClass: string;
-  @Input() options: ApexOptions = defaultChartOptions({
-    chart: {
-      type: 'area',
-      height: 100
+    showButton: boolean;
+
+    icShare = icShare;
+
+    constructor(private _bottomSheet: MatBottomSheet) {}
+
+    openSheet() {
+        this._bottomSheet.open(ShareBottomSheetComponent);
     }
-  });
-  @Input() series: ApexNonAxisChartSeries | ApexAxisChartSeries;
-
-  showButton: boolean;
-
-  icShare = icShare;
-
-  constructor(private _bottomSheet: MatBottomSheet) { }
-
-  ngOnInit() {
-  }
-
-  openSheet() {
-    this._bottomSheet.open(ShareBottomSheetComponent);
-  }
 }
-

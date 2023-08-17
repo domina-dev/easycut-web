@@ -1,23 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-const AGENDAMENTOS = "Meus Agendamentos"
-const RESERVAS = "Minhas Reservas"
+import { Component } from '@angular/core';
+const AGENDAMENTOS = 'Meus Agendamentos';
+const RESERVAS = 'Minhas Reservas';
 
 @Component({
-  selector: 'agendamentos',
-  templateUrl: './agendamentos.component.html',
-  styleUrls: ['./agendamentos.component.scss']
+    selector: 'vex-agendamentos',
+    templateUrl: './agendamentos.component.html',
+    styleUrls: ['./agendamentos.component.scss']
 })
-export class AgendamentosComponent implements OnInit {
-  legenda: string = AGENDAMENTOS
+export class AgendamentosComponent {
+    legenda: string = AGENDAMENTOS;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  trocaLegenda($event) {
-    this.legenda = $event.index == 0 ? AGENDAMENTOS : RESERVAS
-
-  }
-
+    trocaLegenda($event) {
+        this.legenda = $event.index == 0 ? AGENDAMENTOS : RESERVAS;
+    }
 }

@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "ondlinesolutions",
+        "projectKey": "OndlineSolutions_easycut-web"
+    }
+}

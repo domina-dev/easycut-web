@@ -9,18 +9,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { ShareBottomSheetModule } from '../../share-bottom-sheet/share-bottom-sheet.module';
 
 @NgModule({
-  declarations: [WidgetQuickValueStartComponent],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MatIconModule,
-    IconModule,
-    MatTooltipModule,
-    MatButtonModule,
-    ShareBottomSheetModule
-  ],
-  exports: [WidgetQuickValueStartComponent]
+    declarations: [WidgetQuickValueStartComponent],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatIconModule,
+        IconModule,
+        MatTooltipModule,
+        MatButtonModule,
+        ShareBottomSheetModule
+    ],
+    exports: [WidgetQuickValueStartComponent]
 })
-export class WidgetQuickValueStartModule {
-}
-
+export class WidgetQuickValueStartModule {}

@@ -1,0 +1,44 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*", "highlight.directive.ts"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json", "e2e/tsconfig.json"],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "vex",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "vex",
+                        "style": "kebab-case"
+                    }
+                ],
+                "@angular-eslint/no-host-metadata-property": [
+                    "error",
+                    { "allowStatic": true }
+                ]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        }
+    ]
+}

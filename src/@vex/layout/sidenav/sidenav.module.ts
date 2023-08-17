@@ -9,20 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [SidenavComponent],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    SidenavItemModule,
-    ScrollbarModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatIconModule,
-    IconModule
-  ],
-  exports: [SidenavComponent]
+    declarations: [SidenavComponent],
+    imports: [
+        CommonModule,
+        MatToolbarModule,
+        SidenavItemModule,
+        ScrollbarModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatIconModule,
+        IconModule
+    ],
+    exports: [SidenavComponent]
 })
-export class SidenavModule {
-}
+export class SidenavModule {}

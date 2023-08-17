@@ -7,21 +7,17 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { IconModule } from '@visurel/iconify-angular';
 
-
 @NgModule({
-  declarations: [ShareBottomSheetComponent],
-  imports: [
-    CommonModule,
-    MatBottomSheetModule,
-    MatListModule,
-    RouterModule,
-    MatIconModule,
-    IconModule
-  ],
-  exports: [
-    MatBottomSheetModule
-  ],
-  entryComponents: [ShareBottomSheetComponent]
+    declarations: [ShareBottomSheetComponent],
+    imports: [
+        CommonModule,
+        MatBottomSheetModule,
+        MatListModule,
+        RouterModule,
+        MatIconModule,
+        IconModule
+    ],
+    exports: [MatBottomSheetModule],
+    entryComponents: [ShareBottomSheetComponent]
 })
-export class ShareBottomSheetModule {
-}
+export class ShareBottomSheetModule {}

@@ -13,23 +13,20 @@ import { IconModule } from '@visurel/iconify-angular';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
-
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
-  imports: [
-    CommonModule,
-    LoginRoutingModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatSnackBarModule,
-    IconModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatCheckboxModule
-  ]
+    declarations: [LoginComponent],
+    imports: [
+        CommonModule,
+        LoginRoutingModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatIconModule,
+        MatSnackBarModule,
+        IconModule,
+        MatTooltipModule,
+        MatButtonModule,
+        MatCheckboxModule
+    ]
 })
-export class LoginModule { }
+export class LoginModule {}
