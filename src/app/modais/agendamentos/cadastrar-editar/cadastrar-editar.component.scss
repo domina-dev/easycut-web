@@ -1,101 +1,94 @@
-mat-dialog-content{
+mat-dialog-content {
   min-width: 100%;
   background: rgb(255, 255, 255);
   min-height: 100%;
 }
 
-mat-dialog-actions{
-padding-top: 20px;
+.header {
+  font-weight: bold;
+  margin-left: 30px;
 }
 
-.modal{
+.corpoform {
   display: flex;
   flex-direction: column;
+  min-width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.cpf{
-  margin-left: 30px;
+.client mat-form-field {
+  width: 100%;
 }
 
-.sexo{
-  margin-left: 30px;
-}
-.data{
-padding-left: 30px;
-}
-.header{
-  font-weight: bold;
+.service mat-form-field {
+  width: 100%;
 }
 
-.corpoform{
-  display: block;
-max-width: 1100px;
-width: 100%;
-margin: 0 auto;
-padding-top: 10px;
-padding-left: 10px;
-padding-right: 10px;
-}
-.dados{
- display: flex;
-
+.responsavel mat-form-field {
+  width: 100%;
 }
 
-.pcd{
+.tempvalor {
   display: flex;
-  justify-content: left;
-  margin-top: -15px;
-}
-
-.contato, .endereço{
-  display: flex;
+  flex-direction: row;
   justify-content: left;
 }
-.telefone{
-  margin-left: 30px;
+
+.tempvalor .temp {
+  width: 55%;
 }
 
-.numero{
-  margin-left: 30px;
-  padding-top: 22px;
+.tempvalor .valor {
+  width: 40%;
 }
 
-.card{
-display: flex;
-margin-top: 12px ;
-border-radius: 8px;
-background: rgb(255, 255, 255);
-
+.temp {
+  margin-right: 5%;
 }
-.numerofield{
+
+.temp mat-form-field {
+  width: 100%;
+}
+
+.valor mat-form-field {
+  width: 100%;
+}
+
+.datestatus {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.datestatus .date {
+  width: 55%;
+}
+
+.datestatus .status {
+  width: 40%;
+}
+
+.date{
+  margin-right: 5%;
+}
+
+.date mat-form-field {
+  width: 100%;
+}
+
+.status mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  padding-top: 10px;
+}
+
+.cadastrar {
   width: 100px;
+  background-color: #c7c7c746;
+  color: black;
 }
-.mesdia{
-  color: rgba(0, 0, 0, 0.582);
-}
-
-.enviarform{
-  display: flex;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.cadastrar{
-  width: 200px;
-  background-color: #fff;
-}
-
-.esp1
-{
-  display: flex;
-  justify-content: space-between;
-  padding-top: 90px;
-padding-left: 10px;
-padding-right: 10px;
-}
-a{
-  color: rgba(0, 0, 0, 0.582);
-  font-size: 13px;
-}
-
