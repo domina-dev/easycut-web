@@ -5,7 +5,7 @@
         </header>
     </div>
 
-    <form>
+    <form [formGroup]="clientForm">
         <div class="corpoform">
             <div class="client">
                 <mat-form-field appearance="standard">
@@ -47,11 +47,10 @@
                 <div class="date">
                     <mat-form-field appearance="standard">
                         <mat-label>Data do Atendimento</mat-label>
-                        <input matInput [matDatepicker]="picker" />
+                        <input matInput [matDatepicker]="picker" formControlName="data"/>
                         <mat-datepicker-toggle
                             matSuffix
                             [for]="picker"
-                            formControlName="data"
                         ></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -59,7 +58,7 @@
                 <div class="status">
                     <mat-form-field appearance="standard">
                         <mat-label>Status</mat-label>
-                        <mat-select formControlName="sexo">
+                        <mat-select formControlName="status">
                             <mat-option value="masculino">Pendente</mat-option>
                             <mat-option value="feminino">Aceito</mat-option>
                             <mat-option value="feminino">Recusado</mat-option>

@@ -30,13 +30,15 @@ import {MatCardModule} from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CadastrarEditarServicoComponent } from './modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         ConstrucaoModalComponent,
-        CadastrarEditarServicoComponent
+        CadastrarEditarServicoComponent,
+        CadastrarEditarComponent,
     ],
     imports: [
         BrowserModule,
