@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginModalComponent } from 'src/app/modais/primeiro-login/login-modal/login-modal.component';
 const AGENDAMENTOS = 'Meus Agendamentos';
@@ -9,7 +9,7 @@ const RESERVAS = 'Minhas Reservas';
     templateUrl: './agendamentos.component.html',
     styleUrls: ['./agendamentos.component.scss']
 })
-export class AgendamentosComponent {
+export class AgendamentosComponent implements OnInit {
     legenda: string = AGENDAMENTOS;
 
     trocaLegenda($event) {

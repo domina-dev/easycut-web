@@ -29,7 +29,7 @@ export class RecuperacaoSenhaComponent {
         if (!this.form.get('email').value) {
             this.snackbar.open(
                 'Não podemos recuperar sua senha, sem seu e-mail.',
-                'DIGITE UM E-MAIL VALIDO',
+                'FECHAR',
                 {
                     duration: 10000
                 }
