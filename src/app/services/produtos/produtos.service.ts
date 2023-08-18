@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ObterProdutosService {
+export class ProdutosService {
   private readonly API = '';
 
   constructor(private HttpClient: HttpClient) { }
 
-  list() {
+  obterProdutos() {
     return this.HttpClient.get(this.API);
   }
 }
