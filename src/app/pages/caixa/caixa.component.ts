@@ -4,7 +4,7 @@ const FLUXODECAIXA = 'Fluxo de Caixa';
 const HISTORICO = 'Histórico de vendas';
 
 @Component({
-    selector: 'caixa',
+    selector: 'vex-caixa',
     templateUrl: './caixa.component.html',
     styleUrls: ['./caixa.component.scss']
 })
