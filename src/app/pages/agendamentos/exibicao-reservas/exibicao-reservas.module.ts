@@ -5,6 +5,7 @@ import { ExibicaoReservasRoutingModule } from './exibicao-reservas-routing.modul
 import { ExibicaoReservasComponent } from './exibicao-reservas.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [ExibicaoReservasComponent],
@@ -12,7 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
         CommonModule,
         ExibicaoReservasRoutingModule,
         MatTableModule,
-        MatSelectModule
+        MatSelectModule,
+        MatPaginatorModule
     ],
     exports: [ExibicaoReservasComponent]
 })
