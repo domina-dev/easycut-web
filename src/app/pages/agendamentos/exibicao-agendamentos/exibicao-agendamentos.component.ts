@@ -41,7 +41,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        height: '95%',
+        height: '90%',
         width: '600px',
       });
 
