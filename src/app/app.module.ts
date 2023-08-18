@@ -64,10 +64,7 @@ import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastra
         VexModule,
         CustomLayoutModule
     ],
-    providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-        { provide: LocationStrategy, useClass: HashLocationStrategy }
-    ],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
