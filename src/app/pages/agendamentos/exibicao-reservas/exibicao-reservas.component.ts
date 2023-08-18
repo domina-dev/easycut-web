@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Reservas } from 'src/app/model/reservas';
 
@@ -7,7 +8,7 @@ import { Reservas } from 'src/app/model/reservas';
     templateUrl: './exibicao-reservas.component.html',
     styleUrls: ['./exibicao-reservas.component.scss']
 })
-export class ExibicaoReservasComponent {
+export class ExibicaoReservasComponent implements AfterViewInit {
     displayedColumns: string[] = [
         'cliente',
         'produto',
@@ -17,6 +18,13 @@ export class ExibicaoReservasComponent {
         'status'
     ];
     dataSource = new MatTableDataSource<Reservas>(CLIENT_DATA);
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    currentStatus: any;
+
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
 }
 
 const CLIENT_DATA: Reservas[] = [
