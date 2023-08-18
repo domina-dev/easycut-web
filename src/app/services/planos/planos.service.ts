@@ -11,7 +11,6 @@ export class PlanosService {
   // // declarar a dependencia HttpClient no app module
 
   // list() {
-
   //   return this.HttpClient.get/*<obterPlanos[]>*/(this.API)
   //     .pipe(
   //       take(1)
