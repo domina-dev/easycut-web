@@ -23,6 +23,6 @@ export class AgendamentosComponent {
     }
 
     openModalCadastro() {
-        const modal = this.dialog.open(LoginModalComponent);
+        this.dialog.open(LoginModalComponent);
     }
 }

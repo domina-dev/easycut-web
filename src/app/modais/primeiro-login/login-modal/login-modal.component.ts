@@ -5,6 +5,4 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './login-modal.component.html',
     styleUrls: ['./login-modal.component.scss']
 })
-export class LoginModalComponent implements OnInit {
-    ngOnInit(): void {}
-}
+export class LoginModalComponent {}
