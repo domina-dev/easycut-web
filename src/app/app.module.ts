@@ -21,11 +21,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { LoginModalComponent } from './modais/primeiro-login/login-modal/login-modal.component';
 import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
-
-import { MatDialogModule} from "@angular/material/dialog";
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CadastrarEditarServicoComponent } from './modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
@@ -37,6 +37,7 @@ import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar
         AppComponent,
         ConstrucaoModalComponent,
         CadastrarEditarServicoComponent,
+        LoginModalComponent,
         CadastrarEditarComponent,
     ],
     imports: [
