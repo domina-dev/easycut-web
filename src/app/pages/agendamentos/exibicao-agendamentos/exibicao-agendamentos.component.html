@@ -42,7 +42,7 @@
         <button mat-button>Limpar <mat-icon>backspace</mat-icon></button>
     </div>
     <div class="btnAdd">
-        <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
+        <button mat-button (click)="openDialog()">Adicionar  <mat-icon>add</mat-icon></button>
     </div>
 </div>
 
@@ -91,7 +91,7 @@
             </td>
         </ng-container>
 
-        <ng-container matColumnDef="botao" stickyEnd>
+        <ng-container matColumnDef="status" stickyEnd>
             <th mat-header-cell *matHeaderCellDef></th>
             <td class="tdsticky" mat-cell *matCellDef="let agendamentos">
                 <mat-form-field
