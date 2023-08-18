@@ -4,9 +4,72 @@ table {
     width: 100%;
 }
 
+.aguar-retirada {
+    background: rgb(252, 225, 104);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
+}
+
+.entregue {
+    background: rgb(74, 197, 74);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
+}
+
+.cancelado {
+    background: rgb(255, 103, 103);
+    width: 55%;
+    display: flex;
+    margin-left: 10px;
+    margin-top: 3px;
+    border-radius: 8px;
+}
+
 th {
-    font-weight: bolder;
-    font-size: 16px;
-    line-height: 18.75px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: black;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+}
+
+.mat-form-field-underline {
+    opacity: 0;
+    padding: 0;
+}
+
+.mat-form-field {
+    padding: 0;
+}
+
+.mat-form-field-wrapper {
+    padding: 0;
+}
+
+td.mat-cell:last-of-type {
+    padding-right: 0;
+    display: flex;
+}
+
+.mat-select-arrow-wrapper {
+    height: 1px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.mat-form-field-infix {
+    border: 0;
+}
+
+.select-option {
+    width: 112px;
 }
