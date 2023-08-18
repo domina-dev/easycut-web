@@ -1,9 +1,8 @@
 <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-  <h2 class="title m-0">Construção</h2>
+    <h2 class="title m-0">Novo Agendamento</h2>
 </div>
 
 <mat-dialog-content class="modal">
-
     <form [formGroup]="clientForm">
         <div class="corpoform">
             <div class="client">
@@ -46,7 +45,11 @@
                 <div class="date">
                     <mat-form-field appearance="standard">
                         <mat-label>Data do Atendimento</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="data"/>
+                        <input
+                            matInput
+                            [matDatepicker]="picker"
+                            formControlName="data"
+                        />
                         <mat-datepicker-toggle
                             matSuffix
                             [for]="picker"
@@ -67,24 +70,22 @@
             </div>
         </div>
     </form>
-
-
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button
-      mat-stroked-button
-      color="primary"
-      class="cadastrar"
-      mat-dialog-close
-  >
-      Cancelar
-  </button>
-  <button
-      mat-stroked-button
-      color="primary"
-      class="cadastrar"
-      (click)="addUser()"
-  >
-      Adicionar
-  </button>
+    <button
+        mat-stroked-button
+        color="primary"
+        class="cadastrar"
+        mat-dialog-close
+    >
+        Cancelar
+    </button>
+    <button
+        mat-stroked-button
+        color="primary"
+        class="cadastrar"
+        (click)="addUser()"
+    >
+        Adicionar
+    </button>
 </mat-dialog-actions>
