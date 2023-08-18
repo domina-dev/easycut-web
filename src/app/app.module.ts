@@ -69,10 +69,7 @@ import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar
         VexModule,
         CustomLayoutModule
     ],
-    providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-        { provide: LocationStrategy, useClass: HashLocationStrategy }
-    ],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
