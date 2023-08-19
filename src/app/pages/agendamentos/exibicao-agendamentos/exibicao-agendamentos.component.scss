@@ -7,10 +7,7 @@
     .search {
         width: 100%;
         max-width: 35rem;
-        mat-form-field {
-            border-bottom: 1px solid rgb(38, 43, 57);
-            width: 100%;
-        }
+        padding-right: 0.5rem;
     }
     .option,
     .dateStart,
@@ -35,7 +32,6 @@
         color: rgb(38, 43, 57);
     }
 }
-
 // Tabela de Agendamentos
 table {
     width: 100%;
@@ -74,35 +70,28 @@ th {
     color: black !important;
 }
 
-.mat-form-field-appearance-fill .mat-form-field-flex {
-    background-color: transparent;
+.tdsticky .mat-form-field-underline {
+    opacity: 0;
 }
 
-.mat-form-field-underline {
-    opacity: 0 !important;
-    padding: 0 !important;
-}
+// .mat-form-field {
+//     padding: 0 !important;
+// }
 
-.mat-form-field {
-    padding: 0 !important;
-}
-
-.mat-form-field-wrapper {
+.tdsticky .mat-form-field-wrapper {
     padding: 0;
 }
 
-td.mat-cell:last-of-type {
-    padding-right: 0 !important;
-    display: flex !important;
-}
+// td.mat-cell:last-of-type {
+//     padding-right: 0 !important;
+//     display: flex !important;
+// }
 
-.mat-select-arrow-wrapper {
+.tdsticky .mat-select-arrow-wrapper {
     height: 1px !important;
-    flex-shrink: 0;
-    display: flex !important;
-    align-items: center;
 }
 
-.mat-form-field-infix {
+.tdsticky .mat-form-field-infix {
     border: 0 !important;
 }
+
