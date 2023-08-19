@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginModalComponent } from 'src/app/modais/primeiro-login/login-modal/login-modal.component';
+import { PlanosComponent } from 'src/app/modais/planos/planos-modal/planos.component';
 const AGENDAMENTOS = 'Meus Agendamentos';
 const RESERVAS = 'Minhas Reservas';
 
@@ -23,6 +24,12 @@ export class AgendamentosComponent implements OnInit {
     }
 
     openModalCadastro() {
-        this.dialog.open(LoginModalComponent);
+
+        const dialogRef = this.dialog.open(LoginModalComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+          this.dialog.open(PlanosComponent);
+        });
+
     }
 }
