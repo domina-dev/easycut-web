@@ -7,23 +7,16 @@
     #inpN {
         width: 100%;
     }
-    .tempoEs {
+    .quantEstoque {
         display: flex;
         justify-content: space-between;
-        #tempoEst {
+        #quantEstoque {
             float: left;
             height: 2px;
             width: 55%;
         }
         #categoria {
             width: 40%;
-        }
-        .minutos {
-            display: inline;
-            float: right;
-            height: 3px;
-            font-size: 10pt;
-            margin-top: -19px;
         }
     }
     #descricao {

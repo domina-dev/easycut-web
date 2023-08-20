@@ -30,6 +30,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CadastrarEditarServicoComponent } from './modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/cadastrar-produto.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar
         CadastrarEditarServicoComponent,
         LoginModalComponent,
         CadastrarEditarComponent,
+        CadastrarProdutoComponent,
     ],
     imports: [
         BrowserModule,
@@ -69,7 +71,7 @@ import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar
         VexModule,
         CustomLayoutModule
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
