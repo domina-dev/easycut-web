@@ -17,7 +17,7 @@
         </mat-form-field>
     </div>
     <div class="btnAdd">
-        <button mat-button>Adicionar <mat-icon>add</mat-icon></button>
+        <button mat-button (click)="openAdd()">Adicionar <mat-icon>add</mat-icon></button>
     </div>
     <div class="viewPag">
         <button mat-button (click)="visualizar()">
@@ -111,10 +111,10 @@
 <mat-menu #menu="matMenu">
     <button mat-icon-button aria-label="ícone Button" class="iconmenu">
         <mat-icon class="icon-color">visibility_off</mat-icon>
-        <span>Exibir Produto</span>
+        <span class="descricaoicon">Exibir Produto</span>
     </button>
     <button mat-icon-button aria-label="ícone Button" class="iconmenu">
         <mat-icon class="icon-color">confirmation_number</mat-icon>
-        <span>Tornar Promocional</span>
+        <span class="descricaoicon">Tornar Promocional</span>
     </button>
 </mat-menu>
