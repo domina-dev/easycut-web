@@ -124,7 +124,8 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "vex:build"
+                        "browserTarget": "vex:build",
+            "disableHostCheck": true
                     },
                     "configurations": {
                         "production": {
