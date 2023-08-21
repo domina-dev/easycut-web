@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -30,6 +32,12 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
+    }
+
+    constructor(public dialog: MatDialog) {}
+
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
     }
 }
 
