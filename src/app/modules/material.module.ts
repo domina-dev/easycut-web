@@ -18,6 +18,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MATERIAL_MODULE = [
     MatDialogModule,
@@ -35,7 +39,11 @@ const MATERIAL_MODULE = [
     MatTooltipModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatButtonToggleModule,
+    MatMenuModule
 ];
 
 @NgModule({
