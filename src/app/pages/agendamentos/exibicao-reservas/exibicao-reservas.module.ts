@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ExibicaoReservasRoutingModule } from './exibicao-reservas-routing.module';
 import { ExibicaoReservasComponent } from './exibicao-reservas.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { LibVexModule } from 'src/app/modules/lib-vex.module';
 
 @NgModule({
     declarations: [ExibicaoReservasComponent],
     imports: [
         CommonModule,
         ExibicaoReservasRoutingModule,
-        MatTableModule,
-        MatSelectModule,
-        MatPaginatorModule
+        MaterialModule,
+        LibVexModule
     ],
     exports: [ExibicaoReservasComponent]
 })
