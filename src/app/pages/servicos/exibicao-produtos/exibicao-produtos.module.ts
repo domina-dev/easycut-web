@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ExibicaoProdutosRoutingModule } from './exibicao-produtos-routing.module';
 import { ExibicaoProdutosComponent } from './exibicao-produtos.component';
 
-// Paginação e Tabela
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
-// Ícone
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -21,6 +22,11 @@ import { MatButtonModule } from '@angular/material/button';
         MatTableModule,
         MatPaginatorModule,
         MatIconModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
         MatMenuModule,
         MatButtonModule
     ],

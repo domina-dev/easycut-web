@@ -1,0 +1,45 @@
+.form {
+    padding: 5px;
+    #title {
+        margin-bottom: 15px;
+        font-size: 30pt;
+    }
+    #inpN {
+        width: 100%;
+    }
+    .quantEstoque {
+        display: flex;
+        justify-content: space-between;
+        #quantEstoque {
+            float: left;
+            height: 2px;
+            width: 55%;
+        }
+        #categoria {
+            width: 40%;
+        }
+    }
+    #descricao {
+        width: 100%;
+    }
+    .toggle{
+        margin-bottom: 1rem;
+    }
+    .valor {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 5%;
+        .intval {
+            margin-right: 5%;
+            max-width: 50%;
+        }
+        #valor {
+            float: right;
+            width: 86%;
+        }
+        #valorP {
+            float: right;
+            width: 86%;
+        }
+    }
+}

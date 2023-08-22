@@ -1,62 +1,69 @@
 // STYLE DO FILTRO
-
 .filter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+
+  .pesquisa-opcao {
     display: flex;
-    align-items: center;
+    width: 55%;
     justify-content: space-between;
-    margin-bottom: 2rem;
-
-    .search {
-        width: 100%;
-        max-width: 35rem;
-
-        mat-form-field {
-            border-bottom: 1px solid rgb(38, 43, 57);
-            width: 100%;
-        }
+    flex-wrap: wrap;
+    .inptPes {
+        width: 300px;
     }
-
     .option {
-        mat-form-field {
-            width: 57%;
-        }
+      justify-content: right;
     }
+  }
 
-    .btnAdd {
-        button {
-            background-color: rgb(35, 207, 92);
-            color: rgb(240, 255, 255);
-        }
+  .botao-view {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 25%;
+    max-width: 40%;
+    flex-wrap: wrap;
+    .btnAdd{
+      background-color: rgb(35, 207, 92);
+      color: rgb(240, 255, 255);
     }
+    .viewPag{
+      margin-left: 5%;
+    }
+  }
 
-    mat-label {
-        color: rgb(38, 43, 57);
-    }
+  .label{
+    color: rgb(38, 43, 57);
+  }
 }
 
 // STYLE DA TABELA
 
 // Deixando a largura da tabela em 100%
 .mat-elevation-z8 {
-    table {
-        width: 100%;
-    }
+  table {
+    width: 100%;
+  }
 }
 
 // Espaçamento entro os ícones da tabela
 .icon-spacing {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .icon-color {
-    color: #daaa00;
+  color: #DAAA00;
 }
 
 // Alterando cor e tamanho do título da coluna
 .color-title {
-    color: #000000;
-    font-weight: bold;
-    font-size: 1rem;
+  color: #000000;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 // Ícones dropdown
@@ -72,4 +79,7 @@
 .layout-menu {
     text-align: center;
     justify-content: center;
+}
+.descricaoicon{
+  margin-left: 0.5rem;
 }

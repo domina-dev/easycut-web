@@ -1,5 +1,4 @@
 import { HttpClientModule } from '@angular/common/http';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,23 +16,33 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
-
+import { LoginModalComponent } from './modais/primeiro-login/login-modal/login-modal.component';
+import { PlanosComponent } from './modais/planos/planos-modal/planos.component';
 import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
-import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CadastrarEditarServicoComponent } from './modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/cadastrar-produto.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         ConstrucaoModalComponent,
-        CadastrarEditarServicoComponent
+        CadastrarEditarServicoComponent,
+        LoginModalComponent,
+        PlanosComponent,
+        CadastrarEditarComponent,
+        CadastrarProdutoComponent,
     ],
     imports: [
         BrowserModule,
@@ -57,14 +66,14 @@ import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastra
         MatSlideToggleModule,
         FormsModule,
         ReactiveFormsModule,
+        MatCheckboxModule,
+        MatCardModule,
 
         // Vex
         VexModule,
         CustomLayoutModule
     ],
-    providers: [
-        { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
-    ],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
