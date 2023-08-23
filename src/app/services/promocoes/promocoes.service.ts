@@ -17,5 +17,4 @@ export class PromocoesService {
   obterPromocoes(): Observable<any> {
     return this.http.get<any>(`${this.api}/promocoes`, { observe: "response" });
   }
-
 }
