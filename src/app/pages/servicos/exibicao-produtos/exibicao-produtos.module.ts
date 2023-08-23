@@ -3,32 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ExibicaoProdutosRoutingModule } from './exibicao-produtos-routing.module';
 import { ExibicaoProdutosComponent } from './exibicao-produtos.component';
-
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { LibVexModule } from 'src/app/modules/lib-vex.module';
 
 @NgModule({
     declarations: [ExibicaoProdutosComponent],
     imports: [
         CommonModule,
         ExibicaoProdutosRoutingModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatIconModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatMenuModule,
-        MatButtonModule
+        MaterialModule,
+        LibVexModule
     ],
     exports: [ExibicaoProdutosComponent]
 })
