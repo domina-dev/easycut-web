@@ -72,20 +72,7 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button
-        mat-stroked-button
-        color="primary"
-        class="cadastrar"
-        mat-dialog-close
-    >
-        Cancelar
-    </button>
-    <button
-        mat-stroked-button
-        color="primary"
-        class="cadastrar"
-        (click)="addUser()"
-    >
-        Adicionar
-    </button>
+    <button mat-button color="primary" class="cancelar" mat-dialog-close>Cancelar</button>
+    <button mat-button [mat-dialog-close]="true" mat-raised-button color="primary" 
+    class="cadastrar" (click)="addUser()">Adicionar</button>
 </mat-dialog-actions>
