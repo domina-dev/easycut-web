@@ -11,6 +11,7 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 
 import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from './../../model/usuario';
+import { EstabelecimentoService } from '../../services/estabelecimento/estabelecimento.service'; //importação criada
 
 @Component({
     selector: 'vex-login',
@@ -34,7 +35,9 @@ export class LoginComponent {
         private router: Router,
         private fb: FormBuilder,
         private cd: ChangeDetectorRef,
-        private snackbar: MatSnackBar
+        private snackbar: MatSnackBar,
+        private estabelecimentoService: EstabelecimentoService //service do estabelecimento
+
     ) {
         this.form = this.fb.group({
             email: ['', Validators.required],
@@ -66,6 +69,23 @@ export class LoginComponent {
         }
     }
     ngOnInit(): void {
-        
+
     }
+
+    recuperarSenha() {
+        this.estabelecimentoService.recuperarSenha().subscribe(
+            response => {
+                this.snackbar.open(response.message, 'Fechar', {
+                    duration: 5000
+                });
+            },
+            error => {
+                this.snackbar.open(error.message, 'Fechar', {
+                    duration: 5000,
+                    panelClass: ['error-snackbar']
+                });
+            }
+        );
+    }
+
 }
