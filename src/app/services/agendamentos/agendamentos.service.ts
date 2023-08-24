@@ -12,7 +12,7 @@ export class AgendamentosService {
 
   constructor(private http: HttpClient) {}
 
-  obterAgendamentos(): Observable<Agendamentos[]> {
+  getAgendamentos(): Observable<Agendamentos[]> {
     return this.http.get<Agendamentos[]>(this.API);
   }
 }
