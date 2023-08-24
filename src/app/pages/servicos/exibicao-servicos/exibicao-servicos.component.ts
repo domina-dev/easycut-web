@@ -19,7 +19,7 @@ export class ExibicaoServicosComponent implements AfterViewInit {
         'icone'
     ];
 
-    dataSource = new MatTableDataSource<ListaServicos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<Servico>(ELEMENT_DATA);
 
     verLista: boolean = true;
     verGrade: boolean = false;
@@ -43,7 +43,7 @@ export class ExibicaoServicosComponent implements AfterViewInit {
     }
 }
 
-export interface ListaServicos {
+export interface Servico {
     aplicacao: string;
     servico: string;
     descricao: string;
@@ -52,7 +52,7 @@ export interface ListaServicos {
     icone: string;
 }
 
-const ELEMENT_DATA: ListaServicos[] = [
+const ELEMENT_DATA: Servico[] = [
     {
         aplicacao: 'Cabelo',
         servico: 'Corte simples',
