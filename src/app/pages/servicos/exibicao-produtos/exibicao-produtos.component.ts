@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-prod
     templateUrl: './exibicao-produtos.component.html',
     styleUrls: ['./exibicao-produtos.component.scss']
 })
-export class ExibicaoProdutosComponent implements AfterViewInit {
+export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = [
         'aplicacao',
         'nomeProduto',
@@ -18,7 +18,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<Produtos>();
 
     verLista: boolean = true;
     verGrade: boolean = false;
@@ -34,14 +34,28 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
         this.dataSource.paginator = this.paginator;
     }
 
-    constructor(public dialog: MatDialog) {}
+    constructor(public dialog: MatDialog, private produtosService: ProdutosService) {}
+    
+    ngOnInit(): void {
+        throw new Error('Method not implemented.');
+    }
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
     }
+
+    listaProdutos: Produtos[] = []
+
+    listaProdutos() {
+        this.produtosService.obterProdutos().subscribe(response=>{
+            this.listaProdutos = response as Produtos[];
+            },(error)=>{console.log(error)});
+            this.dataSource = new MatTableDataSource<Produtos>(this.listaProdutos);
+    }
+    
 }
 
-export interface ListaProdutos {
+export interface Produtos {
     aplicacao: string;
     nomeProduto: string;
     descricao: string;
@@ -50,61 +64,4 @@ export interface ListaProdutos {
     icone: string;
 }
 
-const ELEMENT_DATA: ListaProdutos[] = [
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    }
-];
+const ELEMENT_DATA: Produtos[] = [];
