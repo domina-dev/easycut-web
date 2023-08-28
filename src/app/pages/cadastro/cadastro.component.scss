@@ -1,0 +1,31 @@
+.card{
+    
+    min-width: 40%;
+    overflow: auto;
+}
+
+.card::-webkit-scrollbar {
+    width: 0px; /* Esconde a barra de rolagem no navegador Chrome e Safari */
+
+}
+
+.body-2{
+    padding: 15px 30px;
+}
+
+.password-fields{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.establishment-information{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.password-fields .mat-icon-button .mat-icon {
+    display: flex !important;
+    font-size: 24px;
+}
