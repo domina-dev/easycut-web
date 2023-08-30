@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Agendamentos } from 'src/app/pages/agendamentos/exibicao-agendamentos/exibicao-agendamentos.component';
+import { Agendamento } from 'src/app/model/agendamento';
 
 @Component({
   selector: 'vex-cadastrar-editar',
@@ -11,7 +11,7 @@ import { Agendamentos } from 'src/app/pages/agendamentos/exibicao-agendamentos/e
 export class CadastrarEditarComponent {
   public clientForm: FormGroup;
 
-  public userData?: Agendamentos;
+  public userData?: Agendamento;
 
   constructor(
     private readonly fb: FormBuilder,
