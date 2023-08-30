@@ -18,7 +18,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<Produto>(ELEMENT_DATA);
 
     verLista: boolean = true;
     verGrade: boolean = false;
@@ -41,7 +41,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
     }
 }
 
-export interface ListaProdutos {
+export interface Produto {
     aplicacao: string;
     nomeProduto: string;
     descricao: string;
@@ -50,7 +50,7 @@ export interface ListaProdutos {
     icone: string;
 }
 
-const ELEMENT_DATA: ListaProdutos[] = [
+const ELEMENT_DATA: Produto[] = [
     {
         aplicacao: 'Cabelo',
         nomeProduto: 'Pomada Modeladora Blacpool',
