@@ -65,7 +65,4 @@ export class LoginComponent {
             this.cd.markForCheck();
         }
     }
-    ngOnInit(): void {
-
-    }
 }
