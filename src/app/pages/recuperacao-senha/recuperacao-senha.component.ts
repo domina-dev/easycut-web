@@ -10,7 +10,7 @@ import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
     templateUrl: './recuperacao-senha.component.html',
     styleUrls: ['./recuperacao-senha.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeInUp400ms]
+    animations: [fadeInUp400ms],
 })
 export class RecuperacaoSenhaComponent {
     form: FormGroup;

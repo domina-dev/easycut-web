@@ -1,7 +1,6 @@
 mat-dialog-content {
   min-width: 100%;
   background: rgb(255, 255, 255);
-  min-height: 100%;
 }
 
 .header {
@@ -15,8 +14,8 @@ mat-dialog-content {
   min-width: 100%;
   margin: 0 auto;
   padding-top: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .client mat-form-field {
@@ -88,7 +87,9 @@ mat-dialog-actions {
 }
 
 .cadastrar {
-  width: 100px;
-  background-color: #c7c7c746;
+  color: white;
+}
+
+.cancelar {
   color: black;
 }

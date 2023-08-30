@@ -1,13 +1,9 @@
-import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { Agendamento } from '../../../model/agendamento'
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -26,7 +22,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
     'responsavel',
     'status'
   ];
-  dataSource = new MatTableDataSource<Agendamentos>(CLIENTE_DATA);
+  dataSource = new MatTableDataSource<Agendamento>(CLIENTE_DATA);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   currentStatus: any;
@@ -41,8 +37,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        height: '95%',
-        width: '600px',
+        height: '90%',
+        width: '500px',
       });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -51,16 +47,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
   }
 }
 
-export interface Agendamentos {
-  cliente: string;
-  servico: string;
-  tempo: string;
-  valor: string;
-  data: string;
-  responsavel: string;
-  status: string;
-}
-const CLIENTE_DATA: Agendamentos[] = [
+const CLIENTE_DATA: Agendamento[] = [
   {
     cliente: 'João Pedro Fiuza',
     servico: 'Cabelo + barba',

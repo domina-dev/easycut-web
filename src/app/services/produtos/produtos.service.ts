@@ -10,9 +10,9 @@ import { Produto } from 'src/app/pages/servicos/exibicao-produtos/exibicao-produ
 export class ProdutosService {
   private readonly API = environment.url_vitor ;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   obterProdutosDoBackEnd():Observable<Produto[]> {
-    return this.httpClient.get<Produto[]>(`${this.API}/produtos`);
+    return this.http.get<Produto[]>(`${this.API}/produtos`);
   }
 }

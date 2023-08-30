@@ -41,6 +41,10 @@ const routes: Routes = [
             import('./pages/recuperacao-senha/recuperacao-senha.module').then(
                 (m) => m.RecuperacaoSenhaModule
             )
+    },
+    {
+        path: 'cadastro',
+        loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule)
     }
 ];
 
@@ -55,4 +59,4 @@ const routes: Routes = [
     ],
     exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

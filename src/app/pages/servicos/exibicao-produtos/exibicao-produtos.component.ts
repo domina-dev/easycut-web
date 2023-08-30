@@ -1,7 +1,9 @@
 import { ProdutosService } from './../../../services/produtos/produtos.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -19,13 +21,13 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     ];
 
     listaProdutos: Produto[] = []
-
     verLista: boolean = true;
     verGrade: boolean = false;
     dataSource = new MatTableDataSource<Produto>();
 
-
-    constructor(private produtosService: ProdutosService) {
+    constructor(
+      private produtosService: ProdutosService,
+      public dialog: MatDialog) {
     }
 
     ngOnInit():void {
@@ -41,7 +43,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
       })
     }
 
-
     visualizar() {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
@@ -51,6 +52,10 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
+    }
+
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
     }
 }
 
