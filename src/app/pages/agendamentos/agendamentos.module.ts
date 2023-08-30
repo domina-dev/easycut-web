@@ -3,22 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { AgendamentosRoutingModule } from './agendamentos-routing.module';
 import { AgendamentosComponent } from './agendamentos.component';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ExibicaoAgendamentosModule } from './exibicao-agendamentos/exibicao-agendamentos.module';
 import { ExibicaoReservasModule } from './exibicao-reservas/exibicao-reservas.module';
-import { PageLayoutModule } from '../../../@vex/components/page-layout/page-layout.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { LibVexModule } from 'src/app/modules/lib-vex.module';
 
 @NgModule({
     declarations: [AgendamentosComponent],
     imports: [
         CommonModule,
         AgendamentosRoutingModule,
-        MatTabsModule,
         ExibicaoAgendamentosModule,
         ExibicaoReservasModule,
-        PageLayoutModule,
-        FlexLayoutModule
+        MaterialModule,
+        LibVexModule
     ]
 })
 export class AgendamentosModule {}

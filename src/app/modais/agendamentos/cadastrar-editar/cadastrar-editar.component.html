@@ -1,0 +1,78 @@
+<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+    <h2 class="title m-0">Novo Agendamento</h2>
+</div>
+
+<mat-dialog-content class="modal">
+    <form [formGroup]="clientForm">
+        <div class="corpoform">
+            <div class="client">
+                <mat-form-field appearance="standard">
+                    <mat-label>Cliente</mat-label>
+                    <input matInput formControlName="cliente" />
+                </mat-form-field>
+            </div>
+            <div class="service">
+                <mat-form-field appearance="standard">
+                    <mat-label>Serviço</mat-label>
+                    <input matInput formControlName="servico" />
+                </mat-form-field>
+            </div>
+
+            <div class="tempvalor">
+                <div class="temp">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Tempo Estimado</mat-label>
+                        <span matSuffix>minutos &nbsp;</span>
+                        <input matInput formControlName="tempo" />
+                    </mat-form-field>
+                </div>
+                <div class="valor">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Valor do Serviço</mat-label>
+                        <input matInput formControlName="valor" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="responsavel">
+                <mat-form-field appearance="standard">
+                    <mat-label>Responsável</mat-label>
+                    <input matInput formControlName="responsavel" />
+                </mat-form-field>
+            </div>
+
+            <div class="datestatus">
+                <div class="date">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Data do Atendimento</mat-label>
+                        <input
+                            matInput
+                            [matDatepicker]="picker"
+                            formControlName="data"
+                        />
+                        <mat-datepicker-toggle
+                            matSuffix
+                            [for]="picker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="status">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option value="masculino">Pendente</mat-option>
+                            <mat-option value="feminino">Aceito</mat-option>
+                            <mat-option value="feminino">Recusado</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button color="primary" class="cancelar" mat-dialog-close>Cancelar</button>
+    <button [mat-dialog-close]="true" mat-raised-button color="primary" 
+    class="cadastrar" (click)="addUser()">Adicionar</button>
+</mat-dialog-actions>

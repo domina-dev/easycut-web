@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -16,16 +18,30 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<Produto>(ELEMENT_DATA);
+
+    verLista: boolean = true;
+    verGrade: boolean = false;
+
+    visualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
+    }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
+
+    constructor(public dialog: MatDialog) {}
+
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
+    }
 }
 
-export interface ListaProdutos {
+export interface Produto {
     aplicacao: string;
     nomeProduto: string;
     descricao: string;
@@ -34,7 +50,7 @@ export interface ListaProdutos {
     icone: string;
 }
 
-const ELEMENT_DATA: ListaProdutos[] = [
+const ELEMENT_DATA: Produto[] = [
     {
         aplicacao: 'Cabelo',
         nomeProduto: 'Pomada Modeladora Blacpool',

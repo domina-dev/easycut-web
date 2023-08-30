@@ -1,10 +1,6 @@
-<div class="screen-table">
-    <table
-        aria-label="tabela-reservas"
-        mat-table
-        id="table"
-        [dataSource]="dataSource"
-    >
+<div class="mat-elevation-z8">
+    <table aria-label="tabela-reservas" mat-table [dataSource]="dataSource">
+        
         <ng-container matColumnDef="cliente">
             <th mat-header-cell *matHeaderCellDef>Cliente</th>
             <td mat-cell *matCellDef="let element">{{ element.cliente }}</td>
@@ -30,18 +26,29 @@
             <td mat-cell *matCellDef="let element">{{ element.dtRetirada }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="status">
+        <ng-container matColumnDef="status" stickyEnd>
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let element">
-                <select id="">
-                    <option value="aguar.retirada">Aguar.retirada</option>
-                    <option value="cancelado">Cancelado</option>
-                    <option value="entregue">Entregue</option>
-                </select>
+            <td class="tdsticky" mat-cell *matCellDef="let element">
+                <mat-form-field [class]="element.status === 'aguar-retirada'
+                            ? 'aguar-retirada'
+                            : element.status === 'entregue'
+                            ? 'entregue'
+                            : 'cancelado'">
+                    <mat-select class="select-option" [(value)]="element.status">
+                        <mat-option value="aguar-retirada">Aguar.retirada</mat-option>
+                        <mat-option value="entregue">Entregue</mat-option>
+                        <mat-option value="cancelado">Cancelado</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+
+    <mat-paginator [pageSizeOptions]="[6, 10, 15]" showFirstLastButtons 
+        aria-label="Selecione as páginas de Clientes">
+    </mat-paginator>
+    
 </div>
