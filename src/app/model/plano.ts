@@ -1,4 +1,4 @@
-export class Planos {
+export class Plano {
   tipo: string;
   descrição: string;
   valor: number;

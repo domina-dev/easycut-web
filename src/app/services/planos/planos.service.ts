@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Planos } from 'src/app/model/planos'
+import { Plano } from 'src/app/model/plano'
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,9 @@ export class PlanosService {
 
   private readonly API = environment.url_api;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   obterPlanos():Observable<Planos[]>{
-    return this.httpClient.get<Planos[]>(`${this.API}/planos`);
+   obterPlanos():Observable<Plano[]>{
+    return this.http.get<Plano[]>(`${this.API}/plano`);
   }
 }
