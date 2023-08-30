@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EstabelecimentoService {
-  private readonly API = '';
+  private readonly API = environment.url_api;
 
 constructor(private http: HttpClient) {}
 
-  obterEstabelecimento() {
-    return this.http.get(this.API)
+  obterEstabelecimento(): Observable<Estabelecimento[]> {
+    return this.http.get<Estabelecimento[]>(this.API)
   }
 }
 

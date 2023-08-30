@@ -56,4 +56,3 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
    
 }
-
