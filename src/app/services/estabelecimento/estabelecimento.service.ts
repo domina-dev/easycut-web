@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 export class EstabelecimentoService {
   private readonly API = environment.url_api;
 
-constructor(private httpClient: HttpClient) {}
+constructor(private http: HttpClient) {}
 
   obterEstabelecimento(): Observable<Estabelecimento[]> {
-    return this.httpClient.get<Estabelecimento[]>(this.API)
+    return this.http.get<Estabelecimento[]>(this.API)
   }
 }
 
