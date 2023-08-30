@@ -7,8 +7,9 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProdutoService {
-  private readonly API = environment.url_api;;
+  private readonly API = 'http://localhost:4200/servicos';
 
   constructor(private HttpClient: HttpClient) {}
 

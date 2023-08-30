@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
 import { Produto } from '../../../model/produto'
+import { ProdutoService } from '../../../services/produtos/produtos.service'
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -38,17 +39,16 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     constructor(public dialog: MatDialog, private produtoService: ProdutoService) {}
     
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+        this.getProdutos();
     }
     
-    listaProdutos: Produto[] = []
+    listaProduto: Produto[] = []
 
     getProdutos() {
         this.produtoService.obterProdutos().subscribe(response=>{
-            this.listaProdutos = response as Produto[];
-            },(error)=>{console.log(error)});
+            this.listaProduto = response as Produto[];},(error)=>{console.log(error)});
 
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
     }
 
     openAdd() {
