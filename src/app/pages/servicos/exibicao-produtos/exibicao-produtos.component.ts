@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
+import { Produto } from '../../../model/produto'
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -18,7 +19,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<Produtos>();
+    dataSource = new MatTableDataSource<Produto>();
 
     verLista: boolean = true;
     verGrade: boolean = false;
@@ -34,34 +35,25 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
     }
 
-    constructor(public dialog: MatDialog, private produtosService: ProdutosService) {}
+    constructor(public dialog: MatDialog, private produtoService: ProdutoService) {}
     
     ngOnInit(): void {
         throw new Error('Method not implemented.');
+    }
+    
+    listaProdutos: Produto[] = []
+
+    getProdutos() {
+        this.produtoService.obterProdutos().subscribe(response=>{
+            this.listaProdutos = response as Produto[];
+            },(error)=>{console.log(error)});
+
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
     }
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
     }
-
-    listaProdutos: Produtos[] = []
-
-    listaProdutos() {
-        this.produtosService.obterProdutos().subscribe(response=>{
-            this.listaProdutos = response as Produtos[];
-            },(error)=>{console.log(error)});
-            this.dataSource = new MatTableDataSource<Produtos>(this.listaProdutos);
-    }
-    
+   
 }
 
-export interface Produtos {
-    aplicacao: string;
-    nomeProduto: string;
-    descricao: string;
-    quantidade: string;
-    preco: string;
-    icone: string;
-}
-
-const ELEMENT_DATA: Produtos[] = [];
