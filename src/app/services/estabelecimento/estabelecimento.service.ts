@@ -12,7 +12,7 @@ export class EstabelecimentoService {
 constructor(private httpClient: HttpClient) {}
 
   obterEstabelecimento(): Observable<Estabelecimento[]> {
-    return this.http.get<Estabelecimento[]>(this.API)
+    return this.httpClient.get<Estabelecimento[]>(this.API)
   }
 }
 
