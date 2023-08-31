@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import icMail from '@iconify/icons-ic/twotone-mail';
 
 import { fadeInUp400ms } from '../../../@vex/animations/fade-in-up.animation';
+import { EstabelecimentoService } from '../../services/estabelecimento/estabelecimento.service';
 
 @Component({
     selector: 'vex-recuperacao-senha',
@@ -18,14 +19,15 @@ export class RecuperacaoSenhaComponent {
 
     constructor(
         private fb: FormBuilder,
-        private snackbar: MatSnackBar
+        private snackbar: MatSnackBar,
+        private estabelecimentoService: EstabelecimentoService
     ) {
         this.form = this.fb.group({
             email: ['', Validators.required]
         });
     }
 
-    enviar() {
+    recuperarSenha() {
         if (!this.form.get('email').value) {
             this.snackbar.open(
                 'Não podemos recuperar sua senha, sem seu e-mail.',
@@ -35,7 +37,19 @@ export class RecuperacaoSenhaComponent {
                 }
             );
         } else {
-            this.fechar();
+            this.estabelecimentoService.recuperarSenha().subscribe(
+                response => {
+                    this.snackbar.open(response.message, 'Fechar', {
+                        duration: 5000
+                    });
+                },
+                error => {
+                    this.snackbar.open(error.message, 'Fechar', {
+                        duration: 5000,
+                        panelClass: ['error-snackbar']
+                    });
+                }
+            );
         }
     }
     fechar() {

@@ -1,22 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Plano } from 'src/app/model/plano'
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanosService {
 
-  // private readonly API = '';
+  private readonly API = environment.url_api;
 
-  // constructor(private HttpClient: HttpClient) { }
-  // // declarar a dependencia HttpClient no app module
+  constructor(private http: HttpClient) { }
 
-  // list() {
-  //   return this.HttpClient.get/*<obterPlanos[]>*/(this.API)
-  //     .pipe(
-  //       take(1)
-  //     )
-  //   // obterPlanos deve estar linkado a estrutura TS do onde vai aparecer a lista de planos com suas devidas
-  //   // referencias, e no nosso caso as devidas observables
-  // }
+   obterPlanos():Observable<Plano[]>{
+    return this.http.get<Plano[]>(`${this.API}/plano`);
+  }
 }
-
