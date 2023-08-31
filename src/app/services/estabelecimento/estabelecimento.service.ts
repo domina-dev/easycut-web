@@ -14,6 +14,10 @@ constructor(private http: HttpClient) {}
   obterEstabelecimento(): Observable<Estabelecimento[]> {
     return this.http.get<Estabelecimento[]>(this.API)
   }
+  recuperarSenha(): Observable<any> {
+    // Implemente a lógica para recuperar a senha
+    return this.http.get(this.API);
+  }
 }
 
 
