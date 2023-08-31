@@ -8,7 +8,7 @@ import { Produto } from 'src/app/pages/servicos/exibicao-produtos/exibicao-produ
   providedIn: 'root'
 })
 export class ProdutosService {
-  private readonly API = environment.url_vitor ;
+  private readonly API = environment.url_api ;
 
   constructor(private http: HttpClient) { }
 
