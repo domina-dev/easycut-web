@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
-import { Agendamento } from '../../../model/agendamento'
+import { Agendamento } from '../../../model/agendamento';
+import { AgendamentoService } from '../../../services/agendamentos/agendamentos.service';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -27,14 +28,27 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   currentStatus: any;
 
-  listaAgendamentos: [] = []
-
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-
-  constructor(public dialog: MatDialog) {
+  
+  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
+  
+  ngOnInit(): void {
+    this.getAgendamentos()
   }
+  
+  listaAgendamentos: [] = []
+
+  getAgendamentos() {
+    this.produtoService.obterProdutos().subscribe(response => {
+      this.listaProduto = response as Agendamento[];
+      this.dataSource = new MatTableDataSource<Agendamento>(this.listaProduto);
+      this.dataSource.paginator = this.paginator;
+  },
+      (error) => { console.log(error) });
+}
 
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
