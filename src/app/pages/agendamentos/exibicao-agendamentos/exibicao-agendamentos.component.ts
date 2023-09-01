@@ -122,3 +122,5 @@ const CLIENTE_DATA: Agendamento[] = [
   }
 
 ];
+
+export { Agendamento };

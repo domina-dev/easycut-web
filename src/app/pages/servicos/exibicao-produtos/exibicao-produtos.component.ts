@@ -45,10 +45,12 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     listaProduto: Produto[] = []
 
     getProdutos() {
-        this.produtoService.obterProdutos().subscribe(response=>{
-            this.listaProduto = response as Produto[];},(error)=>{console.log(error)});
+            this.produtoService.obterProdutos().subscribe(response=>{
+            this.listaProduto = response as Produto[];
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);},
+            (error)=>{console.log(error)});
 
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+    
     }
 
     openAdd() {
@@ -56,3 +58,4 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
    
 }
+

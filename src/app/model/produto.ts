@@ -1,8 +1,12 @@
 export interface Produto {
-    aplicacao: string;
-    nomeProduto: string;
-    descricao: string;
-    quantidade: string;
-    preco: string;
-    icone: string;
+    id: number,
+    codigo: string,
+    nome: string,
+    descricao: string,
+    qtdEstoque: number,
+    valor: string,
+    valorPromocional: string,
+    ativo: boolean,
+    promocional: boolean,
+    estabelecimentoID: 4
 }
