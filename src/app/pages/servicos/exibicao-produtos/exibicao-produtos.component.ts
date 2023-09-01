@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ProdutosService } from './../../../services/produtos/produtos.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
 
@@ -9,7 +10,7 @@ import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-prod
     templateUrl: './exibicao-produtos.component.html',
     styleUrls: ['./exibicao-produtos.component.scss']
 })
-export class ExibicaoProdutosComponent implements AfterViewInit {
+export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = [
         'aplicacao',
         'nomeProduto',
@@ -18,10 +19,29 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<Produto>(ELEMENT_DATA);
 
+    listaProdutos: Produto[] = []
     verLista: boolean = true;
     verGrade: boolean = false;
+    dataSource = new MatTableDataSource<Produto>();
+
+    constructor(
+      private produtosService: ProdutosService,
+      public dialog: MatDialog) {
+    }
+
+    ngOnInit():void {
+      this.listaProdutosNaTela()
+    }
+    listaProdutosNaTela(){
+      this.produtosService.obterProdutosDoBackEnd().subscribe(response=>{
+        this.listaProdutos = response
+        this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
+        this.dataSource.paginator = this.paginator;
+      },(error)=>{
+        console.log("deu erro!!!")
+      })
+    }
 
     visualizar() {
         this.verLista = !this.verLista;
@@ -33,8 +53,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit {
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
-
-    constructor(public dialog: MatDialog) {}
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
@@ -49,62 +67,3 @@ export interface Produto {
     preco: string;
     icone: string;
 }
-
-const ELEMENT_DATA: Produto[] = [
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    }
-];
