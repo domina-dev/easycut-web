@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Servico } from 'src/app/pages/servicos/exibicao-servicos/exibicao-servicos.component';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ServicoService {
   private readonly API = environment.url_api;
@@ -17,4 +18,3 @@ export class ServicoService {
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
   }
 }
-
