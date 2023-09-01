@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Reservas } from 'src/app/model/reservas';
+import { Reserva } from 'src/app/model/reservas';
 
 @Component({
     selector: 'vex-exibicao-reservas',
@@ -17,7 +17,7 @@ export class ExibicaoReservasComponent implements AfterViewInit {
         'dtRetirada',
         'status'
     ];
-    dataSource = new MatTableDataSource<Reservas>(CLIENT_DATA);
+    dataSource = new MatTableDataSource<Reserva>(CLIENT_DATA);
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     currentStatus: any;
@@ -27,7 +27,7 @@ export class ExibicaoReservasComponent implements AfterViewInit {
     }
 }
 
-const CLIENT_DATA: Reservas[] = [
+const CLIENT_DATA: Reserva[] = [
     {
         cliente: 'João Batista Soares',
         produto: 'Pomada modeladora Blackpool',
