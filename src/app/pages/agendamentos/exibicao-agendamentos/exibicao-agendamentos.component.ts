@@ -28,10 +28,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   currentStatus: any;
 
-  
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
+  listaAgendamentos: Agendamento[] = []
   
   constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
   
@@ -39,12 +36,14 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     this.getAgendamentos()
   }
   
-  listaAgendamentos: [] = []
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
   getAgendamentos() {
-    this.produtoService.obterProdutos().subscribe(response => {
-      this.listaProduto = response as Agendamento[];
-      this.dataSource = new MatTableDataSource<Agendamento>(this.listaProduto);
+    this.agendamentoService.getAgendamentos().subscribe(response => {
+      this.listaAgendamento = response;
+      this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamento);
       this.dataSource.paginator = this.paginator;
   },
       (error) => { console.log(error) });

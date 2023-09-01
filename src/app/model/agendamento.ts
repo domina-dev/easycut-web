@@ -1,9 +1,15 @@
+import { Cliente } from './cliente';
+
 export interface Agendamento {
-    cliente: string;
-    servico: string;
-    tempo: string;
-    valor: string;
-    data: string;
-    responsavel: string;
-    status: string;
-  }
+  id: number;
+  cdAgendamento: string;
+  nomeServico: string;
+  tempoEstimado: number;
+  valor: number;
+  dtAtendimento: string;
+  responsavel: string;
+  status: string;
+  clienteID: number;
+  estabelecimentoID: number;
+  cliente: Cliente;
+}

@@ -13,6 +13,6 @@ export class AgendamentoService {
   constructor(private http: HttpClient) {}
 
   getAgendamentos(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/agendamento/filtro?estabelecimento_ID=4`);
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/todos?estabelecimento_ID=4`);
   }
 }
