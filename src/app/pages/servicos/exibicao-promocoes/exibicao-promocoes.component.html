@@ -1,1 +1,13 @@
-<p>exibicao-promocoes works!</p>
+<mat-radio-group
+    aria-label="Select an option"(change)="trocaVisualizacao($event.value)">
+    <div class="espaço">
+        <mat-radio-button class="espaço" value="servicos" checked>Serviços</mat-radio-button>
+        <mat-radio-button class="espaço" value="produtos">Produtos</mat-radio-button>
+    </div>
+</mat-radio-group>
+<div class="p-1" *ngIf="exibirProdutos">
+    <vex-exibicao-produtos></vex-exibicao-produtos>
+</div>
+<div class="p-2" *ngIf="exibirServicos">
+    <vex-exibicao-servicos></vex-exibicao-servicos>
+</div>
