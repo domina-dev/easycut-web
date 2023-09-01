@@ -48,9 +48,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-  }
 }
 
 
