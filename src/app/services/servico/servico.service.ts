@@ -1,18 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Servico } from 'src/app/pages/servicos/exibicao-servicos/exibicao-servicos.component';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Servico } from '../../model/servicos';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class ServicoService {
-    private API = environment.url_api;
+  private readonly API = environment.url_api;
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { 
 
-    obterServico(): Observable<Servico[]> {
-        return this.http.get<Servico[]>(this.API);
-    }
+  }
+  obterServicos():Observable<Servico[]>{
+    return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
+  }
 }
