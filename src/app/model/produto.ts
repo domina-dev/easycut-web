@@ -8,5 +8,5 @@ export interface Produto {
     valorPromocional: string,
     ativo: boolean,
     promocional: boolean,
-    estabelecimentoID: 4
+    estabelecimentoID: number
 }

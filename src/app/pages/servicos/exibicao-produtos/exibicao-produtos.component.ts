@@ -13,7 +13,6 @@ import { ProdutoService } from '../../../services/produtos/produtos.service'
 })
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = [
-        'aplicacao',
         'nomeProduto',
         'descricao',
         'quantidade',
@@ -36,26 +35,26 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
     }
 
-    constructor(public dialog: MatDialog, private produtoService: ProdutoService) {}
-    
+    constructor(public dialog: MatDialog, private produtoService: ProdutoService) { }
+
     ngOnInit(): void {
         this.getProdutos();
     }
-    
+
     listaProduto: Produto[] = []
 
     getProdutos() {
-            this.produtoService.obterProdutos().subscribe(response=>{
+        this.produtoService.obterProdutos().subscribe(response => {
             this.listaProduto = response as Produto[];
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);},
-            (error)=>{console.log(error)});
-
-    
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+            this.dataSource.paginator = this.paginator;
+        },
+            (error) => { console.log(error) });
     }
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
     }
-   
+
 }
 
