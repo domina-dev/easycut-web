@@ -1,4 +1,4 @@
-export interface Reservas {
+export interface Reserva {
     produto: string;
     cliente: string;
     quantidade: string;
