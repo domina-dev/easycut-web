@@ -14,6 +14,6 @@ export class PlanosService {
   constructor(private http: HttpClient) { }
 
    obterPlanos():Observable<Plano[]>{
-    return this.http.get<Plano[]>(`${this.API}/plano`);
+    return this.http.get<Plano[]>(`${this.API}/planos`);
   }
 }
