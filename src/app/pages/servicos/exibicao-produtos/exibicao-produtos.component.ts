@@ -21,8 +21,10 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     ];
     dataSource = new MatTableDataSource<Produto>();
 
+    listaProdutos: Produto[] = []
     verLista: boolean = true;
     verGrade: boolean = false;
+   
 
     visualizar() {
         this.verLista = !this.verLista;
@@ -57,4 +59,3 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
 
 }
-

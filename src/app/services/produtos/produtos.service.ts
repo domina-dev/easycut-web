@@ -1,6 +1,6 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Produto } from 'src/app/model/produto';
 import { environment } from 'src/environments/environment';
 
@@ -16,4 +16,3 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.API}/produtos/todos?estabelecimento_ID=4`);
   }
 }
- 
