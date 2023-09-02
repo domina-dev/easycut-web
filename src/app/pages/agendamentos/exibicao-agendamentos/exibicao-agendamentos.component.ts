@@ -13,7 +13,7 @@ import { AgendamentoService } from '../../../services/agendamentos/agendamentos.
   encapsulation: ViewEncapsulation.None
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
-  [x: string]: any;
+
   displayedColumns: string[] = [
     'cliente',
     'servico',
@@ -42,8 +42,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
   getAgendamentos() {
     this.agendamentoService.getAgendamentos().subscribe(response => {
-      this.listaAgendamento = response;
-      this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamento);
+      this.listaAgendamentos = response;
+      this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
   },
       (error) => { console.log(error) });
