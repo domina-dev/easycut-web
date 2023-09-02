@@ -62,5 +62,3 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   }
 
 }
-
-
