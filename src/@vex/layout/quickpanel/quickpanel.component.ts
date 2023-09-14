@@ -14,6 +14,8 @@ export class QuickpanelComponent implements OnInit{
 
     listaAgendamentos: Agendamento[] = []
 
+    horaAgendamento = this.listaAgendamentos['dtAtendimento']
+
     constructor (private agendamentoService: AgendamentoService) { }
 
     ngOnInit(): void {
@@ -23,7 +25,8 @@ export class QuickpanelComponent implements OnInit{
     getAgendamentosDia() {
       this.agendamentoService.getAgendamentos().subscribe(response => {
         this.listaAgendamentos = response;
-        console.log(response)},
+        console.log(response);
+        console.log(this.horaAgendamento)},
         (error) => { console.log(error)});
     }
 }
