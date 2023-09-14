@@ -23,8 +23,7 @@ export class QuickpanelComponent implements OnInit{
     getAgendamentosDia() {
       this.agendamentoService.getAgendamentos().subscribe(response => {
         this.listaAgendamentos = response;
-        console.log(response)})
-
-
+        console.log(response)},
+        (error) => { console.log(error)});
     }
 }

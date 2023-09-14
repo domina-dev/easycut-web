@@ -43,13 +43,11 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   getAgendamentos() {
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
-      console.log(response)
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
   },
       (error) => { console.log(error)});
 }
-
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
@@ -58,7 +56,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-
     });
   }
 
