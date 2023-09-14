@@ -21,7 +21,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     'valor',
     'data',
     'responsavel',
-    'status'
+    'status',
+    'icone',
   ];
   dataSource = new MatTableDataSource<Agendamento>();
 
