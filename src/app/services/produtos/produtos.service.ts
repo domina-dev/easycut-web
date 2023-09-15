@@ -7,7 +7,7 @@ import { Produto } from 'src/app/pages/servicos/exibicao-produtos/exibicao-produ
 @Injectable({
   providedIn: 'root'
 })
-export class ProdutosService {
+export class ProdutoService {
   private readonly API = environment.url_api ;
 
   constructor(private http: HttpClient) { }
@@ -15,4 +15,14 @@ export class ProdutosService {
   obterProdutosDoBackEnd():Observable<Produto[]> {
     return this.http.get<Produto[]>(`${this.API}/produtos`);
   }
+
+  deletaProduto():Observable<Produto[]>{
+    return this.http.delete<Produto[]>(`${this.API}/produtos`);
+  }
+
+
+
+
+
+
 }

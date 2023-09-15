@@ -1,4 +1,4 @@
-import { ProdutosService } from './../../../services/produtos/produtos.service';
+import { ProdutoService } from './../../../services/produtos/produtos.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
@@ -25,33 +25,44 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     verGrade: boolean = false;
     dataSource = new MatTableDataSource<Produto>();
 
-    constructor(
-      private produtosService: ProdutosService,
-      public dialog: MatDialog) {
-    }
-
-    ngOnInit():void {
-      this.listaProdutosNaTela()
-    }
-    listaProdutosNaTela(){
-      this.produtosService.obterProdutosDoBackEnd().subscribe(response=>{
-        this.listaProdutos = response
-        this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
-        this.dataSource.paginator = this.paginator;
-      },(error)=>{
-        console.log("deu erro!!!")
-      })
-    }
-
-    visualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
+    }
+
+    ngOnInit(): void {
+        this.listaProdutosNaTela()
+    }
+
+    constructor(
+        private produtoService: ProdutoService,
+        public dialog: MatDialog) {
+    }
+
+    listaProdutosNaTela() {
+        this.produtoService.obterProdutosDoBackEnd().subscribe(response => {
+            this.listaProdutos = response
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
+            this.dataSource.paginator = this.paginator;
+        }, (error) => {
+            console.log("deu erro!!!")
+        })
+    }
+
+    deletarProduto() {
+        this.produtoService.deletaProduto().subscribe(response => {console.log("deu certo")},
+            (error) => {console.log("deu erro")}
+
+        )
+
+    }
+
+
+
+    visualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
     }
 
     openAdd() {
