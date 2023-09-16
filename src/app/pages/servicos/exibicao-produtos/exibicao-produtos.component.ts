@@ -51,7 +51,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
 
     deletarProduto() {
-        this.produtoService.deletaProduto().subscribe(response => {console.log("deu certo")},
+        this.produtoService.deletaProduto().subscribe(response => {
+            console.log("deu certo")},
             (error) => {console.log("deu erro")}
 
         )
