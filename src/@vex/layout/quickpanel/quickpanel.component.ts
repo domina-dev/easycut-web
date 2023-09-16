@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Agendamento } from 'src/app/model/agendamento';
 
+
 @Component({
     selector: 'vex-quickpanel',
     templateUrl: './quickpanel.component.html',
@@ -25,8 +26,11 @@ export class QuickpanelComponent implements OnInit{
     getAgendamentosDia() {
       this.agendamentoService.getAgendamentos().subscribe(response => {
         this.listaAgendamentos = response;
-        console.log(response);
-        console.log(this.horaAgendamento)},
+        this.horaAgendamento = this.listaAgendamentos.map((agendamento) =>
+        DateTime.fromISO(agendamento.dtAtendimento).toFormat('HH:mm')
+        );
+        console.log(this.horaAgendamento)
+      },
         (error) => { console.log(error)});
     }
 }

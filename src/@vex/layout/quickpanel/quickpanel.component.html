@@ -9,8 +9,10 @@
 <mat-nav-list>
   <h3 matSubheader>Agendamentos do dia</h3>
   <div *ngFor="let agendaHoje of listaAgendamentos">
-    <a [routerLink]="[]" mat-list-item>
+    <div *ngFor="let hora of horaAgendamento">
+      <a [routerLink]="[]" mat-list-item>
         <h4 matLine>{{ agendaHoje.cliente.nome }}</h4>
-        <p matLine>{{ agendaHoje.dtAtendimento }}</p>
-    </a>
+        <p matLine>{{ hora }}</p>
+      </a>
+    </div>
   </div>
