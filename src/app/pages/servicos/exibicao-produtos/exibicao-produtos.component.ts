@@ -19,42 +19,52 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         'preco',
         'icone'
     ];
+    
+    ngAfterViewInit() {
+        this.dataSource.paginator = this.paginator;
+    }
+    
+    ngOnInit(): void {
+        this.listarProdutos();
+    }
+
     dataSource = new MatTableDataSource<Produto>();
 
     verLista: boolean = true;
     verGrade: boolean = false;
    
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    
+    listaProduto: Produto[] = []
 
+    constructor(public dialog: MatDialog, private produtoService: ProdutoService) {}
+    
+    listarProdutos() {
+        this.produtoService.obterProdutos().subscribe(response => {
+            this.listaProduto = response;
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+            this.dataSource.paginator = this.paginator;
+        },
+        (error) => {console.log(error)});
+    }
+
+    deletarProduto() {
+        this.produtoService.deletaProduto().subscribe(response => {
+            console.log("Deletado com sucesso")
+            this.listaProduto = response;
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+            this.dataSource.paginator = this.paginator;
+      }, (error) => {console.log(error, "Falha ao deletar produto")});
+
+
+    }
+    
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
+    }
+    
     visualizar() {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
     }
-
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
-
-    constructor(public dialog: MatDialog, private produtoService: ProdutoService) { }
-
-    ngOnInit(): void {
-        this.getProdutos();
-    }
-
-    listaProduto: Produto[] = []
-
-    getProdutos() {
-        this.produtoService.obterProdutos().subscribe(response => {
-            this.listaProduto = response as Produto[];
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-        },
-            (error) => { console.log(error) });
-    }
-
-    openAdd() {
-        this.dialog.open(CadastrarProdutoComponent);
-    }
-
 }
