@@ -28,7 +28,8 @@ export class RecuperacaoSenhaComponent {
     }
 
     recuperarSenha() {
-        if (!this.form.get('email').value) {
+        const email = this.form.get('email').value;
+        if (!email) {
             this.snackbar.open(
                 'Não podemos recuperar sua senha, sem seu e-mail.',
                 'FECHAR',
@@ -37,18 +38,16 @@ export class RecuperacaoSenhaComponent {
                 }
             );
         } else {
-            this.estabelecimentoService.recuperarSenha().subscribe(
-                response => {
-                    this.snackbar.open(response.message, 'Fechar', {
-                        duration: 5000
-                    });
-                },
-                error => {
-                    this.snackbar.open(error.message, 'Fechar', {
-                        duration: 5000,
-                        panelClass: ['error-snackbar']
-                    });
-                }
+            this.estabelecimentoService.recuperacaoSenha(email).subscribe(response => {
+                this.snackbar.open(response.body.resposta, 'Fechar', {
+                    duration: 5000
+                });
+            }, (error) => {
+                this.snackbar.open(error.message, 'Fechar', {
+                    duration: 5000,
+                    panelClass: ['error-snackbar']
+                });
+            }
             );
         }
     }

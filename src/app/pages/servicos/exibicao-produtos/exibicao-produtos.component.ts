@@ -1,9 +1,10 @@
-import { ProdutoService } from './../../../services/produtos/produtos.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
+import { Produto } from '../../../model/produto'
+import { ProdutoService } from '../../../services/produtos/produtos.service'
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -12,18 +13,22 @@ import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-prod
 })
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = [
-        'aplicacao',
         'nomeProduto',
         'descricao',
         'quantidade',
         'preco',
         'icone'
     ];
+    dataSource = new MatTableDataSource<Produto>();
 
-    listaProdutos: Produto[] = []
     verLista: boolean = true;
     verGrade: boolean = false;
-    dataSource = new MatTableDataSource<Produto>();
+   
+
+    visualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
+    }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -31,51 +36,25 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.dataSource.paginator = this.paginator;
     }
 
+    constructor(public dialog: MatDialog, private produtoService: ProdutoService) { }
+
     ngOnInit(): void {
-        this.listaProdutosNaTela()
+        this.getProdutos();
     }
 
-    constructor(
-        private produtoService: ProdutoService,
-        public dialog: MatDialog) {
-    }
+    listaProduto: Produto[] = []
 
-    listaProdutosNaTela() {
-        this.produtoService.obterProdutosDoBackEnd().subscribe(response => {
-            this.listaProdutos = response
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
+    getProdutos() {
+        this.produtoService.obterProdutos().subscribe(response => {
+            this.listaProduto = response as Produto[];
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
             this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log("deu erro!!!")
-        })
-    }
-
-    deletarProduto() {
-        this.produtoService.deletaProduto().subscribe(response => {
-            console.log("deu certo")},
-            (error) => {console.log("deu erro")}
-
-        )
-
-    }
-
-
-
-    visualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
+        },
+            (error) => { console.log(error) });
     }
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
     }
-}
 
-export interface Produto {
-    aplicacao: string;
-    nomeProduto: string;
-    descricao: string;
-    quantidade: string;
-    preco: string;
-    icone: string;
 }

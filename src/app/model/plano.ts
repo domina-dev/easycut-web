@@ -3,7 +3,7 @@ export class Plano {
   nome: string;
   preco: string;
   dsPlano: string;
-  desconto: string;
+  desconto: null;
   beneficios: Beneficio[];
 }
 

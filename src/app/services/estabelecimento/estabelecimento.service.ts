@@ -9,21 +9,17 @@ import { Estabelecimento } from 'src/app/model/estabelecimento'
 export class EstabelecimentoService {
   private readonly API = environment.url_api;
 
-constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   obterEstabelecimento(): Observable<Estabelecimento[]> {
     return this.http.get<Estabelecimento[]>(this.API)
   }
-  recuperarSenha(): Observable<any> {
-    // Implemente a lógica para recuperar a senha
-    return this.http.get(this.API);
-  }
 
   recuperacaoSenha(email: string): Observable<any> {
     return this.http.get<any>(`${this.API}/estabelecimento/recuperacao`, {
-    params: { email: email }, observe: "response",
+      params: { email: email }, observe: "response",
     });
-    }
+  }
 
 }
 
