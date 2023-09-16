@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
+import { CaixaComponent } from './pages/caixa/caixa.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: CustomLayoutComponent,
+        component: CaixaComponent,
+        // component: CustomLayoutComponent,
         children: [
             {
                 path: 'agendamentos',

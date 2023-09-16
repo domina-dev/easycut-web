@@ -1,0 +1,22 @@
+.filter{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    .search{
+        width: 50%;
+        margin-right: 36px;
+        mat-form-field{
+            display: inline;
+        }
+    }
+    .option{
+        margin-right: 45px;
+    }
+    .btnAdd{
+        border-radius: 5px;
+        background: #DAAA00;
+        color: #ffffff;
+        margin-right: 36px;
+        padding: 8px 16px;
+    }
+}
