@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Plano } from "src/app/model/plano";
-import { Estabelecimento } from './../../../model/estabelecimento';
 import { EstabelecimentoService } from 'src/app/services/estabelecimento/estabelecimento.service';
 import { PlanosService } from "src/app/services/planos/planos.service";
 
@@ -14,7 +13,7 @@ export class PlanosComponent implements OnInit {
   listaPlanos: Plano[] = [];
 
   constructor(private planosService: PlanosService,
-    private estabelecimento: EstabelecimentoService) { }
+    private estabelecimentoService: EstabelecimentoService) { }
 
   ngOnInit(): void {
     this.listarPlanos();
@@ -30,10 +29,11 @@ export class PlanosComponent implements OnInit {
           console.log(error)
         });
   }
+
   contratarPlano(plano: Plano) {
-    const estabelecimento_ID = 1
+    const estabelecimento_ID = 4;
     const plano_ID = plano.id;
-    this.estabelecimento.contratar(estabelecimento_ID, plano_ID).subscribe(response => {
+    this.estabelecimentoService.contratar(estabelecimento_ID, plano_ID).subscribe(response => {
       console.log("Plano contratado com sucesso!:", response)
     },
     (error) => {
