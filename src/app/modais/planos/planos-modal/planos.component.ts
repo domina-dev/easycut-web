@@ -27,7 +27,7 @@ export class PlanosComponent implements OnInit {
         console.log(error)
       });
   }
-  contratarPlano() {
-      this.contratarPlano()
+  contratarPlano(plano: Plano) {
+      console.log("contratando o plano:",plano)
     }
 }
