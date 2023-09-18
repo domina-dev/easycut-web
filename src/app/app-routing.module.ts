@@ -6,8 +6,7 @@ import { CaixaComponent } from './pages/caixa/caixa.component';
 const routes: Routes = [
     {
         path: '',
-        component: CaixaComponent,
-        // component: CustomLayoutComponent,
+        component: CustomLayoutComponent,
         children: [
             {
                 path: 'agendamentos',
