@@ -24,6 +24,10 @@ export class PlanosComponent implements OnInit {
       });
   }
 
+  contratarPlano() {
+    throw new Error('Method not implemented.');
+    }
+
   ngOnInit(): void {
     this.listarPlanos();
   }
