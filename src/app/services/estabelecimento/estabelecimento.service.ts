@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Estabelecimento } from 'src/app/model/estabelecimento'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,6 +22,14 @@ export class EstabelecimentoService {
     });
   }
 
+  contratar(estabelecimento_ID: number, plano_ID: number): Observable<any> {
+    const body = {
+      estabelecimento_ID: estabelecimento_ID,
+      plano_ID: plano_ID
+    };
+    const url = `${this.API}/planos`;
+    return this.http.post(url, body)
+  }
 }
 
 

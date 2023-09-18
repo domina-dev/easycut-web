@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Plano } from "src/app/model/plano";
+import { Estabelecimento } from './../../../model/estabelecimento';
+import { EstabelecimentoService } from 'src/app/services/estabelecimento/estabelecimento.service';
 import { PlanosService } from "src/app/services/planos/planos.service";
 
 @Component({
@@ -11,7 +13,8 @@ export class PlanosComponent implements OnInit {
 
   listaPlanos: Plano[] = [];
 
-  constructor(private planosService: PlanosService) { }
+  constructor(private planosService: PlanosService,
+    private estabelecimento: EstabelecimentoService) { }
 
   ngOnInit(): void {
     this.listarPlanos();
@@ -19,15 +22,22 @@ export class PlanosComponent implements OnInit {
 
   listarPlanos() {
     this.planosService.obterPlanos()
-    .subscribe(response => {
-      this.listaPlanos = response;
-      console.log(this.listaPlanos);
-    },
-      (error) => {
-        console.log(error)
-      });
+      .subscribe(response => {
+        this.listaPlanos = response;
+        console.log(this.listaPlanos);
+      },
+        (error) => {
+          console.log(error)
+        });
   }
   contratarPlano(plano: Plano) {
-      console.log("contratando o plano:",plano)
-    }
+    const estabelecimento_ID = 1
+    const plano_ID = plano.id;
+    this.estabelecimento.contratar(estabelecimento_ID, plano_ID).subscribe(response => {
+      console.log("Plano contratado com sucesso!:", response)
+    },
+    (error) => {
+        console.error("Erro ao contrar o plano:", error);
+    });
+  }
 }
