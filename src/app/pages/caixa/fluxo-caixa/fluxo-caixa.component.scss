@@ -37,11 +37,11 @@ table {
 .tabela_fluxo-caixa{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 // Descriçao da venda
 .descricao{
-    margin-left: 90px;
     .total{
         h3{
             margin-bottom: 10px;
