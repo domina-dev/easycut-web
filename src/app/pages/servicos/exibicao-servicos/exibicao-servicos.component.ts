@@ -60,7 +60,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     abrirModalDeletar(servico: Servico): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
           data: {
-            titulo: `Tem certeza que deseja deletar o serviço: ${servico}`
+            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
           }
         });
     
