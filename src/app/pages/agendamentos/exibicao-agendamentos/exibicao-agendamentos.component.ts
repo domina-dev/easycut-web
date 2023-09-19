@@ -1,13 +1,10 @@
-import {
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { Agendamento } from '../../../model/agendamento';
+import { AgendamentoService } from '../../../services/agendamentos/agendamentos.service';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -15,8 +12,8 @@ import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-
   styleUrls: ['./exibicao-agendamentos.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ExibicaoAgendamentosComponent implements AfterViewInit {
-  [x: string]: any;
+export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
+
   displayedColumns: string[] = [
     'cliente',
     'servico',
@@ -26,17 +23,31 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
     'responsavel',
     'status'
   ];
-  dataSource = new MatTableDataSource<Agendamentos>(CLIENTE_DATA);
+  dataSource = new MatTableDataSource<Agendamento>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   currentStatus: any;
 
+  listaAgendamentos: Agendamento[] = []
+  
+  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
+  
+  ngOnInit(): void {
+    this.getAgendamentos()
+  }
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  constructor(public dialog: MatDialog) {
-  }
+  getAgendamentos() {
+    this.agendamentoService.getAgendamentos().subscribe(response => {
+      this.listaAgendamentos = response;
+      this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
+      this.dataSource.paginator = this.paginator;
+  },
+      (error) => { console.log(error) });
+}
 
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
@@ -46,92 +57,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      CLIENTE_DATA.push(result);
+      
     });
   }
-}
 
-export interface Agendamentos {
-  cliente: string;
-  servico: string;
-  tempo: string;
-  valor: string;
-  data: string;
-  responsavel: string;
-  status: string;
 }
-const CLIENTE_DATA: Agendamentos[] = [
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'recusado'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'aceito'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'pendente'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'aceito'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'pendente'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'aceito'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'pendente'
-  },
-  {
-    cliente: 'João Pedro Fiuza',
-    servico: 'Cabelo + barba',
-    tempo: '60 min',
-    valor: 'R$ 80,00',
-    data: '13/03/2023',
-    responsavel: 'Vito Nunes',
-    status: 'aceito'
-  }
-
-];

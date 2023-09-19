@@ -22,7 +22,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
-
+import {MatRadioModule} from '@angular/material/radio';
 const MATERIAL_MODULE = [
     MatDialogModule,
     MatPaginatorModule,
@@ -43,7 +43,8 @@ const MATERIAL_MODULE = [
     MatSlideToggleModule,
     MatCardModule,
     MatButtonToggleModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRadioModule
 ];
 
 @NgModule({

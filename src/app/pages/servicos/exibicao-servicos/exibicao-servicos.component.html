@@ -1,35 +1,37 @@
 <!-- Filtro da tabela de servicos -->
 <div class="filter">
-  <div class="pesquisa-opcao" >
-    <div class="pesq">
-      <mat-form-field class="inptPes" appearance="standard">
-        <mat-label class="label">Pesquisar serviço</mat-label>
-        <input matInput >
-      </mat-form-field>
+    <div class="pesquisa-opcao">
+        <div class="pesq">
+            <mat-form-field class="inptPes" appearance="standard">
+                <mat-label class="label">Pesquisar serviço</mat-label>
+                <input matInput />
+            </mat-form-field>
+        </div>
+        <div class="option">
+            <mat-form-field appearance="standard">
+                <mat-label class="label">Categoria</mat-label>
+                <mat-select>
+                    <mat-option value="one">Todas</mat-option>
+                    <mat-option value="two">Cabelo</mat-option>
+                    <mat-option value="three">Barba</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="option">
-      <mat-form-field appearance="standard">
-        <mat-label class="label">Categoria</mat-label>
-        <mat-select>
-          <mat-option value="one">Todas</mat-option>
-          <mat-option value="two">Cabelo</mat-option>
-          <mat-option value="three">Barba</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
 
-  <div class="botao-view">
-    <div class="btnAdd">
-      <button mat-button (click)="openDialog()">Adicionar <mat-icon>add</mat-icon></button>
+    <div class="botao-view">
+        <div class="btnAdd">
+            <button mat-button (click)="openDialog()">
+                Adicionar <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="viewPag">
+            <button mat-button (click)="vizualizar()">
+                <mat-icon *ngIf="verLista">view_list</mat-icon>
+                <mat-icon *ngIf="verGrade">view_module</mat-icon>
+            </button>
+        </div>
     </div>
-    <div class="viewPag">
-      <button mat-button (click)="vizualizar()">
-        <mat-icon *ngIf="verLista">view_list</mat-icon>
-        <mat-icon *ngIf="verGrade">view_module</mat-icon>
-      </button>
-    </div>
-  </div>
 </div>
 
 <!-- Tabela de serviços -->
@@ -38,9 +40,9 @@
         <!-- Aplicação do Serviço -->
         <ng-container matColumnDef="aplicacao">
             <th class="color-title" mat-header-cell *matHeaderCellDef>
-                Aplicação
+                Categoria
             </th>
-            <td mat-cell *matCellDef="let element">{{ element.aplicacao }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.categoria }}</td>
         </ng-container>
 
         <!-- Serviço -->
@@ -48,7 +50,7 @@
             <th class="color-title" mat-header-cell *matHeaderCellDef>
                 Nome do Serviço
             </th>
-            <td mat-cell *matCellDef="let element">{{ element.servico }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
         </ng-container>
 
         <!-- Descrição do Serviço -->
@@ -62,13 +64,13 @@
         <!-- Tempo do Serviço -->
         <ng-container matColumnDef="tempo">
             <th class="color-title" mat-header-cell *matHeaderCellDef>Tempo</th>
-            <td mat-cell *matCellDef="let element">{{ element.tempo }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.tempoEstimado }}</td>
         </ng-container>
 
         <!-- Preço do Serviço -->
         <ng-container matColumnDef="preco">
             <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
-            <td mat-cell *matCellDef="let element">{{ element.preco }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
         </ng-container>
 
         <!-- Ícone da tabela -->
