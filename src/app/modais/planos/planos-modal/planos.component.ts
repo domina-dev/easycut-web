@@ -13,6 +13,10 @@ export class PlanosComponent implements OnInit {
 
   constructor(private planosService: PlanosService) { }
 
+  ngOnInit(): void {
+    this.listarPlanos();
+  }
+
   listarPlanos() {
     this.planosService.obterPlanos()
     .subscribe(response => {
@@ -23,10 +27,4 @@ export class PlanosComponent implements OnInit {
         console.log(error)
       });
   }
-
-  ngOnInit(): void {
-    this.listarPlanos();
-  }
-
-
 }
