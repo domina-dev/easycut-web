@@ -56,7 +56,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
             this.dataSource.paginator = this.paginator;
       }, (error) => {console.log(error, "Falha ao deletar produto")});
 
-
     }
     
     openAdd() {
