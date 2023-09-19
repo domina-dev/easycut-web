@@ -45,27 +45,22 @@ export class LoginComponent {
     }
 
     login() {
-        this.estabelecimentoService.saveUsuario()
-        .subscribe(response => {
-          // this.router.navigate(['/']);
+        this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response =>
+        {
+          this.router.navigate(['/']);
           console.log(response);
         },
           (error) => {
-            this.snackbar.open(
-              'dados de login não encontrados'
-          )
+        this.snackbar.open
+        (
+            'Email ou senha incorretos, ou usuario nao cadastrado',
+            'fechar',
+            {
+                duration: 5000
+            }
+        );
             console.log(error)
           });
-
-        console.log(this.usuario);
-        // this.router.navigate(['/']);
-        // this.snackbar.open(
-        //     'Seu login foi efetuado com sucesso. Parabéns!',
-        //     'Obrigado',
-        //     {
-        //         duration: 5000
-        //     }
-        // );
     }
 
     toggleVisibility() {

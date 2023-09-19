@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Estabelecimento } from 'src/app/model/estabelecimento'
-import { Usuario } from 'src/app/model/usuario';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,12 +22,8 @@ export class EstabelecimentoService {
     });
   }
 
-  saveUsuario( ) {
-  return this.http.post<Usuario[]>(`${this.API}/login`, body:
-  {
-    "username":"teste",
-    "password": "teste"
-  })
+  saveUsuario(body: any) {
+  return this.http.post(`${this.API}/login`, body)
   }
 }
 
