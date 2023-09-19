@@ -1,0 +1,95 @@
+mat-dialog-content {
+  min-width: 100%;
+  background: rgb(255, 255, 255);
+}
+
+.header {
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.corpoform {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.client mat-form-field {
+  width: 100%;
+}
+
+.service mat-form-field {
+  width: 100%;
+}
+
+.responsavel mat-form-field {
+  width: 100%;
+}
+
+.tempvalor {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.tempvalor .temp {
+  width: 55%;
+}
+
+.tempvalor .valor {
+  width: 40%;
+}
+
+.temp {
+  margin-right: 5%;
+}
+
+.temp mat-form-field {
+  width: 100%;
+}
+
+.valor mat-form-field {
+  width: 100%;
+}
+
+.datestatus {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.datestatus .date {
+  width: 55%;
+}
+
+.datestatus .status {
+  width: 40%;
+}
+
+.date{
+  margin-right: 5%;
+}
+
+.date mat-form-field {
+  width: 100%;
+}
+
+.status mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  padding-top: 10px;
+}
+
+.cadastrar {
+  color: white;
+}
+
+.cancelar {
+  color: black;
+}

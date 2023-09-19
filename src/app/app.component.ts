@@ -17,6 +17,10 @@ import icWork from '@iconify/icons-ic/baseline-work';
 import { CommomService } from './services/commom/commom.service';
 import icCashier from '@iconify/icons-ic/attach-money';
 import icAssigment from '@iconify/icons-ic/twotone-assignment';
+import icSettings from '@iconify/icons-ic/twotone-settings';
+import icFeedback from '@iconify/icons-ic/twotone-feedback';
+import icBookmarks from '@iconify/icons-ic/twotone-bookmarks';
+
 
 @Component({
     selector: 'vex-root',
@@ -97,15 +101,15 @@ export class AppComponent {
         this.navigationService.items = [
             {
                 type: 'link',
-                label: 'Painel',
-                route: '/painel',
-                icon: icLayers
+                label: 'Agendamentos',
+                route: '/agendamentos',
+                icon: icAssigment
             },
             {
                 type: 'link',
-                label: 'Serviços',
-                route: '/servicos',
-                icon: icWork
+                label: 'Painel',
+                route: '/painel',
+                icon: icLayers
             },
             {
                 type: 'link',
@@ -115,9 +119,27 @@ export class AppComponent {
             },
             {
                 type: 'link',
-                label: 'Agendamentos',
-                route: '/agendamentos',
-                icon: icAssigment
+                label: 'Agenda',
+                route: '/agenda',
+                icon: icBookmarks
+            },
+            {
+                type: 'link',
+                label: 'Serviços',
+                route: '/servicos',
+                icon: icWork
+            },
+            {
+                type: 'link',
+                label: 'Comentários',
+                route: '/comentarios',
+                icon: icFeedback
+            },
+            {
+                type: 'link',
+                label: 'Configurações',
+                route: '/configuracoes',
+                icon: icSettings
             }
         ];
     }

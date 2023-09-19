@@ -3,22 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { ExibicaoProdutosRoutingModule } from './exibicao-produtos-routing.module';
 import { ExibicaoProdutosComponent } from './exibicao-produtos.component';
-
-// Paginação e Tabela
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-
-// Ícone
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { LibVexModule } from 'src/app/modules/lib-vex.module';
 
 @NgModule({
     declarations: [ExibicaoProdutosComponent],
     imports: [
         CommonModule,
         ExibicaoProdutosRoutingModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatIconModule
+        MaterialModule,
+        LibVexModule
     ],
     exports: [ExibicaoProdutosComponent]
 })

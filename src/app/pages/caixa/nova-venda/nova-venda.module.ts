@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { NovaVendaRoutingModule } from './nova-venda-routing.module';
 import { NovaVendaComponent } from './nova-venda.component';
+import { MaterialModule } from 'src/app/modules/material.module';
 
 @NgModule({
     declarations: [NovaVendaComponent],
-    imports: [CommonModule, NovaVendaRoutingModule],
+    imports: [CommonModule, NovaVendaRoutingModule, MaterialModule],
     exports: [NovaVendaComponent]
 })
 export class NovaVendaModule {}

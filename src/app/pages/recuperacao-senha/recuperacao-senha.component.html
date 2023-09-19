@@ -31,7 +31,7 @@
                     </mat-error>
                 </mat-form-field>
                 <button
-                    (click)="enviar()"
+                    (click)="recuperarSenha()"
                     class="recSen"
                     color="primary"
                     mat-raised-button
@@ -41,7 +41,7 @@
                 </button>
                 <div
                     class="text-secondary secondary2 text-center"
-                    [routerLink]="['/login']"
+                    [routerLink]="['/login']" id="vlogin"
                 >
                     <u>Voltar para o login</u>
                 </div>

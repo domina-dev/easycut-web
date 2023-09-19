@@ -6,9 +6,8 @@ import { CaixaComponent } from './caixa.component';
 import { NovaVendaModule } from './nova-venda/nova-venda.module';
 import { FluxoCaixaModule } from './fluxo-caixa/fluxo-caixa.module';
 import { HistoricoVendasModule } from './historico-vendas/historico-vendas.module';
-import { PageLayoutModule } from '../../../@vex/components/page-layout/page-layout.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MaterialModule } from 'src/app/modules/material.module';
+import { LibVexModule } from 'src/app/modules/lib-vex.module';
 
 @NgModule({
     declarations: [CaixaComponent],
@@ -18,9 +17,8 @@ import { MatTabsModule } from '@angular/material/tabs';
         NovaVendaModule,
         FluxoCaixaModule,
         HistoricoVendasModule,
-        PageLayoutModule,
-        FlexLayoutModule,
-        MatTabsModule
+        MaterialModule,
+        LibVexModule
     ]
 })
 export class CaixaModule {}

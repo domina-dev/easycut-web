@@ -1,4 +1,4 @@
-name: '1 - [FEAT] Varredura de Features'
+name: "1 - [FEAT] Varredura de Features"
 on:
     push:
         branches:
@@ -19,32 +19,11 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.EASY_TOKEN }}
                   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-    formatacao:
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Check out Git repository
-              uses: actions/checkout@v2
-
-            - name: Set up Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: 16
-
-            # ESLint and Prettier must be in `package.json`
-            - name: Install Node.js dependencies
-              run: npm ci
-
-            - name: Run linters
-              uses: wearerequired/lint-action@v2
-              with:
-                  prettier: true
-
     pull-request:
         permissions: write-all
         runs-on: ubuntu-latest
         if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
-        needs: [formatacao, sonar]
+        needs: [sonar]
         steps:
             - uses: actions/checkout@v3
             - name: pull-request
@@ -52,11 +31,13 @@ jobs:
               uses: docker://public.ecr.aws/y2v3z0w4/pullrequest:v1
               with:
                   github_token: ${{ secrets.PERSONAL_TOKEN }}
-                  destination_branch: 'develop'
-                  pr_title: 'Auto Merge Request into DEVELOP from ${{ github.ref_name }}'
-                  body: '**Automated pull request**'
+                  destination_branch: "develop"
+                  pr_title: "Auto Merge Request into DEVELOP from ${{ github.ref_name }}"
+                  body: "**Automated pull request**"
                   pr_label: automatic
+                  assignees: ${{ github.actor }}
                   get_diff: true
                   allow_no_diff: false
               env:
                   GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+                  

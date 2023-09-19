@@ -1,94 +1,60 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CadastrarProdutoComponent } from 'src/app/modais/produto/cadastrar-produto/cadastrar-produto.component';
+import { Produto } from '../../../model/produto'
+import { ProdutoService } from '../../../services/produtos/produtos.service'
 
 @Component({
     selector: 'vex-exibicao-produtos',
     templateUrl: './exibicao-produtos.component.html',
     styleUrls: ['./exibicao-produtos.component.scss']
 })
-export class ExibicaoProdutosComponent implements AfterViewInit {
+export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     displayedColumns: string[] = [
-        'aplicacao',
         'nomeProduto',
         'descricao',
         'quantidade',
         'preco',
         'icone'
     ];
-    dataSource = new MatTableDataSource<ListaProdutos>(ELEMENT_DATA);
+    dataSource = new MatTableDataSource<Produto>();
+
+    verLista: boolean = true;
+    verGrade: boolean = false;
+   
+
+    visualizar() {
+        this.verLista = !this.verLista;
+        this.verGrade = !this.verGrade;
+    }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngAfterViewInit() {
         this.dataSource.paginator = this.paginator;
     }
-}
 
-export interface ListaProdutos {
-    aplicacao: string;
-    nomeProduto: string;
-    descricao: string;
-    quantidade: string;
-    preco: string;
-    icone: string;
-}
+    constructor(public dialog: MatDialog, private produtoService: ProdutoService) { }
 
-const ELEMENT_DATA: ListaProdutos[] = [
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
-    },
-    {
-        aplicacao: 'Cabelo',
-        nomeProduto: 'Pomada Modeladora Blacpool',
-        descricao: 'BLACKPOOL proporciona uma aparência mais natu',
-        quantidade: '46 unidades',
-        preco: 'R$ 30,00',
-        icone: ''
+    ngOnInit(): void {
+        this.getProdutos();
     }
-];
+
+    listaProduto: Produto[] = []
+
+    getProdutos() {
+        this.produtoService.obterProdutos().subscribe(response => {
+            this.listaProduto = response as Produto[];
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+            this.dataSource.paginator = this.paginator;
+        },
+            (error) => { console.log(error) });
+    }
+
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
+    }
+
+}
