@@ -19,7 +19,7 @@ import icCashier from '@iconify/icons-ic/attach-money';
 import icAssigment from '@iconify/icons-ic/twotone-assignment';
 import icSettings from '@iconify/icons-ic/twotone-settings';
 import icFeedback from '@iconify/icons-ic/twotone-feedback';
-import icBookmarks from '@iconify/icons-ic/twotone-bookmarks';
+import icDateRange from '@iconify/icons-ic/date-range'
 
 
 @Component({
@@ -121,7 +121,7 @@ export class AppComponent {
                 type: 'link',
                 label: 'Agenda',
                 route: '/agenda',
-                icon: icBookmarks
+                icon: icDateRange
             },
             {
                 type: 'link',

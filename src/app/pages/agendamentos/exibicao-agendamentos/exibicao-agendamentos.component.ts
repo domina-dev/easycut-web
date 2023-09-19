@@ -29,13 +29,13 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   currentStatus: any;
 
   listaAgendamentos: Agendamento[] = []
-  
+
   constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
-  
+
   ngOnInit(): void {
     this.getAgendamentos()
   }
-  
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -46,9 +46,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
   },
-      (error) => { console.log(error) });
+      (error) => { console.log(error)});
 }
-
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
@@ -57,7 +56,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      
     });
   }
 
