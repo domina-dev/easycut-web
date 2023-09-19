@@ -47,8 +47,9 @@ export class LoginComponent {
     login() {
         this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response =>
         {
+          localStorage.setItem("login", JSON.stringify(response));
           this.router.navigate(['/']);
-          console.log(response);
+          console.log(localStorage.getItem("login"));
         },
           (error) => {
         this.snackbar.open
