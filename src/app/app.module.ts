@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 
-import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE,LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -54,7 +54,7 @@ import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component
         VexModule,
         CustomLayoutModule
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, { provide: LOCALE_ID, useValue: 'PT-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
