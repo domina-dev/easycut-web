@@ -9,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class FluxoCaixaComponent implements OnInit {
     displayedColumns = ['data', 'descricao', 'status', 'valor'];
     dataSource = ELEMENT_DATA;
-
+    
     ngOnInit(): void {
         console.log('Method not implemented');
     }
+    
 }
 
 export interface FluxoCaixa {
@@ -21,7 +22,6 @@ export interface FluxoCaixa {
     status: string;
     valor: string;
 }
-
 const ELEMENT_DATA: FluxoCaixa[] = [
     {data: '01/07/2021', descricao: 'Corte simples', status: 'Confirmado', valor: 'R$ 30,00'},
     {data: '01/07/2021', descricao: 'Pomada modeladora BLACKPOOL (2x)', status: 'Confirmado', valor: 'R$ 30,00'},
