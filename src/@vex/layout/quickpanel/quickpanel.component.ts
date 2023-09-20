@@ -2,6 +2,7 @@ import { AgendamentoService } from './../../../app/services/agendamentos/agendam
 import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
 import { Agendamento } from 'src/app/model/agendamento';
+import { EventEmitterService } from 'src/app/services/event.service';
 
 
 @Component({
@@ -15,20 +16,16 @@ export class QuickpanelComponent implements OnInit{
 
     listaAgendamentos: Agendamento[] = []
 
-    horaAgendamento = this.listaAgendamentos['dtAtendimento']
-
     constructor (private agendamentoService: AgendamentoService) { }
 
     ngOnInit(): void {
-      this.getAgendamentosDia()
+      EventEmitterService.get("buscarAgendamentosDoDia").subscribe(()=> this.getAgendamentosDia())
     }
 
     getAgendamentosDia() {
       this.agendamentoService.getAgendamentosDia().subscribe(response => {
         this.listaAgendamentos = response;
-        this.horaAgendamento = this.listaAgendamentos.map((agendamento) =>
-        DateTime.fromISO(agendamento.dtAtendimento).toFormat('HH:mm')
-        )},
+      },
         (error) => { console.log(error)});
     }
 }

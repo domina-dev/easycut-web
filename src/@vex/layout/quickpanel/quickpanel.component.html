@@ -1,7 +1,7 @@
 <div class="body-2 p-6 bg-primary text-primary-contrast">
-    <p>HOJE</p>
-    <div class="display-1">{{ dayName }}</div>
-    <div class="display-1">{{ date }}</div>
+  <p>HOJE</p>
+  <div class="display-1">{{ dayName }}</div>
+  <div class="display-1">{{ date }}</div>
 </div>
 
 <mat-divider></mat-divider>
@@ -9,8 +9,13 @@
 <mat-nav-list>
   <h3 matSubheader>Agendamentos do dia</h3>
   <div *ngFor="let agendaHoje of listaAgendamentos">
-      <a [routerLink]="[]" mat-list-item>
-        <h4 matLine>{{ agendaHoje.cliente.nome }}</h4>
-        <p matLine >{{ agendaHoje.dtAtendimento | date: "hh:mm"  }}</p>
-      </a>
+    <a [routerLink]="[]" mat-list-item>
+      <h4 matLine>{{ agendaHoje.cliente.nome }}</h4>
+      <p matLine>{{ agendaHoje.dtAtendimento | date: "hh:mm" }}</p>
+    </a>
+  </div>
+  <div>
+    <a [routerLink]="[]" mat-list-item *ngIf="listaAgendamentos.length === 0">
+      <h4 matLine> Ainda não possui agendamentos </h4>
+    </a>
   </div>

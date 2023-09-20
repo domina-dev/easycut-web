@@ -19,7 +19,7 @@ import { PopoverService } from '../../components/popover/popover.service';
 import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import icSearch from '@iconify/icons-ic/twotone-search';
 import icDateRange from '@iconify/icons-ic/date-range'
-
+import { EventEmitterService } from 'src/app/services/event.service'
 @Component({
     selector: 'vex-toolbar',
     templateUrl: './toolbar.component.html',
@@ -71,6 +71,7 @@ export class ToolbarComponent {
 
     openQuickpanel() {
         this.layoutService.openQuickpanel();
+        EventEmitterService.get("buscarAgendamentosDoDia").emit();
     }
 
     openSidenav() {
