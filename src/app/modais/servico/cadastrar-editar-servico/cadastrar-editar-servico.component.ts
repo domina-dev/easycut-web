@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ServicoService } from 'src/app/services/servico/servico.service';
+
 
 @Component({
     selector: 'vex-cadastrar-editar-servico',
@@ -8,8 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CadastrarEditarServicoComponent {
     form: FormGroup;
+    dialog: any;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private servicoService: ServicoService, 
+        private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>) {
         this.form = this.fb.group({
             nome: ['', Validators.required],
             tempo: ['', Validators.required],
@@ -17,4 +22,20 @@ export class CadastrarEditarServicoComponent {
             valor: ['', Validators.required]
         });
     }
+
+    cadastrarServico() {
+        this.servicoService.cadastrarServico(this.form.value).subscribe(() => {
+            console.log(this.form.value);
+            this.dialogRef.close()
+            
+        },
+            (error) => {
+                console.log(error)
+
+                
+            })
+    }
+
+
+
 }

@@ -11,10 +11,17 @@ import { Observable } from 'rxjs';
 export class ServicoService {
   private readonly API = environment.url_api;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {}
 
-  }
   obterServicos():Observable<Servico[]>{
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
   }
+
+  cadastrarServico(Servico): Observable<Servico[]> {
+    return this.http.post<Servico[]>(`${this.API}/servicos`, Servico);
+  }
+
+
+
 }
+
