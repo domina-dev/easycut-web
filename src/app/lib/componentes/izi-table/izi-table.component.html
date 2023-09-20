@@ -1,0 +1,39 @@
+<table mat-table [dataSource]="listaServicos">
+  <!-- Adicione a tag de caption para descrever a tabela -->
+  <caption>Lista de Serviços</caption>
+
+  <!-- Coluna para os dados 'nome' -->
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let servico"> {{ servico.nome }} </td>
+  </ng-container>
+
+  <!-- Coluna para os dados 'preco' -->
+  <ng-container matColumnDef="preco">
+    <th mat-header-cell *matHeaderCellDef> Preço </th>
+    <td mat-cell *matCellDef="let servico"> {{ servico.preco }} </td>
+  </ng-container>
+
+  <!-- Coluna para os dados 'descricao' -->
+  <ng-container matColumnDef="descricao">
+    <th mat-header-cell *matHeaderCellDef> Descrição </th>
+    <td mat-cell *matCellDef="let servico"> {{ servico.descricao }} </td>
+  </ng-container>
+
+  <!-- Coluna para os dados 'tempoEstimado' -->
+  <ng-container matColumnDef="tempoEstimado">
+    <th mat-header-cell *matHeaderCellDef> Tempo Estimado </th>
+    <td mat-cell *matCellDef="let servico"> {{ servico.tempoEstimado }} minutos </td>
+  </ng-container>
+
+  <!-- Coluna para os dados 'categoria' -->
+  <ng-container matColumnDef="categoria">
+    <th mat-header-cell *matHeaderCellDef> Categoria </th>
+    <td mat-cell *matCellDef="let servico"> {{ servico.categoria }} </td>
+  </ng-container>
+
+  <!-- Adicione mais colunas conforme necessário para seus dados -->
+
+  <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+  <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+</table>
