@@ -18,6 +18,7 @@ import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
 import { PopoverService } from '../../components/popover/popover.service';
 import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.component';
 import icSearch from '@iconify/icons-ic/twotone-search';
+import icDateRange from '@iconify/icons-ic/date-range'
 
 @Component({
     selector: 'vex-toolbar',
@@ -59,6 +60,7 @@ export class ToolbarComponent {
     icReceipt = icReceipt;
     icDoneAll = icDoneAll;
     icArrowDropDown = icArrowDropDown;
+    icDateRange = icDateRange
 
     constructor(
         private layoutService: LayoutService,
