@@ -24,13 +24,11 @@ export class QuickpanelComponent implements OnInit{
     }
 
     getAgendamentosDia() {
-      this.agendamentoService.getAgendamentos().subscribe(response => {
+      this.agendamentoService.getAgendamentosDia().subscribe(response => {
         this.listaAgendamentos = response;
         this.horaAgendamento = this.listaAgendamentos.map((agendamento) =>
         DateTime.fromISO(agendamento.dtAtendimento).toFormat('HH:mm')
-        );
-        console.log(this.horaAgendamento)
-      },
+        )},
         (error) => { console.log(error)});
     }
 }
