@@ -25,6 +25,8 @@ import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/ca
 import { MaterialModule } from './modules/material.module';
 import { LibVexModule } from './modules/lib-vex.module';
 import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
+import { IziTablesComponent } from './lib/componentes/izi-tables/izi-table.component';
+import { IziTableComponent } from './lib/componentes/izi-tables/izi-table/izi-table.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +37,9 @@ import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component
         PlanosComponent,
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
-        ConfirmacaoComponent
+        ConfirmacaoComponent,
+        IziTablesComponent,
+        IziTableComponent
     ],
     imports: [
         BrowserModule,
