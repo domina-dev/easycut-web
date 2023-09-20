@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Plano } from "src/app/model/plano";
 import { EstabelecimentoService } from 'src/app/services/estabelecimento/estabelecimento.service';
 import { PlanosService } from "src/app/services/planos/planos.service";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "vex-planos",
@@ -13,7 +14,8 @@ export class PlanosComponent implements OnInit {
   listaPlanos: Plano[] = [];
 
   constructor(private planosService: PlanosService,
-    private estabelecimentoService: EstabelecimentoService) { }
+    private estabelecimentoService: EstabelecimentoService,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.listarPlanos();
@@ -33,11 +35,18 @@ export class PlanosComponent implements OnInit {
   contratarPlano(plano: Plano) {
     const estabelecimento_ID = 4;
     const plano_ID = plano.id;
-    this.estabelecimentoService.contratar(estabelecimento_ID, plano_ID).subscribe(response => {
-      console.log("Plano contratado com sucesso!:", response)
+    this.estabelecimentoService.contratar(estabelecimento_ID, plano_ID).subscribe(() => {
+      this.snackbar.open("Plano contratado com sucesso!", 'Fechar',
+      {
+        duration: 5000
+      })
     },
-    (error) => {
-        console.error("Erro ao contrar o plano:", error);
-    });
+      (error) => {
+        this.snackbar.open(error.message, 'Fechar',
+        {
+          duration: 5000,
+          panelClass: ['error-snackbar']
+        })
+      });
   }
 }
