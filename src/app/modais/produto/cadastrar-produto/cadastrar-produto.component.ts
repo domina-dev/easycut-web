@@ -11,12 +11,12 @@ export class CadastrarProdutoComponent {
   form: FormGroup;
 
     constructor(private fb: FormBuilder) {
-        this.form = this.fb.group({
-            nome: ['', Validators.required],
-            tempo: ['', Validators.required],
-            categoria: ['', Validators.required],
-            valor: ['', Validators.required]
-        });
+      this.form = this.fb.group({
+        nome: ['', Validators.required],
+        tempo: ['', Validators.required],
+        categoria: ['', Validators.required],
+        valor: ['', Validators.required],
+      });
     }
 
 }

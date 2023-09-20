@@ -15,4 +15,9 @@ export class ProdutoService {
   obterProdutos(): Observable<Produto[]> {
     return this.http.get<Produto[]>(`${this.API}/produtos/todos?estabelecimento_ID=4`);
   }
+
+  cadastrarProduto(Produto): Observable<Produto[]> {
+    return this.http.post<Produto[]>(`${this.API}/produtos`, Produto);
+  }
+
 }
