@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmacaoComponent } from 'src/app/modais/confirmacao/confirmacao.component';
 import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/services/servico/servico.service';
 @Component({
@@ -56,6 +57,25 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
     }
+    abrirModalDeletar(servico: Servico): void {
+        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+          data: {
+            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
+          }
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            // Lógica para excluir o servico se o usuário confirmar
+            this.excluirServico(servico);
+          }
+        });
+      }
+    
+      excluirServico(servico: Servico): void {
+        // Implemente a lógica para excluir o servico aqui
+        // Chame seu serviço ou método para realizar a exclusão
+      }
 }
 
 export interface Servico {
