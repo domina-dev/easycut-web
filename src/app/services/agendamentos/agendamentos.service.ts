@@ -16,6 +16,6 @@ export class AgendamentoService {
     return this.http.get<Agendamento[]>(`${this.API}/agendamentos/todos?estabelecimento_ID=4`);
   }
   getAgendamentosDia(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>( `${this.API}/agendamentos/hoje?estabelecimento_ID=4`)
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=4`)
   }
 }
