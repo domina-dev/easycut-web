@@ -1,4 +1,5 @@
 export interface Produto{
+    [x: string]: any;
     codProduto: null,
     nomeProduto: string,
     dsProduto: string,
