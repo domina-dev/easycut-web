@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarEditarComponent } from 'src/app/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
 import { Agendamento } from '../../../model/agendamento';
 import { AgendamentoService } from '../../../services/agendamentos/agendamentos.service';
+import { ConfirmacaoComponent } from 'src/app/modais/confirmacao/confirmacao.component';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -21,7 +22,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     'valor',
     'data',
     'responsavel',
-    'status'
+    'status',
+    'icone',
   ];
   dataSource = new MatTableDataSource<Agendamento>();
 
@@ -29,13 +31,13 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   currentStatus: any;
 
   listaAgendamentos: Agendamento[] = []
-  
+
   constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
-  
+
   ngOnInit(): void {
     this.getAgendamentos()
   }
-  
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
@@ -46,9 +48,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
   },
-      (error) => { console.log(error) });
+      (error) => { console.log(error)});
 }
-
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
@@ -57,8 +58,25 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+    });
+  }
+  abrirModalDeletar(agendamento: Agendamento): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: `Tem certeza que deseja deletar o agendamento: ${agendamento.nomeServico}`
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Lógica para excluir o agendamento se o usuário confirmar
+        this.excluirAgendamento(agendamento);
+      }
     });
   }
 
+  excluirAgendamento(agendamento: Agendamento): void {
+    // Implemente a lógica para excluir o agendamento aqui
+    // Chame seu serviço ou método para realizar a exclusão
+  }
 }
