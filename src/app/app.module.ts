@@ -28,6 +28,7 @@ import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
+import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ registerLocaleData(localePt, 'pt');
         LoginModalComponent,
         PlanosComponent,
         CadastrarEditarComponent,
-        CadastrarProdutoComponent
+        CadastrarProdutoComponent,
+        ConfirmacaoComponent
     ],
     imports: [
         BrowserModule,

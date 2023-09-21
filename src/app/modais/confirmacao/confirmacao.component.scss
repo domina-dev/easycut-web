@@ -1,0 +1,13 @@
+.modal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal-content h2,
+.modal-content .modal-buttons {
+  margin: 20px 0;
+}
