@@ -9,43 +9,31 @@ import { ServicoService } from 'src/app/services/servico/servico.service';
     templateUrl: './exibicao-servicos.component.html',
     styleUrls: ['./exibicao-servicos.component.scss']
 })
-export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
-
-    displayedColumns: string[] = [
-        'aplicacao',
-        'servico',
-        'descricao',
-        'tempo',
-        'preco',
-        'icone'
-    ];
-
-    dataSource = new MatTableDataSource<Servico>();
-
+export class ExibicaoServicosComponent implements OnInit {
     verLista: boolean = true;
     verGrade: boolean = false;
     listaServicos: Servico[] = [];
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     matDialogActions: any;
 
-    constructor(public dialog: MatDialog,
-        private servicoService: ServicoService) { }
+    constructor(
+        public dialog: MatDialog,
+        private servicoService: ServicoService
+    ) {}
 
-    ngOnInit(): void { this.listarServicos() }
-
-    listarServicos() {
-        this.servicoService.obterServicos().subscribe(response => {
-            this.listaServicos = response;
-            this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-            this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log(error)
-        });
+    ngOnInit(): void {
+        this.listarServicos();
     }
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+    listarServicos() {
+        this.servicoService.obterServicos().subscribe(
+            (response) => {
+                this.listaServicos = response;
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     }
 
     openDialog() {
@@ -71,5 +59,3 @@ export interface Servico {
     promocional: boolean;
     estabelecimentoID: number;
 }
-
-
