@@ -1,95 +1,81 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmacaoComponent } from 'src/app/modais/confirmacao/confirmacao.component';
 import { CadastrarEditarServicoComponent } from 'src/app/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/services/servico/servico.service';
+
 @Component({
-    selector: 'vex-exibicao-servicos',
-    templateUrl: './exibicao-servicos.component.html',
-    styleUrls: ['./exibicao-servicos.component.scss']
+  selector: 'vex-exibicao-servicos',
+  templateUrl: './exibicao-servicos.component.html',
+  styleUrls: ['./exibicao-servicos.component.scss']
 })
-export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
-    displayedColumns: string[] = [
-        'aplicacao',
-        'servico',
-        'descricao',
-        'tempo',
-        'preco',
-        'icone'
-    ];
+export class ExibicaoServicosComponent implements OnInit {
 
-    dataSource = new MatTableDataSource<Servico>();
+  verLista: boolean = true;
+  verGrade: boolean = false;
+  listaServicos: Servico[] = [];
+  matDialogActions: any;
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
-    listaServicos: Servico[] = [];
+  constructor(
+    public dialog: MatDialog,
+    private servicoService: ServicoService
+  ) { }
+  ngOnInit(): void {
+    this.listarServicos()
+  }
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    matDialogActions: any;
+  listarServicos() {
+    this.servicoService.obterServicos().subscribe(response => {
+      this.listaServicos = response;
+    },
+      (error) => {
+        console.log(error)
+      })
+  }
 
-    constructor(public dialog: MatDialog,
-        private servicoService: ServicoService) { }
+  openDialog() {
+    this.dialog.open(CadastrarEditarServicoComponent);
+  }
 
-    ngOnInit(): void { this.listarServicos() }
+  vizualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
 
-    listarServicos() {
-        this.servicoService.obterServicos().subscribe(response => {
-            this.listaServicos = response;
-            this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-            this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log(error)
-        });
-    }
-
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
-
-    openDialog() {
-        this.dialog.open(CadastrarEditarServicoComponent);
-    }
-
-    vizualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-    abrirModalDeletar(servico: Servico): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-          data: {
-            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
-          }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            // Lógica para excluir o servico se o usuário confirmar
-            this.excluirServico(servico);
-          }
-        });
+  abrirModalDeletar(servico: Servico): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
       }
-    
-      excluirServico(servico: Servico): void {
-        // Implemente a lógica para excluir o servico aqui
-        // Chame seu serviço ou método para realizar a exclusão
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Lógica para excluir o servico se o usuário confirmar
+        this.excluirServico(servico);
       }
+    });
+  }
+
+  excluirServico(servico: Servico): void {
+    // Implemente a lógica para excluir o servico aqui
+    // Chame seu serviço ou método para realizar a exclusão
+  }
 }
 
 export interface Servico {
-    id: number;
-    nome: string;
-    categoria: string;
-    codigo: string;
-    descricao: string;
-    tempoEstimado: string;
-    valor: number;
-    valorPromocional: number;
-    ativo: boolean;
-    promocional: boolean;
-    estabelecimentoID: number;
+  id: number;
+  nome: string;
+  categoria: string;
+  codigo: string;
+  descricao: string;
+  tempoEstimado: string;
+  valor: number;
+  valorPromocional: number;
+  ativo: boolean;
+  promocional: boolean;
+  estabelecimentoID: number;
 }
 
 
