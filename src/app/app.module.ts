@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 
-import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE,LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -24,6 +24,7 @@ import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/ca
 
 import { MaterialModule } from './modules/material.module';
 import { LibVexModule } from './modules/lib-vex.module';
+import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { LibVexModule } from './modules/lib-vex.module';
         LoginModalComponent,
         PlanosComponent,
         CadastrarEditarComponent,
-        CadastrarProdutoComponent
+        CadastrarProdutoComponent,
+        ConfirmacaoComponent
     ],
     imports: [
         BrowserModule,
@@ -52,7 +54,7 @@ import { LibVexModule } from './modules/lib-vex.module';
         VexModule,
         CustomLayoutModule
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
+    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, { provide: LOCALE_ID, useValue: 'PT-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

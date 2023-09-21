@@ -21,6 +21,10 @@ export class EstabelecimentoService {
     });
   }
 
+  cadastrarEstabelecimento(estabelecimentoData: Estabelecimento): Observable<Estabelecimento> {
+    console.log(estabelecimentoData)
+    // Faz a requisição HTTP POST para a rota de cadastro de estabelecimento
+    return this.http.post<Estabelecimento>(`${this.API}/estabelecimento`, estabelecimentoData);
+  }
+
 }
-
-
