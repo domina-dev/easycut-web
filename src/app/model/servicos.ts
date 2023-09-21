@@ -1,8 +1,12 @@
 export interface Servico {
-    aplicacao: string;
-    servico: string;
-    descricao: string;
-    tempo: string;
-    preco: string;
-    icone: string;
+    id: number,
+    nome: string,
+	categoria: string,
+	descricao: string,
+	tempoEstimado: string,
+	valor: string,
+	valorPromocional: string,
+	ativo: boolean,
+	promocional: boolean,
+	estabelecimentoID: number
 }

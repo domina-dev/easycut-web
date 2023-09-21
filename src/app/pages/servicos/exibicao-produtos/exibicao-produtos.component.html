@@ -1,6 +1,7 @@
 <div class="filter">
-    <div class="search">
-        <mat-form-field appearance="standard">
+  <div class="pesquisa-opcao">
+    <div class="pesq">
+        <mat-form-field class="inptPes" appearance="standard">
             <mat-label>Pesquisar produto</mat-label>
             <input matInput />
         </mat-form-field>
@@ -16,17 +17,21 @@
             </mat-select>
         </mat-form-field>
     </div>
+  </div>
+  <div class="botao-view">
     <div class="btnAdd">
-        <button mat-button (click)="openAdd()">Adicionar <mat-icon>add</mat-icon></button>
-    </div>
-    <div class="viewPag">
-        <button mat-button (click)="visualizar()">
-            <mat-icon *ngIf="verLista">view_list</mat-icon>
-            <mat-icon *ngIf="verGrade">view_module</mat-icon>
-        </button>
-    </div>
-</div>
+      <button mat-button (click)="openAdd()">Adicionar <mat-icon>add</mat-icon></button>
+  </div>
+  <div class="viewPag">
+      <button mat-button (click)="visualizar()">
+          <mat-icon *ngIf="verLista">view_list</mat-icon>
+          <mat-icon *ngIf="verGrade">view_module</mat-icon>
+      </button>
+  </div>
+  </div>
 
+</div>
+<!-- Tabela de produtos -->
 <div class="mat-elevation-z8">
     <table aria-label="tabela-produtos" mat-table [dataSource]="dataSource">
 
@@ -77,6 +82,7 @@
                     mat-icon-button
                     aria-label="ícone Button"
                     class="icon-spacing"
+                    (click)="abrirModalDeletar(element)"
                 >
                     <mat-icon color="warn">delete</mat-icon>
                 </button>

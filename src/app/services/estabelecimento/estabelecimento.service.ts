@@ -25,6 +25,20 @@ export class EstabelecimentoService {
   saveUsuario(body: any) {
   return this.http.post(`${this.API}/login`, body)
   }
+
+  contratar(estabelecimento_ID: number, plano_ID: number): Observable<any> {
+    const body = {
+      estabelecimento_ID: estabelecimento_ID,
+      plano_ID: plano_ID
+    };
+    const url = `${this.API}/planos`;
+    return this.http.post(url, body)
+  }
+
+  cadastrarEstabelecimento(estabelecimentoData: Estabelecimento): Observable<Estabelecimento> {
+    console.log(estabelecimentoData)
+    // Faz a requisição HTTP POST para a rota de cadastro de estabelecimento
+    return this.http.post<Estabelecimento>(`${this.API}/estabelecimento`, estabelecimentoData);
+  }
+
 }
-
-
