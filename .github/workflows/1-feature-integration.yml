@@ -40,3 +40,4 @@ jobs:
                   allow_no_diff: false
               env:
                   GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+                  
