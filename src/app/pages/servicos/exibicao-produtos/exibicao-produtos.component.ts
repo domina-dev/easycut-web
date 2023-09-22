@@ -75,7 +75,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
             );
 
         });
-
     }
 
     openAdd() {
@@ -83,23 +82,17 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-          data: {
-            titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
-          }
+            data: {
+                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+            }
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            // Lógica para excluir o produto se o usuário confirmar
-            this.excluirProduto(produto);
-          }
+            if (result) {
+                this.deletarProduto();
+            }
         });
-      }
-    
-      excluirProduto(produto: Produto): void {
-        // Implemente a lógica para excluir o produto aqui
-        // Chame seu serviço ou método para realizar a exclusão
-      }
+    }
 
     visualizar() {
         this.verLista = !this.verLista;
