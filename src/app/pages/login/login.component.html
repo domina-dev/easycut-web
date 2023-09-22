@@ -28,7 +28,7 @@
                         formControlName="email"
                         matInput
                         required
-                        [(ngModel)]="usuario.email"
+                        [(ngModel)]="usuario.username"
                     />
                     <mat-error *ngIf="form.get('email').hasError('required')"
                         >Precisamos de um endereço de e-mail para realizar seu
@@ -42,7 +42,7 @@
                         formControlName="password"
                         matInput
                         required
-                        [(ngModel)]="usuario.senha"
+                        [(ngModel)]="usuario.password"
                     />
                     <button
                         class="olho"
@@ -86,7 +86,7 @@
 
             <button
                 class="singin"
-                (click)="send()"
+                (click)="login()"
                 color="primary"
                 mat-raised-button
                 type="button"
