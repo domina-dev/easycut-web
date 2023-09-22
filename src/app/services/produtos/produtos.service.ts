@@ -19,10 +19,9 @@ export class ProdutoService {
   deletaProduto():Observable<Produto[]>{
     return this.http.delete<Produto[]>(`${this.API}/produtos?produto_ID=214`);
   }
-
-
-
-
-
+  
+  cadastrarProduto(Produto): Observable<Produto[]> {
+    return this.http.post<Produto[]>(`${this.API}/produtos`, Produto);
+  }
 
 }

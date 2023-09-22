@@ -1,12 +1,12 @@
-export interface Produto {
-    id: number,
-    codigo: string,
-    nome: string,
-    descricao: string,
+export interface Produto{
+    [x: string]: any;
+    codProduto: null,
+    nomeProduto: string,
+    dsProduto: string,
     qtdEstoque: number,
-    valor: string,
-    valorPromocional: string,
-    ativo: boolean,
-    promocional: boolean,
+    valor: number,
+    valorPromocional: number,
+    ativo: true,
+    promocional: false,
     estabelecimentoID: number
 }

@@ -24,6 +24,10 @@ import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/ca
 
 import { MaterialModule } from './modules/material.module';
 import { LibVexModule } from './modules/lib-vex.module';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
+registerLocaleData(localePt, 'pt');
 import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
 
 @NgModule({
