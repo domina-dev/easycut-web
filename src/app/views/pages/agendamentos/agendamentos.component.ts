@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginModalComponent } from 'src/app/views/modais/primeiro-login/login-modal/login-modal.component';
-import { PlanosComponent } from 'src/app/views/modais/planos/planos-modal/planos.component';
+import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
+import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
 const AGENDAMENTOS = 'Meus Agendamentos';
 const RESERVAS = 'Minhas Reservas';
 

@@ -2,10 +2,10 @@ import { Component, AfterViewInit, ViewChild, ViewEncapsulation, OnInit } from '
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { CadastrarEditarComponent } from 'src/app/views/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { CadastrarEditarComponent } from 'src/app/core/lib/components/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
-import { ConfirmacaoComponent } from 'src/app/views/modais/confirmacao/confirmacao.component';
+import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',

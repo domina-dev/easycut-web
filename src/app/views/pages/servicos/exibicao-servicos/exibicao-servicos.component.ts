@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ConfirmacaoComponent } from 'src/app/views/modais/confirmacao/confirmacao.component';
-import { CadastrarEditarServicoComponent } from 'src/app/views/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 @Component({
     selector: 'vex-exibicao-servicos',

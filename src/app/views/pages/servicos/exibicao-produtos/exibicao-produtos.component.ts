@@ -2,11 +2,11 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { CadastrarProdutoComponent } from 'src/app/views/modais/produto/cadastrar-produto/cadastrar-produto.component';
+import { CadastrarProdutoComponent } from 'src/app/core/lib/components/modais/produto/cadastrar-produto/cadastrar-produto.component';
 import { Produto } from 'src/app/core/model/produto'
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmacaoComponent } from 'src/app/views/modais/confirmacao/confirmacao.component';
+import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 
 @Component({
     selector: 'vex-exibicao-produtos',
