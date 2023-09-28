@@ -1,8 +1,8 @@
-import { AgendamentoService } from './../../../app/services/agendamentos/agendamentos.service';
+import { AgendamentoService } from './../../../app/core/services/agendamentos/agendamentos.service';
 import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
-import { Agendamento } from 'src/app/model/agendamento';
-import { EventEmitterService } from 'src/app/services/event.service';
+import { Agendamento } from 'src/app/core/model/agendamento';
+import { EventEmitterService } from 'src/app/core/services/event.service';
 
 
 @Component({
