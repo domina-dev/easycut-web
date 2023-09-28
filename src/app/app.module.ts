@@ -7,28 +7,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VexModule } from '../@vex/vex.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomLayoutModule } from './custom-layout/custom-layout.module';
-import { ServicosModule } from './pages/servicos/servicos.module';
-import { AgendaModule } from './pages/agenda/agenda.module';
-import { AgendamentosModule } from './pages/agendamentos/agendamentos.module';
-import { LoginModule } from './pages/login/login.module';
+import { CustomLayoutModule } from './views/custom-layout/custom-layout.module';
+import { ServicosModule } from './views/pages/servicos/servicos.module';
+import { AgendaModule } from './views/pages/agenda/agenda.module';
+import { AgendamentosModule } from './views/pages/agendamentos/agendamentos.module';
+import { LoginModule } from './views/pages/login/login.module';
 
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-import { LoginModalComponent } from './modais/primeiro-login/login-modal/login-modal.component';
-import { PlanosComponent } from './modais/planos/planos-modal/planos.component';
-import { ConstrucaoModalComponent } from './modais/construcao-modal/construcao-modal.component';
+import { LoginModalComponent } from './core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
+import { PlanosComponent } from './core/lib/components/modais/planos/planos-modal/planos.component';
+import { ConstrucaoModalComponent } from './core/lib/components/modais/construcao-modal/construcao-modal.component';
 
-import { CadastrarEditarServicoComponent } from './modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
-import { CadastrarEditarComponent } from './modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
-import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/cadastrar-produto.component';
+import { CadastrarEditarServicoComponent } from './core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
+import { CadastrarEditarComponent } from './core/lib/components/modais/agendamentos/cadastrar-editar/cadastrar-editar.component';
+import { CadastrarProdutoComponent } from './core/lib/components/modais/produto/cadastrar-produto/cadastrar-produto.component';
 
-import { MaterialModule } from './modules/material.module';
-import { LibVexModule } from './modules/lib-vex.module';
+import { MaterialModule } from './core/modules/material.module';
+import { LibVexModule } from './core/modules/lib-vex.module';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
-import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
+import { ConfirmacaoComponent } from './core/lib/components/modais/confirmacao/confirmacao.component';
 
 @NgModule({
     declarations: [

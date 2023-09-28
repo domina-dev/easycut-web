@@ -23,7 +23,7 @@ import icLock from '@iconify/icons-ic/twotone-lock';
 import icNotificationsOff from '@iconify/icons-ic/twotone-notifications-off';
 import { Icon } from '@visurel/iconify-angular';
 import { PopoverRef } from '../../../../components/popover/popover-ref';
-import { ConstrucaoModalComponent } from 'src/app/modais/construcao-modal/construcao-modal.component';
+import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 
 export interface OnlineStatus {
