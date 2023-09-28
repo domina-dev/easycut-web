@@ -15,11 +15,6 @@
     .btnAdd{
         border-radius: 5px;
         color: #ffffff;
-        background: #DAAA00;
-        padding: 8px 16px;
-        button{
-            background: #DAAA00;
-        }
     }
     .icon-csv{
         cursor: pointer;
@@ -57,11 +52,7 @@ table {
         margin-top: 50px;
         .btn-fechar_caixa{
             border-radius: 5px;
-            background: #DAAA00;
             color: #ffffff;
-            width: 168px;
-            height: 45px;
-            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
