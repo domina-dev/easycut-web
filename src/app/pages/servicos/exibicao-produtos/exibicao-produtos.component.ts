@@ -83,7 +83,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+                titulo: produto.nome
             }
         });
 
