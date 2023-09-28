@@ -77,14 +77,15 @@
         <ng-container matColumnDef="icone">
             <th mat-header-cell *matHeaderCellDef></th>
             <td class="layout-menu" mat-cell *matCellDef="let element">
-                <button
+                <button id="editar"
                     mat-icon-button
                     aria-label="ícone Button"
                     class="icon-spacing"
+                    (click)="openDialogEditar()"
                 >
                     <mat-icon color="primary"> border_color</mat-icon>
                 </button>
-                <button
+                <button id="excluir"
                     mat-icon-button
                     aria-label="ícone Button"
                     class="icon-spacing"
