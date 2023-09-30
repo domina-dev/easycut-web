@@ -28,4 +28,8 @@ export class QuickpanelComponent implements OnInit{
       },
         (error) => { console.log(error)});
     }
+
+    mostraAgendamento() {
+
+    }
 }
