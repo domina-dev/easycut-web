@@ -54,24 +54,10 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialog() {
-    this.dialog.open(CadastrarEditarServicoComponent);
-  }
-
-  abrirModalEditar(servico: Servico): void {
+  modalCadastrarEditar(servico?: Servico) {
     const dialogRef = this.dialog.open(CadastrarEditarServicoComponent, {
       data: {
-        id: servico.id,
-        nome: servico.nome,
-        categoria: servico.categoria,
-        codigo: servico.codigo,
-        descricao: servico.descricao,
-        tempoEstimado: servico.tempoEstimado,
-        valor: servico.valor,
-        valorPromocional: servico.valorPromocional,
-        ativo: servico.ativo,
-        promocional: servico.promocional,
-        estabelecimentoID: servico.estabelecimentoID,
+          servico: servico
       }
     });
 
@@ -79,8 +65,9 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       if (result) {
         this.editaServico(servico);
       }
-    })
+    });
   }
+
 
   editaServico(servico: Servico): void {
     this.servicoService.editarServico(servico).subscribe(response => {
