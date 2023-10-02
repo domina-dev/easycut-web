@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 
@@ -13,14 +13,15 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 export class CadastrarEditarServicoComponent {
     form: FormGroup;
 
-    constructor(private fb: FormBuilder, private servicoService: ServicoService,
+    constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+        private fb: FormBuilder, private servicoService: ServicoService,
         private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
         private snackbar: MatSnackBar) {
         this.form = this.fb.group({
-            nome: ['', Validators.required],
-            tempo: ['', Validators.required],
-            categoria: ['', Validators.required],
-            valor: ['', Validators.required]
+            nome: [data?.servico?.nome, Validators.required],
+            tempo: [data?.servico?.tempoEstimado, Validators.required],
+            categoria: [data?.servico?.categoria.value, Validators.required],
+            valor: [data?.servico?.valor, Validators.required]
         });
     }
 

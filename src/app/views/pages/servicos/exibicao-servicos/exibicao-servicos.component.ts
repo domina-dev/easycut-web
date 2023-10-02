@@ -68,7 +68,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
-
   editaServico(servico: Servico): void {
     this.servicoService.editarServico(servico).subscribe(response => {
       this.listaServicos = response;
