@@ -26,6 +26,8 @@ import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/plano
 export class LoginComponent {
   form: FormGroup;
 
+  retornoLogin: boolean;
+
   inputType = 'password';
   visible = false;
 
@@ -51,8 +53,8 @@ export class LoginComponent {
   login() {
     this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
       localStorage.setItem("login", JSON.stringify(response));
+      // this.retornoLogin = response.primeiroLogin
       this.router.navigate(['/']);
-      this.openModalCadastro();
     },
       (error) => {
         this.snackbar.open
@@ -89,9 +91,11 @@ export class LoginComponent {
 
   }
 
-  abrirModais() {
-    
-  }
+  // abrirModais() {
+  //   if (this.retornoLogin = false) {
+  //     return this.openModalCadastro;
+  //   }
+  // }
 }
 
 
