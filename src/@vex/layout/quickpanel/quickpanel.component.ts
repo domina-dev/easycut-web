@@ -1,6 +1,7 @@
 import { AgendamentoService } from './../../../app/core/services/agendamentos/agendamentos.service';
 import { Component, OnInit } from '@angular/core';
 import { DateTime } from 'luxon';
+import { NavigationService } from 'src/@vex/services/navigation.service';
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { EventEmitterService } from 'src/app/core/services/event.service';
 
@@ -16,7 +17,9 @@ export class QuickpanelComponent implements OnInit{
 
     listaAgendamentos: Agendamento[] = []
 
-    constructor (private agendamentoService: AgendamentoService) { }
+    constructor (private agendamentoService: AgendamentoService,
+                 private navigationService: NavigationService
+                 ) { }
 
     ngOnInit(): void {
       EventEmitterService.get("buscarAgendamentosDoDia").subscribe(()=> this.getAgendamentosDia())
@@ -25,11 +28,17 @@ export class QuickpanelComponent implements OnInit{
     getAgendamentosDia() {
       this.agendamentoService.getAgendamentosDia().subscribe(response => {
         this.listaAgendamentos = response;
+        console.log(response)
       },
         (error) => { console.log(error)});
     }
 
     mostraAgendamento() {
-
+      this.navigationService.items = [
+        {
+            type: 'link',
+            label: 'Agendamentos',
+            route: '/agendamentos',
+        },]
     }
 }
