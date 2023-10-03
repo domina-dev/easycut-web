@@ -24,7 +24,8 @@ export class CadastrarEditarComponent {
       valor: ['', Validators.required],
       data: ['', Validators.required],
       status: ['', Validators.required],
-      hora: ['', Validators.required]
+      hora: ['', Validators.required],
+      responsavel: ['']
   })
 
   }
