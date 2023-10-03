@@ -31,6 +31,6 @@ export class QuickpanelComponent implements OnInit{
     }
 
     mostraAgendamento() {
-
+      console.log()
     }
 }
