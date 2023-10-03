@@ -25,7 +25,7 @@ import { CadastrarProdutoComponent } from './core/lib/components/modais/produto/
 import { MaterialModule } from './core/modules/material.module';
 import { LibVexModule } from './core/modules/lib-vex.module';
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from '@angular/common';
+import {HashLocationStrategy, LocationStrategy, registerLocaleData} from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
 import { ConfirmacaoComponent } from './core/lib/components/modais/confirmacao/confirmacao.component';
@@ -58,7 +58,12 @@ import { ConfirmacaoComponent } from './core/lib/components/modais/confirmacao/c
         VexModule,
         CustomLayoutModule
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, { provide: LOCALE_ID, useValue: 'PT-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+        { provide: LOCALE_ID, useValue: 'PT-BR' },
+        {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
