@@ -45,12 +45,7 @@ export const MENSAGENS = {
     ALERTA_RECUPERAR_SENHA: "Não podemos recuperar sua senha, sem seu e-mail",
     ERRO_RECUPERAR_SENHA: "Erro ao tentar recuperar senha",
 
-
-
-
-
-
-
-
-    CADASTRO_SUCESSO: "Cadastro realizado com sucesso!",
+    // Novo Usuário
+    CADASTRO_SUCESSO: "Parabéns! Seu cadastro foi realizado com sucesso.",
+    ERRO_CADASTRAR_USUARIO: "Erro ao cadastrar novo usuário. Tente novamente.",
 }
