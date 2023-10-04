@@ -7,6 +7,7 @@ import { Produto } from 'src/app/core/model/produto'
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -14,6 +15,8 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
     styleUrls: ['./exibicao-produtos.component.scss']
 })
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
+
+    form: FormGroup;
 
     displayedColumns: string[] = [
         'nomeProduto',
@@ -77,13 +80,41 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         });
     }
 
-    openAdd() {
-        this.dialog.open(CadastrarProdutoComponent);
+    // editarProduto(produto: Produto) {
+    //     this.dialog.open(CadastrarProdutoComponent, {
+    //         data: {
+    //             nomeProduto: produto,
+    //             tempo: produto,
+    //             preço: produto,
+    //             quantidade: produto,
+                
+                
+
+    //         }
+    //     });
+    // }
+
+
+    abrirModalCadastrarEditar(produto?: Produto) {
+
+        if (produto) produto.nomeProduto = 'sadas'
+        const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
+            data: {
+                produto: produto
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.deletarProduto();
+            }
+        });
     }
+
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+                titulo: `Tem certeza que deseja deletar o produto: ${produto.nomeProduto}`
             }
         });
 

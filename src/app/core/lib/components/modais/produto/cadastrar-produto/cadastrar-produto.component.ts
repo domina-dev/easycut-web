@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,12 +13,14 @@ export class CadastrarProdutoComponent {
 
   form: FormGroup;
 
-    constructor(private fb: FormBuilder, private produtoService: ProdutoService, private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>, private snackbar: MatSnackBar) {
+    constructor(private fb: FormBuilder, private produtoService: ProdutoService, 
+      private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>, 
+      private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
       this.form = this.fb.group({
-        nome: ['', Validators.required],
-        tempo: ['', Validators.required],
-        categoria: ['', Validators.required],
-        valor: ['', Validators.required],
+        nome: [data?.produto?.nomeProduto, Validators.required],
+        quantidade: [data?.produto?.qtdEstoque, Validators.required],
+        valor: [data?.produto?.valor, Validators.required],
+        categoria: ['', Validators.required]
       });
     }
 

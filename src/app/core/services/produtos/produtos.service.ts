@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Produto } from 'src/app/core/model/produto';
 import { environment } from 'src/environments/environment';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class ProdutoService {
   
   cadastrarProduto(Produto): Observable<Produto[]> {
     return this.http.post<Produto[]>(`${this.API}/produtos`, Produto);
+  }
+
+  editaProduto(produto: Produto): Observable<Produto[]> {
+    return this.http.put<Produto[]>(`${this.API}/produtos`, produto).pipe(take(1));
+
   }
 
 }

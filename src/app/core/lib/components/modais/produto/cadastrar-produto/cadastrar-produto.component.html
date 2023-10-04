@@ -31,18 +31,18 @@
                     <mat-form-field id="quantEstoque" appearance="standard">
                         <mat-label>Quantidade em Estoque</mat-label>
                         <input
-                            formControlName="tempo"
+                            formControlName="quantidade"
                             type="text"
                             matInput
-                            placeholder="Digite o Tempo"
+                            placeholder="Digite a quantidade"
                             maxlength="3"
                             required
                         />
-                        <mat-error
+                        <!-- <mat-error
                             *ngIf="form.get('tempo').hasError('required')"
                         >
                             Preencha este campo!
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
 
                     <!-- Categoria -->
@@ -54,11 +54,11 @@
                             <mat-option value="option">Unha</mat-option>
                             <mat-option value="option">Pele</mat-option>
                         </mat-select>
-                        <mat-error
+                        <!-- <mat-error
                             *ngIf="form.get('categoria').hasError('required')"
                         >
                             Selecione uma opção!
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
                 </div>
 
@@ -95,11 +95,11 @@
                             class="example-right-align"
                             placeholder="0"
                         />
-                        <mat-error
+                        <!-- <mat-error
                             *ngIf="form.get('valor').hasError('required')"
                         >
                             Preencha este campo!
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
 
                     <!-- valor promocional -->
@@ -114,11 +114,11 @@
                             class="example-right-align"
                             placeholder="0"
                         />
-                        <mat-error
+                        <!-- <mat-error
                             *ngIf="form.get('valor').hasError('required')"
                         >
                             Preencha este campo!
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
                 </div>
             </div>
