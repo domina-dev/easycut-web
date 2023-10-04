@@ -84,13 +84,4 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     // Chame seu serviço ou método para realizar a exclusão
   }
 
-  cadastrarAgendamento(agendamento: Agendamento) {
-    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
-      this.getAgendamentos();
-
-
-    }, (error) => {
-
-    })
-  }
 }
