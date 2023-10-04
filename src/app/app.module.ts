@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 
-import { DEFAULT_CURRENCY_CODE,LOCALE_ID, NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -25,10 +25,17 @@ import { CadastrarProdutoComponent } from './modais/produto/cadastrar-produto/ca
 import { MaterialModule } from './modules/material.module';
 import { LibVexModule } from './modules/lib-vex.module';
 import localePt from '@angular/common/locales/pt';
-import {registerLocaleData} from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localePt, 'pt');
 import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component';
+import { CompletarCadastroComponent } from './modais/completarCadastro/completarCadastro.component';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
+
+
+const appearance: MatFormFieldDefaultOptions = {
+    appearance: 'outline'
+  };
 
 @NgModule({
     declarations: [
@@ -39,7 +46,8 @@ import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component
         PlanosComponent,
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
-        ConfirmacaoComponent
+        ConfirmacaoComponent,
+        CompletarCadastroComponent
     ],
     imports: [
         BrowserModule,
@@ -58,7 +66,12 @@ import { ConfirmacaoComponent } from './modais/confirmacao/confirmacao.component
         VexModule,
         CustomLayoutModule
     ],
-    providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, { provide: LOCALE_ID, useValue: 'PT-BR' }, {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'}],
+    providers: [
+        { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+        { provide: LOCALE_ID, useValue: 'PT-BR' },
+        { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: appearance }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

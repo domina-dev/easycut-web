@@ -1,0 +1,15 @@
+.card{
+    
+    min-width: 80%;
+    overflow: auto;
+}
+
+.card::-webkit-scrollbar {
+    width: 0px; /* Esconde a barra de rolagem no navegador Chrome e Safari */
+
+}
+.group-information{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
