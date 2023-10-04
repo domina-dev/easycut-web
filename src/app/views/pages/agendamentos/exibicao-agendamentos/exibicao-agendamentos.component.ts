@@ -6,6 +6,7 @@ import { CadastrarEditarComponent } from 'src/app/core/lib/components/modais/age
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -14,6 +15,9 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
   encapsulation: ViewEncapsulation.None
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
+
+  form: FormGroup;
+
 
   displayedColumns: string[] = [
     'cliente',
@@ -78,5 +82,15 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   excluirAgendamento(agendamento: Agendamento): void {
     // Implemente a lógica para excluir o agendamento aqui
     // Chame seu serviço ou método para realizar a exclusão
+  }
+
+  cadastrarAgendamento(agendamento: Agendamento) {
+    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
+      this.getAgendamentos();
+
+
+    }, (error) => {
+
+    })
   }
 }

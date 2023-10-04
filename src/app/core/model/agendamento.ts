@@ -2,14 +2,14 @@ import { Cliente } from './cliente';
 
 export interface Agendamento {
   id: number;
-  cdAgendamento: string;
+  nomeCliente: string;
   nomeServico: string;
   tempoEstimado: number;
-  valor: number;
+  valor: string;
   dtAtendimento: string;
+  hrAtendimento: string;
   responsavel: string;
-  status: string;
-  clienteID: number;
-  estabelecimentoID: number;
+  status: boolean;
+  estabelecimentoID: "{{ _.estabelecimento_ID }}"
   cliente: Cliente;
 }
