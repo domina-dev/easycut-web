@@ -26,11 +26,31 @@ export const MENSAGENS = {
     ERRO_CADASTRO_PRODUTO: "Erro ao cadastrar produto!",
     EDITAR_PRODUTO: "Produto editado com sucesso!",
     ERRO_CADASTRADO_PRODUTO: "Erro ao editar produto!",
-    DELETAR_PRODUTO: "Produto excluído!",
-    ERRO_DELETAR_PRODUTO: "Erro ao excluir produto!",
-    
-    // Promoções da tela de Serviços
+    DELETAR_PRODUTO: "Produto deletado",
+    ERRO_DELETAR_PRODUTO: "Erro ao deletar produto! Tente novamente",
+    ALERTA_DELETAR_PRODUTO: "Tem certeza que deseja deletar o produto?",
 
-    
+    // Planos modal de planos
+    PLANO_CONTRATADO_SUCESSO: "Plano contratado com sucesso!",
+    ERRO_PLANO_CONTRATADO: "Erro ao tentar contratar o plano selecionado",
+
+    // Estabelecimentos
+    CADASTRO_ESTABELECIMENTO: "Estabelecimento cadastrado com sucesso!",
+    ERRO_CADASTRAR_ESTABELECIMENTO: "Erro ao cadastrar estabelecimento",
+
+    // Login
+    ERRO_LOGIN: "Email ou senha incorretos, ou usuario nao cadastrado",
+
+    // Recuperação de senha
+    ALERTA_RECUPERAR_SENHA: "Não podemos recuperar sua senha, sem seu e-mail",
+    ERRO_RECUPERAR_SENHA: "Erro ao tentar recuperar senha",
+
+
+
+
+
+
+
+
     CADASTRO_SUCESSO: "Cadastro realizado com sucesso!",
 }
