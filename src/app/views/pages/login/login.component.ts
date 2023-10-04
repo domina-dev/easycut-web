@@ -27,7 +27,7 @@ export class LoginComponent {
   form: FormGroup;
 
   firstLogin: boolean;
-  planoLogin: null;
+  planLogin: any;
 
   inputType = 'password';
   visible = false;
@@ -51,13 +51,13 @@ export class LoginComponent {
     });
   }
 
-   login() {
+  login() {
     this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
       localStorage.setItem("login", JSON.stringify(response));
-      this.abrirModais(response.primeiroLogin, response.plano_ID);
-
-      // this.router.navigate(['/']);
-
+      this.firstLogin = response.primeiroLogin;
+      this.planLogin = response.plano_ID;
+      this.router.navigate(['/']);
+      this.abrirModais();
     },
       (error) => {
         this.snackbar.open
@@ -84,22 +84,31 @@ export class LoginComponent {
     }
   }
 
-  openModalCadastro() {
+  openModalPrimeiroLogin() {
 
     const dialogRef = this.dialog.open(LoginModalComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.dialog.open(PlanosComponent);
+      if (!this.planLogin) {
+        return this.openModalPlanos();
+      }
     });
-
   }
 
-  abrirModais(primeiroLogin, plano_ID) {
-    if (!primeiroLogin) {
-      return this.openModalCadastro();
+  openModalPlanos() {
+
+    const dialogRef = this.dialog.open(PlanosComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  abrirModais() {
+    if (this.firstLogin) {
+      return this.openModalPrimeiroLogin();
     }
-    if (!plano_ID) {
-      return this.dialog.open(PlanosComponent);
+    else if (!this.planLogin) {
+      return this.openModalPlanos();
     }
   }
 }
