@@ -9,13 +9,13 @@
 <mat-nav-list>
   <h3 matSubheader>Agendamentos do dia</h3>
   <div *ngFor="let agendaHoje of listaAgendamentos">
-    <a [routerLink]="['/agendamentos', listaAgendamentos]" mat-list-item (click)="mostraAgendamento()">
+    <a [routerLink]="[]" mat-list-item >
       <h4 matLine>{{ agendaHoje.cliente.nome }}</h4>
       <p matLine>{{ agendaHoje.dtAtendimento | date: "hh:mm" }}</p>
     </a>
   </div>
   <div>
-    <a [routerLink]="[]" mat-list-item *ngIf="listaAgendamentos.length === 0">
+    <a [routerLink]="['/agendamentos', listaAgendamentos]" (click)="mostraAgendamento()" mat-list-item *ngIf="listaAgendamentos.length === 0" >
       <h4 matLine> Ainda não possui agendamentos </h4>
     </a>
   </div>

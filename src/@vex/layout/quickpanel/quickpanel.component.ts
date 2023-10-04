@@ -14,7 +14,8 @@ export class QuickpanelComponent implements OnInit{
     date = DateTime.local().toFormat('DD');
     dayName = DateTime.local().toFormat('EEEE');
 
-    listaAgendamentos: Agendamento[] = []
+    listaAgendamentos: Agendamento[] = [];
+    agendamento: Agendamento[] = []
 
     constructor (private agendamentoService: AgendamentoService) { }
 
@@ -30,7 +31,10 @@ export class QuickpanelComponent implements OnInit{
         (error) => { console.log(error)});
     }
 
-    mostraAgendamento() {
-      console.log()
+    mostraAgendamento(): void {
+      this.agendamentoService.getAgendamentos().subscribe(respose => {
+        this.agendamento = respose;
+      });
+      console.log(this.agendamento)
     }
 }
