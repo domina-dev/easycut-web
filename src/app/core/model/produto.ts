@@ -6,7 +6,7 @@ export interface Produto{
     qtdEstoque: number;
     valor: number;
     valorPromocional: number;
-    ativo: true;
-    promocional: false;
+    ativo: boolean;
+    promocional: boolean;
     estabelecimentoID: number;
 }
