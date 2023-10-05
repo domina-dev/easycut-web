@@ -123,13 +123,15 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }
     alterarProduto(produto: Produto): void {
         this.produtoService.alterarProduto(produto).subscribe(response => {
+            this.listarProdutos()
             this.snackbar.open(
                 "Produto alterado com sucesso",
                 "Fechar",
                 {
                     duration: 3000
                 }
-            )
+                
+                )
         }, (error) => {
             this.snackbar.open(
                 "Não foi possível alterar o produto",

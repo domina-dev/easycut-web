@@ -1,6 +1,6 @@
 export interface Produto{
     id: number;
-    codigo: null;
+    codigo: string;
     nome: string;
     descricao: string;
     qtdEstoque: number;

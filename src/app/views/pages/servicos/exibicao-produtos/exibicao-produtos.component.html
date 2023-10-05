@@ -64,7 +64,7 @@
         <!-- Preço do produto -->
         <ng-container matColumnDef="preco">
             <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
-            <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
+            <td mat-cell *matCellDef="let produto">{{ produto.promocional? produto.valorPromocional:produto.valor }}</td>
         </ng-container>
 
         <!-- Ícone da tabela -->
@@ -100,12 +100,12 @@
                     </button>
 
                     <button *ngIf="!produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu" (click)="abrirModalPromocional(produto)">
-                        <mat-icon class="icon-color" >attach_money</mat-icon>
+                        <mat-icon class="icon-color" >money_off</mat-icon>
                         <span class="descricaoicon">Tornar Promocional</span>
                     </button>
 
                     <button *ngIf="produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu" (click)="abrirModalPromocional(produto)">
-                        <mat-icon class="icon-color" >money_off</mat-icon>
+                        <mat-icon class="icon-color" >attach_money</mat-icon>
                         <span class="descricaoicon">Remover Promoção</span>
                     </button>
                 </mat-menu>
