@@ -7,6 +7,7 @@ import { Produto } from 'src/app/core/model/produto'
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -58,7 +59,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
             this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
             this.dataSource.paginator = this.paginator;
             this.snackbar.open(
-                "Produto deletado com sucesso",
+                MENSAGENS.DELETAR_PRODUTO,
                 "Fechar",
                 {
                     duration: 10000
@@ -67,7 +68,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         }, (error) => {
             console.log(error)
             this.snackbar.open(
-                "Produto não deletado",
+                MENSAGENS.ERRO_DELETAR_PRODUTO,
                 "Tenta novamente",
                 {
                     duration: 10000

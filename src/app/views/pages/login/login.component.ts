@@ -12,6 +12,7 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from 'src/app/core/model/usuario';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 
 @Component({
     selector: 'vex-login',
@@ -54,7 +55,7 @@ export class LoginComponent {
           (error) => {
         this.snackbar.open
         (
-            'Email ou senha incorretos, ou usuario nao cadastrado',
+            MENSAGENS.ERRO_LOGIN,
             'fechar',
             {
                 duration: 5000

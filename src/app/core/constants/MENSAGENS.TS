@@ -6,6 +6,7 @@ export const MENSAGENS = {
     ERRO_EDITAR_AGENDAMENTO: "Erro ao editar agendamento!",
     DELETAR_AGENDAMENTO: "Agendamento excluído!",
     ERRO_DELETAR_AGENDAMENTO: "Erro ao excluir agendamento!",
+    ERRO_LISTAR_AGENDAMENTO: "Erro ao listar os agendamentos",
     
     // Caixa
     ADICIONAR_VENDA: "Venda adicionada com sucesso!",
@@ -28,7 +29,6 @@ export const MENSAGENS = {
     ERRO_CADASTRADO_PRODUTO: "Erro ao editar produto!",
     DELETAR_PRODUTO: "Produto deletado",
     ERRO_DELETAR_PRODUTO: "Erro ao deletar produto! Tente novamente",
-    ALERTA_DELETAR_PRODUTO: "Tem certeza que deseja deletar o produto?",
 
     // Planos modal de planos
     PLANO_CONTRATADO_SUCESSO: "Plano contratado com sucesso!",
