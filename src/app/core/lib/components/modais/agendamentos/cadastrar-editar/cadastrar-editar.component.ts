@@ -39,6 +39,7 @@ export class CadastrarEditarComponent {
       this.exibicaoAgendamento.getAgendamentos();
 
     }, (error) => {
+      console.log(error);
 
     })
     
