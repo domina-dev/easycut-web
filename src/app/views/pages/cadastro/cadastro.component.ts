@@ -41,7 +41,7 @@ export class CadastroComponent implements OnInit {
     private estabelecimentoService: EstabelecimentoService,
     private _snackBar: MatSnackBar
     ) { }
-    
+
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -74,7 +74,7 @@ export class CadastroComponent implements OnInit {
           this._snackBar.open(MENSAGENS.CADASTRO_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
-          
+
           // Redirecione para a página desejada após o cadastro
           this.form.reset();
         },
@@ -86,7 +86,7 @@ export class CadastroComponent implements OnInit {
           console.error(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, error);
         }
       );
-    
+
   }
 
   toggleVisibility() {
