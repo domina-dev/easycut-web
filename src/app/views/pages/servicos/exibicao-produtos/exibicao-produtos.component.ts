@@ -98,4 +98,48 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
     }
+    abrirModalPromocional(produto: Produto): void {
+        let mensagem:string = ""
+        if (produto.promocional) {
+            mensagem = "Tem certeza que deseja retirar este produto da promoção?"
+        }
+        else {
+            mensagem = "Tem certeza que deseja tornar este produto promocional?"
+
+        }
+
+        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+            data: {
+                titulo: mensagem
+            }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                produto.promocional = !produto.promocional
+                this.alterarProduto(produto)
+
+            }
+        });
+    }
+    alterarProduto(produto: Produto): void {
+        this.produtoService.alterarProduto(produto).subscribe(response => {
+            this.listarProdutos()
+            this.snackbar.open(
+                "Produto alterado com sucesso",
+                "Fechar",
+                {
+                    duration: 3000
+                }
+                
+                )
+        }, (error) => {
+            this.snackbar.open(
+                "Não foi possível alterar o produto",
+                "Fechar",
+                {
+                    duration: 3000
+                }
+            )
+        });
+    }
 }

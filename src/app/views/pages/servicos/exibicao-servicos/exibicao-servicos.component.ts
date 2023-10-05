@@ -7,86 +7,86 @@ import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/mod
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
-    selector: 'vex-exibicao-servicos',
-    templateUrl: './exibicao-servicos.component.html',
-    styleUrls: ['./exibicao-servicos.component.scss']
+  selector: 'vex-exibicao-servicos',
+  templateUrl: './exibicao-servicos.component.html',
+  styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
-    displayedColumns: string[] = [
-        'aplicacao',
-        'servico',
-        'descricao',
-        'tempo',
-        'preco',
-        'icone'
-    ];
+  displayedColumns: string[] = [
+    'aplicacao',
+    'servico',
+    'descricao',
+    'tempo',
+    'preco',
+    'icone'
+  ];
 
-    dataSource = new MatTableDataSource<Servico>();
+  dataSource = new MatTableDataSource<Servico>();
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
-    listaServicos: Servico[] = [];
+  verLista: boolean = true;
+  verGrade: boolean = false;
+  listaServicos: Servico[] = [];
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    matDialogActions: any;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  matDialogActions: any;
 
-    constructor(public dialog: MatDialog,
-        private servicoService: ServicoService,
-        private snackbar: MatSnackBar
-        ) { }
+  constructor(public dialog: MatDialog,
+    private servicoService: ServicoService,
+    private snackbar: MatSnackBar
+  ) { }
 
-    ngOnInit(): void { this.listarServicos() }
+  ngOnInit(): void { this.listarServicos() }
 
-    listarServicos() {
-        this.servicoService.obterServicos().subscribe(response => {
-            this.listaServicos = response;
-            this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-            this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log(error)
-        });
-    }
+  listarServicos() {
+    this.servicoService.obterServicos().subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+    }, (error) => {
+      console.log(error)
+    });
+  }
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
-    openDialog() {
-        this.dialog.open(CadastrarEditarServicoComponent);
-    }
+  openDialog() {
+    this.dialog.open(CadastrarEditarServicoComponent);
+  }
 
-    vizualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-    abrirModalDeletar(servico: Servico): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-          data: {
-            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
-          }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-
-            this.deletarServico(servico);
-          }
-        });
+  vizualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
+  abrirModalDeletar(servico: Servico): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
       }
-    
-        deletarServico(servico: Servico): void {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        this.deletarServico(servico);
+      }
+    });
+  }
+
+  deletarServico(servico: Servico): void {
     this.servicoService.deletarServico(servico.id).subscribe(
       () => {
+        this.listarServicos();
         this.snackbar.open(
-            'Serviço deletado com sucesso',
-            'FECHAR',
-            {
-                duration: 5000
-            }
+          'Serviço deletado com sucesso',
+          'FECHAR',
+          {
+            duration: 5000
+          }
         );
 
-        this.listarServicos();
       },
       (error) => {
         console.error(error)
@@ -94,26 +94,69 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
           'Falha ao deletar serviço',
           'FECHAR',
           {
-              duration: 5000
+            duration: 5000
           }
-      );
+        );
       }
     );
+  }
+  abrirModalPromocional(servico: Servico): void {
+    let mensagem: string = ""
+    if (servico.promocional) {
+      mensagem = "Tem certeza que deseja retirar este serviço da promoção?"
+    }
+    else {
+      mensagem = "Tem certeza que deseja tornar este serviço promocional?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: mensagem
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        servico.promocional = !servico.promocional
+        this.alterarServico(servico)
+
+      }
+    });
+  }
+  alterarServico(servico: Servico): void {
+    this.servicoService.alterarServico(servico).subscribe(response => {
+      this.listarServicos()
+      this.snackbar.open(
+        "Serviço alterado com sucesso",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.snackbar.open(
+        "Não foi possível alterar o serviço",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    });
   }
 }
 
 export interface Servico {
-    id: number;
-    nome: string;
-    categoria: string;
-    codigo: string;
-    descricao: string;
-    tempoEstimado: string;
-    valor: number;
-    valorPromocional: number;
-    ativo: boolean;
-    promocional: boolean;
-    estabelecimentoID: number;
+  id: number;
+  nome: string;
+  categoria: string;
+  codigo: string;
+  descricao: string;
+  tempoEstimado: string;
+  valor: number;
+  valorPromocional: number;
+  ativo: boolean;
+  promocional: boolean;
+  estabelecimentoID: number;
 }
 
 
