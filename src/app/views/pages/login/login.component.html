@@ -2,8 +2,9 @@
     class="w-full h-full bg-pattern"
     fxLayout="column"
     fxLayoutAlign="center center"
->
-    <div @fadeInUp class="card overflow-hidden w-full max-w-xs">
+><mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
+
+    <div   @fadeInUp class="card overflow-hidden w-full max-w-xs">
         <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
             <div class="fill-current text-center">
                 <img alt="" class="w-16" src="assets/img/demo/logo.svg" />
@@ -93,7 +94,6 @@
             >
                 ENTRAR
             </button>
-
             <div class="text-secondary text-center">Não tem uma conta?</div>
             <div class="text-secondary secondary2 text-center">
                 <span
@@ -102,5 +102,6 @@
                 >
             </div>
         </div>
+
     </div>
 </div>

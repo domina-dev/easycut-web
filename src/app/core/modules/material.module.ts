@@ -23,6 +23,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 const MATERIAL_MODULE = [
     MatDialogModule,
     MatPaginatorModule,
@@ -44,7 +45,8 @@ const MATERIAL_MODULE = [
     MatCardModule,
     MatButtonToggleModule,
     MatMenuModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressBarModule
 ];
 
 @NgModule({

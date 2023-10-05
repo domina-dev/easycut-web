@@ -1,7 +1,7 @@
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,65 +14,70 @@ import { Usuario } from 'src/app/core/model/usuario';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
 
 @Component({
-    selector: 'vex-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeInUp400ms]
+  selector: 'vex-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInUp400ms]
 })
 export class LoginComponent {
-    form: FormGroup;
+  form: FormGroup;
 
-    inputType = 'password';
-    visible = false;
+  load: boolean = false;
 
-    icVisibility = icVisibility;
-    icVisibilityOff = icVisibilityOff;
+  inputType = 'password';
+  visible = false;
 
-    public usuario = new Usuario();
+  icVisibility = icVisibility;
+  icVisibilityOff = icVisibilityOff;
 
-    constructor(
-        private router: Router,
-        private fb: FormBuilder,
-        private cd: ChangeDetectorRef,
-        private snackbar: MatSnackBar,
-        private estabelecimentoService: EstabelecimentoService
-    ) {
-        this.form = this.fb.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-    }
+  public usuario = new Usuario();
 
-    login() {
-        this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response =>
-        {
-          localStorage.setItem("login", JSON.stringify(response));
-          this.router.navigate(['/']);
-          console.log(localStorage.getItem("login"));
-        },
-          (error) => {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private snackbar: MatSnackBar,
+    private estabelecimentoService: EstabelecimentoService
+  ) {
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  login() {
+    this.load = true;
+    this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
+      localStorage.setItem("login", JSON.stringify(response));
+      // this.router.navigate(['/']);
+      console.log(localStorage.getItem("login"));
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
         this.snackbar.open
-        (
+          (
             'Email ou senha incorretos, ou usuario nao cadastrado',
             'fechar',
             {
-                duration: 5000
+              duration: 5000
             }
-        );
-            console.log(error)
-          });
-    }
+          );
+        console.log(error)
 
-    toggleVisibility() {
-        if (this.visible) {
-            this.inputType = 'password';
-            this.visible = false;
-            this.cd.markForCheck();
-        } else {
-            this.inputType = 'text';
-            this.visible = true;
-            this.cd.markForCheck();
-        }
+      });
+  }
+
+  toggleVisibility() {
+    if (this.visible) {
+      this.inputType = 'password';
+      this.visible = false;
+      this.cd.markForCheck();
+    } else {
+      this.inputType = 'text';
+      this.visible = true;
+      this.cd.markForCheck();
     }
+  }
 }
