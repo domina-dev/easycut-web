@@ -12,9 +12,9 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from 'src/app/core/model/usuario';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
-import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
+import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 
 @Component({
   selector: 'vex-login',
@@ -61,7 +61,7 @@ export class LoginComponent {
     },
       (error) => {
         this.snackbar.open
-          (
+        (
             'Email ou senha incorretos, ou usuario nao cadastrado',
             'fechar',
             {
