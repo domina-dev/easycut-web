@@ -1,12 +1,12 @@
 <div class="modal">
   <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-    <h2 class="title m-0">Tem certeza que deseja <b>EXCLUIR</b> esse item?</h2>
+    <h2 class="title m-0">{{ data.legendaAcao }}</h2>
   </div>
   <mat-dialog-content fxLayout="row" fxLayoutAlign="center">
     <div class="alinhar">
       <ul>
-        <li>
-          {{ data.titulo }}
+        <li *ngFor="let item of data.itens">
+          {{ item }}
         </li>
       </ul>
     </div>
