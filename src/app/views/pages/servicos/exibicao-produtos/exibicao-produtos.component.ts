@@ -80,24 +80,18 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         });
     }
 
-    // editarProduto(produto: Produto) {
-    //     this.dialog.open(CadastrarProdutoComponent, {
-    //         data: {
-    //             nomeProduto: produto,
-    //             tempo: produto,
-    //             preço: produto,
-    //             quantidade: produto,
-                
-                
+    editarProduto(produto?: Produto) {
+        this.produtoService.editaProduto(this.form.value).subscribe(response => {
 
-    //         }
-    //     });
-    // }
+        }, (error) => {
+            console.log(error)
+        })
+    }
 
 
     abrirModalCadastrarEditar(produto?: Produto) {
 
-        if (produto) produto.nomeProduto = 'sadas'
+        if (produto) produto.nomeProduto = 'Pomada'
         const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
             data: {
                 produto: produto
@@ -106,7 +100,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.deletarProduto();
+                this.editarProduto(produto);
+                this.listarProdutos();
             }
         });
     }
