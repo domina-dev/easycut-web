@@ -80,11 +80,28 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         });
     }
 
-    editarProduto(produto?: Produto) {
-        this.produtoService.editaProduto(this.form.value).subscribe(response => {
+    editarProduto(produto: Produto): void {
+        this.produtoService.editaProduto(produto).subscribe(response => {
+            this.listaProduto = response;
+            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+            this.dataSource.paginator = this.paginator;
+            this.snackbar.open(
+                "Produto editado com sucesso",
+                "Fechar",
+                {
+                  duration: 10000
+                }
+              );
 
         }, (error) => {
             console.log(error)
+            this.snackbar.open(
+                "Produto não editado",
+                "Tenta novamente",
+                {
+                    duration: 10000
+                }
+            );
         })
     }
 
@@ -101,7 +118,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.editarProduto(produto);
-                this.listarProdutos();
             }
         });
     }
