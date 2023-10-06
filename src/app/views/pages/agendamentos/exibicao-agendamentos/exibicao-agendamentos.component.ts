@@ -59,7 +59,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        
+
         width: '450px',
       });
 
@@ -69,7 +69,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   abrirModalDeletar(agendamento: Agendamento): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: `Tem certeza que deseja deletar o agendamento: ${agendamento.nomeServico}`
+        titulo: `Tem certeza que deseja deletar o agendamento: ${agendamento.nomeServico}?`
       }
     });
 
