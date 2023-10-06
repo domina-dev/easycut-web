@@ -37,6 +37,10 @@ export class CadastrarEditarServicoComponent {
       });
   }
 
+  cadastrarEditarServico() {
+    this.isCadastro?this.cadastrarServico() : this.editarServico()
+  }
+  
   cadastrarServico() {
     this.load = true;
     this.servicoService.cadastrarServico(this.form.value).subscribe(() => {

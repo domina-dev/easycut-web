@@ -72,31 +72,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
-  editaServico(servico: Servico): void {
-    this.servicoService.editarServico(servico).subscribe(response => {
-      this.listaServicos = response;
-      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-      this.dataSource.paginator = this.paginator;
-      this.snackbar.open(
-        "Servico alterado com sucesso",
-        "Fechar",
-        {
-          duration: 10000
-        }
-      );
-    }, (error) => {
-      console.log(error)
-      this.snackbar.open(
-        "Servico não alterado",
-        "Tenta novamente",
-        {
-          duration: 10000
-        }
-      );
-
-    });
-  }
-
   abrirModalDeletar(servico: Servico): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
@@ -153,14 +128,15 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: mensagem
+        itens: [servico.nome],
+        legendaAcao: mensagem
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         servico.promocional = !servico.promocional
-        this.editaServico(servico)
+        this.alterarServico(servico)
 
       }
     });

@@ -60,44 +60,45 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
       });
   }
 
-    deletarProduto() {
-        this.load = true;
-        this.produtoService.deletaProduto().subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-            this.load = false;
-            this.snackbar.open(
-                MENSAGENS.DELETAR_PRODUTO,
-                "Fechar",
-                {
-                    duration: 10000
-                }
-            );
-        }, (error) => {
-            this.load = false;
-            console.log(error)
-            this.snackbar.open(
-                MENSAGENS.ERRO_DELETAR_PRODUTO,
-                "Tenta novamente",
-                {
-                    duration: 10000
-                }
-            );
+  deletarProduto() {
+    this.load = true;
+    this.produtoService.deletaProduto().subscribe(response => {
+      this.listaProduto = response;
+      this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+      this.snackbar.open(
+        MENSAGENS.DELETAR_PRODUTO,
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
+    }, (error) => {
+      this.load = false;
+      console.log(error)
+      this.snackbar.open(
+        MENSAGENS.ERRO_DELETAR_PRODUTO,
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
 
     });
   }
 
-    openAdd() {
-        this.dialog.open(CadastrarProdutoComponent);
-    }
-    abrirModalDeletar(produto: Produto): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                itens: [produto.nome],
-                legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
-            }
-        });
+  openAdd() {
+    this.dialog.open(CadastrarProdutoComponent);
+  }
+  
+  abrirModalDeletar(produto: Produto): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [produto.nome],
+        legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -106,55 +107,59 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     });
   }
 
-    visualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
+  visualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
+
+  abrirModalPromocional(produto: Produto): void {
+    let mensagem: string = ""
+    if (produto.promocional) {
+      mensagem = "Tem certeza que deseja retirar este produto da promoção?"
     }
-    abrirModalPromocional(produto: Produto): void {
-        let mensagem:string = ""
-        if (produto.promocional) {
-            mensagem = "Tem certeza que deseja retirar este produto da promoção?"
+    else {
+      mensagem = "Tem certeza que deseja tornar este produto promocional?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [produto.nome],
+        legendaAcao: mensagem
+      }
+
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        produto.promocional = !produto.promocional
+        this.alterarProduto(produto)
+
+      }
+    });
+  }
+
+  alterarProduto(produto: Produto): void {
+    this.load = true;
+    this.produtoService.alterarProduto(produto).subscribe(response => {
+      this.listarProdutos()
+      this.load = false;
+      this.snackbar.open(
+        "Produto alterado com sucesso",
+        "Fechar",
+        {
+          duration: 3000
         }
-        else {
-            mensagem = "Tem certeza que deseja tornar este produto promocional?"
 
+      )
+    }, (error) => {
+      this.load = false;
+      this.snackbar.open(
+        "Não foi possível alterar o produto",
+        "Fechar",
+        {
+          duration: 3000
         }
-
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                titulo: mensagem
-            }
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                produto.promocional = !produto.promocional
-                this.alterarProduto(produto)
-
-            }
-        });
-    }
-    alterarProduto(produto: Produto): void {
-      this.load = true;
-        this.produtoService.alterarProduto(produto).subscribe(response => {
-            this.listarProdutos()
-            this.load = false;
-            this.snackbar.open(
-                "Produto alterado com sucesso",
-                "Fechar",
-                {
-                    duration: 3000
-                }
-
-                )
-        }, (error) => {
-            this.load = false;
-            this.snackbar.open(
-                "Não foi possível alterar o produto",
-                "Fechar",
-                {
-                    duration: 3000
-                }
-            )
-        });
-    }
+      )
+    });
+  }
 }
