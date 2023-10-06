@@ -7,6 +7,7 @@ import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/mod
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -14,6 +15,8 @@ import { Servico } from 'src/app/core/model/servicos'
   styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
+
+  load: boolean = false;
 
   displayedColumns: string[] = [
     'aplicacao',
@@ -40,11 +43,14 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   ngOnInit(): void { this.listarServicos() }
 
   listarServicos() {
+    this.load = true;
     this.servicoService.obterServicos().subscribe(response => {
       this.listaServicos = response;
       this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
       this.dataSource.paginator = this.paginator;
+      this.load = false;
     }, (error) => {
+      this.load = false;
       console.log(error)
     });
   }
@@ -66,35 +72,11 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
-  editaServico(servico: Servico): void {
-    this.servicoService.editarServico(servico).subscribe(response => {
-      this.listaServicos = response;
-      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-      this.dataSource.paginator = this.paginator;
-      this.snackbar.open(
-        "Servico alterado com sucesso",
-        "Fechar",
-        {
-          duration: 10000
-        }
-      );
-    }, (error) => {
-      console.log(error)
-      this.snackbar.open(
-        "Servico não alterado",
-        "Tenta novamente",
-        {
-          duration: 10000
-        }
-      );
-
-    });
-  }
-
   abrirModalDeletar(servico: Servico): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
+        itens: [servico.nome],
+        legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
       }
     });
 
@@ -106,11 +88,13 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   }
 
   deletarServico(servico: Servico): void {
+    this.load = true;
     this.servicoService.deletarServico(servico.id).subscribe(
       () => {
         this.listarServicos();
+        this.load = false;
         this.snackbar.open(
-          'Serviço deletado com sucesso',
+          MessagesSnackBar.DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000
@@ -119,9 +103,10 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
       },
       (error) => {
+        this.load = false;
         console.error(error)
         this.snackbar.open(
-          'Falha ao deletar serviço',
+          MessagesSnackBar.ERRO_DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000
@@ -143,20 +128,45 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: mensagem
+        itens: [servico.nome],
+        legendaAcao: mensagem
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         servico.promocional = !servico.promocional
-        this.editaServico(servico)
+        this.alterarServico(servico)
 
       }
     });
   }
+  alterarServico(servico: Servico): void {
+    this.load = true;
+    this.servicoService.editarServico(servico).subscribe(response => {
+      this.listarServicos()
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_SERVICO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_SERVICO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    });
 
-  vizualizar() {
+  }
+  
+  visualizar() {
     this.verLista = !this.verLista;
     this.verGrade = !this.verGrade;
   }
