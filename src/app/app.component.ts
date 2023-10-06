@@ -138,7 +138,7 @@ export class AppComponent {
             {
                 type: 'link',
                 label: 'Configurações',
-                route: '/configuracoes',
+                route: '/config',
                 icon: icSettings
             }
         ];

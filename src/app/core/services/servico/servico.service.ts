@@ -26,5 +26,7 @@ export class ServicoService {
     return this.http.put<Servico[]>(`${this.API}/servicos`, servico).pipe(take(1));
   }
 
+  deletarServico(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API}/servicos?servico_ID=${id}`)
+  }
 }
-

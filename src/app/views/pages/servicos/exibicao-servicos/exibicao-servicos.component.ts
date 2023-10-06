@@ -29,7 +29,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   verLista: boolean = true;
   verGrade: boolean = false;
   listaServicos: Servico[] = [];
-
   editarServico: CadastrarEditarServicoComponent
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -69,8 +68,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
-<<<<<<< HEAD
-=======
   editaServico(servico: Servico): void {
     this.servicoService.editarServico(servico).subscribe(response => {
       this.listaServicos = response;
@@ -96,7 +93,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
->>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
   abrirModalDeletar(servico: Servico): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
@@ -106,15 +102,59 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Lógica para excluir o servico se o usuário confirmar
-        this.excluirServico(servico);
+        this.deletarServico(servico);
       }
     });
   }
 
-  excluirServico(servico: Servico): void {
-    // Implemente a lógica para excluir o servico aqui
-    // Chame seu serviço ou método para realizar a exclusão
+  deletarServico(servico: Servico): void {
+    this.servicoService.deletarServico(servico.id).subscribe(
+      () => {
+        this.listarServicos();
+        this.snackbar.open(
+          'Serviço deletado com sucesso',
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+
+      },
+      (error) => {
+        console.error(error)
+        this.snackbar.open(
+          'Falha ao deletar serviço',
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+      }
+    );
+  }
+
+  abrirModalPromocional(servico: Servico): void {
+    let mensagem: string = ""
+    if (servico.promocional) {
+      mensagem = "Tem certeza que deseja retirar este serviço da promoção?"
+    }
+    else {
+      mensagem = "Tem certeza que deseja tornar este serviço promocional?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: mensagem
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        servico.promocional = !servico.promocional
+        this.editaServico(servico)
+
+      }
+    });
   }
 
   vizualizar() {
@@ -122,6 +162,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     this.verGrade = !this.verGrade;
   }
 }
+
 
 
 

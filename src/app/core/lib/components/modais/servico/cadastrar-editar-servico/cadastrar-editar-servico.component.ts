@@ -2,6 +2,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 import { Servico } from 'src/app/core/model/servicos';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 
@@ -15,17 +16,13 @@ export class CadastrarEditarServicoComponent {
     legendaBotao: string = '';
     isCadastro!: boolean ;
 
-<<<<<<< HEAD
     servico = new Servico();
 
-=======
->>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
     constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder, private servicoService: ServicoService,
         private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
         private snackbar: MatSnackBar) {
-<<<<<<< HEAD
-          this.isCadastro = data.servico? false : true;
+          this.isCadastro = !data.servico;
           this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
           this.form = this.fb.group({
             nome: [data?.servico?.nome, Validators.required],
@@ -34,13 +31,6 @@ export class CadastrarEditarServicoComponent {
             categoria: [data?.servico?.categoria, Validators.required],
             valor: [data?.servico?.valor, Validators.required],
             valorPromocional: [data?.servico?.valorPromocional, Validators.required]
-=======
-        this.form = this.fb.group({
-            nome: [data?.servico?.nome, Validators.required],
-            tempo: [data?.servico?.tempoEstimado, Validators.required],
-            categoria: [data?.servico?.categoria.value, Validators.required],
-            valor: [data?.servico?.valor, Validators.required]
->>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
         });
     }
 
@@ -54,7 +44,7 @@ export class CadastrarEditarServicoComponent {
             console.log(this.form.value);
             this.dialogRef.close(true)
             this.snackbar.open(
-                "Cadastro feito com sucesso.",
+                MENSAGENS.ADICIONAR_SERVICO,
                 "Fechar",
                 {
                     duration: 10000
@@ -64,7 +54,7 @@ export class CadastrarEditarServicoComponent {
             (error) => {
                 console.log(error);
                 this.snackbar.open(
-                    "Há algo errado com o cadastro.",
+                    MENSAGENS.ERRO_ADICIONAR_SERVICO,
                     "Tente novamente",
                     {
                         duration: 10000
