@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 
 @Component({
   selector: 'vex-cadastrar-produto',
@@ -27,8 +28,8 @@ export class CadastrarProdutoComponent {
         console.log(this.form.value);
         this.dialogRef.close();
         this.snackbar.open(
-          'Cadastro de produto realizado com sucesso!',
-          'FECHAR',
+          MENSAGENS.PRODUTO_CADASTRADO_SUCESSO,
+          'Fechar',
           {
               duration: 10000
           }
@@ -37,7 +38,7 @@ export class CadastrarProdutoComponent {
         (error) => {
           console.log(error)
           this.snackbar.open(
-            'Produto não cadastrado.',
+            MENSAGENS.ERRO_CADASTRO_PRODUTO,
             'FECHAR',
             {
                 duration: 10000

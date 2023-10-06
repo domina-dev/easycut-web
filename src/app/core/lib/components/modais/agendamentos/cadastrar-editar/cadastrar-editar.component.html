@@ -1,50 +1,104 @@
-<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-    <h2 class="title m-0">Novo Agendamento</h2>
-</div>
+<div class="form">
+    <!-- Titulo do modal -->
+    <div
+        class="px-6 py-4 border-b"
+        id="title"
+        fxLayout="row"
+        fxLayoutAlign="start center"
+    >
+        <h2 class="title m-0">Novo Agendamento</h2>
+    </div>
 
-<mat-dialog-content class="modal">
-    <form [formGroup]="clientForm">
-        <div class="corpoform">
-            <div class="client">
-                <mat-form-field appearance="standard">
-                    <mat-label>Cliente</mat-label>
-                    <input matInput formControlName="cliente" />
-                </mat-form-field>
-            </div>
-            <div class="service">
-                <mat-form-field appearance="standard">
-                    <mat-label>Serviço</mat-label>
-                    <input matInput formControlName="servico" />
-                </mat-form-field>
-            </div>
+    <div class="modal">
+        <!-- modal -->
+        <mat-dialog-content>
+            <div [formGroup]="form" class="example-form">
+                <!-- cliente -->
+                <div class="cliente">
+                    <mat-form-field
+                        class="example-full-width"
+                        id="inpN"
+                        appearance="standard"
+                    >
+                        <mat-label class="cliente">Cliente</mat-label>
+                        <input formControlName="cliente" matInput required />
+                        <mat-error
+                            *ngIf="form.get('cliente').hasError('required')"
+                        >
+                            Preencha este campo!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- serviço -->
+                <div class="servico">
+                    <mat-form-field
+                        class="example-full-width"
+                        id="inpN"
+                        appearance="standard"
+                    >
+                        <mat-label class="servico">Serviço</mat-label>
+                        <input formControlName="servico" matInput required />
+                        <mat-error
+                            *ngIf="form.get('servico').hasError('required')"
+                        >
+                            Preencha este campo!
+                        </mat-error>
+                    </mat-form-field>
+                </div>
 
-            <div class="tempvalor">
-                <div class="temp">
-                    <mat-form-field appearance="standard">
+                <!-- Tempo estimado -->
+                <div class="tempoEs">
+                    <mat-form-field id="tempoEst" appearance="standard">
                         <mat-label>Tempo Estimado</mat-label>
-                        <span matSuffix>minutos &nbsp;</span>
-                        <input matInput formControlName="tempo" />
+                        <input
+                            formControlName="tempo"
+                            type="text"
+                            matInput
+                            placeholder="Digite o Tempo"
+                            maxlength="3"
+                            required
+                        />
+                        <span matTextPrefix class="minutos">Minutos&nbsp;</span>
+                        <mat-error
+                            *ngIf="form.get('tempo').hasError('required')"
+                        >
+                            Preencha este campo!
+                        </mat-error>
                     </mat-form-field>
-                </div>
-                <div class="valor">
-                    <mat-form-field appearance="standard">
+
+                    <!-- valor -->
+                    <mat-form-field id="categoria" appearance="standard">
                         <mat-label>Valor do Serviço</mat-label>
-                        <input matInput formControlName="valor" />
+                        <input
+                            matInput
+                            formControlName="valor"
+                            required
+                            placeholder="Ex. R$ 50,66"
+                        />
+                        <mat-error
+                            *ngIf="form.get('valor').hasError('required')"
+                        >
+                            Selecione uma opção!
+                        </mat-error>
                     </mat-form-field>
                 </div>
-            </div>
 
-            <div class="responsavel">
-                <mat-form-field appearance="standard">
-                    <mat-label>Responsável</mat-label>
-                    <input matInput formControlName="responsavel" />
-                </mat-form-field>
-            </div>
-
-            <div class="datestatus">
-                <div class="date">
-                    <mat-form-field appearance="standard">
-                        <mat-label>Data do Atendimento</mat-label>
+                <!-- responsavel -->
+                <div class="responsavel">
+                    <mat-form-field
+                        class="example-full-width"
+                        id="descricao"
+                        appearance="standard"
+                    >
+                        <mat-label>Responsável</mat-label>
+                        <input matInput formControlName="responsavel" />
+                    </mat-form-field>
+                </div>
+                <div class="descrição">Data e horário do atendimento:</div>
+                <!-- data, hora e status -->
+                <div class="valor">
+                    <mat-form-field class="intval" appearance="standard">
+                        <mat-label>Data</mat-label>
                         <input
                             matInput
                             [matDatepicker]="picker"
@@ -55,24 +109,55 @@
                             [for]="picker"
                         ></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
+                        <mat-error
+                            *ngIf="form.get('data').hasError('required')"
+                        >
+                            Preencha a data!
+                        </mat-error>
                     </mat-form-field>
-                </div>
-                <div class="status">
-                    <mat-form-field appearance="standard">
+
+                    <mat-form-field class="intval2" appearance="standard">
+                        <mat-label>Hora</mat-label>
+                        <input
+                            matInput
+                            formControlName="data"
+                            placeholder="Ex. 12:30"
+                        />
+                        <mat-error
+                            *ngIf="form.get('hora').hasError('required')"
+                        >
+                            Preencha a hora!
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="status" appearance="standard">
                         <mat-label>Status</mat-label>
-                        <mat-select formControlName="status">
-                            <mat-option value="masculino">Pendente</mat-option>
-                            <mat-option value="feminino">Aceito</mat-option>
-                            <mat-option value="feminino">Recusado</mat-option>
+                        <mat-select formControlName="status" required>
+                            <mat-option value="option">Pendente</mat-option>
+                            <mat-option value="option">Aceito</mat-option>
+                            <mat-option value="option">Recusado</mat-option>
                         </mat-select>
+                        <mat-error
+                            *ngIf="form.get('status').hasError('required')"
+                        >
+                            Selecione uma opção!
+                        </mat-error>
                     </mat-form-field>
                 </div>
             </div>
-        </div>
-    </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button mat-button color="primary" class="cancelar" mat-dialog-close>Cancelar</button>
-    <button [mat-dialog-close]="true" mat-raised-button color="primary" 
-    class="cadastrar" (click)="cadastrarAgendamento(this.clientForm.value)">Adicionar</button>
-</mat-dialog-actions>
+        </mat-dialog-content>
+
+        <!-- botoes adicionar e cancelar -->
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancelar</button>
+            <button
+                mat-button
+                mat-raised-button
+                color="primary"
+                (click)="addUser()"
+            >
+                Adicionar
+            </button>
+        </mat-dialog-actions>
+    </div>
+</div>

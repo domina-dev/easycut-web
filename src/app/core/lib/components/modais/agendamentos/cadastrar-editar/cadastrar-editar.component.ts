@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
@@ -11,32 +11,31 @@ import { ExibicaoAgendamentosComponent } from 'src/app/views/pages/agendamentos/
   styleUrls: ['./cadastrar-editar.component.scss']
 })
 export class CadastrarEditarComponent {
-
-  public clientForm: FormGroup;
+  form: FormGroup;
 
   public userData?: Agendamento;
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly dialogRef: MatDialogRef<any>,
-    private agendamentoService: AgendamentoService,
-    private exibicaoAgendamento: ExibicaoAgendamentosComponent
+    private readonly dialogRef: MatDialogRef<CadastrarEditarComponent>,
+    private agendamentoService: AgendamentoService
   ) {
-    this.clientForm = fb.group({
-      cliente: [''],
-      servico: [''],
-      tempo: [''],
-      valor: [''],
-      data: [''],
-      responsavel: [''],
-      status: [''],
-    })
+    this.form = this.fb.group({
+      cliente: ['', Validators.required],
+      servico: ['', Validators.required],
+      tempo: ['', Validators.required],
+      valor: ['', Validators.required],
+      data: ['', Validators.required],
+      status: ['', Validators.required],
+      hora: ['', Validators.required],
+      responsavel: ['']
+  })
 
   }
 
   cadastrarAgendamento(agendamento: Agendamento) {
-    this.agendamentoService.CadastraAgendamentos(this.clientForm.value).subscribe(response => {
-      this.exibicaoAgendamento.getAgendamentos();
+    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
+
 
     }, (error) => {
       console.log(error);
