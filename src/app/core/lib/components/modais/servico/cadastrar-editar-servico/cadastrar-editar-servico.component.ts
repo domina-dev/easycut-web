@@ -29,18 +29,19 @@ export class CadastrarEditarServicoComponent {
         this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
         this.form = this.fb.group({
           nome: [data?.servico?.nome, Validators.required],
-          tempo: [data?.servico?.tempoEstimado, Validators.required],
+          tempoEstimado: [data?.servico?.tempoEstimado, Validators.required],
           descricao: [data?.servico?.descricao],
           categoria: [data?.servico?.categoria, Validators.required],
           valor: [data?.servico?.valor, Validators.required],
-          valorPromocional: [data?.servico?.valorPromocional, Validators.required]
+          valorPromocional: [data?.servico?.valorPromocional, Validators.required],
+          promocional: [data?.servico?.promocional]
       });
   }
 
   cadastrarEditarServico() {
     this.isCadastro?this.cadastrarServico() : this.editarServico()
   }
-  
+
   cadastrarServico() {
     this.load = true;
     this.servicoService.cadastrarServico(this.form.value).subscribe(() => {
@@ -97,12 +98,8 @@ export class CadastrarEditarServicoComponent {
   private montarBody() {
     let id = this.data?.servico?.id;
     let estabelecimentoID = this.data?.servico?.estabelecimentoID;
-    let tempoEstimado = this.data?.servico?.tempoEstimado;
-    let promocional = this.data?.servico?.promocional
     this.servico = this.form.value;
     this.servico.id = id;
     this.servico.estabelecimentoID = estabelecimentoID;
-    this.servico.tempoEstimado = tempoEstimado;
-    this.servico.promocional = promocional
   }
 }
