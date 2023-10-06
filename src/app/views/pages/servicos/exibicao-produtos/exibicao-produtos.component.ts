@@ -83,7 +83,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: produto.nome
+                itens: [produto.nomeProduto],
+                legendaAcao: 'Tem certeza que deseja EXCLUIR esse item?'
             }
         });
 
