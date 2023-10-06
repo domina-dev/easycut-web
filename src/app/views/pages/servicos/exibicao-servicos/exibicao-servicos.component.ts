@@ -6,6 +6,8 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Servico } from 'src/app/core/model/servicos'
+
 import { MENSAGENS } from 'src/app/core/constants/mensagens';
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -36,8 +38,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
   constructor(public dialog: MatDialog,
     private servicoService: ServicoService,
-    private snackbar: MatSnackBar
-  ) { }
+    private snackbar: MatSnackBar) { }
 
   ngOnInit(): void { this.listarServicos() }
 
@@ -58,13 +59,42 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialog() {
-    this.dialog.open(CadastrarEditarServicoComponent);
+  modalCadastrarEditar(servico?: Servico) {
+    const dialogRef = this.dialog.open(CadastrarEditarServicoComponent, {
+      data: {
+          servico: servico
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.listarServicos();
+      }
+    });
   }
 
-  vizualizar() {
-    this.verLista = !this.verLista;
-    this.verGrade = !this.verGrade;
+  editaServico(servico: Servico): void {
+    this.servicoService.editarServico(servico).subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.snackbar.open(
+        "Servico alterado com sucesso",
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
+    }, (error) => {
+      console.log(error)
+      this.snackbar.open(
+        "Servico não alterado",
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
+
+    });
   }
 
   abrirModalDeletar(servico: Servico): void {
@@ -77,7 +107,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
         this.deletarServico(servico);
       }
     });
@@ -111,6 +140,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       }
     );
   }
+
   abrirModalPromocional(servico: Servico): void {
     let mensagem: string = ""
     if (servico.promocional) {
@@ -126,17 +156,18 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         titulo: mensagem
       }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         servico.promocional = !servico.promocional
-        this.alterarServico(servico)
+        this.editaServico(servico)
 
       }
     });
   }
   alterarServico(servico: Servico): void {
     this.load = true;
-    this.servicoService.alterarServico(servico).subscribe(response => {
+    this.servicoService.editarServico(servico).subscribe(response => {
       this.listarServicos()
       this.load = false;
       this.snackbar.open(
@@ -156,21 +187,15 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         }
       )
     });
+
+  }
+  
+  vizualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
   }
 }
 
-export interface Servico {
-  id: number;
-  nome: string;
-  categoria: string;
-  codigo: string;
-  descricao: string;
-  tempoEstimado: string;
-  valor: number;
-  valorPromocional: number;
-  ativo: boolean;
-  promocional: boolean;
-  estabelecimentoID: number;
-}
+
 
 

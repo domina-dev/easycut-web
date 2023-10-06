@@ -40,7 +40,7 @@ registerLocaleData(localePt, 'pt');
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
         ConfirmacaoComponent,
-        
+
     ],
     imports: [
         BrowserModule,
@@ -65,7 +65,7 @@ registerLocaleData(localePt, 'pt');
     providers: [
         { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
         { provide: LOCALE_ID, useValue: 'PT-BR' },
-        { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+        {provide:  DEFAULT_CURRENCY_CODE, useValue: 'BRL'},
         { provide: LocationStrategy, useClass: HashLocationStrategy },
     ],
     bootstrap: [AppComponent]

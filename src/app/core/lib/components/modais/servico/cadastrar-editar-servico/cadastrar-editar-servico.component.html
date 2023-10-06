@@ -31,9 +31,9 @@
                     <mat-form-field id="tempoEst" appearance="standard">
                         <mat-label>Tempo Estimado</mat-label>
                         <input
-                            formControlName="tempo"
-                            type="text"
                             matInput
+                            formControlName="tempo"
+                            type="number"
                             placeholder="Digite o Tempo"
                             maxlength="3"
                             required
@@ -50,8 +50,8 @@
                     <mat-form-field id="categoria" appearance="standard">
                         <mat-label>Categoria</mat-label>
                         <mat-select formControlName="categoria" required>
-                            <mat-option value="option">Cabelo</mat-option>
-                            <mat-option value="option">Barba</mat-option>
+                            <mat-option value="cabelo">Cabelo</mat-option>
+                            <mat-option value="barba">Barba</mat-option>
                         </mat-select>
                         <mat-error
                             *ngIf="form.get('categoria').hasError('required')"
@@ -67,6 +67,7 @@
                         <mat-label>Descrição do serviço</mat-label>
                         <input
                             matInput
+                            formControlName="descricao"
                             placeholder="Ex. Tipo de corte, tipo de barba..."
                         />
                     </mat-form-field>
@@ -107,14 +108,14 @@
                         <span matTextPrefix>R$&nbsp;</span>
                         <input
                             formControlName="valor"
-                            id="valorP"
+                            id="valorPromocional"
                             matInput
                             type="number"
                             class="example-right-align"
                             placeholder="0"
                         />
                         <mat-error
-                            *ngIf="form.get('valor').hasError('required')"
+                            *ngIf="form.get('valorPromocional').hasError('required')"
                         >
                             Preencha este campo!
                         </mat-error>
@@ -130,9 +131,9 @@
                 mat-button
                 mat-raised-button
                 color="primary"
-                (click)="cadastrarServico()"
+                (click)="cadastrarEditarServico()"
             >
-                Adicionar
+                {{ legendaBotao }}
             </button>
         </mat-dialog-actions>
     </div>

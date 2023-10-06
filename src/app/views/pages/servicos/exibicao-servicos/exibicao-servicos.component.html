@@ -21,7 +21,7 @@
 
     <div class="botao-view">
         <div class="btnAdd">
-            <button mat-button mat-raised-button color="primary" (click)="openDialog()">
+            <button mat-button  mat-raised-button color="primary" (click)="modalCadastrarEditar()">
                 Adicionar <mat-icon>add</mat-icon>
             </button>
         </div>
@@ -81,11 +81,20 @@
         <ng-container matColumnDef="icone">
             <th mat-header-cell *matHeaderCellDef></th>
             <td class="layout-menu" mat-cell *matCellDef="let servico">
-                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
+                <button id="editar"
+                    mat-icon-button
+                    aria-label="ícone Button"
+                    class="icon-spacing"
+                    (click)="modalCadastrarEditar(servico)"
+                >
                     <mat-icon color="primary"> border_color</mat-icon>
                 </button>
-                <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
-                    (click)="abrirModalDeletar(servico)">
+                <button id="excluir"
+                    mat-icon-button
+                    aria-label="ícone Button"
+                    class="icon-spacing"
+                    (click)="abrirModalDeletar(servico)"
+                >
                     <mat-icon color="warn">delete</mat-icon>
                 </button>
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
