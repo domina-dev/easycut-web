@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { Servico } from 'src/app/core/model/servicos';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
-
 
 @Component({
     selector: 'vex-cadastrar-editar-servico',
@@ -13,22 +13,36 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 })
 export class CadastrarEditarServicoComponent {
     form: FormGroup;
+    legendaBotao: string = '';
+    isCadastro!: boolean ;
 
-    constructor(private fb: FormBuilder, private servicoService: ServicoService,
+    servico = new Servico();
+
+    constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+        private fb: FormBuilder, private servicoService: ServicoService,
         private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
         private snackbar: MatSnackBar) {
-        this.form = this.fb.group({
-            nome: ['', Validators.required],
-            tempo: ['', Validators.required],
-            categoria: ['', Validators.required],
-            valor: ['', Validators.required]
+          this.isCadastro = !data.servico;
+          this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
+          this.form = this.fb.group({
+            nome: [data?.servico?.nome, Validators.required],
+            tempo: [data?.servico?.tempoEstimado, Validators.required],
+            descricao: [data?.servico?.descricao],
+            categoria: [data?.servico?.categoria, Validators.required],
+            valor: [data?.servico?.valor, Validators.required],
+            valorPromocional: [data?.servico?.valorPromocional, Validators.required]
         });
     }
 
+    cadastrarEditarServico() {
+      this.isCadastro?this.cadastrarServico() : this.editarServico()
+    }
+
     cadastrarServico() {
-        this.servicoService.cadastrarServico(this.form.value).subscribe(() => {
+        this.montarBody();
+        this.servicoService.cadastrarServico(this.servico).subscribe(() => {
             console.log(this.form.value);
-            this.dialogRef.close()
+            this.dialogRef.close(true)
             this.snackbar.open(
                 MENSAGENS.ADICIONAR_SERVICO,
                 "Fechar",
@@ -50,6 +64,38 @@ export class CadastrarEditarServicoComponent {
             })
     }
 
+    editarServico() {
+      this.montarBody();
+      this.servicoService.editarServico(this.servico).subscribe(() => {
+        console.log(this.form.value)
+        this.dialogRef.close(true);
+        this.snackbar.open(
+          "Servico alterado com sucesso",
+          "Fechar",
+          {
+            duration: 10000
+          }
+        );
+      }, (error) => {
+        console.log(error)
+        this.snackbar.open(
+          "Servico não alterado",
+          "Tenta novamente",
+          {
+            duration: 10000
+          }
+        );
 
+      });
+    }
 
+  private montarBody() {
+    let id = this.data?.servico?.id;
+    let estabelecimentoID = this.data?.servico?.estabelecimentoID;
+    let tempoEstimado = this.data?.servico?.tempoEstimado;
+    this.servico = this.form.value;
+    this.servico.id = id;
+    this.servico.estabelecimentoID = estabelecimentoID;
+    this.servico.tempoEstimado = tempoEstimado
+  }
 }
