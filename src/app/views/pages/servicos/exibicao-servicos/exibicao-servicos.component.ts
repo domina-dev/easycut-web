@@ -147,7 +147,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       this.listarServicos()
       this.load = false;
       this.snackbar.open(
-        "Serviço alterado com sucesso",
+        MessagesSnackBar.EDITAR_SERVICO,
         "Fechar",
         {
           duration: 3000
@@ -156,7 +156,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     }, (error) => {
       this.load = false;
       this.snackbar.open(
-        "Não foi possível alterar o serviço",
+        MessagesSnackBar.ERRO_EDITAR_SERVICO,
         "Fechar",
         {
           duration: 3000

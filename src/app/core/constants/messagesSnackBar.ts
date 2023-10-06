@@ -26,7 +26,7 @@ export enum  MessagesSnackBar {
     PRODUTO_CADASTRADO_SUCESSO= "Produto cadastrado com sucesso!",
     ERRO_CADASTRO_PRODUTO= "Erro ao cadastrar produto!",
     EDITAR_PRODUTO= "Produto editado com sucesso!",
-    ERRO_CADASTRADO_PRODUTO= "Erro ao editar produto!",
+    ERRO_EDITAR_PRODUTO= "Erro ao editar produto!",
     DELETAR_PRODUTO= "Produto deletado",
     ERRO_DELETAR_PRODUTO= "Erro ao deletar produto! Tente novamente",
 

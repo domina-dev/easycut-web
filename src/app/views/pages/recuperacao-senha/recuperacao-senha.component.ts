@@ -49,7 +49,7 @@ export class RecuperacaoSenhaComponent {
                 });
             }, (error) => {
               this.load = false;
-                this.snackbar.open(error.message, 'Fechar', {
+                this.snackbar.open(MessagesSnackBar.ERRO_RECUPERAR_SENHA, 'Fechar', {
                     duration: 5000,
                     panelClass: ['error-snackbar']
                 });

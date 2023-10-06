@@ -10,6 +10,7 @@ import icPhoneInTalk from '@iconify/icons-ic/twotone-phone-in-talk';
 import icMail from '@iconify/icons-ic/twotone-mail';
 import { fadeInUp400ms } from "src/@vex/animations/fade-in-up.animation";
 import { stagger60ms } from "src/@vex/animations/stagger.animation";
+import { MessagesSnackBar } from "src/app/core/constants/messagesSnackBar";
 
 const BASIC = 1;
 const PREMIUM = 2;
@@ -67,14 +68,14 @@ export class PlanosComponent implements OnInit {
     const plano_ID = plano.id;
     this.estabelecimentoService.contratar(estabelecimento_ID, plano_ID).subscribe(() => {
       this.load = false;
-      this.snackbar.open("Plano contratado com sucesso!", 'Fechar',
+      this.snackbar.open(MessagesSnackBar.PLANO_CONTRATADO_SUCESSO, 'Fechar',
         {
           duration: 5000
         })
     },
       (error) => {
         this.load = false;
-        this.snackbar.open(error.message, 'Fechar',
+        this.snackbar.open(MessagesSnackBar.ERRO_PLANO_CONTRATADO, 'Fechar',
           {
             duration: 5000,
             panelClass: ['error-snackbar']

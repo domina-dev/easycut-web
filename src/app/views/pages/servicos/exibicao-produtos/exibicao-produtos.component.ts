@@ -145,7 +145,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
       this.listarProdutos()
       this.load = false;
       this.snackbar.open(
-        "Produto alterado com sucesso",
+        MessagesSnackBar.EDITAR_PRODUTO,
         "Fechar",
         {
           duration: 3000
@@ -155,7 +155,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     }, (error) => {
       this.load = false;
       this.snackbar.open(
-        "Não foi possível alterar o produto",
+        MessagesSnackBar.ERRO_EDITAR_PRODUTO,
         "Fechar",
         {
           duration: 3000

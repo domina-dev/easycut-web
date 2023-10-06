@@ -75,7 +75,7 @@ export class CadastrarEditarServicoComponent {
         console.log(this.form.value)
         this.dialogRef.close(true);
         this.snackbar.open(
-          "Servico alterado com sucesso",
+          MessagesSnackBar.EDITAR_SERVICO,
           "Fechar",
           {
             duration: 10000
@@ -84,7 +84,7 @@ export class CadastrarEditarServicoComponent {
       }, (error) => {
         console.log(error)
         this.snackbar.open(
-          "Servico não alterado",
+          MessagesSnackBar.ERRO_EDITAR_SERVICO,
           "Tenta novamente",
           {
             duration: 10000
