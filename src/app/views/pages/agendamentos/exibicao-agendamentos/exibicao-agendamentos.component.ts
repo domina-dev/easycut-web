@@ -69,7 +69,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   abrirModalDeletar(agendamento: Agendamento): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: `Tem certeza que deseja deletar o agendamento: ${agendamento.nomeServico}`
+        itens: [agendamento.nomeServico],
+        legendaAcao: 'Tem certeza que deseja EXCLUIR esse item?'
       }
     });
 

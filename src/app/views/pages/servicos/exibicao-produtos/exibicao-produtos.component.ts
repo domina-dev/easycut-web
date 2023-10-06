@@ -88,15 +88,16 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     });
   }
 
-  openAdd() {
-    this.dialog.open(CadastrarProdutoComponent);
-  }
-  abrirModalDeletar(produto: Produto): void {
-    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-      data: {
-        titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
-      }
-    });
+    openAdd() {
+        this.dialog.open(CadastrarProdutoComponent);
+    }
+    abrirModalDeletar(produto: Produto): void {
+        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+            data: {
+                itens: [produto.nome],
+                legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
+            }
+        });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
