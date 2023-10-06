@@ -5,6 +5,7 @@ import icMail from '@iconify/icons-ic/twotone-mail';
 
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 
 @Component({
     selector: 'vex-recuperacao-senha',
@@ -33,7 +34,7 @@ export class RecuperacaoSenhaComponent {
         const email = this.form.get('email').value;
         if (!email) {
             this.snackbar.open(
-                'Não podemos recuperar sua senha, sem seu e-mail.',
+                MENSAGENS.ERRO_RECUPERAR_SENHA,
                 'FECHAR',
                 {
                     duration: 10000

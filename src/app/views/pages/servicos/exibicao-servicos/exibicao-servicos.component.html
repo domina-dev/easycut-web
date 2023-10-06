@@ -66,41 +66,50 @@
         <!-- Tempo do Serviço -->
         <ng-container matColumnDef="tempo">
             <th class="color-title" mat-header-cell *matHeaderCellDef>Tempo</th>
-            <td mat-cell *matCellDef="let element">{{ element.tempoEstimado }}</td>
+            <td mat-cell *matCellDef="let element">
+                {{ element.tempoEstimado }}
+            </td>
         </ng-container>
 
         <!-- Preço do Serviço -->
         <ng-container matColumnDef="preco">
             <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
-            <td mat-cell *matCellDef="let element">{{ element.valor }}</td>
+            <td mat-cell *matCellDef="let servico">{{ servico.promocional? servico.valorPromocional:servico.valor }}</td>
         </ng-container>
 
         <!-- Ícone da tabela -->
         <ng-container matColumnDef="icone">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td class="layout-menu" mat-cell *matCellDef="let element">
-                <button
-                    mat-icon-button
-                    aria-label="ícone Button"
-                    class="icon-spacing"
-                >
+            <td class="layout-menu" mat-cell *matCellDef="let servico">
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
                     <mat-icon color="primary"> border_color</mat-icon>
                 </button>
-                <button
-                    mat-icon-button
-                    aria-label="ícone Button"
-                    class="icon-spacing"
-                    (click)="abrirModalDeletar(element)"
-                >
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                    (click)="abrirModalDeletar(servico)">
                     <mat-icon color="warn">delete</mat-icon>
                 </button>
-                <button
-                    mat-icon-button
-                    [matMenuTriggerFor]="menu"
-                    aria-label="Example icon-button with a menu"
-                >
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     <mat-icon>more_vert</mat-icon>
                 </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+                        <mat-icon class="icon-color">visibility_off</mat-icon>
+                        <span class="descricaoicon">Exibir Serviço</span>
+                    </button>
+
+                    <button *ngIf="!servico.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                        (click)="abrirModalPromocional(servico)">
+                        <mat-icon class="icon-color">money_off</mat-icon>
+                        <span class="descricaoicon">Tornar Promocional</span>
+                    </button>
+
+                    <button *ngIf="servico.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                        (click)="abrirModalPromocional(servico)">
+
+                        <mat-icon class="icon-color">attach_money</mat-icon>
+                        <span class="descricaoicon">Remover Promoção</span>
+                    </button>
+                </mat-menu>
             </td>
         </ng-container>
 
@@ -108,21 +117,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-        aria-label="Selecionar página do produto"
-    >
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecionar página do produto">
     </mat-paginator>
 </div>
-
-<mat-menu #menu="matMenu">
-    <button mat-icon-button aria-label="ícone Button" class="iconmenu">
-        <mat-icon class="icon-color">visibility_off</mat-icon>
-        <span class="descricaoicon">Exibir Serviço</span>
-    </button>
-    <button mat-icon-button aria-label="ícone Button" class="iconmenu">
-        <mat-icon class="icon-color">confirmation_number</mat-icon>
-        <span class="descricaoicon">Tornar Promocional</span>
-    </button>
-</mat-menu>

@@ -12,6 +12,9 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from 'src/app/core/model/usuario';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
+import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 
 @Component({
   selector: 'vex-login',
@@ -22,7 +25,10 @@ import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/es
 export class LoginComponent {
   form: FormGroup;
 
-  load: boolean = true;
+  load: boolean = false;
+
+  firstLogin: boolean;
+  planLogin: any;
 
   inputType = 'password';
   visible = false;
@@ -37,7 +43,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
     private snackbar: MatSnackBar,
-    private estabelecimentoService: EstabelecimentoService
+    private estabelecimentoService: EstabelecimentoService,
+    public dialog: MatDialog
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -46,15 +53,17 @@ export class LoginComponent {
   }
 
   login() {
-    this.load = false;
-    this.estabelecimentoService.saveUsuario(this.usuario).then(response => {
+    this.load = true;
+    this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
       localStorage.setItem("login", JSON.stringify(response));
+      this.firstLogin = response.primeiroLogin;
+      this.planLogin = response.plano_ID;
+      this.load = false;
       this.router.navigate(['/']);
-      console.log(localStorage.getItem("login"));
-      this.load = true;
+      this.abrirModais();
     },
       (error) => {
-        this.load = true;
+        this.load = false;
         this.snackbar.open
           (
             'Email ou senha incorretos, ou usuario nao cadastrado',
@@ -78,4 +87,34 @@ export class LoginComponent {
       this.cd.markForCheck();
     }
   }
+
+  openModalPrimeiroLogin() {
+
+    const dialogRef = this.dialog.open(LoginModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!this.planLogin) {
+        return this.openModalPlanos();
+      }
+    });
+  }
+
+  openModalPlanos() {
+
+    const dialogRef = this.dialog.open(PlanosComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  abrirModais() {
+    if (this.firstLogin) {
+      return this.openModalPrimeiroLogin();
+    }
+    else if (!this.planLogin) {
+      return this.openModalPlanos();
+    }
+  }
 }
+
+
