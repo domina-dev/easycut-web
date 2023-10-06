@@ -8,6 +8,7 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 @Component({
   selector: 'vex-exibicao-servicos',
   templateUrl: './exibicao-servicos.component.html',
@@ -94,7 +95,8 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   abrirModalDeletar(servico: Servico): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
+        itens: [servico.nome],
+        legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
       }
     });
 
@@ -110,7 +112,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       () => {
         this.listarServicos();
         this.snackbar.open(
-          'Serviço deletado com sucesso',
+          MENSAGENS.DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000
@@ -121,7 +123,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       (error) => {
         console.error(error)
         this.snackbar.open(
-          'Falha ao deletar serviço',
+          MENSAGENS.ERRO_DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000

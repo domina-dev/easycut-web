@@ -7,13 +7,13 @@ export const MENSAGENS = {
     DELETAR_AGENDAMENTO: "Agendamento excluído!",
     ERRO_DELETAR_AGENDAMENTO: "Erro ao excluir agendamento!",
     ERRO_LISTAR_AGENDAMENTO: "Erro ao listar os agendamentos",
-    
+
     // Caixa
     ADICIONAR_VENDA: "Venda adicionada com sucesso!",
     ERRO_ADICIONAR_VENDA: "Erro ao adicionar venda!",
     FECHAR_CAIXA: "Fechamento de caixa concluído com sucesso!",
     ERRO_FECHAR_CAIXA: "Erro no fechamento de caixa!",
-    
+
     // Serviço da tela de Serviços
     ADICIONAR_SERVICO: "Serviço adicionado com sucesso!",
     ERRO_ADICIONAR_SERVICO: "Erro ao adicionar Serviço!",
@@ -48,4 +48,8 @@ export const MENSAGENS = {
     // Novo Usuário
     CADASTRO_SUCESSO: "Parabéns! Seu cadastro foi realizado com sucesso.",
     ERRO_CADASTRAR_USUARIO: "Erro ao cadastrar novo usuário. Tente novamente.",
+
+    //Confirmar Acao
+    CONFIRMAR_EXCLUIR: "Tem certeza que deseja EXCLUIR esse item?",
+    CONFIRMAR_EDITAR:"Tem certeza que deseja EDITAR esse item?"
 }
