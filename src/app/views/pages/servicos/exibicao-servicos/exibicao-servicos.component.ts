@@ -69,6 +69,34 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
 
+<<<<<<< HEAD
+=======
+  editaServico(servico: Servico): void {
+    this.servicoService.editarServico(servico).subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.snackbar.open(
+        "Servico alterado com sucesso",
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
+    }, (error) => {
+      console.log(error)
+      this.snackbar.open(
+        "Servico não alterado",
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
+
+    });
+  }
+
+>>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
   abrirModalDeletar(servico: Servico): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {

@@ -15,12 +15,16 @@ export class CadastrarEditarServicoComponent {
     legendaBotao: string = '';
     isCadastro!: boolean ;
 
+<<<<<<< HEAD
     servico = new Servico();
 
+=======
+>>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
     constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder, private servicoService: ServicoService,
         private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
         private snackbar: MatSnackBar) {
+<<<<<<< HEAD
           this.isCadastro = data.servico? false : true;
           this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
           this.form = this.fb.group({
@@ -30,6 +34,13 @@ export class CadastrarEditarServicoComponent {
             categoria: [data?.servico?.categoria, Validators.required],
             valor: [data?.servico?.valor, Validators.required],
             valorPromocional: [data?.servico?.valorPromocional, Validators.required]
+=======
+        this.form = this.fb.group({
+            nome: [data?.servico?.nome, Validators.required],
+            tempo: [data?.servico?.tempoEstimado, Validators.required],
+            categoria: [data?.servico?.categoria.value, Validators.required],
+            valor: [data?.servico?.valor, Validators.required]
+>>>>>>> 1e5d26790dd28aac5ba370c9f8d7fe591b879d8d
         });
     }
 
