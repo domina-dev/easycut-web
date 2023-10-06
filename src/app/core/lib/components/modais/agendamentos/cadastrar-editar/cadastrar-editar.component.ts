@@ -33,15 +33,25 @@ export class CadastrarEditarComponent {
 
   }
 
-  cadastrarAgendamento(agendamento: Agendamento) {
+  cadastrarAgendamento() {
     this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
 
-
+      //fechar a modal aqui passando true
     }, (error) => {
       console.log(error);
 
     })
     
+  }
+
+  editarAgendamento(){
+    //chamada de service para editar agendamento
+    //fechar a modal no subscribe desse método passando true
+  }
+
+  cadastrarEditarAgendamento(){
+    //if for cadastro this.cadastrarAgendamento()
+    //se não this.editarAgendamento()
   }
 
 }

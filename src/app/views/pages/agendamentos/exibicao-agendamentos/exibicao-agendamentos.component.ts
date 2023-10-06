@@ -62,6 +62,9 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        //chama sua listagem
+      }
     });
   }
   abrirModalDeletar(agendamento: Agendamento): void {
