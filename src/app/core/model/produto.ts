@@ -1,12 +1,12 @@
 export interface Produto{
-    [x: string]: any;
-    codProduto: null,
-    nomeProduto: string,
-    dsProduto: string,
-    qtdEstoque: number,
-    valor: number,
-    valorPromocional: number,
-    ativo: true,
-    promocional: false,
-    estabelecimentoID: number
+    id: number;
+    codigo: string;
+    nome: string;
+    descricao: string;
+    qtdEstoque: number;
+    valor: number;
+    valorPromocional: number;
+    ativo: boolean;
+    promocional: boolean;
+    estabelecimentoID: number;
 }

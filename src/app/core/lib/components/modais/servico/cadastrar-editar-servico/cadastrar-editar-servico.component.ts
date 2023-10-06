@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 
 
@@ -29,7 +30,7 @@ export class CadastrarEditarServicoComponent {
             console.log(this.form.value);
             this.dialogRef.close()
             this.snackbar.open(
-                "Cadastro feito com sucesso.",
+                MENSAGENS.ADICIONAR_SERVICO,
                 "Fechar",
                 {
                     duration: 10000
@@ -39,7 +40,7 @@ export class CadastrarEditarServicoComponent {
             (error) => {
                 console.log(error);
                 this.snackbar.open(
-                    "Há algo errado com o cadastro.",
+                    MENSAGENS.ERRO_ADICIONAR_SERVICO,
                     "Tente novamente",
                     {
                         duration: 10000

@@ -23,7 +23,7 @@ export class EstabelecimentoService {
   }
 
   saveUsuario(body: any) {
-  return this.http.post(`${this.API}/login`, body)
+  return this.http.post<any>(`${this.API}/login`, body)
   }
 
   contratar(estabelecimento_ID: number, plano_ID: number): Observable<any> {
