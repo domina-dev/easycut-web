@@ -4,7 +4,8 @@
     fxLayoutAlign="center center"
 >
     <div @fadeInUp class="card overflow-hidden w-full max-w-xs">
-        <mat-progress-bar *ngIf="!load" mode="indeterminate"></mat-progress-bar>
+<!-- LOADING -->
+<mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
         <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
             <div class="fill-current text-center">
                 <img alt="" class="w-16" src="assets/img/demo/logo.svg" />
