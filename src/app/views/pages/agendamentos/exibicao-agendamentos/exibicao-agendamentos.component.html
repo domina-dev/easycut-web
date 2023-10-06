@@ -20,10 +20,7 @@
         <mat-form-field appearance="standard">
             <mat-label>Data Inicial</mat-label>
             <input matInput [matDatepicker]="startDate" />
-            <mat-datepicker-toggle
-                matSuffix
-                [for]="startDate"
-            ></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
         </mat-form-field>
     </div>
@@ -31,10 +28,7 @@
         <mat-form-field appearance="standard">
             <mat-label>Data Final</mat-label>
             <input matInput [matDatepicker]="endDate" />
-            <mat-datepicker-toggle
-                matSuffix
-                [for]="endDate"
-            ></mat-datepicker-toggle>
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
         </mat-form-field>
     </div>
@@ -97,18 +91,13 @@
 
         <ng-container matColumnDef="status" stickyEnd>
             <th mat-header-cell *matHeaderCellDef></th>
-            <td
-                class="tdsticky"
-                [class]="
+            <td class="tdsticky" [class]="
                     agendamento.status === 'PENDENTE'
                         ? 'pendente'
                         : agendamento.status === 'ACEITO'
                         ? 'aceito'
                         : 'recusado'
-                "
-                mat-cell
-                *matCellDef="let agendamento"
-            >
+                " mat-cell *matCellDef="let agendamento">
                 <mat-form-field appearance="standard">
                     <mat-select [(value)]="agendamento.status">
                         <mat-option value="PENDENTE">Pendente</mat-option>
@@ -122,19 +111,11 @@
         <ng-container matColumnDef="icone">
             <th mat-header-cell *matHeaderCellDef></th>
             <td class="layout-menu" mat-cell *matCellDef="let element">
-                <button
-                    mat-icon-button
-                    aria-label="ícone Button"
-                    class="icon-spacing"
-                >
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing">
                     <mat-icon color="primary"> border_color</mat-icon>
                 </button>
-                <button
-                    mat-icon-button
-                    aria-label="ícone Button"
-                    class="icon-spacing"
-                    (click)="abrirModalDeletar(element)"
-                >
+                <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                    (click)="abrirModalDeletar(element)">
                     <mat-icon color="warn">delete</mat-icon>
                 </button>
 
@@ -145,10 +126,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator
-        [pageSizeOptions]="[5, 10, 15]"
-        showFirstLastButtons
-        aria-label="Selecione as páginas de Clientes"
-    >
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons aria-label="Selecione as páginas de Clientes">
     </mat-paginator>
 </div>
