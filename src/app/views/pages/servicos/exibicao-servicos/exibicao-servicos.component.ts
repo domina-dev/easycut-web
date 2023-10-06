@@ -81,9 +81,11 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   }
 
   deletarServico(servico: Servico): void {
+    this.load = true;
     this.servicoService.deletarServico(servico.id).subscribe(
       () => {
         this.listarServicos();
+        this.load = false;
         this.snackbar.open(
           'Serviço deletado com sucesso',
           'FECHAR',
@@ -94,6 +96,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
       },
       (error) => {
+        this.load = false;
         console.error(error)
         this.snackbar.open(
           'Falha ao deletar serviço',
@@ -129,8 +132,10 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
   }
   alterarServico(servico: Servico): void {
+    this.load = true;
     this.servicoService.alterarServico(servico).subscribe(response => {
       this.listarServicos()
+      this.load = false;
       this.snackbar.open(
         "Serviço alterado com sucesso",
         "Fechar",
@@ -139,6 +144,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         }
       )
     }, (error) => {
+      this.load = false;
       this.snackbar.open(
         "Não foi possível alterar o serviço",
         "Fechar",

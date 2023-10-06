@@ -61,10 +61,12 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
   }
 
     deletarProduto() {
+        this.load = true;
         this.produtoService.deletaProduto().subscribe(response => {
             this.listaProduto = response;
             this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
             this.dataSource.paginator = this.paginator;
+            this.load = false;
             this.snackbar.open(
                 MENSAGENS.DELETAR_PRODUTO,
                 "Fechar",
@@ -73,6 +75,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
                 }
             );
         }, (error) => {
+            this.load = false;
             console.log(error)
             this.snackbar.open(
                 MENSAGENS.ERRO_DELETAR_PRODUTO,
@@ -130,8 +133,10 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         });
     }
     alterarProduto(produto: Produto): void {
+      this.load = true;
         this.produtoService.alterarProduto(produto).subscribe(response => {
             this.listarProdutos()
+            this.load = false;
             this.snackbar.open(
                 "Produto alterado com sucesso",
                 "Fechar",
@@ -141,6 +146,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
                 )
         }, (error) => {
+            this.load = false;
             this.snackbar.open(
                 "Não foi possível alterar o produto",
                 "Fechar",
