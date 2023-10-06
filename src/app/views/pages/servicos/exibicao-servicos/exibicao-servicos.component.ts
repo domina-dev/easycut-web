@@ -7,8 +7,8 @@ import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/mod
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
 @Component({
   selector: 'vex-exibicao-servicos',
   templateUrl: './exibicao-servicos.component.html',
@@ -76,7 +76,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
         itens: [servico.nome],
-        legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
+        legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
       }
     });
 
@@ -94,7 +94,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         this.listarServicos();
         this.load = false;
         this.snackbar.open(
-          MENSAGENS.DELETAR_SERVICO,
+          MessagesSnackBar.DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000
@@ -106,7 +106,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         this.load = false;
         console.error(error)
         this.snackbar.open(
-          MENSAGENS.ERRO_DELETAR_SERVICO,
+          MessagesSnackBar.ERRO_DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000

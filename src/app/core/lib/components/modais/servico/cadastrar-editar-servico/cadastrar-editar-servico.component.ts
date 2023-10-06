@@ -2,7 +2,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { Servico } from 'src/app/core/model/servicos';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 
@@ -48,7 +48,7 @@ export class CadastrarEditarServicoComponent {
       this.load = false;
       this.dialogRef.close()
       this.snackbar.open(
-        MENSAGENS.ADICIONAR_SERVICO,
+        MessagesSnackBar.ADICIONAR_SERVICO,
         "Fechar",
         {
           duration: 10000
@@ -59,7 +59,7 @@ export class CadastrarEditarServicoComponent {
         this.load = false;
         console.log(error);
         this.snackbar.open(
-          MENSAGENS.ERRO_ADICIONAR_SERVICO,
+          MessagesSnackBar.ERRO_ADICIONAR_SERVICO,
           "Tente novamente",
           {
             duration: 10000

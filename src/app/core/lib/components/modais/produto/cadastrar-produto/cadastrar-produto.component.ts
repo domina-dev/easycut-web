@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
   selector: 'vex-cadastrar-produto',
@@ -32,7 +32,7 @@ export class CadastrarProdutoComponent {
         this.load = false;
         this.dialogRef.close();
         this.snackbar.open(
-          MENSAGENS.PRODUTO_CADASTRADO_SUCESSO,
+          MessagesSnackBar.PRODUTO_CADASTRADO_SUCESSO,
           'Fechar',
           {
               duration: 10000
@@ -43,7 +43,7 @@ export class CadastrarProdutoComponent {
           this.load = false;
           console.log(error)
           this.snackbar.open(
-            MENSAGENS.ERRO_CADASTRO_PRODUTO,
+            MessagesSnackBar.ERRO_CADASTRO_PRODUTO,
             'FECHAR',
             {
                 duration: 10000

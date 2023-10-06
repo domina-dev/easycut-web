@@ -7,7 +7,8 @@ import { Produto } from 'src/app/core/model/produto'
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+
 
 @Component({
   selector: 'vex-exibicao-produtos',
@@ -68,7 +69,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
       this.dataSource.paginator = this.paginator;
       this.load = false;
       this.snackbar.open(
-        MENSAGENS.DELETAR_PRODUTO,
+        MessagesSnackBar.DELETAR_PRODUTO,
         "Fechar",
         {
           duration: 10000
@@ -78,7 +79,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
       this.load = false;
       console.log(error)
       this.snackbar.open(
-        MENSAGENS.ERRO_DELETAR_PRODUTO,
+        MessagesSnackBar.ERRO_DELETAR_PRODUTO,
         "Tenta novamente",
         {
           duration: 10000
@@ -96,7 +97,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
         itens: [produto.nome],
-        legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
+        legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
       }
     });
 

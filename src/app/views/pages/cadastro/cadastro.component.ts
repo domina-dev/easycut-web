@@ -10,7 +10,7 @@ import { stagger20ms } from 'src/@vex/animations/stagger.animation';
 import { Estabelecimento } from 'src/app/core/model/estabelecimento';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 
 
@@ -74,7 +74,7 @@ export class CadastroComponent implements OnInit {
         (response) => {
           this.load = false;
           // Trate a resposta de sucesso aqui e exiba uma mensagem com MatSnackBar
-          this._snackBar.open(MENSAGENS.CADASTRO_ESTABELECIMENTO, 'Fechar', {
+          this._snackBar.open(MessagesSnackBar.CADASTRO_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
 
@@ -84,10 +84,10 @@ export class CadastroComponent implements OnInit {
         (error) => {
           this.load = false;
           // Trate o erro aqui e exiba uma mensagem de falha ao cadastrar com MatSnackBar
-          this._snackBar.open(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, 'Fechar', {
+          this._snackBar.open(MessagesSnackBar.ERRO_CADASTRAR_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
-          console.error(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, error);
+          console.error(MessagesSnackBar.ERRO_CADASTRAR_ESTABELECIMENTO, error);
         }
       );
 
