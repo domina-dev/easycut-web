@@ -6,6 +6,7 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 @Component({
   selector: 'vex-exibicao-servicos',
   templateUrl: './exibicao-servicos.component.html',
@@ -65,7 +66,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
         itens: [servico.nome],
-        legendaAcao: 'Tem certeza que deseja EXCLUIR esse item?'
+        legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
       }
     });
 
@@ -82,7 +83,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       () => {
         this.listarServicos();
         this.snackbar.open(
-          'Serviço deletado com sucesso',
+          MENSAGENS.DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000
@@ -93,7 +94,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       (error) => {
         console.error(error)
         this.snackbar.open(
-          'Falha ao deletar serviço',
+          MENSAGENS.ERRO_DELETAR_SERVICO,
           'FECHAR',
           {
             duration: 5000

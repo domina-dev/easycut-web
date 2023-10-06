@@ -85,7 +85,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
                 itens: [produto.nome],
-                legendaAcao: 'Tem certeza que deseja EXCLUIR esse item?'
+                legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
             }
         });
 
