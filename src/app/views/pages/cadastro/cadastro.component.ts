@@ -10,6 +10,7 @@ import { stagger20ms } from 'src/@vex/animations/stagger.animation';
 import { Estabelecimento } from 'src/app/core/model/estabelecimento';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MENSAGENS } from 'src/app/core/constants/mensagens';
 
 
 
@@ -40,7 +41,7 @@ export class CadastroComponent implements OnInit {
     private estabelecimentoService: EstabelecimentoService,
     private _snackBar: MatSnackBar
     ) { }
-    
+
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -70,22 +71,22 @@ export class CadastroComponent implements OnInit {
       this.estabelecimentoService.cadastrarEstabelecimento(estabelecimentoData).subscribe(
         (response) => {
           // Trate a resposta de sucesso aqui e exiba uma mensagem com MatSnackBar
-          this._snackBar.open('Estabelecimento cadastrado com sucesso!', 'Fechar', {
+          this._snackBar.open(MENSAGENS.CADASTRO_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
-          
+
           // Redirecione para a página desejada após o cadastro
           this.form.reset();
         },
         (error) => {
           // Trate o erro aqui e exiba uma mensagem de falha ao cadastrar com MatSnackBar
-          this._snackBar.open('Falha ao cadastrar estabelecimento', 'Fechar', {
+          this._snackBar.open(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
-          console.error('Falha ao cadastrar estabelecimento', error);
+          console.error(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, error);
         }
       );
-    
+
   }
 
   toggleVisibility() {

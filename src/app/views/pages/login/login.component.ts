@@ -1,7 +1,7 @@
 import {
-    ChangeDetectionStrategy,
-    ChangeDetectorRef,
-    Component
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,67 +12,105 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from 'src/app/core/model/usuario';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
+import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 
 @Component({
-    selector: 'vex-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [fadeInUp400ms]
+  selector: 'vex-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInUp400ms]
 })
 export class LoginComponent {
-    form: FormGroup;
+  form: FormGroup;
 
-    inputType = 'password';
-    visible = false;
+  firstLogin: boolean;
+  planLogin: any;
 
-    icVisibility = icVisibility;
-    icVisibilityOff = icVisibilityOff;
+  inputType = 'password';
+  visible = false;
 
-    public usuario = new Usuario();
+  icVisibility = icVisibility;
+  icVisibilityOff = icVisibilityOff;
 
-    constructor(
-        private router: Router,
-        private fb: FormBuilder,
-        private cd: ChangeDetectorRef,
-        private snackbar: MatSnackBar,
-        private estabelecimentoService: EstabelecimentoService
-    ) {
-        this.form = this.fb.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-    }
+  public usuario = new Usuario();
 
-    login() {
-        this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response =>
-        {
-          localStorage.setItem("login", JSON.stringify(response));
-          this.router.navigate(['/']);
-          console.log(localStorage.getItem("login"));
-        },
-          (error) => {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef,
+    private snackbar: MatSnackBar,
+    private estabelecimentoService: EstabelecimentoService,
+    public dialog: MatDialog
+  ) {
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  login() {
+    this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
+      localStorage.setItem("login", JSON.stringify(response));
+      this.firstLogin = response.primeiroLogin;
+      this.planLogin = response.plano_ID;
+      this.router.navigate(['/']);
+      this.abrirModais();
+    },
+      (error) => {
         this.snackbar.open
         (
             'Email ou senha incorretos, ou usuario nao cadastrado',
             'fechar',
             {
-                duration: 5000
+              duration: 5000
             }
-        );
-            console.log(error)
-          });
-    }
+          );
+        console.log(error)
+      });
+  }
 
-    toggleVisibility() {
-        if (this.visible) {
-            this.inputType = 'password';
-            this.visible = false;
-            this.cd.markForCheck();
-        } else {
-            this.inputType = 'text';
-            this.visible = true;
-            this.cd.markForCheck();
-        }
+  toggleVisibility() {
+    if (this.visible) {
+      this.inputType = 'password';
+      this.visible = false;
+      this.cd.markForCheck();
+    } else {
+      this.inputType = 'text';
+      this.visible = true;
+      this.cd.markForCheck();
     }
+  }
+
+  openModalPrimeiroLogin() {
+
+    const dialogRef = this.dialog.open(LoginModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!this.planLogin) {
+        return this.openModalPlanos();
+      }
+    });
+  }
+
+  openModalPlanos() {
+
+    const dialogRef = this.dialog.open(PlanosComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  abrirModais() {
+    if (this.firstLogin) {
+      return this.openModalPrimeiroLogin();
+    }
+    else if (!this.planLogin) {
+      return this.openModalPlanos();
+    }
+  }
 }
+
+

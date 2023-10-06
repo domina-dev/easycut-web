@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'vex-exibicao-servicos',
   templateUrl: './exibicao-servicos.component.html',
@@ -31,7 +32,9 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   matDialogActions: any;
 
   constructor(public dialog: MatDialog,
-    private servicoService: ServicoService) { }
+    private servicoService: ServicoService,
+    private snackbar: MatSnackBar
+  ) { }
 
   ngOnInit(): void { this.listarServicos() }
 
@@ -68,15 +71,79 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Lógica para excluir o servico se o usuário confirmar
-        this.excluirServico(servico);
+
+        this.deletarServico(servico);
       }
     });
   }
 
-  excluirServico(servico: Servico): void {
-    // Implemente a lógica para excluir o servico aqui
-    // Chame seu serviço ou método para realizar a exclusão
+  deletarServico(servico: Servico): void {
+    this.servicoService.deletarServico(servico.id).subscribe(
+      () => {
+        this.listarServicos();
+        this.snackbar.open(
+          'Serviço deletado com sucesso',
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+
+      },
+      (error) => {
+        console.error(error)
+        this.snackbar.open(
+          'Falha ao deletar serviço',
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+      }
+    );
+  }
+  abrirModalPromocional(servico: Servico): void {
+    let mensagem: string = ""
+    if (servico.promocional) {
+      mensagem = "Tem certeza que deseja retirar este serviço da promoção?"
+    }
+    else {
+      mensagem = "Tem certeza que deseja tornar este serviço promocional?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: mensagem
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        servico.promocional = !servico.promocional
+        this.alterarServico(servico)
+
+      }
+    });
+  }
+  alterarServico(servico: Servico): void {
+    this.servicoService.alterarServico(servico).subscribe(response => {
+      this.listarServicos()
+      this.snackbar.open(
+        "Serviço alterado com sucesso",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.snackbar.open(
+        "Não foi possível alterar o serviço",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    });
   }
 }
 

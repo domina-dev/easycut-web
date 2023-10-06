@@ -16,12 +16,17 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.API}/produtos/todos?estabelecimento_ID=4`);
   }
 
-  deletaProduto():Observable<Produto[]>{
+  deletaProduto(): Observable<Produto[]> {
     return this.http.delete<Produto[]>(`${this.API}/produsasatos?produto_ID=214`);
   }
-  
+
   cadastrarProduto(Produto): Observable<Produto[]> {
     return this.http.post<Produto[]>(`${this.API}/produtos`, Produto);
   }
+
+  alterarProduto(produto: Produto): Observable<Produto> {
+    return this.http.put<Produto>(`${this.API}/produtos`, produto);
+  }
+
 
 }
