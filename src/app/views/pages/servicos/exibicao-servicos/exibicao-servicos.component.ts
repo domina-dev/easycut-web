@@ -16,6 +16,8 @@ import { MENSAGENS } from 'src/app/core/constants/mensagens';
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
+  load: boolean = false;
+
   displayedColumns: string[] = [
     'aplicacao',
     'servico',
@@ -41,11 +43,14 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   ngOnInit(): void { this.listarServicos() }
 
   listarServicos() {
+    this.load = true;
     this.servicoService.obterServicos().subscribe(response => {
       this.listaServicos = response;
       this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
       this.dataSource.paginator = this.paginator;
+      this.load = false;
     }, (error) => {
+      this.load = false;
       console.log(error)
     });
   }
@@ -108,9 +113,11 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   }
 
   deletarServico(servico: Servico): void {
+    this.load = true;
     this.servicoService.deletarServico(servico.id).subscribe(
       () => {
         this.listarServicos();
+        this.load = false;
         this.snackbar.open(
           MENSAGENS.DELETAR_SERVICO,
           'FECHAR',
@@ -121,6 +128,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
       },
       (error) => {
+        this.load = false;
         console.error(error)
         this.snackbar.open(
           MENSAGENS.ERRO_DELETAR_SERVICO,
@@ -157,7 +165,31 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       }
     });
   }
+  alterarServico(servico: Servico): void {
+    this.load = true;
+    this.servicoService.editarServico(servico).subscribe(response => {
+      this.listarServicos()
+      this.load = false;
+      this.snackbar.open(
+        "Serviço alterado com sucesso",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.load = false;
+      this.snackbar.open(
+        "Não foi possível alterar o serviço",
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    });
 
+  }
+  
   vizualizar() {
     this.verLista = !this.verLista;
     this.verGrade = !this.verGrade;

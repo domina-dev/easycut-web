@@ -15,6 +15,8 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
+  load: boolean = false;
+
   displayedColumns: string[] = [
     'cliente',
     'servico',
@@ -43,17 +45,21 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   }
 
   getAgendamentos() {
+    this.load = true;
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
+      this.load = false;
   },
-      (error) => { console.log(error)});
+      (error) => {
+        this.load = false;
+        console.log(error)});
 }
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        
+
         width: '450px',
       });
 

@@ -34,6 +34,8 @@
     </div>
 </div>
 
+<!-- LOADING -->
+<mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
 <!-- Tabela de serviços -->
 <div class="mat-elevation-z8">
     <table aria-label="tableServicos" mat-table [dataSource]="dataSource">

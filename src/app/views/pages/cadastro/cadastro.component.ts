@@ -26,6 +26,8 @@ import { MENSAGENS } from 'src/app/core/constants/mensagens';
 })
 export class CadastroComponent implements OnInit {
 
+  load: boolean = false;
+
   form: FormGroup;
 
   inputType = 'password';
@@ -55,7 +57,7 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrarEstabelecimento() {
-
+    this.load = true;
       const estabelecimentoData: Estabelecimento = {
         nomeProprietario: this.form.get('name').value,
         estabelecimento: this.form.get('establishment').value,
@@ -70,6 +72,7 @@ export class CadastroComponent implements OnInit {
 
       this.estabelecimentoService.cadastrarEstabelecimento(estabelecimentoData).subscribe(
         (response) => {
+          this.load = false;
           // Trate a resposta de sucesso aqui e exiba uma mensagem com MatSnackBar
           this._snackBar.open(MENSAGENS.CADASTRO_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
@@ -79,6 +82,7 @@ export class CadastroComponent implements OnInit {
           this.form.reset();
         },
         (error) => {
+          this.load = false;
           // Trate o erro aqui e exiba uma mensagem de falha ao cadastrar com MatSnackBar
           this._snackBar.open(MENSAGENS.ERRO_CADASTRAR_ESTABELECIMENTO, 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)

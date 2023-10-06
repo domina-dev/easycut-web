@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component
 } from '@angular/core';
@@ -20,11 +19,12 @@ import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro
   selector: 'vex-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInUp400ms]
 })
 export class LoginComponent {
   form: FormGroup;
+
+  load: boolean = false;
 
   firstLogin: boolean;
   planLogin: any;
@@ -52,16 +52,19 @@ export class LoginComponent {
   }
 
   login() {
+    this.load = true;
     this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
       localStorage.setItem("login", JSON.stringify(response));
       this.firstLogin = response.primeiroLogin;
       this.planLogin = response.plano_ID;
+      this.load = false;
       this.router.navigate(['/']);
       this.abrirModais();
     },
       (error) => {
+        this.load = false;
         this.snackbar.open
-        (
+          (
             'Email ou senha incorretos, ou usuario nao cadastrado',
             'fechar',
             {

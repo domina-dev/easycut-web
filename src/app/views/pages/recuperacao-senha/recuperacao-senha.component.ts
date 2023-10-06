@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import icMail from '@iconify/icons-ic/twotone-mail';
@@ -11,10 +11,12 @@ import { MENSAGENS } from 'src/app/core/constants/mensagens';
     selector: 'vex-recuperacao-senha',
     templateUrl: './recuperacao-senha.component.html',
     styleUrls: ['./recuperacao-senha.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fadeInUp400ms],
 })
 export class RecuperacaoSenhaComponent {
+
+  load: boolean = false;
+
     form: FormGroup;
     icMail = icMail;
 
@@ -39,11 +41,14 @@ export class RecuperacaoSenhaComponent {
                 }
             );
         } else {
+          this.load = true;
             this.estabelecimentoService.recuperacaoSenha(email).subscribe(response => {
+              this.load = false;
                 this.snackbar.open(response.body.resposta, 'Fechar', {
                     duration: 5000
                 });
             }, (error) => {
+              this.load = false;
                 this.snackbar.open(error.message, 'Fechar', {
                     duration: 5000,
                     panelClass: ['error-snackbar']

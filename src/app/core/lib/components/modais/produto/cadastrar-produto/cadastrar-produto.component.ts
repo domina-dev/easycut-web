@@ -12,6 +12,8 @@ import { MENSAGENS } from 'src/app/core/constants/mensagens';
 })
 export class CadastrarProdutoComponent {
 
+  load: boolean = false;
+
   form: FormGroup;
 
     constructor(private fb: FormBuilder, private produtoService: ProdutoService, private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>, private snackbar: MatSnackBar) {
@@ -24,8 +26,10 @@ export class CadastrarProdutoComponent {
     }
 
     cadastrarProduto() {
+      this.load = true;
       this.produtoService.cadastrarProduto(this.form.value).subscribe(() => {
         console.log(this.form.value);
+        this.load = false;
         this.dialogRef.close();
         this.snackbar.open(
           MENSAGENS.PRODUTO_CADASTRADO_SUCESSO,
@@ -36,6 +40,7 @@ export class CadastrarProdutoComponent {
       );
       },
         (error) => {
+          this.load = false;
           console.log(error)
           this.snackbar.open(
             MENSAGENS.ERRO_CADASTRO_PRODUTO,
