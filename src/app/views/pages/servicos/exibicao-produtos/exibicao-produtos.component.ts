@@ -84,7 +84,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+                itens: [produto.nome],
+                legendaAcao: MENSAGENS.CONFIRMAR_EXCLUIR
             }
         });
 
@@ -131,7 +132,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
                 {
                     duration: 3000
                 }
-                
+
                 )
         }, (error) => {
             this.snackbar.open(
