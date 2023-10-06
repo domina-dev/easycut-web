@@ -1,150 +1,104 @@
 <div class="form">
     <!-- Titulo do modal -->
-    <div
-        class="px-6 py-4 border-b"
-        id="title"
-        fxLayout="row"
-        fxLayoutAlign="start center"
-    >
+    <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
         <h2 class="title m-0">Novo Produto</h2>
     </div>
 
-    <div class="modal">
-        <!-- modal -->
-        <mat-dialog-content>
-            <div [formGroup]="form" class="example-form">
-                <!-- Nome do servico -->
-                <div class="nome">
-                    <mat-form-field class="example-full-width" id="inpN" appearance="standard">
-                        <mat-label class="nome">Nome do produto</mat-label>
-                        <input formControlName="nome" matInput required />
-                        <mat-error
-                            *ngIf="form.get('nome').hasError('required')"
-                        >
-                            Preencha este campo!
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!-- Tempo estimado -->
-                <div class="quantEstoque">
-                    <mat-form-field id="quantEstoque" appearance="standard">
-                        <mat-label>Quantidade em Estoque</mat-label>
-                        <input
-                            formControlName="tempo"
-                            type="text"
-                            matInput
-                            placeholder="Digite o Tempo"
-                            maxlength="3"
-                            required
-                        />
-                        <mat-error
-                            *ngIf="form.get('tempo').hasError('required')"
-                        >
-                            Preencha este campo!
-                        </mat-error>
-                    </mat-form-field>
-
-                    <!-- Categoria -->
-                    <mat-form-field id="categoria" appearance="standard">
-                        <mat-label>Categoria</mat-label>
-                        <mat-select formControlName="categoria" required>
-                            <mat-option value="option">Cabelo Feminino</mat-option>
-                            <mat-option value="option">Cabelo Masculino</mat-option>
-                            <mat-option value="option">Unha</mat-option>
-                            <mat-option value="option">Pele</mat-option>
-                        </mat-select>
-                        <mat-error
-                            *ngIf="form.get('categoria').hasError('required')"
-                        >
-                            Selecione uma opção!
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <!-- area de descricao -->
-                <div class="descricao">
-                    <mat-form-field class="example-full-width" id="descricao" appearance="standard">
-                        <mat-label>Descrição do produto</mat-label>
-                        <input
-                            matInput
-                            placeholder="Ex. Tipo de corte, tipo de barba..."
-                        />
-                    </mat-form-field>
-                </div>
-
-                <!-- toggle de valor promocional -->
-                <div class="toggle">
-                    <mat-slide-toggle
-                        ><b
-                            >Este produto mostrará o valor promocional</b
-                        ></mat-slide-toggle
-                    >
-                </div>
-
-                <!-- valor e valor promocional -->
-                <div class="valor">
-                    <mat-form-field floatLabel="always" class="intval" appearance="standard">
-                        <mat-label>Valor</mat-label>
-                        <span matTextPrefix>R$&nbsp;</span>
-                        <input
-                            formControlName="valor"
-                            id="valor"
-                            matInput
-                            type="number"
-                            class="example-right-align"
-                            placeholder="0"
-                        />
-                        <mat-error
-                            *ngIf="form.get('valor').hasError('required')"
-                        >
-                            Preencha este campo!
-                        </mat-error>
-                    </mat-form-field>
-
-                    <!-- valor promocional -->
-                    <mat-form-field floatLabel="always" class="intval" appearance="standard">
-                        <mat-label>Valor Promocional</mat-label>
-                        <span matTextPrefix>R$&nbsp;</span>
-                        <input
-                            formControlName="valor"
-                            id="valorP"
-                            matInput
-                            type="number"
-                            class="example-right-align"
-                            placeholder="0"
-                        />
-                        <mat-error
-                            *ngIf="form.get('valor').hasError('required')"
-                        >
-                            Preencha este campo!
-                        </mat-error>
-                    </mat-form-field>
-                </div>
+    <!-- modal -->
+    <mat-dialog-content>
+        <div [formGroup]="form" class="example-form">
+            <!-- Nome do servico -->
+            <div class="nome">
+                <mat-form-field class="example-full-width" id="inpN" appearance="standard">
+                    <mat-label class="nome">Nome do produto</mat-label>
+                    <input formControlName="nome" matInput required />
+                    <mat-error *ngIf="form.get('nome').hasError('required')">
+                        Preencha este campo!
+                    </mat-error>
+                </mat-form-field>
             </div>
-        </mat-dialog-content>
 
-        <!-- botoes adicionar e cancelar -->
-        <mat-dialog-actions align="end">
-            <button mat-button mat-dialog-close>Cancelar</button>
-            <button
-                mat-button
-                mat-raised-button
-                color="primary"
-                (click)="cadastrarProduto()"
-            >
-                Adicionar
-            </button>
-        </mat-dialog-actions>
-    </div>
+            <!-- Tempo estimado -->
+            <div class="quantEstoque">
+                <mat-form-field id="quantEstoque" appearance="standard">
+                    <mat-label>Quantidade em Estoque</mat-label>
+                    <input formControlName="tempo" type="text" matInput placeholder="Digite o Tempo" maxlength="3"
+                        required />
+                    <mat-error *ngIf="form.get('tempo').hasError('required')">
+                        Preencha este campo!
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Categoria -->
+                <mat-form-field id="categoria" appearance="standard">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select formControlName="categoria" required>
+                        <mat-option value="option">Cabelo Feminino</mat-option>
+                        <mat-option value="option">Cabelo Masculino</mat-option>
+                        <mat-option value="option">Unha</mat-option>
+                        <mat-option value="option">Pele</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.get('categoria').hasError('required')">
+                        Selecione uma opção!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!-- area de descricao -->
+            <div class="descricao">
+                <mat-form-field class="example-full-width" id="descricao" appearance="standard">
+                    <mat-label>Descrição do produto</mat-label>
+                    <input matInput placeholder="Ex. Tipo de corte, tipo de barba..." />
+                </mat-form-field>
+            </div>
+
+            <!-- toggle de valor promocional -->
+            <div class="toggle">
+                <mat-slide-toggle><b>Este produto mostrará o valor promocional</b></mat-slide-toggle>
+            </div>
+
+            <!-- valor e valor promocional -->
+            <div class="valor">
+                <mat-form-field floatLabel="always" class="intval" appearance="standard">
+                    <mat-label>Valor</mat-label>
+                    <span matTextPrefix>R$&nbsp;</span>
+                    <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
+                        placeholder="0" />
+                    <mat-error *ngIf="form.get('valor').hasError('required')">
+                        Preencha este campo!
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- valor promocional -->
+                <mat-form-field floatLabel="always" class="intval" appearance="standard">
+                    <mat-label>Valor Promocional</mat-label>
+                    <span matTextPrefix>R$&nbsp;</span>
+                    <input formControlName="valor" id="valorP" matInput type="number" class="example-right-align"
+                        placeholder="0" />
+                    <mat-error *ngIf="form.get('valor').hasError('required')">
+                        Preencha este campo!
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-dialog-content>
+
+    <!-- botoes adicionar e cancelar -->
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button mat-raised-button color="primary" (click)="cadastrarProduto()">
+            Adicionar
+        </button>
+    </mat-dialog-actions>
+
 </div>
 <!-- LOADING -->
 <div *ngIf="load" id="vex-splash-screen-load">
-  <div class="wrapper">
-      <div class="ball-scale-multiple">
-          <div></div>
-          <div></div>
-          <div></div>
-      </div>
-  </div>
+    <div class="wrapper">
+        <div class="ball-scale-multiple">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 </div>

@@ -4,6 +4,7 @@ export class Plano {
   preco: string;
   dsPlano: string;
   desconto: null;
+  icone: string;
   beneficios: Beneficio[];
 }
 

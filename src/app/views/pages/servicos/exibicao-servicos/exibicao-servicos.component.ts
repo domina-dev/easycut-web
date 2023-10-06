@@ -166,7 +166,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
   }
   
-  vizualizar() {
+  visualizar() {
     this.verLista = !this.verLista;
     this.verGrade = !this.verGrade;
   }
