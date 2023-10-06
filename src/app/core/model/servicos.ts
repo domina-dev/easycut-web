@@ -4,7 +4,7 @@ export class Servico {
   categoria: string;
   codigo: string;
   descricao: string;
-  tempoEstimado: string;
+  tempoEstimado: number;
   valor: number;
   valorPromocional: number;
   ativo: boolean;

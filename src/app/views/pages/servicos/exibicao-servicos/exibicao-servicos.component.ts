@@ -29,7 +29,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   verLista: boolean = true;
   verGrade: boolean = false;
   listaServicos: Servico[] = [];
-  editarServico: CadastrarEditarServicoComponent
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
@@ -62,7 +61,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Lógica para excluir o servico se o usuário confirmar
         this.listarServicos();
       }
     });
@@ -148,6 +146,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         titulo: mensagem
       }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         servico.promocional = !servico.promocional
