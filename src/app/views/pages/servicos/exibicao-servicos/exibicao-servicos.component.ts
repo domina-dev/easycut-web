@@ -6,6 +6,7 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Servico } from 'src/app/core/model/servicos'
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -60,37 +61,11 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
           servico: servico
       }
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.editaServico(servico);
+        // Lógica para excluir o servico se o usuário confirmar
+        this.listarServicos();
       }
-    });
-  }
-
-
-  editaServico(servico: Servico): void {
-    this.servicoService.editarServico(servico).subscribe(response => {
-      this.listaServicos = response;
-      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-      this.dataSource.paginator = this.paginator;
-      this.snackbar.open(
-        "Servico alterado com sucesso",
-        "Fechar",
-        {
-          duration: 10000
-        }
-      );
-    }, (error) => {
-      console.log(error)
-      this.snackbar.open(
-        "Servico não alterado",
-        "Tenta novamente",
-        {
-          duration: 10000
-        }
-      );
-
     });
   }
 
@@ -120,18 +95,5 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   }
 }
 
-export interface Servico {
-  id: number;
-  nome: string;
-  categoria: string;
-  codigo: string;
-  descricao: string;
-  tempoEstimado: string;
-  valor: number;
-  valorPromocional: number;
-  ativo: boolean;
-  promocional: boolean;
-  estabelecimentoID: number;
-}
 
 
