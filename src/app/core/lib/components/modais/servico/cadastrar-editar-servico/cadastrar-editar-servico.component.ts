@@ -93,9 +93,11 @@ export class CadastrarEditarServicoComponent {
     let id = this.data?.servico?.id;
     let estabelecimentoID = this.data?.servico?.estabelecimentoID;
     let tempoEstimado = this.data?.servico?.tempoEstimado;
+    let promocional = this.data?.servico?.promocional
     this.servico = this.form.value;
     this.servico.id = id;
     this.servico.estabelecimentoID = estabelecimentoID;
-    this.servico.tempoEstimado = tempoEstimado
+    this.servico.tempoEstimado = tempoEstimado;
+    this.servico.promocional = promocional
   }
 }
