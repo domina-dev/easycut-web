@@ -17,13 +17,12 @@ import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/es
   selector: 'vex-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInUp400ms]
 })
 export class LoginComponent {
   form: FormGroup;
 
-  load: boolean = false;
+  load: boolean = true;
 
   inputType = 'password';
   visible = false;
@@ -47,15 +46,15 @@ export class LoginComponent {
   }
 
   login() {
-    this.load = true;
-    this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
+    this.load = false;
+    this.estabelecimentoService.saveUsuario(this.usuario).then(response => {
       localStorage.setItem("login", JSON.stringify(response));
-      // this.router.navigate(['/']);
+      this.router.navigate(['/']);
       console.log(localStorage.getItem("login"));
-      this.load = false;
+      this.load = true;
     },
       (error) => {
-        this.load = false;
+        this.load = true;
         this.snackbar.open
           (
             'Email ou senha incorretos, ou usuario nao cadastrado',
@@ -65,7 +64,6 @@ export class LoginComponent {
             }
           );
         console.log(error)
-
       });
   }
 

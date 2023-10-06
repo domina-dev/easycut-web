@@ -48,6 +48,8 @@
     </div>
 </div>
 
+<!-- LOADING -->
+<mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
 <!-- Tabela -->
 <div class="mat-elevation-z8">
     <table aria-label="tabela-agendamentos" mat-table [dataSource]="dataSource">
@@ -135,7 +137,7 @@
                 >
                     <mat-icon color="warn">delete</mat-icon>
                 </button>
-               
+
             </td>
         </ng-container>
 

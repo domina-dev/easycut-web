@@ -9,93 +9,103 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 
 @Component({
-    selector: 'vex-exibicao-produtos',
-    templateUrl: './exibicao-produtos.component.html',
-    styleUrls: ['./exibicao-produtos.component.scss']
+  selector: 'vex-exibicao-produtos',
+  templateUrl: './exibicao-produtos.component.html',
+  styleUrls: ['./exibicao-produtos.component.scss']
 })
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
-    displayedColumns: string[] = [
-        'nomeProduto',
-        'descricao',
-        'quantidade',
-        'preco',
-        'icone'
-    ];
+  load: boolean = false;
 
-    listaProduto: Produto[] = []
+  displayedColumns: string[] = [
+    'nomeProduto',
+    'descricao',
+    'quantidade',
+    'preco',
+    'icone'
+  ];
 
-    dataSource = new MatTableDataSource<Produto>();
+  listaProduto: Produto[] = []
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
+  dataSource = new MatTableDataSource<Produto>();
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
+  verLista: boolean = true;
+  verGrade: boolean = false;
 
-    ngOnInit(): void {
-        this.listarProdutos();
-    }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
+  ngOnInit(): void {
+    this.listarProdutos();
+  }
 
-    constructor(public dialog: MatDialog, private produtoService: ProdutoService,
-        private snackbar: MatSnackBar) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    listarProdutos() {
-        this.produtoService.obterProdutos().subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-        },
-            (error) => { console.log(error) });
-    }
+  constructor(public dialog: MatDialog, private produtoService: ProdutoService,
+    private snackbar: MatSnackBar) { }
 
-    deletarProduto() {
-        this.produtoService.deletaProduto().subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-            this.snackbar.open(
-                "Produto deletado com sucesso",
-                "Fechar",
-                {
-                    duration: 10000
-                }
-            );
-        }, (error) => {
-            console.log(error)
-            this.snackbar.open(
-                "Produto não deletado",
-                "Tenta novamente",
-                {
-                    duration: 10000
-                }
-            );
+  listarProdutos() {
+    this.load = true;
+    this.produtoService.obterProdutos().subscribe(response => {
+      this.listaProduto = response;
+      this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
+        console.log(error)
+      });
+  }
 
-        });
-    }
+  deletarProduto() {
+    this.load = true;
+    this.produtoService.deletaProduto().subscribe(response => {
+      this.listaProduto = response;
+      this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+      this.snackbar.open(
+        "Produto deletado com sucesso",
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
+    }, (error) => {
+      this.load = false;
+      console.log(error)
+      this.snackbar.open(
+        "Produto não deletado",
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
 
-    openAdd() {
-        this.dialog.open(CadastrarProdutoComponent);
-    }
-    abrirModalDeletar(produto: Produto): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
-            }
-        });
+    });
+  }
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.deletarProduto();
-            }
-        });
-    }
+  openAdd() {
+    this.dialog.open(CadastrarProdutoComponent);
+  }
+  abrirModalDeletar(produto: Produto): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+      }
+    });
 
-    visualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletarProduto();
+      }
+    });
+  }
+
+  visualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
 }

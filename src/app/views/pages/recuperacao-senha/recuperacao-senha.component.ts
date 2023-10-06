@@ -10,10 +10,12 @@ import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/es
     selector: 'vex-recuperacao-senha',
     templateUrl: './recuperacao-senha.component.html',
     styleUrls: ['./recuperacao-senha.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [fadeInUp400ms],
 })
 export class RecuperacaoSenhaComponent {
+
+  load: boolean = false;
+
     form: FormGroup;
     icMail = icMail;
 
@@ -38,11 +40,14 @@ export class RecuperacaoSenhaComponent {
                 }
             );
         } else {
+          this.load = true;
             this.estabelecimentoService.recuperacaoSenha(email).subscribe(response => {
+              this.load = false;
                 this.snackbar.open(response.body.resposta, 'Fechar', {
                     duration: 5000
                 });
             }, (error) => {
+              this.load = false;
                 this.snackbar.open(error.message, 'Fechar', {
                     duration: 5000,
                     panelClass: ['error-snackbar']

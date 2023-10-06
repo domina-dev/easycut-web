@@ -6,90 +6,95 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 @Component({
-    selector: 'vex-exibicao-servicos',
-    templateUrl: './exibicao-servicos.component.html',
-    styleUrls: ['./exibicao-servicos.component.scss']
+  selector: 'vex-exibicao-servicos',
+  templateUrl: './exibicao-servicos.component.html',
+  styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
-    displayedColumns: string[] = [
-        'aplicacao',
-        'servico',
-        'descricao',
-        'tempo',
-        'preco',
-        'icone'
-    ];
+  load: boolean = false;
 
-    dataSource = new MatTableDataSource<Servico>();
+  displayedColumns: string[] = [
+    'aplicacao',
+    'servico',
+    'descricao',
+    'tempo',
+    'preco',
+    'icone'
+  ];
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
-    listaServicos: Servico[] = [];
+  dataSource = new MatTableDataSource<Servico>();
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    matDialogActions: any;
+  verLista: boolean = true;
+  verGrade: boolean = false;
+  listaServicos: Servico[] = [];
 
-    constructor(public dialog: MatDialog,
-        private servicoService: ServicoService) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  matDialogActions: any;
 
-    ngOnInit(): void { this.listarServicos() }
+  constructor(public dialog: MatDialog,
+    private servicoService: ServicoService) { }
 
-    listarServicos() {
-        this.servicoService.obterServicos().subscribe(response => {
-            this.listaServicos = response;
-            this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-            this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log(error)
-        });
-    }
+  ngOnInit(): void { this.listarServicos() }
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
+  listarServicos() {
+    this.load = true;
+    this.servicoService.obterServicos().subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    }, (error) => {
+      this.load = false;
+      console.log(error)
+    });
+  }
 
-    openDialog() {
-        this.dialog.open(CadastrarEditarServicoComponent);
-    }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
-    vizualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-    abrirModalDeletar(servico: Servico): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-          data: {
-            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
-          }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            // Lógica para excluir o servico se o usuário confirmar
-            this.excluirServico(servico);
-          }
-        });
+  openDialog() {
+    this.dialog.open(CadastrarEditarServicoComponent);
+  }
+
+  vizualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
+  abrirModalDeletar(servico: Servico): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
       }
-    
-      excluirServico(servico: Servico): void {
-        // Implemente a lógica para excluir o servico aqui
-        // Chame seu serviço ou método para realizar a exclusão
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Lógica para excluir o servico se o usuário confirmar
+        this.excluirServico(servico);
       }
+    });
+  }
+
+  excluirServico(servico: Servico): void {
+    // Implemente a lógica para excluir o servico aqui
+    // Chame seu serviço ou método para realizar a exclusão
+  }
 }
 
 export interface Servico {
-    id: number;
-    nome: string;
-    categoria: string;
-    codigo: string;
-    descricao: string;
-    tempoEstimado: string;
-    valor: number;
-    valorPromocional: number;
-    ativo: boolean;
-    promocional: boolean;
-    estabelecimentoID: number;
+  id: number;
+  nome: string;
+  categoria: string;
+  codigo: string;
+  descricao: string;
+  tempoEstimado: string;
+  valor: number;
+  valorPromocional: number;
+  ativo: boolean;
+  promocional: boolean;
+  estabelecimentoID: number;
 }
 
 

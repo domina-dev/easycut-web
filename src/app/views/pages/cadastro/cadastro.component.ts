@@ -25,6 +25,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CadastroComponent implements OnInit {
 
+  load: boolean = false;
+
   form: FormGroup;
 
   inputType = 'password';
@@ -40,7 +42,7 @@ export class CadastroComponent implements OnInit {
     private estabelecimentoService: EstabelecimentoService,
     private _snackBar: MatSnackBar
     ) { }
-    
+
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -54,7 +56,7 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrarEstabelecimento() {
-
+    this.load = true;
       const estabelecimentoData: Estabelecimento = {
         nomeProprietario: this.form.get('name').value,
         estabelecimento: this.form.get('establishment').value,
@@ -69,15 +71,17 @@ export class CadastroComponent implements OnInit {
 
       this.estabelecimentoService.cadastrarEstabelecimento(estabelecimentoData).subscribe(
         (response) => {
+          this.load = false;
           // Trate a resposta de sucesso aqui e exiba uma mensagem com MatSnackBar
           this._snackBar.open('Estabelecimento cadastrado com sucesso!', 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
           });
-          
+
           // Redirecione para a página desejada após o cadastro
           this.form.reset();
         },
         (error) => {
+          this.load = false;
           // Trate o erro aqui e exiba uma mensagem de falha ao cadastrar com MatSnackBar
           this._snackBar.open('Falha ao cadastrar estabelecimento', 'Fechar', {
             duration: 5000, // Duração da mensagem (em milissegundos)
@@ -85,7 +89,7 @@ export class CadastroComponent implements OnInit {
           console.error('Falha ao cadastrar estabelecimento', error);
         }
       );
-    
+
   }
 
   toggleVisibility() {

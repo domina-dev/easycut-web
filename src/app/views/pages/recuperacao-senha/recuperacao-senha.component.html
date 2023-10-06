@@ -4,6 +4,8 @@
     fxLayoutAlign="center center"
 >
     <div [@fadeInUp] class="card overflow-hidden w-full max-w-xs">
+        <!-- LOADING -->
+        <mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
         <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
             <div class="fill-current text-center">
                 <img alt="" class="w-16" src="assets/img/demo/logo.svg" />
@@ -41,9 +43,10 @@
                 </button>
                 <div
                     class="text-secondary secondary2 text-center"
-                    [routerLink]="['/login']" id="vlogin"
+                    [routerLink]="['/login']"
+                    id="vlogin"
                 >
-                    <u>Voltar para o login</u>
+                    <strong>Voltar para o login</strong>
                 </div>
             </div>
         </div>
