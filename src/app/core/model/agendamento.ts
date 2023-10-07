@@ -1,6 +1,4 @@
-import { Cliente } from './cliente';
-
-export interface Agendamento {
+export class Agendamento {
   id: number;
   nomeCliente: string;
   nomeServico: string;
@@ -10,6 +8,6 @@ export interface Agendamento {
   hrAtendimento: string;
   responsavel: string;
   status: boolean;
-  estabelecimentoID: "{{ _.estabelecimento_ID }}"
-  cliente: Cliente;
+  estabelecimentoID: number;
+
 }

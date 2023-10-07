@@ -63,6 +63,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+        this.getAgendamentos();
         //chama sua listagem
       }
     });

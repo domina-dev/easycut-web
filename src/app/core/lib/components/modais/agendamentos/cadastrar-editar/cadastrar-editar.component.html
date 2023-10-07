@@ -12,8 +12,8 @@
                 <div class="cliente">
                     <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                         <mat-label class="cliente">Cliente</mat-label>
-                        <input formControlName="cliente" matInput required />
-                        <mat-error *ngIf="form.get('cliente').hasError('required')">
+                        <input formControlName="nomeCliente" matInput required />
+                        <mat-error *ngIf="form.get('nomeCliente').hasError('required')">
                             Preencha este campo!
                         </mat-error>
                     </mat-form-field>
@@ -22,8 +22,8 @@
                 <div class="servico">
                     <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                         <mat-label class="servico">Serviço</mat-label>
-                        <input formControlName="servico" matInput required />
-                        <mat-error *ngIf="form.get('servico').hasError('required')">
+                        <input formControlName="nomeServico" matInput required />
+                        <mat-error *ngIf="form.get('nomeServico').hasError('required')">
                             Preencha este campo!
                         </mat-error>
                     </mat-form-field>
@@ -33,10 +33,10 @@
                 <div class="tempoEs">
                     <mat-form-field id="tempoEst" appearance="standard">
                         <mat-label>Tempo Estimado</mat-label>
-                        <input formControlName="tempo" type="text" matInput placeholder="Digite o Tempo" maxlength="3"
+                        <input formControlName="tempoEstimado" type="text" matInput placeholder="Digite o Tempo" maxlength="3"
                             required />
                         <span matTextPrefix class="minutos">Minutos&nbsp;</span>
-                        <mat-error *ngIf="form.get('tempo').hasError('required')">
+                        <mat-error *ngIf="form.get('tempoEstimado').hasError('required')">
                             Preencha este campo!
                         </mat-error>
                     </mat-form-field>
@@ -63,18 +63,18 @@
                 <div class="valor">
                     <mat-form-field class="intval" appearance="standard">
                         <mat-label>Data</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="data" />
+                        <input matInput [matDatepicker]="picker" formControlName="dtAtendimento" />
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
-                        <mat-error *ngIf="form.get('data').hasError('required')">
+                        <mat-error *ngIf="form.get('dtAtendimento').hasError('required')">
                             Preencha a data!
                         </mat-error>
                     </mat-form-field>
 
                     <mat-form-field class="intval2" appearance="standard">
                         <mat-label>Hora</mat-label>
-                        <input matInput formControlName="data" placeholder="Ex. 12:30" />
-                        <mat-error *ngIf="form.get('hora').hasError('required')">
+                        <input matInput formControlName="hrAtendimento" placeholder="Ex. 12:30" />
+                        <mat-error *ngIf="form.get('hrAtendimento').hasError('required')">
                             Preencha a hora!
                         </mat-error>
                     </mat-form-field>
@@ -82,9 +82,9 @@
                     <mat-form-field class="status" appearance="standard">
                         <mat-label>Status</mat-label>
                         <mat-select formControlName="status" required>
-                            <mat-option value="option">Pendente</mat-option>
-                            <mat-option value="option">Aceito</mat-option>
-                            <mat-option value="option">Recusado</mat-option>
+                            <mat-option value="pendente">Pendente</mat-option>
+                            <mat-option value="aceito">Aceito</mat-option>
+                            <mat-option value="recusado">Recusado</mat-option>
                         </mat-select>
                         <mat-error *ngIf="form.get('status').hasError('required')">
                             Selecione uma opção!

@@ -20,8 +20,8 @@ export class AgendamentoService {
     return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=4`);
   }
 
-  CadastraAgendamentos(agendamento: Agendamento): Observable<Agendamento[]> {
-    return this.http.post<Agendamento[]>(`${this.API}/agendamentos/todos?estabelecimento_ID=4`, agendamento);
+  CadastraAgendamentos(agendamento: Agendamento): Observable<Agendamento> {
+    return this.http.post<Agendamento>(`${this.API}/agendamentos`, agendamento);
   }
 
 
