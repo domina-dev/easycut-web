@@ -16,25 +16,30 @@ export class TokenInterceptorService implements HttpInterceptor {
         next: HttpHandler): Observable<HttpEvent<any>> {
 
         const token = localStorage.getItem("token");
+        
+
         if (token) {
             const cloned = req.clone({
                 headers: req.headers.set("Authorization",
                     "Bearer " + token),
-            },
-            );
+            });
             cloned.headers.set("Content-Type", "application/json");
             
             return next.handle(cloned).pipe(catchError(err => {
-                if (err.status === 401 || err.status === 403 || err.status == 0) {
+                if (err.status === 401 || err.status === 403) {
                     // this.commomService.logout();
-                    err.status != 0? setTimeout(() => { alert("Sessão Expirada!") }, 200) : null;
+                    window.localStorage.clear();
+                    this.router.navigate(['/login'])
+                    err.status != 0? setTimeout(() => { 
+                        alert("Sessão Expirada!") 
+                    }, 300) : null;
                 }
                 const error = err.error || err.statusText;
                 return throwError(error);
             }));
         }
         else if (this.router.url != "/login" && this.router.url != "/cadastro" && this.router.url != "/recuperacao-senha") { 
-            // this.commomService.logout();
+            window.localStorage.clear();
             this.router.navigate(['/login'])
         }
         else {
@@ -42,4 +47,5 @@ export class TokenInterceptorService implements HttpInterceptor {
         }
     }
 
+    
 }
