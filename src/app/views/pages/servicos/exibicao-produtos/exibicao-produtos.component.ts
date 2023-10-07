@@ -99,6 +99,30 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
     }
+    abrirModalOcultar(produto: Produto): void {
+        let mensagem:string = ""
+        if (produto.ativo) {
+            mensagem = "Tem certeza que deseja ocultar este produto?"
+        }
+        else {
+            mensagem = "Tem certeza que deseja mostrar este produto?"
+
+        }
+
+        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+            data: {
+                titulo: mensagem
+            }
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                produto.ativo = !produto.ativo
+                this.alterarProduto(produto)
+
+            }
+        });
+    }
+    
     abrirModalPromocional(produto: Produto): void {
         let mensagem:string = ""
         if (produto.promocional) {
