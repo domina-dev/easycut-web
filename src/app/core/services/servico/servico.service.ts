@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Servico } from 'src/app/views/pages/servicos/exibicao-servicos/exibicao-servicos.component';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/internal/operators/take';
+import { Servico } from '../../model/servicos';
 
 
 @Injectable({
@@ -17,11 +18,15 @@ export class ServicoService {
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
   }
 
-  cadastrarServico(Servico): Observable<Servico[]> {
-    return this.http.post<Servico[]>(`${this.API}/servicos`, Servico);
+  cadastrarServico(servico): Observable<Servico[]> {
+    return this.http.post<Servico[]>(`${this.API}/servicos`, servico);
   }
 
+  editarServico(servico: Servico): Observable<Servico[]> {
+    return this.http.put<Servico[]>(`${this.API}/servicos`, servico).pipe(take(1));
+  }
 
-
+  deletarServico(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.API}/servicos?servico_ID=${id}`)
+  }
 }
-

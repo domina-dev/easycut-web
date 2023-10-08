@@ -15,6 +15,8 @@ import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirm
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
+  load: boolean = false;
+
   displayedColumns: string[] = [
     'cliente',
     'servico',
@@ -43,18 +45,22 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   }
 
   getAgendamentos() {
+    this.load = true;
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
+      this.load = false;
   },
-      (error) => { console.log(error)});
+      (error) => {
+        this.load = false;
+        console.log(error)});
 }
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        height: '90%',
-        width: '500px',
+
+        width: '450px',
       });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -63,7 +69,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   abrirModalDeletar(agendamento: Agendamento): void {
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
       data: {
-        titulo: `Tem certeza que deseja deletar o agendamento: ${agendamento.nomeServico}`
+        itens: [agendamento.nomeServico],
+        legendaAcao: 'Tem certeza que deseja EXCLUIR esse item?'
       }
     });
 

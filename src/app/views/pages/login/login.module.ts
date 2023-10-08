@@ -6,6 +6,7 @@ import { LoginComponent } from './login.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
 import { IconModule } from '@visurel/iconify-angular';
+import { ScrollbarModule } from 'src/@vex/components/scrollbar/scrollbar.module';
 
 @NgModule({
     declarations: [LoginComponent],
@@ -14,7 +15,8 @@ import { IconModule } from '@visurel/iconify-angular';
         LoginRoutingModule,
         MaterialModule,
         LibVexModule,
-        IconModule
+        IconModule,
+        ScrollbarModule
     ]
 })
 export class LoginModule {}

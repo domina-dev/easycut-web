@@ -9,6 +9,9 @@ import { Reserva } from 'src/app/core/model/reservas';
     styleUrls: ['./exibicao-reservas.component.scss']
 })
 export class ExibicaoReservasComponent implements AfterViewInit {
+  
+  load: boolean = true;
+
     displayedColumns: string[] = [
         'cliente',
         'produto',

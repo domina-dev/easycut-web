@@ -5,91 +5,173 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { CadastrarEditarServicoComponent } from 'src/app/core/lib/components/modais/servico/cadastrar-editar-servico/cadastrar-editar-servico.component';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Servico } from 'src/app/core/model/servicos'
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+
 @Component({
-    selector: 'vex-exibicao-servicos',
-    templateUrl: './exibicao-servicos.component.html',
-    styleUrls: ['./exibicao-servicos.component.scss']
+  selector: 'vex-exibicao-servicos',
+  templateUrl: './exibicao-servicos.component.html',
+  styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
-    displayedColumns: string[] = [
-        'aplicacao',
-        'servico',
-        'descricao',
-        'tempo',
-        'preco',
-        'icone'
-    ];
+  load: boolean = false;
 
-    dataSource = new MatTableDataSource<Servico>();
+  displayedColumns: string[] = [
+    'aplicacao',
+    'servico',
+    'descricao',
+    'tempo',
+    'preco',
+    'icone'
+  ];
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
-    listaServicos: Servico[] = [];
+  dataSource = new MatTableDataSource<Servico>();
 
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    matDialogActions: any;
+  verLista: boolean = true;
+  verGrade: boolean = false;
+  listaServicos: Servico[] = [];
 
-    constructor(public dialog: MatDialog,
-        private servicoService: ServicoService) { }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  matDialogActions: any;
 
-    ngOnInit(): void { this.listarServicos() }
+  constructor(public dialog: MatDialog,
+    private servicoService: ServicoService,
+    private snackbar: MatSnackBar) { }
 
-    listarServicos() {
-        this.servicoService.obterServicos().subscribe(response => {
-            this.listaServicos = response;
-            this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
-            this.dataSource.paginator = this.paginator;
-        }, (error) => {
-            console.log(error)
-        });
-    }
+  ngOnInit(): void { this.listarServicos() }
 
-    ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
-    }
+  listarServicos() {
+    this.load = true;
+    this.servicoService.obterServicos().subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    }, (error) => {
+      this.load = false;
+      console.log(error)
+    });
+  }
 
-    openDialog() {
-        this.dialog.open(CadastrarEditarServicoComponent);
-    }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
-    vizualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-    abrirModalDeletar(servico: Servico): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-          data: {
-            titulo: `Tem certeza que deseja deletar o serviço: ${servico.nome}`
-          }
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            // Lógica para excluir o servico se o usuário confirmar
-            this.excluirServico(servico);
-          }
-        });
+  modalCadastrarEditar(servico?: Servico) {
+    const dialogRef = this.dialog.open(CadastrarEditarServicoComponent, {
+      data: {
+          servico: servico
       }
-    
-      excluirServico(servico: Servico): void {
-        // Implemente a lógica para excluir o servico aqui
-        // Chame seu serviço ou método para realizar a exclusão
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.listarServicos();
       }
+    });
+  }
+
+  abrirModalDeletar(servico: Servico): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [servico.nome],
+        legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletarServico(servico);
+      }
+    });
+  }
+
+  deletarServico(servico: Servico): void {
+    this.load = true;
+    this.servicoService.deletarServico(servico.id).subscribe(
+      () => {
+        this.listarServicos();
+        this.load = false;
+        this.snackbar.open(
+          MessagesSnackBar.DELETAR_SERVICO,
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+
+      },
+      (error) => {
+        this.load = false;
+        console.error(error)
+        this.snackbar.open(
+          MessagesSnackBar.ERRO_DELETAR_SERVICO,
+          'FECHAR',
+          {
+            duration: 5000
+          }
+        );
+      }
+    );
+  }
+
+  abrirModalPromocional(servico: Servico): void {
+    let mensagem: string = ""
+    if (servico.promocional) {
+      mensagem = "Tem certeza que deseja retirar este serviço da promoção?"
+    }
+    else {
+      mensagem = "Tem certeza que deseja tornar este serviço promocional?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [servico.nome],
+        legendaAcao: mensagem
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        servico.promocional = !servico.promocional
+        this.alterarServico(servico)
+
+      }
+    });
+  }
+  alterarServico(servico: Servico): void {
+    this.load = true;
+    this.servicoService.editarServico(servico).subscribe(response => {
+      this.listarServicos()
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_SERVICO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_SERVICO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    });
+
+  }
+  
+  visualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
 }
 
-export interface Servico {
-    id: number;
-    nome: string;
-    categoria: string;
-    codigo: string;
-    descricao: string;
-    tempoEstimado: string;
-    valor: number;
-    valorPromocional: number;
-    ativo: boolean;
-    promocional: boolean;
-    estabelecimentoID: number;
-}
+
 
 

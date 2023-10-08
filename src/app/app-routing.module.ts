@@ -27,7 +27,36 @@ const routes: Routes = [
                     import('./views/pages/caixa/caixa.module').then(
                         (m) => m.CaixaModule
                     )
+            },
+            {
+                path: 'config',
+                loadChildren: () =>
+                    import('./views/pages/config/config.module').then(
+                        (m) => m.ConfigModule
+                    )
+            },
+            {
+                path: 'painel',
+                loadChildren: () =>
+                    import('./views/pages/painel/painel.module').then(
+                        (m) => m.PainelModule
+                    )
+            },
+            {
+                path: 'comentarios',
+                loadChildren: () =>
+                    import('./views/pages/comentarios/comentarios.module').then(
+                        (m) => m.ComentariosModule
+                    )
+            },
+            {
+                path: 'agenda',
+                loadChildren: () =>
+                    import('./views/pages/agenda/agenda.module').then(
+                        (m) => m.AgendaModule
+                    )
             }
+            
         ]
     },
     {
