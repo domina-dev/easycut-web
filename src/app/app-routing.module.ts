@@ -48,6 +48,13 @@ const routes: Routes = [
                     import('./views/pages/comentarios/comentarios.module').then(
                         (m) => m.ComentariosModule
                     )
+            },
+            {
+                path: 'agenda',
+                loadChildren: () =>
+                    import('./views/pages/agenda/agenda.module').then(
+                        (m) => m.AgendaModule
+                    )
             }
             
         ]

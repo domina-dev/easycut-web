@@ -3,11 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CadastrarProdutoComponent } from 'src/app/core/lib/components/modais/produto/cadastrar-produto/cadastrar-produto.component';
-import { Produto } from 'src/app/core/model/produto'
-import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
+import { Produto } from 'src/app/core/model/produto';
+import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
     selector: 'vex-exibicao-produtos',
@@ -15,6 +15,7 @@ import { MENSAGENS } from 'src/app/core/constants/mensagens';
     styleUrls: ['./exibicao-produtos.component.scss']
 })
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
+    load: boolean = false;
 
     displayedColumns: string[] = [
         'nomeProduto',
@@ -24,7 +25,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         'icone'
     ];
 
-    listaProduto: Produto[] = []
+    listaProduto: Produto[] = [];
 
     dataSource = new MatTableDataSource<Produto>();
 
@@ -41,54 +42,71 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
-    constructor(public dialog: MatDialog, private produtoService: ProdutoService,
-        private snackbar: MatSnackBar) { }
+    constructor(
+        public dialog: MatDialog,
+        private produtoService: ProdutoService,
+        private snackbar: MatSnackBar
+    ) {}
 
     listarProdutos() {
-        this.produtoService.obterProdutos().subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-        },
-            (error) => { console.log(error) });
+        this.load = true;
+        this.produtoService.obterProdutos().subscribe(
+            (response) => {
+                this.listaProduto = response;
+                this.dataSource = new MatTableDataSource<Produto>(
+                    this.listaProduto
+                );
+                this.dataSource.paginator = this.paginator;
+                this.load = false;
+            },
+            (error) => {
+                this.load = false;
+                console.log(error);
+            }
+        );
     }
 
     deletarProduto() {
-        this.produtoService.deletaProduto().subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-            this.snackbar.open(
-                MENSAGENS.DELETAR_PRODUTO,
-                "Fechar",
-                {
+        this.load = true;
+        this.produtoService.deletaProduto().subscribe(
+            (response) => {
+                this.listaProduto = response;
+                this.dataSource = new MatTableDataSource<Produto>(
+                    this.listaProduto
+                );
+                this.dataSource.paginator = this.paginator;
+                this.load = false;
+                this.snackbar.open(MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
                     duration: 10000
-                }
-            );
-        }, (error) => {
-            console.log(error)
-            this.snackbar.open(
-                MENSAGENS.ERRO_DELETAR_PRODUTO,
-                "Tenta novamente",
-                {
-                    duration: 10000
-                }
-            );
-
-        });
+                });
+            },
+            (error) => {
+                this.load = false;
+                console.log(error);
+                this.snackbar.open(
+                    MessagesSnackBar.ERRO_DELETAR_PRODUTO,
+                    'Tenta novamente',
+                    {
+                        duration: 10000
+                    }
+                );
+            }
+        );
     }
 
     openAdd() {
         this.dialog.open(CadastrarProdutoComponent);
     }
+
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
+                itens: [produto.nome],
+                legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
             }
         });
 
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result) => {
             if (result) {
                 this.deletarProduto();
             }
@@ -99,48 +117,72 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         this.verLista = !this.verLista;
         this.verGrade = !this.verGrade;
     }
-    abrirModalPromocional(produto: Produto): void {
-        let mensagem:string = ""
-        if (produto.promocional) {
-            mensagem = "Tem certeza que deseja retirar este produto da promoção?"
-        }
-        else {
-            mensagem = "Tem certeza que deseja tornar este produto promocional?"
 
+    abrirModalPromocional(produto: Produto): void {
+        let mensagem: string = '';
+        if (produto.promocional) {
+            mensagem =
+                'Tem certeza que deseja retirar este produto da promoção?';
+        } else {
+            mensagem =
+                'Tem certeza que deseja tornar este produto promocional?';
         }
 
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: mensagem
+                itens: [produto.nome],
+                legendaAcao: mensagem
             }
         });
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                produto.promocional = !produto.promocional
-                this.alterarProduto(produto)
-
+                produto.promocional = !produto.promocional;
+                this.alterarProduto(produto);
             }
         });
     }
+
     alterarProduto(produto: Produto): void {
-        this.produtoService.alterarProduto(produto).subscribe(response => {
-            this.listarProdutos()
-            this.snackbar.open(
-                "Produto alterado com sucesso",
-                "Fechar",
-                {
+        this.load = true;
+        this.produtoService.alterarProduto(produto).subscribe(
+            (response) => {
+                this.listarProdutos();
+                this.load = false;
+                this.snackbar.open(MessagesSnackBar.EDITAR_PRODUTO, 'Fechar', {
                     duration: 3000
-                }
-                
-                )
-        }, (error) => {
-            this.snackbar.open(
-                "Não foi possível alterar o produto",
-                "Fechar",
-                {
-                    duration: 3000
-                }
-            )
+                });
+            },
+            (error) => {
+                this.load = false;
+                this.snackbar.open(
+                    MessagesSnackBar.ERRO_EDITAR_PRODUTO,
+                    'Fechar',
+                    {
+                        duration: 3000
+                    }
+                );
+            }
+        );
+    }
+    abrirModalOcultar(produto: Produto): void {
+        let mensagem: string = '';
+        if (produto.ativo) {
+            mensagem = 'Tem certeza que deseja ocultar este produto?';
+        } else {
+            mensagem = 'Tem certeza que deseja mostrar este produto?';
+        }
+
+        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+            data: {
+                itens: [produto.nome],
+                legendaAcao: mensagem
+            }
+        });
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                produto.ativo = !produto.ativo;
+                this.alterarProduto(produto);
+            }
         });
     }
 }
