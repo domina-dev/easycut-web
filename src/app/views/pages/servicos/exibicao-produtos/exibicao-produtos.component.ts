@@ -7,6 +7,7 @@ import { Produto } from 'src/app/core/model/produto';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { FormGroup } from '@angular/forms';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
@@ -17,8 +18,10 @@ import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     load: boolean = false;
 
+    form: FormGroup;
+
     displayedColumns: string[] = [
-        'nomeProduto',
+        'nome',
         'descricao',
         'quantidade',
         'preco',
@@ -94,8 +97,22 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         );
     }
 
-    openAdd() {
-        this.dialog.open(CadastrarProdutoComponent);
+
+    abrirModalCadastrarEditar(produto?: Produto) {
+
+       
+        const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
+            data: {
+                produto: produto
+
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.listarProdutos();
+            }
+        });
     }
 
     abrirModalDeletar(produto: Produto): void {
