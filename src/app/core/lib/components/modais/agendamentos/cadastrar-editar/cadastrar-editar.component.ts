@@ -15,8 +15,7 @@ import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamen
 export class CadastrarEditarComponent {
 
   agendamento = new Agendamento();
-  login = window.localStorage.getItem('login');
-  estabelecimentoID = JSON.parse(this.login).estabelecimento_ID;
+  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
   form: FormGroup;
   isCadastro!: boolean;
@@ -47,8 +46,9 @@ export class CadastrarEditarComponent {
   }
 
   cadastrarAgendamento() {
+
     this.agendamento = this.form.value;
-    this.agendamento.estabelecimentoID = this.estabelecimentoID;
+    this.agendamento.estabelecimentoID = +this.estabelecimentoID;
     this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
       this.dialogRef.close(true);
       this.snackbar.open(

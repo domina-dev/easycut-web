@@ -10,9 +10,9 @@
         <mat-form-field appearance="standard">
             <mat-label>Status</mat-label>
             <mat-select>
-                <mat-option value="one">Aceito</mat-option>
-                <mat-option value="two">Pendente</mat-option>
-                <mat-option value="three">Recusado</mat-option>
+                <mat-option value="aceito">Aceito</mat-option>
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="recusado">Recusado</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -54,7 +54,7 @@
         <ng-container matColumnDef="cliente">
             <th mat-header-cell *matHeaderCellDef>Cliente</th>
             <td mat-cell *matCellDef="let agendamento">
-                {{ agendamento.cliente.nome }}
+                {{ agendamento.nomeCliente }}
             </td>
         </ng-container>
 
@@ -98,9 +98,9 @@
             <td
                 class="tdsticky"
                 [class]="
-                    agendamento.status === 'PENDENTE'
+                    agendamento.status === 'pendente'
                         ? 'pendente'
-                        : agendamento.status === 'ACEITO'
+                        : agendamento.status === 'aceito'
                         ? 'aceito'
                         : 'recusado'
                 "
@@ -109,9 +109,9 @@
             >
                 <mat-form-field appearance="standard">
                     <mat-select [(value)]="agendamento.status">
-                        <mat-option value="PENDENTE">Pendente</mat-option>
-                        <mat-option value="ACEITO">Aceito</mat-option>
-                        <mat-option value="RECUSADO">Recusado</mat-option>
+                        <mat-option value="pendente">Pendente</mat-option>
+                        <mat-option value="aceito">Aceito</mat-option>
+                        <mat-option value="recusado">Recusado</mat-option>
                     </mat-select>
                 </mat-form-field>
             </td>
