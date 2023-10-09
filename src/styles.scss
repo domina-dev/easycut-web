@@ -28,3 +28,12 @@
     // --color-warn: yellow;
     // --color-warn-contrast: black;
 }
+$primary: #5C77FF;
+
+.bg-primary{
+  background-color: #5C77FF !important;
+}
+
+.bg-primary-light{
+  color: #5C77FF !important;
+}
