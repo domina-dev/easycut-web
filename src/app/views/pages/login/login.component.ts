@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
 import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 import { stagger20ms } from 'src/@vex/animations/stagger.animation';
+import { CompletarCadastroComponent } from 'src/app/modais/completarCadastro/completarCadastro.component';
 
 @Component({
   selector: 'vex-login',
@@ -64,7 +65,7 @@ export class LoginComponent {
       this.planLogin = response.plano_ID;
       this.load = false;
       this.router.navigate(['/']);
-      this.abrirModais();
+      this.abrirModais(response);
     },
       (error) => {
         this.load = false;
@@ -123,14 +124,23 @@ export class LoginComponent {
     });
   }
 
-  abrirModais() {
-    if (this.firstLogin) {
+  abrirModais(response: any) {
+    if (response.primeiroLogin) {
       return this.openModalPrimeiroLogin();
     }
-    else if (!this.planLogin) {
+    else if (!response.plano_ID) {
       return this.openModalPlanos();
     }
+    else if (!response.cadastroCompleto) {
+      return this.abrirModalCompletarCadastro();
+    }
+
   }
+
+  abrirModalCompletarCadastro() {
+    this.dialog.open(CompletarCadastroComponent, {
+        width: '600px',
+    });
+  }
+
 }
-
-

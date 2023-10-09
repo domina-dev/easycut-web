@@ -1,0 +1,56 @@
+.card {
+    min-width: 80%;
+    overflow: auto;
+}
+
+.card::-webkit-scrollbar {
+    width: 0px; /* Esconde a barra de rolagem no navegador Chrome e Safari */
+}
+.group-information {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.foto {
+    cursor: pointer;
+}
+.foto:hover {
+    opacity: 0.5;
+}
+.mat-icon {
+    color: white;
+}
+input[type="file"] {
+    display: none;
+}
+
+.centInputImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alteraFundo {
+    float: right;
+    margin-top: 90px;
+    margin-right: 2%;
+    border-radius: 3px;
+    background-color: white;
+
+    width: 40px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.alteraFundo .mat-icon {
+    color: black;
+    opacity: 0.5;
+}
+.alteraFundo:hover .mat-icon {
+    cursor: pointer;
+    color: black;
+    opacity: 1;
+}
