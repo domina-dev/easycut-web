@@ -116,6 +116,31 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     );
   }
 
+  abrirModalOcultar(servico: Servico): void {
+    let mensagem:string = ""
+    if (servico.ativo) {
+        mensagem = "Tem certeza que deseja ocultar este serviço?"
+    }
+    else {
+        mensagem = "Tem certeza que deseja mostrar este serviço?"
+
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+        data: {
+          itens: [servico.nome],
+          legendaAcao: mensagem
+        }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+            servico.ativo = !servico.ativo
+            this.alterarServico(servico)
+
+        }
+    });
+}
+
   abrirModalPromocional(servico: Servico): void {
     let mensagem: string = ""
     if (servico.promocional) {

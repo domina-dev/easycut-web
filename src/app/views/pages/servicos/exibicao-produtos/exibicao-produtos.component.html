@@ -31,7 +31,8 @@
 
 <div class="row" style="float: right;">
     <div class="col">
-        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow">Limpar <mat-icon>backspace</mat-icon></button>
+        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow">Limpar
+            <mat-icon>backspace</mat-icon></button>
     </div>
     <div class="col">
         <button mat-button mat-raised-button color="primary" (click)="openAdd()" fxFlex="grow">
@@ -53,7 +54,7 @@
     <!-- Tabela de produtos -->
     <div class="mat-elevation-z8" style="margin-top: 3rem;">
         <table aria-label="tabela-produtos" mat-table [dataSource]="dataSource">
-    
+
             <!-- Name Produto -->
             <ng-container matColumnDef="nomeProduto">
                 <th class="color-title" mat-header-cell *matHeaderCellDef>
@@ -63,7 +64,7 @@
                     {{ element.nome }}
                 </td>
             </ng-container>
-    
+
             <!-- Descrição do produto -->
             <ng-container matColumnDef="descricao">
                 <th class="color-title" mat-header-cell *matHeaderCellDef>
@@ -71,7 +72,7 @@
                 </th>
                 <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
             </ng-container>
-    
+
             <!-- Quantidade do produto -->
             <ng-container matColumnDef="quantidade">
                 <th class="color-title" mat-header-cell *matHeaderCellDef>
@@ -79,14 +80,14 @@
                 </th>
                 <td mat-cell *matCellDef="let element">{{ element.qtdEstoque }}</td>
             </ng-container>
-    
+
             <!-- Preço do produto -->
             <ng-container matColumnDef="preco">
                 <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
                 <td mat-cell *matCellDef="let produto">{{ produto.promocional? produto.valorPromocional:produto.valor }}
                 </td>
             </ng-container>
-    
+
             <!-- Ícone da tabela -->
             <ng-container matColumnDef="icone">
                 <th mat-header-cell *matHeaderCellDef></th>
@@ -102,17 +103,26 @@
                         <mat-icon>more_vert</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-icon-button aria-label="ícone Button" class="iconmenu">
+
+                        <button *ngIf="produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalOcultar(produto)">
+                            <mat-icon class="icon-color">visibility</mat-icon>
+                            <span class="descricaoicon">Ocultar Produto</span>
+                        </button>
+
+
+                        <button *ngIf="!produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalOcultar(produto)">
                             <mat-icon class="icon-color">visibility_off</mat-icon>
                             <span class="descricaoicon">Exibir Produto</span>
                         </button>
-    
+
                         <button *ngIf="!produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalPromocional(produto)">
                             <mat-icon class="icon-color">money_off</mat-icon>
                             <span class="descricaoicon">Tornar Promocional</span>
                         </button>
-    
+
                         <button *ngIf="produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalPromocional(produto)">
                             <mat-icon class="icon-color">attach_money</mat-icon>
@@ -124,7 +134,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>
-    
+
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecionar página do produto">
         </mat-paginator>
     </div>
