@@ -6,6 +6,7 @@ import { CadastrarEditarComponent } from 'src/app/core/lib/components/modais/age
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { EventEmitterService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -32,11 +33,13 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   currentStatus: any;
 
-  listaAgendamentos: Agendamento[] = []
+  listaAgendamentos: Agendamento[] = [];
+  agendamentoHoje: number
 
   constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
 
   ngOnInit(): void {
+    EventEmitterService.get("buscarAgendamentos").subscribe(()=> this.getAgendamentos());
     this.getAgendamentos()
   }
 
@@ -46,6 +49,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
   getAgendamentos() {
     this.load = true;
+    this.agendamentoHoje = +window.localStorage.getItem('agendamentoHoje');
+    window.localStorage.removeItem('agendamentoHoje');
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
@@ -55,7 +60,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       (error) => {
         this.load = false;
         console.log(error)});
-}
+  }
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
