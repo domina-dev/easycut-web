@@ -143,7 +143,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   }
   alterarServico(servico: Servico): void {
     this.load = true;
-    this.servicoService.editarServico(servico).subscribe(response => {
+    this.servicoService.editarServico(servico).subscribe(() => {
       this.listarServicos()
       this.load = false;
       this.snackbar.open(
@@ -165,7 +165,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
 
   }
-  
+
   visualizar() {
     this.verLista = !this.verLista;
     this.verGrade = !this.verGrade;
