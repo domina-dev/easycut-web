@@ -10,7 +10,7 @@
   <h3 matSubheader>Agendamentos do dia</h3>
   <div *ngFor="let agendamentoHoje of listaAgendamentos">
     <a (click)="mostraAgendamento(agendamentoHoje)" mat-list-item >
-      <h4 matLine>{{ agendamentoHoje.cliente.nome }}</h4>
+      <h4 matLine>{{ agendamentoHoje.nomeCliente }}</h4>
       <p matLine>{{ agendamentoHoje.hrAtendimento }}</p>
     </a>
   </div>
