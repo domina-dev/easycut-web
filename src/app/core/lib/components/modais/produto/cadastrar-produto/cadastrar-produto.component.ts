@@ -27,11 +27,11 @@ export class CadastrarProdutoComponent {
     this.isCadastro = data.produto ? false : true;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
     this.form = this.fb.group({
-      nomeProduto: [data?.produto?.nome, Validators.required],
+      nome: [data?.produto?.nome, Validators.required],
       qtdEstoque: [data?.produto?.qtdEstoque, Validators.required],
       valor: [data?.produto?.valor, Validators.required],
-      categoria: ['', Validators.required],
-      dsProduto: [data?.produto?.descricao, Validators.required],
+      categoria: [data?.produto?.categoria, Validators.required, Validators.required],
+      descricao: [data?.produto?.descricao, Validators.required],
       valorPromocional: [data?.produto?.valorPromocional, Validators.required]
     });
   }
