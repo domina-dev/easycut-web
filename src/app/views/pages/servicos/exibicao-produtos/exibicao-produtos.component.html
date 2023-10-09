@@ -106,14 +106,14 @@
 
                         <button *ngIf="produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalOcultar(produto)">
-                            <mat-icon class="icon-color">visibility_off</mat-icon>
+                            <mat-icon class="icon-color">visibility</mat-icon>
                             <span class="descricaoicon">Ocultar Produto</span>
                         </button>
 
 
                         <button *ngIf="!produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalOcultar(produto)">
-                            <mat-icon class="icon-color">visibility</mat-icon>
+                            <mat-icon class="icon-color">visibility_off</mat-icon>
                             <span class="descricaoicon">Exibir Produto</span>
                         </button>
 

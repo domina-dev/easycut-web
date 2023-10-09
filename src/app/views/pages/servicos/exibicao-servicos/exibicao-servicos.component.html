@@ -112,13 +112,13 @@
                     <mat-menu #menu="matMenu">
                         <button *ngIf="servico.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalOcultar(servico)">
-                            <mat-icon class="icon-color">visibility_off</mat-icon>
+                            <mat-icon class="icon-color">visibility</mat-icon>
                             <span class="descricaoicon">Ocultar Serviço</span>
                         </button>
 
                         <button *ngIf="!servico.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
                             (click)="abrirModalOcultar(servico)">
-                            <mat-icon class="icon-color">visibility</mat-icon>
+                            <mat-icon class="icon-color">visibility_off</mat-icon>
                             <span class="descricaoicon">Exibir Serviço</span>
                         </button>
 

@@ -128,7 +128,8 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
         data: {
-            titulo: mensagem
+          itens: [servico.nome],
+          legendaAcao: mensagem
         }
     });
     dialogRef.afterClosed().subscribe(result => {
