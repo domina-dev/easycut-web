@@ -17,12 +17,12 @@
                 <div class="nome">
                     <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                         <mat-label class="nome">Nome do produto</mat-label>
-                        <input formControlName="nome" matInput required />
-                        <mat-error
-                            *ngIf="form.get('nome').hasError('required')"
+                        <input formControlName="nomeProduto" matInput required />
+                        <!-- <mat-error
+                            *ngIf="form.get('nomeProduto').hasError('required')"
                         >
                             Preencha este campo!
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
                 </div>
 
@@ -31,7 +31,7 @@
                     <mat-form-field id="quantEstoque" appearance="standard">
                         <mat-label>Quantidade em Estoque</mat-label>
                         <input
-                            formControlName="quantidade"
+                            formControlName="qtdEstoque"
                             type="text"
                             matInput
                             placeholder="Digite a quantidade"
@@ -49,10 +49,10 @@
                     <mat-form-field id="categoria" appearance="standard">
                         <mat-label>Categoria</mat-label>
                         <mat-select formControlName="categoria" required>
-                            <mat-option value="option">Cabelo Feminino</mat-option>
-                            <mat-option value="option">Cabelo Masculino</mat-option>
-                            <mat-option value="option">Unha</mat-option>
-                            <mat-option value="option">Pele</mat-option>
+                            <mat-option value="Cabelo Feminino">Cabelo Feminino</mat-option>
+                            <mat-option value="Cabelo Masculino">Cabelo Masculino</mat-option>
+                            <mat-option value="Unha">Unha</mat-option>
+                            <mat-option value="Pele">Pele</mat-option>
                         </mat-select>
                         <!-- <mat-error
                             *ngIf="form.get('categoria').hasError('required')"
@@ -69,6 +69,8 @@
                         <input
                             matInput
                             placeholder="Ex. Tipo de corte, tipo de barba..."
+                            formControlName="dsProduto"
+                            type="text"
                         />
                     </mat-form-field>
                 </div>
@@ -107,7 +109,7 @@
                         <mat-label>Valor Promocional</mat-label>
                         <span matTextPrefix>R$&nbsp;</span>
                         <input
-                            formControlName="valor"
+                            formControlName="valorPromocional"
                             id="valorP"
                             matInput
                             type="number"
@@ -131,7 +133,7 @@
                 mat-button
                 mat-raised-button
                 color="primary"
-                (click)="cadastrarProduto()"
+                (click)="cadastrarEditarProduto()"
             >
                 Adicionar
             </button>

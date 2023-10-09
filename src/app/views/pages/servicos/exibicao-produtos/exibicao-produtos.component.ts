@@ -19,7 +19,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     form: FormGroup;
 
     displayedColumns: string[] = [
-        'nomeProduto',
+        'nome',
         'descricao',
         'quantidade',
         'preco',
@@ -80,44 +80,20 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         });
     }
 
-    editarProduto(produto: Produto): void {
-        this.produtoService.editaProduto(produto).subscribe(response => {
-            this.listaProduto = response;
-            this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-            this.dataSource.paginator = this.paginator;
-            this.snackbar.open(
-                "Produto editado com sucesso",
-                "Fechar",
-                {
-                  duration: 10000
-                }
-              );
-
-        }, (error) => {
-            console.log(error)
-            this.snackbar.open(
-                "Produto não editado",
-                "Tenta novamente",
-                {
-                    duration: 10000
-                }
-            );
-        })
-    }
-
 
     abrirModalCadastrarEditar(produto?: Produto) {
 
-        if (produto) produto.nomeProduto = 'Pomada'
+       
         const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
             data: {
                 produto: produto
+
             }
         });
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.editarProduto(produto);
+                this.listarProdutos();
             }
         });
     }
@@ -125,7 +101,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     abrirModalDeletar(produto: Produto): void {
         const dialogRef = this.dialog.open(ConfirmacaoComponent, {
             data: {
-                titulo: `Tem certeza que deseja deletar o produto: ${produto.nomeProduto}`
+                titulo: `Tem certeza que deseja deletar o produto: ${produto.nome}`
             }
         });
 

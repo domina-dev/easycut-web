@@ -18,24 +18,26 @@ export class CadastrarProdutoComponent {
   legendaBotao: string = '';
   isCadastro!: boolean;
 
-  servico = new Produto();
+  produto = new Produto();
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
     private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.isCadastro = data.servico ? false : true;
+    this.isCadastro = data.produto ? false : true;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
     this.form = this.fb.group({
-      nome: [data?.produto?.nomeProduto, Validators.required],
-      quantidade: [data?.produto?.qtdEstoque, Validators.required],
+      nomeProduto: [data?.produto?.nome, Validators.required],
+      qtdEstoque: [data?.produto?.qtdEstoque, Validators.required],
       valor: [data?.produto?.valor, Validators.required],
-      categoria: ['', Validators.required]
+      categoria: ['', Validators.required],
+      dsProduto: [data?.produto?.descricao, Validators.required],
+      valorPromocional: [data?.produto?.valorPromocional, Validators.required]
     });
   }
 
   cadastrarEditarProduto() {
-    this.isCadastro?this.cadastrarProduto() : this.editarProduto()
+    this.isCadastro? this.cadastrarProduto() : this.editarProduto();
   }
 
 

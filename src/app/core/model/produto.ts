@@ -1,7 +1,8 @@
-export interface Produto{
-    codProduto: null;
-    nomeProduto: string;
-    dsProduto: string;
+export class Produto{
+    id: number;
+    codProduto: number;
+    nome: string;
+    descricao: string;
     qtdEstoque: number;
     valor: number;
     valorPromocional: number;
