@@ -10,9 +10,9 @@
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Status</mat-label>
             <mat-select>
-                <mat-option value="one">Aceito</mat-option>
-                <mat-option value="two">Pendente</mat-option>
-                <mat-option value="three">Recusado</mat-option>
+                <mat-option value="aceito">Aceito</mat-option>
+                <mat-option value="pendente">Pendente</mat-option>
+                <mat-option value="recusado">Recusado</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -45,7 +45,6 @@
         </button>
     </div>
 </div>
-
 
 <div style="margin-top: 3rem;">
     <!-- LOADING -->
@@ -104,17 +103,17 @@
             <ng-container matColumnDef="status" stickyEnd>
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td class="tdsticky" [class]="
-                        agendamento.status === 'PENDENTE'
+                        agendamento.status === 'pendente'
                             ? 'pendente'
-                            : agendamento.status === 'ACEITO'
+                            : agendamento.status === 'aceito'
                             ? 'aceito'
                             : 'recusado' "
                      mat-cell *matCellDef="let agendamento">
                     <mat-form-field appearance="standard">
                         <mat-select [(value)]="agendamento.status">
-                            <mat-option value="PENDENTE">Pendente</mat-option>
-                            <mat-option value="ACEITO">Aceito</mat-option>
-                            <mat-option value="RECUSADO">Recusado</mat-option>
+                            <mat-option value="pendente">Pendente</mat-option>
+                            <mat-option value="aceito">Aceito</mat-option>
+                            <mat-option value="recusado">Recusado</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>

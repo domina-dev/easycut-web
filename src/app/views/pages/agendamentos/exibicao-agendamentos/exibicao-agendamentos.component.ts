@@ -6,6 +6,7 @@ import { CadastrarEditarComponent } from 'src/app/core/lib/components/modais/age
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
+import { FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
 
 @Component({
@@ -15,6 +16,8 @@ import { EventEmitterService } from 'src/app/core/services/event.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
+
+  form: FormGroup;
 
   load: boolean = false;
 
@@ -69,6 +72,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        this.getAgendamentos();
+        //chama sua listagem
+      }
     });
   }
   abrirModalDeletar(agendamento: Agendamento): void {

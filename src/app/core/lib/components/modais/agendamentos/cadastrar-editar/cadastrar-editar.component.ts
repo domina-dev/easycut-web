@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { Agendamento } from 'src/app/core/model/agendamento';
+import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
+
 
 @Component({
   selector: 'vex-cadastrar-editar',
@@ -9,30 +13,67 @@ import { Agendamento } from 'src/app/core/model/agendamento';
   styleUrls: ['./cadastrar-editar.component.scss']
 })
 export class CadastrarEditarComponent {
-  form: FormGroup;
 
-  public userData?: Agendamento;
+  agendamento = new Agendamento();
+  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
+
+  form: FormGroup;
+  isCadastro!: boolean;
 
   constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private readonly fb: FormBuilder,
     private readonly dialogRef: MatDialogRef<CadastrarEditarComponent>,
+    private agendamentoService: AgendamentoService,
+    private snackbar: MatSnackBar,
+  
   ) {
+    this.isCadastro = data?.agendamento? false : true;
     this.form = this.fb.group({
-      cliente: ['', Validators.required],
-      servico: ['', Validators.required],
-      tempo: ['', Validators.required],
-      valor: ['', Validators.required],
-      data: ['', Validators.required],
-      status: ['', Validators.required],
-      hora: ['', Validators.required],
+      nomeCliente: [data?.agendamento?.nomeCliente, Validators.required],
+      nomeServico: [data?.agendamento?.nomeServico, Validators.required],
+      tempoEstimado: [data?.agendamento?.tempoEstimado, Validators.required],
+      valor: [data?.agendamento?.valor, Validators.required],
+      dtAtendimento: [data?.agendamento?.dtAtendimento, Validators.required],
+      status: [data?.agendamento?.status, Validators.required],
+      hrAtendimento: [data?.agendamento?.hrAtendimento, Validators.required],
       responsavel: ['']
   })
 
+  console.log("TESTE", this.estabelecimentoID);
+  
+
   }
 
-  public addUser() {
-    this.userData = this.form.value;
-    this.dialogRef.close(this.userData);
+  cadastrarAgendamento() {
+
+    this.agendamento = this.form.value;
+    this.agendamento.estabelecimentoID = +this.estabelecimentoID;
+    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
+      this.dialogRef.close(true);
+      this.snackbar.open(
+        MessagesSnackBar.ADICIONAR_AGENDAMENTO,
+        "Fechar"
+      )
+    }, (error) => {
+      console.log(error);
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_ADICIONAR_AGENDAMENTO,
+        "Tentar novamente"
+      )
+
+    })
+    
   }
+
+  editarAgendamento(){
+    //chamada de service para editar agendamento
+    //fechar a modal no subscribe desse método passando true
+  }
+
+  cadastrarEditarAgendamento(){
+    this.isCadastro?this.cadastrarAgendamento() : this.editarAgendamento();
+  }
+
 
 }

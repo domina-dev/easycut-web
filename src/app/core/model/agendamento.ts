@@ -1,15 +1,13 @@
-import { Cliente } from './cliente';
-
-export interface Agendamento {
+export class Agendamento {
   id: number;
-  cdAgendamento: string;
+  nomeCliente: string;
   nomeServico: string;
   tempoEstimado: number;
-  valor: number;
+  valor: string;
   dtAtendimento: string;
+  hrAtendimento: string;
   responsavel: string;
-  status: string;
-  clienteID: number;
+  status: boolean;
   estabelecimentoID: number;
-  cliente: Cliente;
+
 }
