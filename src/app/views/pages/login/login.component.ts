@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component
 } from '@angular/core';
@@ -15,16 +14,22 @@ import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/es
 import { MatDialog } from '@angular/material/dialog';
 import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
 import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
+import { stagger20ms } from 'src/@vex/animations/stagger.animation';
 
 @Component({
   selector: 'vex-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInUp400ms]
+  //importacao
+  animations: [
+    fadeInUp400ms,
+    stagger20ms
+  ]
 })
 export class LoginComponent {
   form: FormGroup;
+
+  load: boolean = false;
 
   firstLogin: boolean;
   planLogin: any;
@@ -52,16 +57,19 @@ export class LoginComponent {
   }
 
   login() {
+    this.load = true;
     this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
-      localStorage.setItem("login", JSON.stringify(response));
+      this.guardaDadosSessao(response);
       this.firstLogin = response.primeiroLogin;
       this.planLogin = response.plano_ID;
+      this.load = false;
       this.router.navigate(['/']);
       this.abrirModais();
     },
       (error) => {
+        this.load = false;
         this.snackbar.open
-        (
+          (
             'Email ou senha incorretos, ou usuario nao cadastrado',
             'fechar',
             {
@@ -70,6 +78,15 @@ export class LoginComponent {
           );
         console.log(error)
       });
+  }
+
+  guardaDadosSessao(response: any){
+    localStorage.setItem("currentUser", JSON.stringify(response.estabelecimento))
+    localStorage.setItem("token", response.token)
+    localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
+    localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
+    localStorage.setItem("planoId", response.plano_ID)
+    localStorage.setItem("planoId", response.plano_ID)
   }
 
   toggleVisibility() {
@@ -97,7 +114,10 @@ export class LoginComponent {
 
   openModalPlanos() {
 
-    const dialogRef = this.dialog.open(PlanosComponent);
+    const dialogRef = this.dialog.open(PlanosComponent, {
+      height: '90%',
+      width: '70%',
+    });
 
     dialogRef.afterClosed().subscribe(result => {
     });
