@@ -56,7 +56,7 @@ export class LoginComponent {
                 localStorage.setItem("login", JSON.stringify(response));
                 
                 this.router.navigate(['/']);
-                
+                response.cadastroCompleto = false;
                 if (!response.cadastroCompleto) {
                     this.abrirModalCompletarCadastro();
                 } 

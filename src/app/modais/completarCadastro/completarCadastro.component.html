@@ -1,132 +1,134 @@
-<div>
-    <label class="" for="fileInput">
-        <mat-icon>add_a_photo</mat-icon>
-    </label>
-    <input type="file">
-</div>
-
 <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
     <h2 class="title m-0">Complete Seu Cadastro</h2>
 </div>
+<mat-dialog-content class="mat-typography">
+    <div @fadeInUp class="card overflow-hidden">
+        <div class="container py-gutter">
+            <div class="card overflow-hidden">
+                <div class="h-32 relative overflow-hidden">
+                    <img class="w-full h-full object-cover" src="assets/img/demo/landscape.jpg">
+                    <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full z-0">
+                        <div (click)="imagemFundo.click()" class="alteraFundo bg-contrast-black center">
+                            <mat-icon>add_a_photo</mat-icon>
+                            <input #imagemFundo type="file" />
+                        </div>
+                    </div>
 
-<div @fadeInUp class="card overflow-hidden" style="width: 50vw; height: 83vh; overflow-y: auto;">
-    <div class="container py-gutter">
-        <div class="card overflow-hidden">
-            <div class="h-64 relative overflow-hidden">
-                <img class="w-full h-full object-cover" src="assets/img/demo/landscape.jpg" alt="Imagem capa">
-                <div class="absolute bg-contrast-black opacity-25 top-0 right-0 bottom-0 left-0 w-full h-full z-0">
-                    
                 </div>
-            </div>
 
-            <div class="z-10 relative -mt-16 px-gutter flex items-center">
+                <div (click)="imagemPerfil.click()" style="margin-right: 10%;"
+                    class="z-10 relative -mt-16 px-gutter flex items-center">
+                    <div class="centInputImg">
+                        <div class="absolute">
+                            <label [hidden]="mostraIcone">
+                                <mat-icon>add_a_photo</mat-icon>
+                            </label>
+                            <input #imagemPerfil type="file" />
+                        </div>
+                        <div class="rounded-circle">
+                            <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
+                                class="foto avatar h-24 w-24 flex-none align-start sm:block border-3 border-white"
+                                src="assets/img/demo/logo.png" alt="Imagem cliente">
+                        </div>
+                    </div>
+                </div>
 
-                <img @scaleIn class="avatar h-24 w-24 flex-none align-start hidden sm:block border-3 border-white"
-                    src="assets/img/demo/logo.png" alt="Imagem cliente">
             </div>
         </div>
-    </div>
 
 
 
-    <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
-
-        <div fxFlex="auto" fxLayout="column">
-
-
-
-            <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start">
-                <h2 class="title m-0">Sobre</h2>
-            </div>
-
-            <mat-form-field fxFlex="grow">
-                <mat-label>Sobre o estabelecimento</mat-label>
-                <input formControlName="sobre" matInput>
-            </mat-form-field>
-
-
-
-            <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
-                <h2 class="title m-0">Endereço</h2>
-            </div>
-
-            <div class="group-information" fxLayout.xs="column" fxLayout="row">
+        <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
+            <div fxFlex="auto" fxLayout="column">
+                <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start">
+                    <h2 class="title m-0">Sobre</h2>
+                </div>
 
                 <mat-form-field fxFlex="grow">
-                    <mat-label>CEP</mat-label>
-                    <input formControlName="cep" matInput required>
+                    <mat-label>Sobre o estabelecimento</mat-label>
+                    <input formControlName="sobre" matInput>
+                </mat-form-field>
+
+                <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
+                    <h2 class="title m-0">Endereço</h2>
+                </div>
+
+                <div class="group-information" fxLayout.xs="column" fxLayout="row">
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>CEP</mat-label>
+                        <input formControlName="cep" matInput required>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Numero</mat-label>
+                        <input formControlName="numero" matInput required>
+                    </mat-form-field>
+
+                </div>
+
+                <mat-form-field fxFlex="grow">
+                    <mat-label>Complemento</mat-label>
+                    <input formControlName="complemento" matInput>
                 </mat-form-field>
 
                 <mat-form-field fxFlex="grow">
-                    <mat-label>Numero</mat-label>
-                    <input formControlName="numero" matInput required>
-                </mat-form-field>
-
-            </div>
-
-            <mat-form-field fxFlex="grow">
-                <mat-label>Complemento</mat-label>
-                <input formControlName="complemento" matInput>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="grow">
-                <mat-label>Logradouro</mat-label>
-                <input formControlName="logradouro" matInput required>
-            </mat-form-field>
-
-            <mat-form-field fxFlex="grow">
-                <mat-label>Bairro</mat-label>
-                <input formControlName="bairro" matInput required>
-            </mat-form-field>
-
-            <div class="group-information" fxLayout.xs="column" fxLayout="row">
-
-                <mat-form-field fxFlex="grow">
-                    <mat-label>Estado</mat-label>
-                    <input formControlName="estado" matInput required>
+                    <mat-label>Logradouro</mat-label>
+                    <input formControlName="logradouro" matInput required>
                 </mat-form-field>
 
                 <mat-form-field fxFlex="grow">
-                    <mat-label>Cidade</mat-label>
-                    <input formControlName="cidade" matInput required>
+                    <mat-label>Bairro</mat-label>
+                    <input formControlName="bairro" matInput required>
                 </mat-form-field>
 
-            </div>
+                <div class="group-information" fxLayout.xs="column" fxLayout="row">
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Estado</mat-label>
+                        <input formControlName="estado" matInput required>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Cidade</mat-label>
+                        <input formControlName="cidade" matInput required>
+                    </mat-form-field>
+
+                </div>
 
 
-            <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
-                <h2 class="title m-0">Contato</h2>
-            </div>
-
-            <mat-form-field fxFlex="grow">
-                <mat-label>Email</mat-label>
-                <input formControlName="email" matInput required>
-            </mat-form-field>
-
-
-            <div class="group-information" fxLayout.xs="column" fxLayout="row">
+                <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
+                    <h2 class="title m-0">Contato</h2>
+                </div>
 
                 <mat-form-field fxFlex="grow">
-                    <mat-label>Celular</mat-label>
-                    <input formControlName="celular" matInput required>
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput required>
                 </mat-form-field>
 
-                <mat-form-field fxFlex="grow">
-                    <mat-label>Telefone</mat-label>
-                    <input formControlName="telefone" matInput required>
-                </mat-form-field>
+
+                <div class="group-information" fxLayout.xs="column" fxLayout="row">
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Celular</mat-label>
+                        <input formControlName="celular" matInput required>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex="grow">
+                        <mat-label>Telefone</mat-label>
+                        <input formControlName="telefone" matInput required>
+                    </mat-form-field>
+
+                </div>
 
             </div>
 
         </div>
 
     </div>
+</mat-dialog-content>
 
-
-
-    <mat-dialog-actions align="end" style="padding: 10px;">
-        <button mat-button color="primary" class="cancelar" mat-dialog-close>Pular</button>
-        <button [mat-dialog-close]="true" mat-raised-button color="primary" class="cadastrar">Salvar</button>
-    </mat-dialog-actions>
-
-</div>
+<mat-dialog-actions align="end" style="padding: 10px;">
+    <button mat-button color="primary" class="cancelar" mat-dialog-close>Pular</button>
+    <button [mat-dialog-close]="true" mat-raised-button color="primary" class="cadastrar">Salvar</button>
+</mat-dialog-actions>
