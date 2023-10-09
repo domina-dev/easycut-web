@@ -1,95 +1,69 @@
-mat-dialog-content {
-  min-width: 100%;
-  background: rgb(255, 255, 255);
-}
+.form {
+  padding: 5px;
 
-.header {
-  font-weight: bold;
-  margin-left: 30px;
-}
+  #title {
+    margin-bottom: 15px;
+    font-size: 30pt;
+  }
 
-.corpoform {
-  display: flex;
-  flex-direction: column;
-  min-width: 100%;
-  margin: 0 auto;
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
+  #inpN {
+    width: 100%;
+  }
 
-.client mat-form-field {
-  width: 100%;
-}
+  .tempoEs {
+    display: flex;
+    justify-content: space-between;
 
-.service mat-form-field {
-  width: 100%;
-}
+    #tempoEst {
+      float: left;
+      height: 2px;
+      width: 55%;
+    }
 
-.responsavel mat-form-field {
-  width: 100%;
-}
+    #categoria {
+      width: 40%;
+    }
 
-.tempvalor {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-}
+    .minutos {
+      display: inline;
+      float: right;
+      height: 3px;
+      font-size: 10pt;
+      margin-top: -19px;
+    }
+  }
 
-.tempvalor .temp {
-  width: 55%;
-}
+  #descricao {
+    width: 100%;
+  }
 
-.tempvalor .valor {
-  width: 40%;
-}
+  .valor {
+    display: flex;
+    justify-content: left;
+    margin-top: -15px;
 
-.temp {
-  margin-right: 5%;
-}
+    .intval {
+      float: right;
+      max-width: 30%;
+    }
 
-.temp mat-form-field {
-  width: 100%;
-}
+    .intval2 {
+      margin-left: 5px;
+      float: right;
+      max-width: 30%;
+    }
 
-.valor mat-form-field {
-  width: 100%;
+    .status {
+      margin-left: 20px;
+      float: right;
+      max-width: 33.5%;
+    }
+  }
+.descrição{
+  color: #000000;
+  font-size: 13px;
 }
-
-.datestatus {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-}
-
-.datestatus .date {
-  width: 55%;
-}
-
-.datestatus .status {
-  width: 40%;
-}
-
-.date{
-  margin-right: 5%;
-}
-
-.date mat-form-field {
-  width: 100%;
-}
-
-.status mat-form-field {
-  width: 100%;
-}
-
-mat-dialog-actions {
-  padding-top: 10px;
-}
-
-.cadastrar {
-  color: white;
-}
-
-.cancelar {
-  color: black;
+  .datahora {
+    display: flex;
+  }
 }

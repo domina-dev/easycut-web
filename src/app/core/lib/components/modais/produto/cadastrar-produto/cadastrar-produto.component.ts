@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
 import { Produto } from 'src/app/core/model/produto';
-
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
   selector: 'vex-cadastrar-produto',
@@ -13,6 +12,8 @@ import { Produto } from 'src/app/core/model/produto';
   styleUrls: ['./cadastrar-produto.component.scss']
 })
 export class CadastrarProdutoComponent {
+
+  load: boolean = false;
 
   form: FormGroup;
   legendaBotao: string = '';
@@ -42,8 +43,10 @@ export class CadastrarProdutoComponent {
 
 
   cadastrarProduto() {
+    this.load = true;
     this.produtoService.cadastrarProduto(this.form.value).subscribe(() => {
       console.log(this.form.value);
+      this.load = false;
       this.dialogRef.close();
       this.snackbar.open(
         'Cadastro de produto realizado com sucesso!',
@@ -54,6 +57,7 @@ export class CadastrarProdutoComponent {
       );
     },
       (error) => {
+        this.load = false;
         console.log(error)
         this.snackbar.open(
           'Produto não cadastrado.',
@@ -66,12 +70,14 @@ export class CadastrarProdutoComponent {
   }
 
   editarProduto(): void {
+    this.load = true;
     this.montarBody();
-    this.produtoService.editaProduto(this.produto).subscribe(response => {
+    this.produtoService.alterarProduto(this.produto).subscribe(response => {
         console.log(this.form.value);
+        this.load = false;
         this.dialogRef.close(true);
         this.snackbar.open(
-            "Produto editado com sucesso",
+            MessagesSnackBar.EDITAR_PRODUTO,
             "Fechar",
             {
               duration: 10000
@@ -80,8 +86,9 @@ export class CadastrarProdutoComponent {
 
     }, (error) => {
         console.log(error)
+        this.load = false;
         this.snackbar.open(
-            "Produto não editado",
+            MessagesSnackBar.ERRO_EDITAR_PRODUTO,
             "Tenta novamente",
             {
                 duration: 10000

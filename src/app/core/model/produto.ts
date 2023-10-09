@@ -1,13 +1,12 @@
 export class Produto{
     id: number;
-    codProduto: number;
+    codigo: string;
     nome: string;
     descricao: string;
-    categoria: string;
     qtdEstoque: number;
     valor: number;
     valorPromocional: number;
-    ativo: true;
-    promocional: false;
+    ativo: boolean;
+    promocional: boolean;
     estabelecimentoID: number;
 }

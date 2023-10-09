@@ -41,11 +41,22 @@
                 </button>
                 <div
                     class="text-secondary secondary2 text-center"
-                    [routerLink]="['/login']" id="vlogin"
+                    [routerLink]="['/login']"
+                    id="vlogin"
                 >
-                    <u>Voltar para o login</u>
+                    <strong>Voltar para o login</strong>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- LOADING -->
+<div *ngIf="load" id="vex-splash-screen-load">
+  <div class="wrapper">
+      <div class="ball-scale-multiple">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+  </div>
 </div>

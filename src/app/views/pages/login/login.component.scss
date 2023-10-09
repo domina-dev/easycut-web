@@ -1,13 +1,18 @@
-.card {
-    max-width: 450px;
-    min-height: 565px;
-    border-radius: 10px;
-    border-width: 1.6px;
-    border-color: rgba(58, 53, 53, 0.103);
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+// .card {
+//     max-width: 450px;
+//     min-height: 565px;
+//     border-radius: 10px;
+//     border-width: 1.6px;
+//     border-color: rgba(58, 53, 53, 0.103);
+//     box-shadow: none;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
+
+.card{
+    min-width: 30%;
+    overflow: auto;
 }
 .pass .mat-icon-button .mat-icon {
     display: flex !important;
