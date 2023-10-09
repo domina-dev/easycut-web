@@ -20,7 +20,7 @@ export class AgendamentosComponent implements OnInit {
     constructor(public dialog: MatDialog) {}
 
     ngOnInit(): void {
-        // this.openModalCadastro();
+        this.openModalCadastro();
     }
 
     openModalCadastro() {
