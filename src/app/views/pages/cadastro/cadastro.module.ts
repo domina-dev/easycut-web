@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CadastroComponent } from './cadastro.component';
 
-//importações 
+//importações
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IconModule } from '@visurel/iconify-angular';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { ScrollbarModule } from 'src/@vex/components/scrollbar/scrollbar.module';
+import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
+import { MaterialModule } from 'src/app/core/modules/material.module';
 
 
 
@@ -32,7 +34,9 @@ import { ScrollbarModule } from 'src/@vex/components/scrollbar/scrollbar.module'
     MatCheckboxModule,
     IconModule,
     CadastroRoutingModule,
-    ScrollbarModule
+    ScrollbarModule,
+    MaterialModule,
+    LibVexModule,
   ]
 })
 export class CadastroModule { }

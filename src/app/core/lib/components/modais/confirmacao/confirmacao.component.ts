@@ -8,7 +8,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 
 export class ConfirmacaoComponent {
+
   constructor(
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: {itens: string[], legendaAcao: string}
+  ) {
+  }
 }

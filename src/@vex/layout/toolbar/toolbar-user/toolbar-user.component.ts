@@ -29,6 +29,7 @@ export class ToolbarUserComponent {
             content: ToolbarUserDropdownComponent,
             origin: originRef,
             offsetY: 12,
+            offsetX: -70,
             position: [
                 {
                     originX: 'center',

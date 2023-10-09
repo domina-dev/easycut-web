@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,6 +28,8 @@ import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@ang
 import { ConfirmacaoComponent } from './core/lib/components/modais/confirmacao/confirmacao.component';
 import { ConfigModule } from 'src/app/views/pages/config/config.module';
 import { ConstrucaoModalModule } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.module';
+import { TokenInterceptorService } from 'src/app/core/config/token-Interceptor.service';
+import { IconModule } from '@visurel/iconify-angular';
 
 registerLocaleData(localePt, 'pt');
 
@@ -40,7 +42,7 @@ registerLocaleData(localePt, 'pt');
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
         ConfirmacaoComponent,
-        
+
     ],
     imports: [
         BrowserModule,
@@ -56,6 +58,7 @@ registerLocaleData(localePt, 'pt');
         LibVexModule,
         ConfigModule,
         ConstrucaoModalModule,
+        IconModule,
 
 
         // Vex
@@ -67,6 +70,7 @@ registerLocaleData(localePt, 'pt');
         { provide: LOCALE_ID, useValue: 'PT-BR' },
         { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
         { provide: LocationStrategy, useClass: HashLocationStrategy },
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true, }
     ],
     bootstrap: [AppComponent]
 })
