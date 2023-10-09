@@ -2,7 +2,7 @@ import { Component, Inject, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MENSAGENS } from 'src/app/core/constants/mensagens';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
 
@@ -52,13 +52,13 @@ export class CadastrarEditarComponent {
     this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
       this.dialogRef.close(true);
       this.snackbar.open(
-        MENSAGENS.ADICIONAR_AGENDAMENTO,
+        MessagesSnackBar.ADICIONAR_AGENDAMENTO,
         "Fechar"
       )
     }, (error) => {
       console.log(error);
       this.snackbar.open(
-        MENSAGENS.ERRO_ADICIONAR_AGENDAMENTO,
+        MessagesSnackBar.ERRO_ADICIONAR_AGENDAMENTO,
         "Tentar novamente"
       )
 
