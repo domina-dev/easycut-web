@@ -1,0 +1,43 @@
+
+// Deixando a largura da tabela em 100%
+.mat-elevation-z8 {
+    table {
+        width: 100%;
+    }
+}
+
+// Espaçamento entro os ícones da tabela
+.icon-spacing {
+    margin-right: 0.5rem;
+    width: 40px;
+    height: 40px;
+}
+
+.icon-color {
+    color: #daaa00;
+}
+
+// Alterando cor e tamanho do título da coluna
+.color-title {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+// Ícones dropdown
+.iconmenu {
+    width: 100%;
+    flex: none;
+    align-items: center;
+    justify-items: center;
+    text-align: left;
+    padding: 5px;
+    display: flex;
+}
+.layout-menu {
+    text-align: center;
+    justify-content: center;
+}
+.descricaoicon{
+    margin-left: 0.5rem;
+  }

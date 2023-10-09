@@ -14,7 +14,7 @@ import { Style, StyleService } from '../@vex/services/style.service';
 import { ConfigName } from '../@vex/interfaces/config-name.model';
 
 import icWork from '@iconify/icons-ic/baseline-work';
-import { CommomService } from './services/commom/commom.service';
+import { CommomService } from './core/services/commom/commom.service';
 import icCashier from '@iconify/icons-ic/attach-money';
 import icAssigment from '@iconify/icons-ic/twotone-assignment';
 import icSettings from '@iconify/icons-ic/twotone-settings';
@@ -138,7 +138,7 @@ export class AppComponent {
             {
                 type: 'link',
                 label: 'Configurações',
-                route: '/configuracoes',
+                route: '/config',
                 icon: icSettings
             }
         ];

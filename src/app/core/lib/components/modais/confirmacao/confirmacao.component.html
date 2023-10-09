@@ -1,0 +1,18 @@
+<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+  <h2 class="title m-0">{{ data.legendaAcao }}</h2>
+</div>
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center">
+  <div class="alinhar">
+    <ul>
+      <li *ngFor="let item of data.itens">
+        {{ item }}
+      </li>
+    </ul>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" mat-raised-button color="primary">
+    Confirmar
+  </button>
+</mat-dialog-actions>

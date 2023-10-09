@@ -26,12 +26,32 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: #13293d;
+                background: #1a202e;
+                z-index: 99999;
+                pointer-events: none;
+            }
+
+            #vex-splash-screen-load {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #1a202e59;
                 z-index: 99999;
                 pointer-events: none;
             }
 
             #vex-splash-screen > .wrapper {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -webkit-transform: translate(-50%, -50%);
+            }
+
+            #vex-splash-screen-load > .wrapper {
                 position: fixed;
                 top: 50%;
                 left: 50%;
@@ -92,17 +112,17 @@
             }
 
             .ball-scale-multiple > div {
-                background-color: #fff;
+                background-color: #ff531ecc;
                 border-radius: 100%;
                 -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
                 position: absolute;
-                left: -30px;
+                left: -38px;
                 top: 0;
                 opacity: 0;
                 margin: 0;
-                width: 60px;
-                height: 60px;
+                width: 80px;
+                height: 80px;
                 -webkit-animation: ball-scale-multiple 1s 0s linear infinite;
                 animation: ball-scale-multiple 1s 0s linear infinite;
             }

@@ -35,10 +35,12 @@
                             "src/.htaccess"
                         ],
                         "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/@vex/styles/tailwind.scss",
                             "src/styles.scss"
                         ],
-                        "scripts": [],
+                        "scripts": [
+                        ],
                         "allowedCommonJsDependencies": [
                             "simplebar",
                             "highlight.js",
