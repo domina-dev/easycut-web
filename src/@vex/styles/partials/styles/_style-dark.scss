@@ -45,4 +45,49 @@
     // Footer
     --text-secondary-light: #{$dark-secondary-text};
     --secondary-toolbar-background: var(--background-card);
+
+    $primary: #ff5a00 ;
+
+  --color-primary: 	255, 90, 0;
+  --color-primary-contrast: 255, 255, 255;
+
+  --color-accent: 255, 64, 129;
+  --color-accent-contrast: 255, 255, 255;
+
+  --color-warn: 244, 67, 54;
+  --color-warn-contrast: 255, 255, 255;
+
+// Sidenav
+
+--sidenav-background: #0c0e13;
+--sidenav-color: white;
+
+// Sidenav Item
+
+--sidenav-toolbar-background: #0c0e13;
+--sidenav-item-background-active: #fa8b11;
+--sidenav-item-color: #8b9bc2;
+--sidenav-item-color-active: #11131b;
+--sidenav-item-icon-color: #ffff;
+--sidenav-item-icon-color-active: #11131b;
+--sidenav-item-border-color: #fa8b11;
+--sidenav-item-border-color-active: #fa8b11;
+--sidenav-item-dropdown-background: #{darken($sidenav-background, 3)};
+--sidenav-item-dropdown-background-hover: #{darken($sidenav-background, 4)};
+
+// Toolbar
+--toolbar-background: #1e2433 ;
+--toolbar-color: #ffff;
+--toolbar-icon-color: #ffff;
+
+
+    // --color-primary: blue;
+    // --color-primary-contrast: white;
+
+    // --color-accent: yellow;
+    // --color-accent-contrast: black;
+
+    // --color-warn: yellow;
+    // --color-warn-contrast: black;
 }
+
