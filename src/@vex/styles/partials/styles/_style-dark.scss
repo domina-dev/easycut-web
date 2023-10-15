@@ -37,6 +37,7 @@
     // Navigation
     --text-hint-light: #{$dark-disabled-text};
     --background-hover: #{map-get(map-get($vex-dark-theme, background), hover)};
+    --background-pattern: #fa8b11;
 
     // Secondary Toolbar
     --text-secondary: #{$light-secondary-text};

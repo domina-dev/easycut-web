@@ -26,6 +26,7 @@ import { PopoverRef } from '../../../../components/popover/popover-ref';
 import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ThemePalette } from '@angular/material/core';
 
 export interface OnlineStatus {
     id: 'online' | 'away' | 'dnd' | 'offline';
@@ -41,6 +42,9 @@ export interface OnlineStatus {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarUserDropdownComponent {
+
+  color: ThemePalette = 'primary';
+
     items: MenuItem[] = [
         {
             id: '1',
