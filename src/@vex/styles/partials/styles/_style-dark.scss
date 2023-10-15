@@ -16,14 +16,11 @@
             map-get($vex-dark-theme, background),
             card
         )};
-    --toolbar-background: #{map-get(map-get($vex-dark-theme, background), card)};
-    --background-base: #{map-get(
-            map-get($vex-dark-theme, background),
-            background
-        )};
+    --toolbar-background: #1e2433;
+    --background-base: #232736;
 
     // Colors
-    --background-card: #{map-get(map-get($vex-dark-theme, background), card)};
+    --background-card: #11131b;
     --footer-color: var(--text-color);
     --navigation-color: var(--text-color);
     --text-color: #{$light-primary-text};

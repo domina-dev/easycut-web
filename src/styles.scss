@@ -19,6 +19,58 @@
   Uncomment the below code and adjust the values to fit your colors, the application will automatically adjust
  */
 :root {
+  $primary: #ff5a00 ;
+
+  --color-primary: 	255, 90, 0;
+  --color-primary-contrast: 255, 255, 255;
+
+  --color-accent: 255, 64, 129;
+  --color-accent-contrast: 255, 255, 255;
+
+  --color-warn: 244, 67, 54;
+  --color-warn-contrast: 255, 255, 255;
+
+    // Background
+    --background-base: #232b3e ;
+    --background-card: #232b3e;
+    --background-app-bar: #ff5a00;
+    --background-hover: #ffff;
+
+// Sidenav
+
+--sidenav-background: #0c0e13;
+--sidenav-color: white;
+
+// Sidenav Item
+
+--sidenav-toolbar-background: #0c0e13;
+--sidenav-item-background-active: #fa8b11;
+--sidenav-item-color: #8b9bc2;
+--sidenav-item-color-active: #11131b;
+--sidenav-item-icon-color: #ffff;
+--sidenav-item-icon-color-active: #11131b;
+--sidenav-item-border-color: #fa8b11;
+--sidenav-item-border-color-active: #fa8b11;
+--sidenav-item-dropdown-background: #{darken($sidenav-background, 3)};
+--sidenav-item-dropdown-background-hover: #{darken($sidenav-background, 4)};
+
+// Toolbar
+--toolbar-background: #1e2433 ;
+--toolbar-color: #ffff;
+--toolbar-icon-color: #ffff;
+
+// Secondary Toolbar
+--secondary-toolbar-background: var(--background-card);
+
+// Navigation
+--navigation-background: var(--background-card);
+--navigation-color: var(--text-secondary);
+
+// Footer
+--footer-background: #212830 ;
+--footer-color: #ffff;
+
+
     // --color-primary: blue;
     // --color-primary-contrast: white;
 
@@ -28,12 +80,17 @@
     // --color-warn: yellow;
     // --color-warn-contrast: black;
 }
-$primary: #5C77FF;
+
 
 .bg-primary{
-  background-color: #5C77FF !important;
+  background-color: #ff5a00 !important ;
 }
 
 .bg-primary-light{
-  color: #5C77FF !important;
+  color: #ff5a00 !important ;
 }
+
+.bg-primary-dark{
+  color: #ff5a00 !important ;
+}
+
