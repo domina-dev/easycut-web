@@ -125,8 +125,13 @@
         <span>Disable Notifications</span>
     </button>
 
-    <button mat-menu-item>
-      <mat-slide-toggle [color]="color">Tema Escuro</mat-slide-toggle>
+    <button mat-menu-item (click)="
+    selectedStyle === Style.dark
+        ? disableDarkMode()
+        : enableDarkMode()
+"
+*ngIf="selectedStyle$ | async as selectedStyle">
+      <mat-slide-toggle [color]="color" [checked]="selectedStyle === !Style.dark">Tema escuro</mat-slide-toggle>
   </button>
 </mat-menu>
 

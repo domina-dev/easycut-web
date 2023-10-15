@@ -27,6 +27,7 @@ import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/con
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
+import { Style, StyleService } from 'src/@vex/services/style.service';
 
 export interface OnlineStatus {
     id: 'online' | 'away' | 'dnd' | 'offline';
@@ -44,6 +45,8 @@ export interface OnlineStatus {
 export class ToolbarUserDropdownComponent {
 
   color: ThemePalette = 'primary';
+  Style = Style;
+  checked = true;
 
     items: MenuItem[] = [
         {
@@ -109,6 +112,8 @@ export class ToolbarUserDropdownComponent {
 
     activeStatus: OnlineStatus = this.statuses[0];
 
+    selectedStyle$ = this.styleService.style$;
+
     trackById = trackById;
     icPerson = icPerson;
     icSettings = icSettings;
@@ -123,8 +128,17 @@ export class ToolbarUserDropdownComponent {
         private cd: ChangeDetectorRef,
         private popoverRef: PopoverRef<ToolbarUserDropdownComponent>,
         public dialog: MatDialog,
-        private router: Router
+        private router: Router,
+        private styleService: StyleService
     ) {}
+
+    enableDarkMode() {
+      this.styleService.setStyle(Style.dark);
+  }
+
+  disableDarkMode() {
+      this.styleService.setStyle(Style.default);
+  }
 
     setStatus(status: OnlineStatus) {
         this.activeStatus = status;
