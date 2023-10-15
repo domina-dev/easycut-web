@@ -19,8 +19,8 @@
   Uncomment the below code and adjust the values to fit your colors, the application will automatically adjust
  */
 :root {
-  
-//   $primary: #ff5a00 ;
+
+
 
 //   --color-primary: 	255, 90, 0;
 //   --color-primary-contrast: 255, 255, 255;
@@ -83,6 +83,7 @@
     // --color-warn-contrast: black;
 }
 
+$primary: #ff5a00 ;
 
 .bg-primary{
   background-color: #ff5a00 !important ;
