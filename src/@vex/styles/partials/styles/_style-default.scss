@@ -113,7 +113,7 @@
     --background-card: #{map-get(map-get($vex-theme, background), card)};
     --background-app-bar: #{map-get(map-get($vex-theme, background), app-bar)};
     --background-hover: #{map-get(map-get($vex-theme, background), hover)};
-
+    --background-pattern: var(--background-hover);
     // Elevation
     --elevation-default: var(--elevation-z6);
     --elevation-z0: none;
