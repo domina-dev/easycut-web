@@ -24,9 +24,7 @@ export class AgendamentoService {
     return this.http.post<Agendamento>(`${this.API}/agendamentos`, agendamento);
   }
 
-
-
-
-
-
+  alterarAgendamento(agendamento: Agendamento): Observable<Agendamento> {
+    return this.http.put<Agendamento>(`${this.API}/agendamentos`,agendamento)
+  }
 }

@@ -39,10 +39,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   listaAgendamentos: Agendamento[] = [];
   agendamentoHoje: number
 
-  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
+  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) { }
 
   ngOnInit(): void {
-    EventEmitterService.get("buscarAgendamentos").subscribe(()=> this.getAgendamentos());
+    EventEmitterService.get("buscarAgendamentos").subscribe(() => this.getAgendamentos());
     this.getAgendamentos()
   }
 
@@ -59,10 +59,11 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
       this.load = false;
-  },
+    },
       (error) => {
         this.load = false;
-        console.log(error)});
+        console.log(error)
+      });
   }
   openDialog() {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
@@ -72,7 +73,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.getAgendamentos();
         //chama sua listagem
       }
@@ -98,4 +99,15 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     // Implemente a lógica para excluir o agendamento aqui
     // Chame seu serviço ou método para realizar a exclusão
   }
+
+  alterarAgendamento(agendamento: Agendamento): void {
+    this.load = true;
+    this.agendamentoService.alterarAgendamento(agendamento).subscribe(
+      (Response) => {
+
+      }
+    )
+
+  }
+
 }
