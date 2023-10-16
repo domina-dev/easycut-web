@@ -74,7 +74,11 @@ const routes: Routes = [
     {
         path: 'cadastro',
         loadChildren: () => import('./views/pages/cadastro/cadastro.module').then(m => m.CadastroModule)
-    }
+    },
+    {
+        path: 'perfil',
+        loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
+      },
 ];
 
 @NgModule({

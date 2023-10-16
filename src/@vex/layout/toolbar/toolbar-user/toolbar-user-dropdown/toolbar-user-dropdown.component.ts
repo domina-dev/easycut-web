@@ -45,10 +45,10 @@ export class ToolbarUserDropdownComponent {
         {
             id: '1',
             icon: icAccountCircle,
-            label: 'My Profile',
-            description: 'Personal Information',
+            label: 'Meu Perfil',
+            description: 'Informações do Perfil',
             colorClass: 'text-teal',
-            route: '/apps/social'
+            route: '/perfil'
         },
         {
             id: '2',
@@ -135,10 +135,13 @@ export class ToolbarUserDropdownComponent {
     }
     openModal(item: MenuItem) {
         if (item.id == '1') {
+            // Redirecionar para a tela de perfil
+            this.router.navigate(['/perfil']); // Substitua 'perfil' pelo caminho correto para a tela de perfil
+        } else {
             const dialogRef = this.dialog.open(ConstrucaoModalComponent);
             dialogRef.afterClosed().subscribe((result) => {
                 if (result) console.log(result);
             });
         }
-    }
+}
 }
