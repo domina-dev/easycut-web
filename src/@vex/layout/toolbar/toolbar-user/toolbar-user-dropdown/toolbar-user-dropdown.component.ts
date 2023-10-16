@@ -43,11 +43,6 @@ export interface OnlineStatus {
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarUserDropdownComponent {
-
-  color: ThemePalette = 'primary';
-  Style = Style;
-  checked = true;
-
     items: MenuItem[] = [
         {
             id: '1',
@@ -112,8 +107,6 @@ export class ToolbarUserDropdownComponent {
 
     activeStatus: OnlineStatus = this.statuses[0];
 
-    selectedStyle$ = this.styleService.style$;
-
     trackById = trackById;
     icPerson = icPerson;
     icSettings = icSettings;
@@ -128,17 +121,8 @@ export class ToolbarUserDropdownComponent {
         private cd: ChangeDetectorRef,
         private popoverRef: PopoverRef<ToolbarUserDropdownComponent>,
         public dialog: MatDialog,
-        private router: Router,
-        private styleService: StyleService
+        private router: Router
     ) {}
-
-    enableDarkMode() {
-      this.styleService.setStyle(Style.dark);
-  }
-
-  disableDarkMode() {
-      this.styleService.setStyle(Style.default);
-  }
 
     setStatus(status: OnlineStatus) {
         this.activeStatus = status;
