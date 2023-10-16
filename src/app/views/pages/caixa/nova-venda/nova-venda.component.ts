@@ -6,6 +6,16 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./nova-venda.component.scss']
 })
 export class NovaVendaComponent implements OnInit {
+
+  favoriteSeason: string;
+  seasons: string[] = ['Serviços', 'Produtos'];
+  servicos: boolean;
+
+
+  if (_favoriteSeason = 'Serviços') {
+this.servicos = true
+  };
+
     ngOnInit(): void {
         console.log('Method not implemented');
     }

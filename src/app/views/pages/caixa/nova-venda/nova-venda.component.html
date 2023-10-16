@@ -1,1 +1,137 @@
-<p>nova-venda works!</p>
+<div class="corpo">
+    <div class="detalhes">
+        <div class="venda" fxLayout="column" fxLayoutAlign="center start">
+            <h2>Detalhes da venda</h2>
+            <div class="imputVenda">
+                <div>
+                    <mat-form-field
+                        class="imput"
+                        appearance="standard"
+                        fxFlex="grow"
+                    >
+                        <mat-label class="nome"
+                            >Responsável pela venda</mat-label
+                        >
+                        <input
+                            formControlName="responsavel"
+                            matInput
+                            required
+                        />
+                        <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
+                    Preencha este campo!
+                </mat-error> -->
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field
+                        class="imput"
+                        appearance="standard"
+                        fxFlex="grow"
+                    >
+                        <mat-label class="nome">Cliente</mat-label>
+                        <input formControlName="cliente" matInput required />
+                        <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
+                Preencha este campo!
+            </mat-error> -->
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="radio">
+                <mat-radio-group
+                    class="example-radio-group"
+                    [(ngModel)]="favoriteSeason"
+                >
+                    <mat-radio-button
+                        class="example-radio-button"
+                        *ngFor="let season of seasons"
+                        [value]="season"
+                    >
+                        {{ season }}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <!-- <div>Your favorite season is: {{favoriteSeason}}</div> -->
+            </div>
+
+            <div class="col-md-4">
+                <mat-form-field
+                    class="pesquisar"
+                    appearance="standard"
+                    fxFlex="grow"
+                >
+                    <mat-label>Pesquisar {{ favoriteSeason }}</mat-label>
+                    <input matInput />
+                </mat-form-field>
+            </div>
+            <div class="servicos" *ngIf="favoriteSeason === 'Serviços'">
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+              <div class="servico-coluna">
+                <div>
+                  <img src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg" alt="calvao csv" width="80px" height="80px">
+                </div>
+                <div style="display: flex; flex-direction: column; margin-left: 5px;">
+                    <span>Corte Simples</span>
+                    <span>R$ 30,00</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="produtos" *ngIf="favoriteSeason === 'Produtos'">
+                produtos
+            </div>
+        </div>
+
+        <div class="pagamento" fxLayout="column" fxLayoutAlign="center start">
+            <h2>Detalhes do pagamento</h2>
+        </div>
+    </div>
+</div>

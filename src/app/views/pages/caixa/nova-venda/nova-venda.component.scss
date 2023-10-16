@@ -1,0 +1,43 @@
+.detalhes {
+  display: flex;
+  align-content: space-between;
+}
+
+.venda {
+  width: 50%;
+}
+
+.imput {
+  min-width: 200%;
+}
+
+.pagamento {
+  width: 50%;
+}
+
+.radio {
+  mat-radio-button {
+    margin-right: 25px;
+  }
+}
+
+.pesquisar {
+  min-width: 230%;
+}
+
+.servicos, .produtos{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100%;
+margin-left: -20%;
+overflow: auto;
+height: 200px;
+margin-top: 0;
+}
+.servico-coluna{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+}
