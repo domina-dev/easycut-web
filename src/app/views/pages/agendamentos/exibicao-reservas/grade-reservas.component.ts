@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './grade-reservas.component.html',
   styleUrls: ['./grade-reservas.component.scss']
 })
-export class GradeReservasComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class GradeReservasComponent {
 
 }
