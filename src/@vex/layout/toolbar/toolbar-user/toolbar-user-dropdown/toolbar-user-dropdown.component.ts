@@ -26,8 +26,6 @@ import { PopoverRef } from '../../../../components/popover/popover-ref';
 import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ThemePalette } from '@angular/material/core';
-import { Style, StyleService } from 'src/@vex/services/style.service';
 
 export interface OnlineStatus {
     id: 'online' | 'away' | 'dnd' | 'offline';
