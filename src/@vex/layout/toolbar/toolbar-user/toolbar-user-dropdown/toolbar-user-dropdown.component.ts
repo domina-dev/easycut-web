@@ -32,6 +32,7 @@ export interface OnlineStatus {
     label: string;
     icon: Icon;
     colorClass: string;
+
 }
 
 @Component({
@@ -90,6 +91,8 @@ export class ToolbarUserDropdownComponent {
     ];
 
     activeStatus: OnlineStatus = this.statuses[0];
+    nomeUsuario: string = window.localStorage.getItem('estabelecimento');
+
 
     trackById = trackById;
     icPerson = icPerson;
