@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './fechamento-caixa.component.html',
   styleUrls: ['./fechamento-caixa.component.scss']
 })
+
 export class FechamentoCaixaComponent {
   displayedColumns = ['data', 'descricao', 'valor'];
   dataSource = ELEMENT_DATA;
@@ -15,6 +16,7 @@ export interface FechamentoCaixa {
   data: string;
   valor: string;
 }
+
 const ELEMENT_DATA: FechamentoCaixa[] = [
   {data: '01/09/2023', descricao: 'Corte simples', valor: 'R$ 30,00'},
   {data: '01/09/2023', descricao: 'Pomada modeladora BLACKPOOL (2x)', valor: 'R$ 30,00'},
