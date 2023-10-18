@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <mat-form-field
-                        class="imput"
+                        class="imput-baixo"
                         appearance="standard"
                         fxFlex="grow"
                     >
@@ -292,7 +292,7 @@
                             </div>
                             <div class="dado3">
                                 <span>R$ 180,00</span>
-                                <span>+ adicionar desconto</span>
+                                <span style="cursor: pointer;">+ adicionar desconto</span>
                             </div>
                         </div>
                         <div class="dado">
@@ -337,7 +337,7 @@
                             </div>
                             <div class="dado3">
                                 <span>R$ 180,00</span>
-                                <span>+ adicionar desconto</span>
+                                <span style="cursor: pointer;">+ adicionar desconto</span>
                             </div>
                         </div>
                         <div class="dado">
@@ -383,11 +383,78 @@
                             </div>
                             <div class="dado3">
                                 <span>R$ 180,00</span>
-                                <span>+ adicionar desconto</span>
+                                <span style="cursor: pointer;">+ adicionar desconto</span>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- dados finais do pagamento -->
+            <div
+                class="dados-finais"
+                style="display: flex; flex-direction: row; align-items: center"
+            >
+                <div
+                    class="pagamento-parcelamento"
+                    style="display: flex; flex-direction: column"
+                >
+                    <div>
+                        <mat-form-field
+                            class="imput"
+                            appearance="standard"
+                            fxFlex="grow"
+                        >
+                            <mat-label class="nome">Pagamento</mat-label>
+                            <input
+                                formControlName="pagamento"
+                                matInput
+                                required
+                            />
+                            <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
+                    Preencha este campo!
+                </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field
+                            class="imput-baixo-parcela"
+                            appearance="standard"
+                            fxFlex="grow"
+                        >
+                            <mat-label class="nome">Parcelamento</mat-label>
+                            <input
+                                formControlName="parcelamento"
+                                matInput
+                                required
+                            />
+                            <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
+                    Preencha este campo!
+                </mat-error> -->
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="desconto-total">
+                    <div class="dado-final">
+                        <span class="descricao">Subtotal</span>
+                        <span>R$ 190,00</span>
+                    </div>
+                    <div class="dado-final">
+                        <span class="descricao">Desconto</span>
+                        <span>-R$ 50,00</span>
+                    </div>
+                    <div class="dado-final-2">
+                        <span class="descricao">Total</span>
+                        <span>R$ 140,00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="adicionar">
+              <div class="col">
+                <button mat-button mat-raised-button color="primary">
+                    Adicionar Venda
+                </button>
+            </div>
             </div>
         </div>
     </div>

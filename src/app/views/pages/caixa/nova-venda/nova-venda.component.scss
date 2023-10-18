@@ -1,13 +1,21 @@
+.corpo{
+margin: 2%;
+}
+
 .detalhes {
   display: flex;
   align-content: space-between;
 }
 
-.venda {
-  width: 40%;
+h2{
+font-weight: 600;
 }
 
-.imputVenda{
+.venda {
+  width: 60%;
+}
+
+.imputVenda {
   width: 100%;
   margin-top: 5%;
 }
@@ -16,9 +24,18 @@
   min-width: 100%;
 }
 
+.imput-baixo {
+  margin-top: -5%;
+}
+
+.imput-baixo-parcela {
+  margin-top: -15%;
+}
+
 .pagamento {
-  width: 60%;
-  margin-left: 5%;
+  width: 100%;
+  margin-left: 7%;
+  display: flex;
 }
 
 .radio {
@@ -27,8 +44,8 @@
   }
 }
 
-.col-md-4{
-width: 100%;
+.col-md-4 {
+  width: 100%;
 }
 
 .pesquisar {
@@ -36,74 +53,82 @@ width: 100%;
   margin-top: 5%;
 }
 
-.servicos, .produtos{
-display: block;
-align-items: center;
-justify-content: center;
-width: 60%;
-margin-left: 15%;
-overflow: auto;
-height: 200px;
-margin-top: 0;
+.servicos,
+.produtos {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  margin-left: 15%;
+  overflow: auto;
+  height: 200px;
+  margin-top: 0;
 }
-.servico-coluna{
+
+.servico-coluna {
   display: flex;
   flex-direction: row;
   padding-bottom: 20px;
 }
 
-.selecionados-corpo{
+.selecionados-corpo {
   width: 100%;
-margin-top: 5%;
+  margin-top: 5%;
 }
 
-.selecionados{
+.selecionados {
   width: 100%;
   max-height: 200px;
   overflow: auto;
 }
 
-.span{
+.span {
   display: flex;
   flex-direction: row;
-  .span-limpo{
+
+  .span-limpo {
     width: 50%;
   }
-  .span-quantidade{
+
+  .span-quantidade {
     width: 20%;
     display: flex;
     justify-content: center;
   }
-  .span-valor{
+
+  .span-valor {
     width: 30%;
     display: flex;
     justify-content: end;
   }
 }
 
-.dados{
+.dados {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.dado{
+.dado {
   display: flex;
   flex-direction: row;
   padding-bottom: 20px;
   width: 100%;
-  .dado1{
+
+  .dado1 {
     display: flex;
     flex-direction: row;
     width: 50%;
   }
-  .dado2{
+
+  .dado2 {
     display: flex;
     width: 20%;
     justify-content: center;
     align-items: center;
   }
-  .dado3{
+
+  .dado3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,4 +136,49 @@ margin-top: 5%;
     width: 30%;
   }
 
+}
+
+.dados-finais {
+  width: 100%;
+  margin-top: 8%;
+}
+
+.pagamento-parcelamento {
+  width: 30%;
+}
+
+.desconto-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  align-items: end;
+}
+
+.dado-final {
+  margin-bottom: 3%;
+  font-weight: 600;
+  display: flex;
+}
+
+.dado-final-2 {
+  font-weight: 600;
+  display: flex;
+}
+
+.descricao{
+  margin-right: 20px;
+}
+
+.adicionar{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.col{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 3%;
 }
