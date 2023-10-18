@@ -16,7 +16,7 @@
 
     &:hover,
     &.active {
-        background: var(--sidenav-item-background-active);
+        background-image: linear-gradient(to right, var(--sidenav-item-background-active), var(--sidenav-item-background-active2)) ;
         border-left-color: var(--sidenav-item-border-color-active);
 
         .item-icon {
