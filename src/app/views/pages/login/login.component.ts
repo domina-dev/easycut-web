@@ -84,7 +84,7 @@ export class LoginComponent {
   }
 
   guardaDadosSessao(response: any){
-    localStorage.setItem("currentUser", JSON.stringify(response.estabelecimento))
+    localStorage.setItem("estabelecimento", response.estabelecimento)
     localStorage.setItem("token", response.token)
     localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
     localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
