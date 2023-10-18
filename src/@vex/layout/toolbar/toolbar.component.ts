@@ -20,17 +20,26 @@ import { MegaMenuComponent } from '../../components/mega-menu/mega-menu.componen
 import icSearch from '@iconify/icons-ic/twotone-search';
 import icDateRange from '@iconify/icons-ic/date-range'
 import { EventEmitterService } from 'src/app/core/services/event.service'
+import { ThemePalette } from '@angular/material/core';
+import { Style, StyleService } from 'src/@vex/services/style.service';
 @Component({
     selector: 'vex-toolbar',
     templateUrl: './toolbar.component.html',
     styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
+
+  color: ThemePalette = 'primary';
+  Style = Style;
+  checked = true;
+
     @Input() mobileQuery: boolean;
 
     @Input()
     @HostBinding('class.shadow-b')
     hasShadow: boolean;
+
+    selectedStyle$ = this.styleService.style$;
 
     navigationItems = this.navigationService.items;
 
@@ -66,8 +75,18 @@ export class ToolbarComponent {
         private layoutService: LayoutService,
         private configService: ConfigService,
         private navigationService: NavigationService,
-        private popoverService: PopoverService
+        private popoverService: PopoverService,
+        private styleService: StyleService
     ) {}
+
+
+    enableDarkMode() {
+      this.styleService.setStyle(Style.dark);
+  }
+
+  disableDarkMode() {
+      this.styleService.setStyle(Style.default);
+  }
 
     openQuickpanel() {
         this.layoutService.openQuickpanel();

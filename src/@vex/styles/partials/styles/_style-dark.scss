@@ -16,14 +16,11 @@
             map-get($vex-dark-theme, background),
             card
         )};
-    --toolbar-background: #{map-get(map-get($vex-dark-theme, background), card)};
-    --background-base: #{map-get(
-            map-get($vex-dark-theme, background),
-            background
-        )};
+    --toolbar-background: #1e2433;
+    --background-base: #232736;
 
     // Colors
-    --background-card: #{map-get(map-get($vex-dark-theme, background), card)};
+    --background-card: #11131b;
     --footer-color: var(--text-color);
     --navigation-color: var(--text-color);
     --text-color: #{$light-primary-text};
@@ -40,6 +37,7 @@
     // Navigation
     --text-hint-light: #{$dark-disabled-text};
     --background-hover: #{map-get(map-get($vex-dark-theme, background), hover)};
+    --background-pattern: #fa8b11;
 
     // Secondary Toolbar
     --text-secondary: #{$light-secondary-text};
@@ -47,4 +45,57 @@
     // Footer
     --text-secondary-light: #{$dark-secondary-text};
     --secondary-toolbar-background: var(--background-card);
+
+    $primary: #ff5a00 ;
+
+  --color-primary: 	255, 90, 0;
+  --color-primary-contrast: 255, 255, 255;
+
+  --color-accent: 255, 64, 129;
+  --color-accent-contrast: 255, 255, 255;
+
+  --color-warn: 244, 67, 54;
+  --color-warn-contrast: 255, 255, 255;
+
+// Sidenav
+
+--sidenav-background: #0c0e13;
+--sidenav-color: white;
+
+// Sidenav Item
+
+--sidenav-toolbar-background: #0c0e13;
+--sidenav-item-background-active: #fa8b11;
+--sidenav-item-background-active2: #ff5a00;
+--sidenav-item-color: #8b9bc2;
+--sidenav-item-color-active: #0c0e13;
+--sidenav-item-icon-color: #8b9bc2;
+--sidenav-item-icon-color-active: #0c0e13;
+--sidenav-item-border-color: #fa8b11;
+--sidenav-item-border-color-active: #ffff;
+--sidenav-item-dropdown-background: #{darken($sidenav-background, 3)};
+--sidenav-item-dropdown-background-hover: #{darken($sidenav-background, 4)};
+
+// Toolbar
+--toolbar-background: #1e2433 ;
+--toolbar-color: #ffff;
+--toolbar-icon-color: #ffff;
+
+
+    // --color-primary: blue;
+    // --color-primary-contrast: white;
+
+    // --color-accent: yellow;
+    // --color-accent-contrast: black;
+
+    // --color-warn: yellow;
+    // --color-warn-contrast: black;
+
+    .bg-primary{
+      background-color: #ff5a00 !important ;
+    }
+
+    .bg-primary-light{
+      color: #ff5a00 !important ;
+    }
 }
