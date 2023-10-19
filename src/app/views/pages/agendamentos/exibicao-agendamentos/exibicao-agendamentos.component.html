@@ -1,4 +1,4 @@
-<!-- Filtro da tebela -->
+<!-- Filtro da tabela -->
 <div class="row">
     <div class="col-md-4">
         <mat-form-field appearance="standard" fxFlex="grow">
@@ -41,7 +41,7 @@
             <mat-icon>backspace</mat-icon></button>
     </div>
     <div class="col">
-        <button mat-button mat-raised-button color="primary" (click)="openDialog()" fxFlex="grow">
+        <button mat-button mat-raised-button color="primary" (click)="abrirModalCadastrarEditar()" fxFlex="grow">
             Adicionar <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -123,7 +123,7 @@
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td class="layout-menu" mat-cell *matCellDef="let agendamento">
                     <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
-                        (click)="alterarAgendamento(agendamento)">
+                        (click)="abrirModalCadastrarEditar(agendamento)">
                         <mat-icon color="primary"> border_color</mat-icon>
                     </button>
                     <button mat-icon-button aria-label="ícone Button" class="icon-spacing"

@@ -65,10 +65,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         console.log(error)
       });
   }
-  openDialog() {
+  abrirModalCadastrarEditar(agendamento?:Agendamento) {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-
+        data: {agendamento:agendamento},
         width: '450px',
       });
 
@@ -99,15 +99,4 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     // Implemente a lógica para excluir o agendamento aqui
     // Chame seu serviço ou método para realizar a exclusão
   }
-
-  alterarAgendamento(agendamento: Agendamento): void {
-    this.load = true;
-    this.agendamentoService.alterarAgendamento(agendamento).subscribe(
-      (Response) => {
-
-      }
-    )
-
-  }
-
 }
