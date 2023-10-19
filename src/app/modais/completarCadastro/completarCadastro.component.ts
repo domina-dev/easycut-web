@@ -4,7 +4,7 @@ import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 
 @Component({
-  selector: 'vex-completarCadastro',
+  selector: 'vex-completar-cadastro',
   templateUrl: './completarCadastro.component.html',
   styleUrls: ['./completarCadastro.component.scss'],
 	animations: [
