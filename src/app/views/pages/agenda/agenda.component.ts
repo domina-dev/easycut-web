@@ -1,35 +1,37 @@
-import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays } from 'date-fns';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// import { CalendarEditComponent } from './calendar-edit/calendar-edit.component';
+import { CalendarEditComponent } from './calendar-edit/calendar-edit.component';
 import icChevronLeft from '@iconify/icons-ic/twotone-chevron-left';
 import icChevronRight from '@iconify/icons-ic/twotone-chevron-right';
 
 const colors: any = {
-    blue: {
-      primary: '#5c77ff',
-      secondary: '#FFFFFF'
-    },
-    yellow: {
-      primary: '#ffc107',
-      secondary: '#FDF1BA'
-    },
-    red: {
-      primary: '#f44336',
-      secondary: '#FFFFFF'
-    }
-  };
+  blue: {
+    primary: '#5c77ff',
+    secondary: '#FFFFFF'
+  },
+  yellow: {
+    primary: '#ffc107',
+    secondary: '#FDF1BA'
+  },
+  red: {
+    primary: '#f44336',
+    secondary: '#FFFFFF'
+  }
+};
 
 @Component({
-    selector: 'vex-agenda',
-    templateUrl: './agenda.component.html',
-    styleUrls: ['./agenda.component.scss'],
+  selector: 'vex-calendar',
+  templateUrl: './agenda.component.html',
+  styleUrls: ['./agenda.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AgendaComponent {
-    @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -128,17 +130,17 @@ export class AgendaComponent {
   handleEvent(action: string, event: CalendarEvent): void {
     console.log(event);
 
-    // const dialogRef = this.dialog.open(CalendarEditComponent, {
-    //   data: event
-    // });
+    const dialogRef = this.dialog.open(CalendarEditComponent, {
+      data: event
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     event = result;
-    //     this.snackbar.open('Updated Event: ' + event.title);
-    //     this.refresh.next();
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        event = result;
+        this.snackbar.open('Updated Event: ' + event.title);
+        this.refresh.next();
+      }
+    });
   }
 
   addEvent(): void {

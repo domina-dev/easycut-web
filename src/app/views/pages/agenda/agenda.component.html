@@ -3,7 +3,7 @@
     <div class="bg-contrast-black opacity-25 absolute top-0 left-0 right-0 bottom-0 z-0 w-full h-full"></div>
     <div class="container py-4 px-6 h-40 z-10 relative flex items-end">
       <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
-        <div class="headline">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</div>
+        <div class="headline">{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-br' }}</div>
 
         <div class="actions flex flex-col sm:flex-row justify-end items-center">
           <div class="chevrons">
@@ -15,9 +15,9 @@
             </button>
           </div>
           <div class="flex">
-            <button (click)="view = CalendarView.Month" mat-button>MONTH</button>
-            <button (click)="view = CalendarView.Week" mat-button>WEEK</button>
-            <button (click)="view = CalendarView.Day" mat-button>DAY</button>
+            <button (click)="view = CalendarView.Month" mat-button>Mês</button>
+            <button (click)="view = CalendarView.Week" mat-button>Semana</button>
+            <button (click)="view = CalendarView.Day" mat-button>Dia</button>
           </div>
         </div>
       </div>
