@@ -3,7 +3,7 @@
     <div class="bg-contrast-black opacity-25 absolute top-0 left-0 right-0 bottom-0 z-0 w-full h-full"></div>
     <div class="container py-4 px-6 h-40 z-10 relative flex items-end">
       <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
-        <div class="headline">{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-br' }}</div>
+        <div class="headline" style="text-transform: capitalize;">{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-br' }}</div>
 
         <div class="actions flex flex-col sm:flex-row justify-end items-center">
           <div class="chevrons">
