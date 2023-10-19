@@ -30,7 +30,8 @@ import { ConfigModule } from 'src/app/views/pages/config/config.module';
 import { ConstrucaoModalModule } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.module';
 import { TokenInterceptorService } from 'src/app/core/config/token-Interceptor.service';
 import { IconModule } from '@visurel/iconify-angular';
-import { CompletarCadastroComponent } from './modais/completarCadastro/completarCadastro.component';
+import { FechamentoCaixaComponent } from './core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
+import { CompletarCadastroComponent } from './core/lib/components/modais/completarCadastro/completarCadastro.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -43,7 +44,8 @@ registerLocaleData(localePt, 'pt');
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
         ConfirmacaoComponent,
-        CompletarCadastroComponent
+        CompletarCadastroComponent,
+        FechamentoCaixaComponent
     ],
     imports: [
         BrowserModule,

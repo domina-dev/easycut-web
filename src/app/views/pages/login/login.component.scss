@@ -14,6 +14,11 @@
     min-width: 30%;
     overflow: auto;
 }
+
+.img{
+  margin-top: 50%;
+}
+
 .pass .mat-icon-button .mat-icon {
     display: flex !important;
     font-size: 24px;
@@ -31,7 +36,7 @@
 }
 
 mat-form-field {
-    width: 400px;
+    width: 100%;
 }
 
 .email,

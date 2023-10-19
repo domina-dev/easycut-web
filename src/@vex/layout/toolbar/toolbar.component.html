@@ -31,13 +31,27 @@
 
     <div class="-mx-1 flex items-center">
         <div class="px-1">
+            <button 
+                mat-menu-item
+                (click)="
+                    selectedStyle === Style.dark
+                        ? disableDarkMode()
+                        : enableDarkMode()
+                "
+                *ngIf="selectedStyle$ | async as selectedStyle"
+            >
+                <mat-icon>invert_colors</mat-icon>
+            </button>
+        </div>
+
+        <div class="px-1">
             <vex-toolbar-notifications></vex-toolbar-notifications>
         </div>
 
         <div id="agendaDia" class="px-1">
-          <button (click)="openQuickpanel()" mat-icon-button type="button">
-            <mat-icon [icIcon]="icDateRange"></mat-icon>
-          </button>
+            <button (click)="openQuickpanel()" mat-icon-button type="button">
+                <mat-icon [icIcon]="icDateRange"></mat-icon>
+            </button>
         </div>
 
         <div class="px-1">

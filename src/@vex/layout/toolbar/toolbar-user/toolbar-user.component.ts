@@ -15,6 +15,7 @@ import icPerson from '@iconify/icons-ic/twotone-person';
 export class ToolbarUserComponent {
     dropdownOpen: boolean;
     icPerson = icPerson;
+    nomeUsuario: string = window.localStorage.getItem('estabelecimento');
 
     constructor(
         private popover: PopoverService,
