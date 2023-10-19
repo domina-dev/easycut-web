@@ -8,6 +8,8 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { FormControl } from '@angular/forms';
+import { debounceTime, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -31,8 +33,11 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
   verLista: boolean = true;
   verGrade: boolean = false;
+
   listaServicos: Servico[] = [];
 
+  campoFiltro = new FormControl();
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
 
@@ -40,7 +45,28 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     private servicoService: ServicoService,
     private snackbar: MatSnackBar) { }
 
-  ngOnInit(): void { this.listarServicos() }
+  ngOnInit(): void {
+
+    this.listarServicos();
+    this.campoFiltro.valueChanges.pipe(
+      map(value => value.trim()),
+      debounceTime(200),
+      tap(value => console.log(value)),
+    ).subscribe();
+
+  }
+
+  pesquisar() {
+    let value = this.campoFiltro.value;
+  }
+
+  filtrar() {
+    this.servicoService.filtroServico().subscribe(response => {
+
+    }, (error) => {
+      console.log(error);
+    })
+  }
 
   listarServicos() {
     this.load = true;

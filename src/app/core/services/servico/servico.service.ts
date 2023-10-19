@@ -18,6 +18,10 @@ export class ServicoService {
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
   }
 
+  filtroServico(): Observable<Servico[]> {
+    return this.http.get<Servico[]>(`${this.API}/servicos/filtro?estabelecimento_ID=${}`).pipe(take(1));
+  }
+
   cadastrarServico(servico): Observable<Servico[]> {
     return this.http.post<Servico[]>(`${this.API}/servicos`, servico);
   }
