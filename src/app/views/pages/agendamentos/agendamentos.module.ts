@@ -7,6 +7,8 @@ import { ExibicaoAgendamentosModule } from './exibicao-agendamentos/exibicao-age
 import { ExibicaoReservasModule } from './exibicao-reservas/exibicao-reservas.module';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
+import { GradeAgendamentosModule } from 'src/app/views/pages/agendamentos/exibicao-agendamentos/grade-agendamentos.module';
+import { GradeReservasModule } from '../agendamentos/exibicao-reservas/grade-reservas.module'
 
 @NgModule({
     declarations: [AgendamentosComponent],
@@ -16,7 +18,9 @@ import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
         ExibicaoAgendamentosModule,
         ExibicaoReservasModule,
         MaterialModule,
-        LibVexModule
+        LibVexModule,
+        GradeAgendamentosModule,
+        GradeReservasModule
     ]
 })
 export class AgendamentosModule {}
