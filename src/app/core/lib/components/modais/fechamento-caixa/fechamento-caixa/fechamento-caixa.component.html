@@ -1,0 +1,58 @@
+<!-- Titulo Modal -->
+<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+  <h2 class="title m-0">Fechamento de Caixa</h2>
+</div>
+<!-- Modal Fechamento Caixa -->
+<mat-dialog-content fxLayout="row" fxLayoutAlign="center">
+  <div class="alinhar">
+    <div class="mensFechamento px-6 py-4">
+      <p>
+        Deseja realizar o fechamento de caixa referente ao periodo de 01/09/2023 a 30/10/2023?
+      </p>
+      <p>
+        Período: 01/09/2023 - 30/10/2023
+      </p>
+      <p>
+        Valor Total: R$690,00
+      </p>
+    </div>
+    <div class="tabFechamento">
+      <!-- Tebela Fechamento de Caixa -->
+      <div class="tabela_fechamento-caixa">
+        <!-- tabela -->
+        <div class="example-container mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" aria-label="tabela dados das vendas e serviços">
+
+            <!-- Data -->
+            <ng-container matColumnDef="data">
+              <th mat-header-cell *matHeaderCellDef> Data </th>
+              <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+            </ng-container>
+
+            <!-- Descrição -->
+            <ng-container matColumnDef="descricao">
+              <th mat-header-cell *matHeaderCellDef> Descrição </th>
+              <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+            </ng-container>
+
+            <!--Valor -->
+            <ng-container matColumnDef="valor">
+              <th mat-header-cell *matHeaderCellDef> Valor </th>
+              <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<!-- Botoes -->
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" mat-raised-button color="primary">
+    Fechar Caixa
+  </button>
+</mat-dialog-actions>
