@@ -65,7 +65,7 @@ export class AgendaComponent {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      title: 'Um evento de 3 dias',
       color: colors.primary,
       actions: this.actions,
       allDay: true,
@@ -77,21 +77,21 @@ export class AgendaComponent {
     },
     {
       start: startOfDay(new Date()),
-      title: 'An event with no end date',
+      title: 'Um evento sem data de término',
       color: colors.yellow,
       actions: this.actions
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
+      title: 'Um evento longo que dura 2 meses',
       color: colors.primary,
       allDay: true
     },
     {
       start: addHours(startOfDay(new Date()), 2),
       end: new Date(),
-      title: 'A draggable and resizable event',
+      title: 'Um evento arrastável e redimensionável',
       color: colors.red,
       actions: this.actions,
       resizable: {
@@ -124,7 +124,7 @@ export class AgendaComponent {
       }
       return iEvent;
     });
-    this.handleEvent('Dropped or resized', event);
+    this.handleEvent('Eliminado ou redimensionado', event);
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
@@ -137,7 +137,7 @@ export class AgendaComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         event = result;
-        this.snackbar.open('Updated Event: ' + event.title);
+        this.snackbar.open('Atualização de evento: ' + event.title);
         this.refresh.next();
       }
     });
