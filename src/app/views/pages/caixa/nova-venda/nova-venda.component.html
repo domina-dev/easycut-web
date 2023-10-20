@@ -3,8 +3,11 @@
     <div class="detalhes">
         <div class="venda" fxLayout="column" fxLayoutAlign="start start">
             <h2>Detalhes da venda</h2>
-            <div class="imputVenda">
-                <div>
+            <div
+                class="imputVenda"
+                style="width: 100%; margin-top: 5%; margin-bottom: 5%"
+            >
+                <div [formGroup]="form">
                     <mat-form-field
                         class="imput"
                         appearance="standard"
@@ -14,285 +17,184 @@
                             >Responsável pela venda</mat-label
                         >
                         <input
-                            formControlName="responsavel"
+                            formControlName="vendedor"
                             matInput
                             required
+                            [(ngModel)]="venda.vendedor"
                         />
-                        <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
-                    Preencha este campo!
-                </mat-error> -->
+                        <mat-error
+                            *ngIf="form.get('vendedor').hasError('required')"
+                            >Digite nome do responsável pela venda</mat-error
+                        >
                     </mat-form-field>
                 </div>
-                <div>
+                <div [formGroup]="form">
                     <mat-form-field
-                        class="imput-baixo"
+                        class="imput"
+                        style="margin-top: -4%"
                         appearance="standard"
                         fxFlex="grow"
                     >
                         <mat-label class="nome">Cliente</mat-label>
-                        <input formControlName="cliente" matInput required />
-                        <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
-                Preencha este campo!
-            </mat-error> -->
+                        <input
+                            formControlName="cliente"
+                            matInput
+                            required
+                            [(ngModel)]="venda.cliente"
+                        />
+                        <mat-error
+                            *ngIf="form.get('cliente').hasError('required')"
+                            >Digite o nome do cliente</mat-error
+                        >
                     </mat-form-field>
                 </div>
             </div>
             <div class="radio">
                 <mat-radio-group
                     class="example-radio-group"
-                    [(ngModel)]="favoriteSeason"
+                    [(ngModel)]="selectedmenu"
                 >
                     <mat-radio-button
-                        class="example-radio-button"
-                        *ngFor="let season of seasons"
-                        [value]="season"
+                        style="margin-right: 25px"
+                        color="primary"
+                        *ngFor="let option of menus"
+                        [value]="option"
                     >
-                        {{ season }}
+                        {{ option }}
                     </mat-radio-button>
                 </mat-radio-group>
-                <!-- <div>Your favorite season is: {{favoriteSeason}}</div> -->
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4" style="width: 100%">
                 <mat-form-field
                     class="pesquisar"
                     appearance="standard"
                     fxFlex="grow"
                 >
-                    <mat-label>Pesquisar {{ favoriteSeason }}</mat-label>
+                    <mat-label>Pesquisar {{ selectedmenu }}</mat-label>
                     <input matInput />
                 </mat-form-field>
             </div>
-            <div class="servicos" *ngIf="favoriteSeason === 'Serviços'">
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Corte Simples</span>
-                        <span>R$ 30,00</span>
-                    </div>
-                </div>
 
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Corte Simples</span>
-                        <span>R$ 30,00</span>
-                    </div>
-                </div>
-
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Corte Simples</span>
-                        <span>R$ 30,00</span>
-                    </div>
-                </div>
-
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Corte Simples</span>
-                        <span>R$ 30,00</span>
-                    </div>
-                </div>
+            <div
+                class="servicos"
+                style="margin: 5px 25px 0; overflow: auto; height: 200px"
+                *ngIf="selectedmenu === 'Serviços'"
+            >
+                <mat-list>
+                    <mat-selection-list #servico [multiple]="false">
+                        <mat-list-option
+                            *ngFor="let task of tasks"
+                            [value]="task.descricao"
+                        >
+                            <div mat-list-avatar>
+                                <img
+                                    src="{{ task.corte }}"
+                                    width="50px"
+                                    height="50px"
+                                    alt=""
+                                />
+                            </div>
+                            <div mat-line style="font-size: 14px">
+                                {{ task.descricao }}
+                            </div>
+                            <div mat-line style="font-size: 14px">
+                                {{ task.valor | currency: 'BRL' }}
+                            </div>
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-list>
+                <p>
+                    Opção selecionada:
+                    {{ servico.selectedOptions.selected[0]?.value }}
+                </p>
             </div>
 
-            <div class="servicos" *ngIf="favoriteSeason === 'Produtos'">
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Minoxidil</span>
-                        <span>R$ 180,00</span>
-                    </div>
-                </div>
-
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Minoxidil</span>
-                        <span>R$ 180,00</span>
-                    </div>
-                </div>
-
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Minoxidil</span>
-                        <span>R$ 180,00</span>
-                    </div>
-                </div>
-
-                <div class="servico-coluna">
-                    <div>
-                        <img
-                            src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                            alt="calvao csv"
-                            width="80px"
-                            height="80px"
-                        />
-                    </div>
-                    <div
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            margin-left: 5px;
-                        "
-                    >
-                        <span>Minoxidil</span>
-                        <span>R$ 180,00</span>
-                    </div>
-                </div>
+            <div
+                class="produtos"
+                style="margin: 5px 25px 0; overflow: auto; height: 200px"
+                *ngIf="selectedmenu === 'Produtos'"
+            >
+                <mat-list>
+                    <mat-selection-list #produtos>
+                        <mat-list-option
+                            *ngFor="let product of products"
+                            [value]="product.descricao"
+                        >
+                            <div mat-list-avatar>
+                                <img
+                                    src="{{ product.produto }}"
+                                    width="50px"
+                                    height="50px"
+                                    alt=""
+                                />
+                            </div>
+                            <div mat-line style="font-size: 14px">
+                                {{ product.descricao }}
+                            </div>
+                            <div mat-line style="font-size: 14px">
+                                {{ product.valor | currency: 'BRL' }}
+                            </div>
+                        </mat-list-option>
+                    </mat-selection-list>
+                </mat-list>
+                <p>Opção selecionada:</p>
+                <ul>
+                    <li *ngFor="let list of produtos.selectedOptions.selected">
+                        {{ list.value }}
+                    </li>
+                </ul>
             </div>
         </div>
 
         <!-- Espaço para detalhes de pagamento -->
         <div class="pagamento" fxLayout="column" fxLayoutAlign="start start">
             <h2>Detalhes do pagamento</h2>
-            <div class="selecionados-corpo">
-                <div class="span">
-                    <span class="span-limpo"></span>
-                    <span class="span-quantidade"
-                        ><strong>Quantidade</strong></span
+            <div class="selecionados-total">
+                <div class="coluna" style="display: flex; flex-direction: row">
+                    <span class="coluna-limpa" style="width: 50%"></span>
+                    <span
+                        class="coluna-quantidade"
+                        style="
+                            width: 20%;
+                            display: flex;
+                            justify-content: center;
+                        "
+                        ><strong>Quantidade</strong>
+                    </span>
+                    <span
+                        class="coluna-valor"
+                        style="width: 30%; display: flex; justify-content: end; margin-right: 5%;"
+                        ><strong>Valor</strong></span
                     >
-                    <span class="span-valor"><strong>Valor</strong></span>
                 </div>
-                <div class="selecionados">
+                <div class="selecionados-lista">
                     <div class="dados">
                         <div class="dado">
                             <div class="dado1">
-                                <div>
-                                    <img
-                                        src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                                        alt="calvao csv"
-                                        width="80px"
-                                        height="80px"
-                                    />
-                                </div>
-                                <div
-                                    style="
-                                        display: flex;
-                                        flex-direction: column;
-                                        margin-left: 5px;
-                                        justify-content: center;
-                                    "
-                                >
-                                    <span>Minoxidil</span>
-                                    <span>R$ 180,00</span>
-                                </div>
-                            </div>
-                            <div class="dado2">
-                                <mat-form-field
-                                    style="width: 25%"
-                                    appearance="standart"
-                                >
-                                    <select matNativeControl required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </mat-form-field>
-                            </div>
-                            <div class="dado3">
-                                <span>R$ 180,00</span>
-                                <span style="cursor: pointer;">+ adicionar desconto</span>
+                              <mat-list>
+                                <mat-selection-list #produtos>
+                                    <mat-list-option
+                                        *ngFor="let product of products"
+                                        [value]="product.descricao"
+                                    >
+                                        <div mat-list-avatar>
+                                            <img
+                                                src="{{ product.produto }}"
+                                                width="50px"
+                                                height="50px"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div mat-line style="font-size: 14px">
+                                            {{ product.descricao }}
+                                        </div>
+                                        <div mat-line style="font-size: 14px">
+                                            {{ product.valor | currency: 'BRL' }}
+                                        </div>
+                                    </mat-list-option>
+                                </mat-selection-list>
+                            </mat-list>
                             </div>
                         </div>
                         <div class="dado">
@@ -337,7 +239,9 @@
                             </div>
                             <div class="dado3">
                                 <span>R$ 180,00</span>
-                                <span style="cursor: pointer;">+ adicionar desconto</span>
+                                <span style="cursor: pointer"
+                                    >+ adicionar desconto</span
+                                >
                             </div>
                         </div>
                         <div class="dado">
@@ -383,7 +287,9 @@
                             </div>
                             <div class="dado3">
                                 <span>R$ 180,00</span>
-                                <span style="cursor: pointer;">+ adicionar desconto</span>
+                                <span style="cursor: pointer"
+                                    >+ adicionar desconto</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -450,11 +356,11 @@
                 </div>
             </div>
             <div class="adicionar">
-              <div class="col">
-                <button mat-button mat-raised-button color="primary">
-                    Adicionar Venda
-                </button>
-            </div>
+                <div class="col">
+                    <button mat-button mat-raised-button color="primary">
+                        Adicionar Venda
+                    </button>
+                </div>
             </div>
         </div>
     </div>

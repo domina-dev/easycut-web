@@ -24,6 +24,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatListModule} from '@angular/material/list';
 const MATERIAL_MODULE = [
     MatDialogModule,
     MatPaginatorModule,
@@ -46,7 +47,8 @@ const MATERIAL_MODULE = [
     MatButtonToggleModule,
     MatMenuModule,
     MatRadioModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatListModule
 ];
 
 @NgModule({

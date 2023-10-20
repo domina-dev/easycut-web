@@ -1,142 +1,84 @@
-.corpo{
-margin: 2%;
+.corpo {
+  margin: 2%;
+
+  .detalhes {
+    display: flex;
+    align-content: space-between;
+  }
+
+  h2 {
+    font-weight: 600;
+  }
+
+  .venda {
+    width: 60%;
+  }
+
+  .pagamento {
+    width: 100%;
+    margin-left: 7%;
+    display: flex;
+
+    .selecionados-total {
+      width: 100%;
+      margin-top: 5%;
+
+      .selecionados-lista {
+        width: 100%;
+        max-height: 200px;
+        overflow: auto;
+      }
+    }
+  }
 }
 
-.detalhes {
-  display: flex;
-  align-content: space-between;
-}
 
-h2{
-font-weight: 600;
-}
-
-.venda {
-  width: 60%;
-}
-
-.imputVenda {
-  width: 100%;
-  margin-top: 5%;
-}
-
-.imput {
-  min-width: 100%;
-}
-
-.imput-baixo {
-  margin-top: -5%;
-}
 
 .imput-baixo-parcela {
   margin-top: -15%;
 }
 
-.pagamento {
-  width: 100%;
-  margin-left: 7%;
-  display: flex;
-}
 
-.radio {
-  mat-radio-button {
-    margin-right: 25px;
-  }
-}
 
-.col-md-4 {
-  width: 100%;
-}
 
-.pesquisar {
-  min-width: 100%;
-  margin-top: 5%;
-}
 
-.servicos,
-.produtos {
-  display: block;
-  align-items: center;
-  justify-content: center;
-  width: 60%;
-  margin-left: 15%;
-  overflow: auto;
-  height: 200px;
-  margin-top: 0;
-}
 
-.servico-coluna {
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 20px;
-}
-
-.selecionados-corpo {
-  width: 100%;
-  margin-top: 5%;
-}
-
-.selecionados {
-  width: 100%;
-  max-height: 200px;
-  overflow: auto;
-}
-
-.span {
-  display: flex;
-  flex-direction: row;
-
-  .span-limpo {
-    width: 50%;
-  }
-
-  .span-quantidade {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .span-valor {
-    width: 30%;
-    display: flex;
-    justify-content: end;
-  }
-}
 
 .dados {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
 
-.dado {
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 20px;
-  width: 100%;
-
-  .dado1 {
+  .dado {
     display: flex;
     flex-direction: row;
-    width: 50%;
-  }
+    padding-bottom: 20px;
+    width: 100%;
 
-  .dado2 {
-    display: flex;
-    width: 20%;
-    justify-content: center;
-    align-items: center;
-  }
+    .dado1 {
+      display: flex;
+      flex-direction: row;
+      width: 50%;
+    }
 
-  .dado3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    width: 30%;
-  }
+    .dado2 {
+      display: flex;
+      width: 20%;
+      justify-content: center;
+      align-items: center;
+    }
 
+    .dado3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+      width: 30%;
+    }
+
+  }
 }
+
 
 .dados-finais {
   width: 100%;
@@ -166,17 +108,17 @@ font-weight: 600;
   display: flex;
 }
 
-.descricao{
+.descricao {
   margin-right: 20px;
 }
 
-.adicionar{
+.adicionar {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.col{
+.col {
   justify-content: center;
   align-items: center;
   display: flex;
