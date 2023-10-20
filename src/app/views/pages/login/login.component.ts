@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/planos-modal/planos.component';
 import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 import { stagger20ms } from 'src/@vex/animations/stagger.animation';
-import { CompletarCadastroComponent } from 'src/app/modais/completarCadastro/completarCadastro.component';
+import { CompletarCadastroComponent } from 'src/app/core/lib/components/modais/completarCadastro/completarCadastro.component';
 
 @Component({
   selector: 'vex-login',
@@ -34,6 +34,7 @@ export class LoginComponent {
 
   firstLogin: boolean;
   planLogin: any;
+  completeRegister: boolean;
 
   inputType = 'password';
   visible = false;
@@ -63,6 +64,7 @@ export class LoginComponent {
       this.guardaDadosSessao(response);
       this.firstLogin = response.primeiroLogin;
       this.planLogin = response.plano_ID;
+      this.completeRegister = response.cadastroCompleto;
       this.load = false;
       this.router.navigate(['/']);
       this.abrirModais(response);
@@ -82,7 +84,7 @@ export class LoginComponent {
   }
 
   guardaDadosSessao(response: any){
-    localStorage.setItem("currentUser", JSON.stringify(response.estabelecimento))
+    localStorage.setItem("estabelecimento", response.estabelecimento)
     localStorage.setItem("token", response.token)
     localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
     localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
@@ -121,26 +123,27 @@ export class LoginComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (!this.completeRegister) {
+        return this.openModalCompletarCadastro();
+      }
     });
   }
 
   abrirModais(response: any) {
-    if (response.primeiroLogin) {
+    if (this.firstLogin) {
       return this.openModalPrimeiroLogin();
     }
-    else if (!response.plano_ID) {
+    else if (!this.planLogin) {
       return this.openModalPlanos();
     }
-    else if (!response.cadastroCompleto) {
-      return this.abrirModalCompletarCadastro();
+    else if (!this.completeRegister) {
+      return this.openModalCompletarCadastro();
     }
-
   }
 
-  abrirModalCompletarCadastro() {
+  openModalCompletarCadastro() {
     this.dialog.open(CompletarCadastroComponent, {
         width: '600px',
     });
   }
-
 }

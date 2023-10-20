@@ -4,14 +4,16 @@ import { ExibicaoAgendamentosRoutingModule } from './exibicao-agendamentos-routi
 import { ExibicaoAgendamentosComponent } from './exibicao-agendamentos.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
+import { GradeAgendamentosComponent } from '../exibicao-agendamentos/grade-agendamentos.component';
 
 @NgModule({
-    declarations: [ExibicaoAgendamentosComponent],
+    declarations: [ExibicaoAgendamentosComponent, GradeAgendamentosComponent],
     imports: [
         CommonModule,
         ExibicaoAgendamentosRoutingModule,
         MaterialModule,
         LibVexModule,
+        
         
     ],
     exports: [ExibicaoAgendamentosComponent]

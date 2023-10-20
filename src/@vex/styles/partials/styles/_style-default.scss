@@ -113,7 +113,7 @@
     --background-card: #{map-get(map-get($vex-theme, background), card)};
     --background-app-bar: #{map-get(map-get($vex-theme, background), app-bar)};
     --background-hover: #{map-get(map-get($vex-theme, background), hover)};
-
+    --background-pattern: var(--background-hover);
     // Elevation
     --elevation-default: var(--elevation-z6);
     --elevation-z0: none;
@@ -148,6 +148,7 @@
     --sidenav-item-padding: var(--padding);
     --sidenav-toolbar-background: #{darken($sidenav-background, 1.5)};
     --sidenav-item-background-active: #{darken($sidenav-background, 3)};
+    --sidenav-item-background-active2: #{darken($sidenav-background, 3)};
     --sidenav-item-color: #a1a2b6;
     --sidenav-item-color-active: #{$light-primary-text};
     --sidenav-item-icon-color: #494b74;
@@ -192,3 +193,13 @@
     --border-radius: 4px;
 }
 // @formatter:on
+
+$primary: #5C77FF;
+
+.bg-primary{
+  background-color: #5C77FF !important;
+}
+
+.bg-primary-light{
+  color: #5C77FF !important;
+}

@@ -1,4 +1,6 @@
+import { FechamentoCaixaComponent } from './../../../../core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -9,11 +11,20 @@ import { Component, OnInit } from '@angular/core';
 export class FluxoCaixaComponent implements OnInit {
     displayedColumns = ['data', 'descricao', 'status', 'valor'];
     dataSource = ELEMENT_DATA;
-    
+
+    constructor(public dialog: MatDialog){
+
+    }
+
     ngOnInit(): void {
         console.log('Method not implemented');
     }
-    
+
+    fecharCaixa(){
+      const dialogRef = this.dialog.open(FechamentoCaixaComponent)
+      dialogRef.afterClosed().subscribe()
+    }
+
 }
 
 export interface FluxoCaixa {
