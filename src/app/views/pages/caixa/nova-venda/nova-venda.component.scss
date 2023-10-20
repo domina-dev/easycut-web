@@ -32,18 +32,6 @@
   }
 }
 
-
-
-.imput-baixo-parcela {
-  margin-top: -15%;
-}
-
-
-
-
-
-
-
 .dados {
   display: flex;
   flex-direction: column;
@@ -66,14 +54,6 @@
       margin-top: -5%;
     }
 
-    .dado3 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: end;
-      width: 30%;
-    }
-
   }
 }
 
@@ -87,38 +67,19 @@
   width: 30%;
 }
 
-.desconto-total {
+.valores-totais {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 50%;
   align-items: end;
-}
 
-.dado-final {
-  margin-bottom: 3%;
-  font-weight: 600;
-  display: flex;
-}
+  .valor-final {
+    margin-bottom: 3%;
+    display: flex;
 
-.dado-final-2 {
-  font-weight: 600;
-  display: flex;
-}
-
-.descricao {
-  margin-right: 20px;
-}
-
-.adicionar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.col {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  margin-top: 3%;
+    .descricao {
+      margin-right: 20px;
+    }
+  }
 }

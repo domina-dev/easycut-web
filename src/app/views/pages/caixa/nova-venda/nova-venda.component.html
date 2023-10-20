@@ -350,7 +350,9 @@
                                                         | currency: 'BRL'
                                                 }}</span
                                             >
-                                            <span style="cursor: pointer" (click)="openModalDesconto()"
+                                            <span
+                                                style="cursor: pointer"
+                                                (click)="openModalDesconto()"
                                                 >+ adicionar desconto</span
                                             >
                                         </div>
@@ -437,23 +439,37 @@
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="desconto-total">
-                    <div class="dado-final">
-                        <span class="descricao">Subtotal</span>
-                        <span>R$ 190,00</span>
+                <div class="valores-totais">
+                    <div class="valor-final">
+                        <h3 class="descricao">Subtotal</h3>
+                        <h3>R$ 190,00</h3>
                     </div>
-                    <div class="dado-final">
-                        <span class="descricao">Desconto</span>
-                        <span>-R$ 50,00</span>
+                    <div class="valor-final">
+                        <h3 class="descricao">Desconto</h3>
+                        <h3>-R$ 50,00</h3>
                     </div>
-                    <div class="dado-final-2">
-                        <span class="descricao">Total</span>
-                        <span>R$ 140,00</span>
+                    <div class="valor-final" style="margin-bottom: -3%;">
+                        <h3 class="descricao">Total</h3>
+                        <h3>R$ 140,00</h3>
                     </div>
                 </div>
             </div>
-            <div class="adicionar">
-                <div class="col">
+            <div
+                style="
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: center;
+                "
+            >
+                <div
+                    style="
+                        justify-content: center;
+                        align-items: center;
+                        display: flex;
+                        margin-top: 3%;
+                    "
+                >
                     <button mat-button mat-raised-button color="primary">
                         Adicionar Venda
                     </button>
