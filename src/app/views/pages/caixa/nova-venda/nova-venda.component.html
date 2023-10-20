@@ -164,7 +164,12 @@
                     </span>
                     <span
                         class="coluna-valor"
-                        style="width: 30%; display: flex; justify-content: end; margin-right: 5%;"
+                        style="
+                            width: 30%;
+                            display: flex;
+                            justify-content: end;
+                            margin-right: 5%;
+                        "
                         ><strong>Valor</strong></span
                     >
                 </div>
@@ -172,124 +177,87 @@
                     <div class="dados">
                         <div class="dado">
                             <div class="dado1">
-                              <mat-list>
-                                <mat-selection-list #produtos>
-                                    <mat-list-option
-                                        *ngFor="let product of products"
-                                        [value]="product.descricao"
-                                    >
-                                        <div mat-list-avatar>
-                                            <img
-                                                src="{{ product.produto }}"
-                                                width="50px"
-                                                height="50px"
-                                                alt=""
-                                            />
+                                <mat-list style="width: 100%">
+                                    <mat-list-item *ngFor="let task of tasks">
+                                        <div
+                                            class="descrição"
+                                            style="width: 50%; display: flex"
+                                        >
+                                            <div mat-list-avatar>
+                                                <img
+                                                    src="{{ task.corte }}"
+                                                    width="50px"
+                                                    height="50px"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div
+                                                style="
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    margin-left: 5%;
+                                                "
+                                            >
+                                                <div mat-line>
+                                                    {{ task.descricao }}
+                                                </div>
+                                                <div
+                                                    mat-line
+                                                    style="font-size: 14px"
+                                                >
+                                                    {{
+                                                        task.valor
+                                                            | currency: 'BRL'
+                                                    }}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div mat-line style="font-size: 14px">
-                                            {{ product.descricao }}
+
+                                        <div
+                                            class="quantidade"
+                                            style="
+                                                width: 20%;
+                                                display: flex;
+                                                justify-content: center;
+                                            "
+                                        >
+                                            <mat-form-field
+                                                style="width: 25%"
+                                                appearance="standart"
+                                            >
+                                                <select
+                                                    matNativeControl
+                                                    required
+                                                >
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </mat-form-field>
                                         </div>
-                                        <div mat-line style="font-size: 14px">
-                                            {{ product.valor | currency: 'BRL' }}
+                                        <div
+                                            class="valor"
+                                            style="
+                                                width: 30%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                align-items: end;
+                                            "
+                                        >
+                                            <span>
+                                                {{
+                                                    task.valor | currency: 'BRL'
+                                                }}</span
+                                            >
+                                            <span style="cursor: pointer"
+                                                >+ adicionar desconto</span
+                                            >
                                         </div>
-                                    </mat-list-option>
-                                </mat-selection-list>
-                            </mat-list>
-                            </div>
-                        </div>
-                        <div class="dado">
-                            <div class="dado1">
-                                <div>
-                                    <img
-                                        src="../../../../../assets/img/Screenshot_20220717-200405_Instagram.jpg"
-                                        alt="calvao csv"
-                                        width="80px"
-                                        height="80px"
-                                    />
-                                </div>
-                                <div
-                                    style="
-                                        display: flex;
-                                        flex-direction: column;
-                                        margin-left: 5px;
-                                    "
-                                >
-                                    <span>Corte Simples</span>
-                                    <span>R$ 30,00</span>
-                                </div>
-                            </div>
-                            <div class="dado2">
-                                <mat-form-field
-                                    style="width: 25%"
-                                    appearance="standart"
-                                >
-                                    <select matNativeControl required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </mat-form-field>
-                            </div>
-                            <div class="dado3">
-                                <span>R$ 180,00</span>
-                                <span style="cursor: pointer"
-                                    >+ adicionar desconto</span
-                                >
-                            </div>
-                        </div>
-                        <div class="dado">
-                            <div class="dado1">
-                                <div>
-                                    <img
-                                        src="../../../../../assets/img/minoxidil-foligain-5-suprimento-para-3-meses-caixa-lacrada-62feb218e4796.webp"
-                                        alt="calvao csv"
-                                        width="80px"
-                                        height="80px"
-                                    />
-                                </div>
-                                <div
-                                    style="
-                                        display: flex;
-                                        flex-direction: column;
-                                        margin-left: 5px;
-                                        justify-content: center;
-                                    "
-                                >
-                                    <span>Minoxidil</span>
-                                    <span>R$ 180,00</span>
-                                </div>
-                            </div>
-                            <div class="dado2">
-                                <mat-form-field
-                                    style="width: 25%"
-                                    appearance="standart"
-                                >
-                                    <select matNativeControl required>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </mat-form-field>
-                            </div>
-                            <div class="dado3">
-                                <span>R$ 180,00</span>
-                                <span style="cursor: pointer"
-                                    >+ adicionar desconto</span
-                                >
+                                    </mat-list-item>
+                                </mat-list>
                             </div>
                         </div>
                     </div>
