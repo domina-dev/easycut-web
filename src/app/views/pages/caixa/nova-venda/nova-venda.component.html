@@ -17,13 +17,17 @@
                             >Responsável pela venda</mat-label
                         >
                         <input
-                            formControlName="vendedor"
+                            formControlName="responsavelVenda"
                             matInput
                             required
-                            [(ngModel)]="venda.vendedor"
+                            [(ngModel)]="venda.responsavelVenda"
                         />
                         <mat-error
-                            *ngIf="form.get('vendedor').hasError('required')"
+                            *ngIf="
+                                form
+                                    .get('responsavelVenda')
+                                    .hasError('required')
+                            "
                             >Digite nome do responsável pela venda</mat-error
                         >
                     </mat-form-field>
@@ -76,20 +80,26 @@
                 </mat-form-field>
             </div>
 
+            <!-- LISTA ESQUERDA -->
             <div
                 class="servicos"
                 style="margin: 5px 25px 0; overflow: auto; height: 200px"
                 *ngIf="selectedmenu === 'Serviços'"
             >
                 <mat-list>
-                    <mat-selection-list #servico [multiple]="false">
+                    <mat-selection-list #servico color="primary">
                         <mat-list-option
                             *ngFor="let task of tasks"
-                            [value]="task.descricao"
+                            [value]="task"
+                            (click)="
+                                selectedOptionT(
+                                    servico.selectedOptions.selected
+                                )
+                            "
                         >
                             <div mat-list-avatar>
                                 <img
-                                    src="{{ task.corte }}"
+                                    src="{{ task.imagem }}"
                                     width="50px"
                                     height="50px"
                                     alt=""
@@ -104,10 +114,6 @@
                         </mat-list-option>
                     </mat-selection-list>
                 </mat-list>
-                <p>
-                    Opção selecionada:
-                    {{ servico.selectedOptions.selected[0]?.value }}
-                </p>
             </div>
 
             <div
@@ -119,11 +125,16 @@
                     <mat-selection-list #produtos>
                         <mat-list-option
                             *ngFor="let product of products"
-                            [value]="product.descricao"
+                            [value]="product"
+                            (click)="
+                                selectedOptionP(
+                                    produtos.selectedOptions.selected
+                                )
+                            "
                         >
                             <div mat-list-avatar>
                                 <img
-                                    src="{{ product.produto }}"
+                                    src="{{ product.imagem }}"
                                     width="50px"
                                     height="50px"
                                     alt=""
@@ -138,12 +149,6 @@
                         </mat-list-option>
                     </mat-selection-list>
                 </mat-list>
-                <p>Opção selecionada:</p>
-                <ul>
-                    <li *ngFor="let list of produtos.selectedOptions.selected">
-                        {{ list.value }}
-                    </li>
-                </ul>
             </div>
         </div>
 
@@ -173,19 +178,23 @@
                         ><strong>Valor</strong></span
                     >
                 </div>
+
+                <!-- LISTA DIREITA -->
                 <div class="selecionados-lista">
                     <div class="dados">
                         <div class="dado">
                             <div class="dado1">
                                 <mat-list style="width: 100%">
-                                    <mat-list-item *ngFor="let task of tasks">
+                                    <mat-list-item
+                                        *ngFor="let task of selectedTasks"
+                                    >
                                         <div
                                             class="descrição"
                                             style="width: 50%; display: flex"
                                         >
                                             <div mat-list-avatar>
                                                 <img
-                                                    src="{{ task.corte }}"
+                                                    src="{{ task.imagem }}"
                                                     width="50px"
                                                     height="50px"
                                                     alt=""
@@ -260,6 +269,95 @@
                                 </mat-list>
                             </div>
                         </div>
+
+                        <div class="dado">
+                            <div class="dado2">
+                                <mat-list style="width: 100%">
+                                    <mat-list-item
+                                        *ngFor="let product of selectedProducts"
+                                    >
+                                        <div
+                                            class="descrição"
+                                            style="width: 50%; display: flex"
+                                        >
+                                            <div mat-list-avatar>
+                                                <img
+                                                    src="{{ product.imagem }}"
+                                                    width="50px"
+                                                    height="50px"
+                                                    alt=""
+                                                />
+                                            </div>
+                                            <div
+                                                style="
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    margin-left: 5%;
+                                                "
+                                            >
+                                                <div mat-line>
+                                                    {{ product.descricao }}
+                                                </div>
+                                                <div
+                                                    mat-line
+                                                    style="font-size: 14px"
+                                                >
+                                                    {{
+                                                        product.valor
+                                                            | currency: 'BRL'
+                                                    }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="quantidade"
+                                            style="
+                                                width: 20%;
+                                                display: flex;
+                                                justify-content: center;
+                                            "
+                                        >
+                                            <mat-form-field
+                                                style="width: 25%"
+                                                appearance="standart"
+                                            >
+                                                <select
+                                                    matNativeControl
+                                                    required
+                                                >
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div
+                                            class="valor"
+                                            style="
+                                                width: 30%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                align-items: end;
+                                            "
+                                        >
+                                            <span>
+                                                {{
+                                                    product.valor
+                                                        | currency: 'BRL'
+                                                }}</span
+                                            >
+                                            <span style="cursor: pointer" (click)="openModalDesconto()"
+                                                >+ adicionar desconto</span
+                                            >
+                                        </div>
+                                    </mat-list-item>
+                                </mat-list>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,42 +367,73 @@
                 class="dados-finais"
                 style="display: flex; flex-direction: row; align-items: center"
             >
-                <div
-                    class="pagamento-parcelamento"
-                    style="display: flex; flex-direction: column"
-                >
-                    <div>
-                        <mat-form-field
-                            class="imput"
-                            appearance="standard"
-                            fxFlex="grow"
-                        >
-                            <mat-label class="nome">Pagamento</mat-label>
-                            <input
+                <div class="pagamento-parcelamento">
+                    <div [formGroup]="form">
+                        <mat-form-field appearance="standard">
+                            <mat-label>Pagamento</mat-label>
+                            <mat-select
                                 formControlName="pagamento"
                                 matInput
                                 required
-                            />
-                            <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
-                    Preencha este campo!
-                </mat-error> -->
+                                [(ngModel)]="venda.pagamento"
+                            >
+                                <mat-option value="dinheiro"
+                                    >Dinheiro</mat-option
+                                >
+                                <mat-option value="cartao"
+                                    >Cartão de Crédito</mat-option
+                                >
+                                <mat-option value="cartao"
+                                    >Cartão de Débito</mat-option
+                                >
+                                <mat-option value="pix">PIX</mat-option>
+                            </mat-select>
+                            <mat-error
+                                *ngIf="
+                                    form.get('pagamento').hasError('required')
+                                "
+                            >
+                                Selecione uma forma de pagamento
+                            </mat-error>
                         </mat-form-field>
                     </div>
-                    <div>
-                        <mat-form-field
-                            class="imput-baixo-parcela"
-                            appearance="standard"
-                            fxFlex="grow"
-                        >
-                            <mat-label class="nome">Parcelamento</mat-label>
-                            <input
+                    <div
+                        [formGroup]="form"
+                        style="display: flex; margin-top: -10%"
+                    >
+                        <mat-form-field appearance="standard">
+                            <mat-label>Parcelamento</mat-label>
+                            <mat-select
                                 formControlName="parcelamento"
-                                matInput
                                 required
-                            />
-                            <!-- <mat-error *ngIf="form.get('nome').hasError('required')">
-                    Preencha este campo!
-                </mat-error> -->
+                                [(ngModel)]="venda.parcelamento"
+                            >
+                                <mat-option value="avista">À vista</mat-option>
+                                <mat-option
+                                    *ngIf="venda.pagamento === 'cartao'"
+                                    value="2x"
+                                    >2x</mat-option
+                                >
+                                <mat-option
+                                    *ngIf="venda.pagamento === 'cartao'"
+                                    value="3x"
+                                    >3x</mat-option
+                                >
+                                <mat-option
+                                    *ngIf="venda.pagamento === 'cartao'"
+                                    value="5x"
+                                    >5x</mat-option
+                                >
+                            </mat-select>
+                            <mat-error
+                                *ngIf="
+                                    form
+                                        .get('parcelamento')
+                                        .hasError('required')
+                                "
+                            >
+                                Selecione a quantidade de parcelas
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>

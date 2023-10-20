@@ -1,6 +1,9 @@
 export class Venda {
-vendedor: string;
+estabelecimento: string;
+responsavelVenda: string;
 cliente: string;
 idServico: number;
 idProduto: number;
+pagamento: string;
+parcelamento: string;
 }
