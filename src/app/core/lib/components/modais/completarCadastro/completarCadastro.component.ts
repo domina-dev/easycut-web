@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 
 @Component({
-  selector: 'vex-completarCadastro',
+  selector: 'vex-completar-cadastro',
   templateUrl: './completarCadastro.component.html',
   styleUrls: ['./completarCadastro.component.scss'],
 	animations: [
@@ -12,7 +12,7 @@ import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 		fadeInUp400ms
 	]
 })
-export class CompletarCadastroComponent {
+export class CompletarCadastroComponent implements OnInit{
   form: FormGroup;
 
   mostraIcone: boolean = true;
@@ -37,4 +37,3 @@ export class CompletarCadastroComponent {
       });
     }
  }
- 
