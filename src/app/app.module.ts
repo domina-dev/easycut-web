@@ -45,7 +45,9 @@ registerLocaleData(localePt, 'pt');
         CadastrarEditarComponent,
         CadastrarProdutoComponent,
         ConfirmacaoComponent,
-        CompletarCadastroComponent
+        CompletarCadastroComponent,
+        FechamentoCaixaComponent,
+        DescontoComponent
     ],
     imports: [
         BrowserModule,
