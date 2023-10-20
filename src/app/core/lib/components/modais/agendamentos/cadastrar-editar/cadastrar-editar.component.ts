@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -29,7 +29,7 @@ export class CadastrarEditarComponent {
     private snackbar: MatSnackBar,
 
   ) {
-    this.isCadastro = data?.agendamento ? false : true;
+    this.isCadastro = !data?.agendamento;
     this.opcoesStatus = this.filtrarOpcoes();
     this.iniciaFormulario();
   }
