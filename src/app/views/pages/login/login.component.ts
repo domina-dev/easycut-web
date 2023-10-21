@@ -118,7 +118,6 @@ export class LoginComponent {
   openModalPlanos() {
 
     const dialogRef = this.dialog.open(PlanosComponent, {
-      height: '90%',
       width: '70%',
     });
 
