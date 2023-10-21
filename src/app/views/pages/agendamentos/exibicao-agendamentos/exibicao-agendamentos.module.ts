@@ -12,7 +12,6 @@ import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
         ExibicaoAgendamentosRoutingModule,
         MaterialModule,
         LibVexModule,
-        
     ],
     exports: [ExibicaoAgendamentosComponent]
 })
