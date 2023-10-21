@@ -10,6 +10,7 @@ const HISTORICO = 'Histórico de vendas';
 })
 export class CaixaComponent implements OnInit {
     legenda: string;
+    tabSelected: number;
 
     constructor() {
         this.legenda = NOVAVENDA;
@@ -18,6 +19,7 @@ export class CaixaComponent implements OnInit {
     ngOnInit(): void {
         console.log('');
     }
+
     trocaLegenda($event) {
         this.legenda =
             $event.index == 0 ? NOVAVENDA : this.caixaOuHistorico($event);
@@ -25,5 +27,9 @@ export class CaixaComponent implements OnInit {
 
     caixaOuHistorico($event: any) {
         return $event.index == 1 ? FLUXODECAIXA : HISTORICO;
+    }
+
+    trocaTab(){
+        this.tabSelected = 0;
     }
 }

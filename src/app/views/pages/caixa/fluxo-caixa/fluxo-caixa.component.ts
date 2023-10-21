@@ -1,5 +1,5 @@
 import { FechamentoCaixaComponent } from './../../../../core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -9,6 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['./fluxo-caixa.component.scss']
 })
 export class FluxoCaixaComponent implements OnInit {
+
+    @Output() trocaTab: EventEmitter<any> = new EventEmitter();
+  
     displayedColumns = ['data', 'descricao', 'status', 'valor'];
     dataSource = ELEMENT_DATA;
 
@@ -25,7 +28,11 @@ export class FluxoCaixaComponent implements OnInit {
       dialogRef.afterClosed().subscribe()
     }
 
+    trocarTab(){
+        this.trocaTab.emit();
+    }
 }
+
 
 export interface FluxoCaixa {
     descricao: string;
