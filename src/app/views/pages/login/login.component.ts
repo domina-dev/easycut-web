@@ -88,8 +88,7 @@ export class LoginComponent {
     localStorage.setItem("token", response.token)
     localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
     localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
-    localStorage.setItem("planoId", response.plano_ID)
-    localStorage.setItem("planoId", response.plano_ID)
+    localStorage.setItem("plano_ID", response.plano_ID)
   }
 
   toggleVisibility() {
