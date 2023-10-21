@@ -141,7 +141,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
 }
 
-  abrirModalPromocional(servico: Servico): void {
+abrirModalPromocional(servico: Servico): void {
     let mensagem: string = ""
     if (servico.promocional) {
       mensagem = "Tem certeza que deseja retirar este serviço da promoção?"
