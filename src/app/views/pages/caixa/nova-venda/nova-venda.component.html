@@ -261,7 +261,12 @@
                                                     task.valor | currency: 'BRL'
                                                 }}</span
                                             >
-                                            <span style="cursor: pointer"
+                                            <span
+                                                style="
+                                                    cursor: pointer;
+                                                    font-weight: 600;
+                                                "
+                                                (click)="openModalDesconto()"
                                                 >+ adicionar desconto</span
                                             >
                                         </div>
@@ -351,7 +356,10 @@
                                                 }}</span
                                             >
                                             <span
-                                                style="cursor: pointer"
+                                                style="
+                                                    cursor: pointer;
+                                                    font-weight: 600;
+                                                "
                                                 (click)="openModalDesconto()"
                                                 >+ adicionar desconto</span
                                             >
@@ -448,7 +456,7 @@
                         <h3 class="descricao">Desconto</h3>
                         <h3>-R$ 50,00</h3>
                     </div>
-                    <div class="valor-final" style="margin-bottom: -3%;">
+                    <div class="valor-final" style="margin-bottom: -3%">
                         <h3 class="descricao">Total</h3>
                         <h3>R$ 140,00</h3>
                     </div>

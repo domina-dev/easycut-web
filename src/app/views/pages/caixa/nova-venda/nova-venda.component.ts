@@ -1,5 +1,5 @@
 import { Venda } from './../../../../core/model/nova-venda';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DescontoComponent } from 'src/app/core/lib/components/modais/desconto/desconto.component';
