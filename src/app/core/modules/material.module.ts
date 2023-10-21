@@ -22,9 +22,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
 const MATERIAL_MODULE = [
     MatDialogModule,
     MatPaginatorModule,
@@ -48,7 +49,8 @@ const MATERIAL_MODULE = [
     MatMenuModule,
     MatRadioModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    MatNativeDateModule,
 ];
 
 @NgModule({
@@ -56,4 +58,4 @@ const MATERIAL_MODULE = [
     imports: [CommonModule, MATERIAL_MODULE],
     exports: [MATERIAL_MODULE]
 })
-export class MaterialModule {}
+export class MaterialModule { }
