@@ -9,12 +9,12 @@
             <mat-tab-group [(selectedIndex)]="tabSelected" (selectedTabChange)="trocaLegenda($event)">
                 <mat-tab label="Nova Venda">
                     <div class="p-6">
-                        <vex-nova-venda></vex-nova-venda>
+                        <vex-nova-venda (trocaTab)="trocaTab($event)"></vex-nova-venda>
                     </div>
                 </mat-tab>
                 <mat-tab label="Fluxo de Caixa">
                     <div class="p-6">
-                        <vex-fluxo-caixa (trocaTab)="trocaTab()"></vex-fluxo-caixa>
+                        <vex-fluxo-caixa (trocaTab)="trocaTab($event)"></vex-fluxo-caixa>
                     </div>
                 </mat-tab>
                 <mat-tab label="Histórico de vendas">

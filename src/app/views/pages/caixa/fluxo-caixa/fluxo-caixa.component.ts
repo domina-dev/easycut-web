@@ -29,7 +29,7 @@ export class FluxoCaixaComponent implements OnInit {
     }
 
     trocarTab(){
-        this.trocaTab.emit();
+        this.trocaTab.emit({data: 0});
     }
 }
 

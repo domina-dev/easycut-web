@@ -29,7 +29,7 @@ export class CaixaComponent implements OnInit {
         return $event.index == 1 ? FLUXODECAIXA : HISTORICO;
     }
 
-    trocaTab(){
-        this.tabSelected = 0;
+    trocaTab(selecionar: any){
+        this.tabSelected = selecionar.data;
     }
 }
