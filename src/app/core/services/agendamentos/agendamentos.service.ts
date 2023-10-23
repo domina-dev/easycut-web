@@ -27,4 +27,8 @@ export class AgendamentoService {
   alterarAgendamento(agendamento: Agendamento): Observable<Agendamento> {
     return this.http.put<Agendamento>(`${this.API}/agendamentos`,agendamento)
   }
+
+  deletarAgendamento(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API}/agendamentos?agendamento_ID=${id}`);
+  }
 }
