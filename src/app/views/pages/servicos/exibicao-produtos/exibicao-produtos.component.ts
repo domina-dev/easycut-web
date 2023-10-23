@@ -69,9 +69,9 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         );
     }
 
-    deletarProduto() {
+    deletarProduto(produto: Produto) {
         this.load = true;
-        this.produtoService.deletaProduto().subscribe(
+        this.produtoService.deletaProduto(produto.id).subscribe(
             (response) => {
                 this.listaProduto = response;
                 this.dataSource = new MatTableDataSource<Produto>(
@@ -125,7 +125,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.deletarProduto();
+                this.deletarProduto(produto);
             }
         });
     }
