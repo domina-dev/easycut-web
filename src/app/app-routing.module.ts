@@ -58,8 +58,11 @@ const routes: Routes = [
                     data: {
                         toolbarShadowEnabled: true
                     }
+            },
+            {
+                path: 'perfil',
+                loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
             }
-            
         ]
     },
     {
@@ -83,7 +86,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // preloadingStrategy: PreloadAllModules,
+            // preloadingStrategy: PreloadAllModules,|
             scrollPositionRestoration: 'enabled',
             relativeLinkResolution: 'corrected',
             anchorScrolling: 'enabled'
