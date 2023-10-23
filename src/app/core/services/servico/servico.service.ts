@@ -19,14 +19,14 @@ export class ServicoService {
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
   }
 
-  filtroServico(campoFiltro: string, status: string, categoria: string): Observable<Servico[]> {
-    let estabelecimentoID = this.commonService.estabelecimentoId
+  filtroServico(campoFiltro: string, status: string, categoriaFiltro: string): Observable<Servico[]> {
+    let estabelecimentoID = this.commonService.estabelecimentoId;
     return this.http.get<Servico[]>(`${this.API}/servicos/filtro`, {
       params: {
         estabelecimento_ID: estabelecimentoID,
         filtro: campoFiltro,
         status: status,
-        categoria: campoFiltro
+        categoria: categoriaFiltro,
       }
     }).pipe(take(1));
   }

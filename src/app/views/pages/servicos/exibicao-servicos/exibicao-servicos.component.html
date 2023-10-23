@@ -1,15 +1,15 @@
 <!-- Filtro da tabela de servicos -->
-<div class="row">
+<div class="row" [formGroup]="form">
     <div class="col-md-6">
         <mat-form-field class="" appearance="standard" fxFlex="grow">
             <mat-label class="label">Pesquisar serviço</mat-label>
-            <input matInput [formControl]="campoFiltro" /> 
+            <input matInput formControlName="filtro" (change)="filtrarServicos()"/> 
         </mat-form-field>
     </div>
     <div class="col-md-3">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label class="label">Categoria</mat-label>
-            <mat-select [formControl]="campoFiltro">
+            <mat-select formControlName="categoria" (selectionChange)="filtrarServicos()">
                 <mat-option value="todas">Todas</mat-option>
                 <mat-option value="cabelo">Cabelo</mat-option>
                 <mat-option value="barba">Barba</mat-option>
@@ -20,9 +20,9 @@
     <div class="col-md-3">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Status</mat-label>
-            <mat-select>
-                <mat-option value="one">Todos</mat-option>
-                <mat-option value="two">Promocionais</mat-option>
+            <mat-select formControlName="status" (selectionChange)="filtrarServicos()">
+                <mat-option value="todos">Todos</mat-option>
+                <mat-option value="promocionais">Promocionais</mat-option>
             </mat-select>
         </mat-form-field>
     </div>

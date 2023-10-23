@@ -8,7 +8,7 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 
 @Component({
@@ -36,38 +36,43 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
   listaServicos: Servico[] = [];
 
-  campoFiltro = new FormControl();
+  form: FormGroup;
+  estabelecimentoID: number;
+
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
 
   constructor(public dialog: MatDialog,
     private servicoService: ServicoService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private fb:FormBuilder) {
+
+      this.form = fb.group({
+        filtro: [''],
+        categoria: [''],
+        status: ['']
+      })
+
+
+    }
 
   ngOnInit(): void {
 
     this.listarServicos();
-    this.campoFiltro.valueChanges.pipe(
-      map(value => value.trim()),
-      filter(value => value.length > 2),
-      debounceTime(200),
-      distinctUntilChanged(),
-      tap(value => console.log(value)),
-    ).subscribe();
-    this.filtrarServicos(this.campoFiltro.value, '', this.campoFiltro.value);
 
   }
 
 
   limparFiltro() {
-    this.campoFiltro.reset();
+    this.form.reset();
   }
 
 
-  filtrarServicos(campoFiltro: string, status: string, categoria: string) {
+  filtrarServicos() {
     this.load = true;
-    this.servicoService.filtroServico(campoFiltro, status, campoFiltro).subscribe(response => {
+    let formulario = this.form.value;
+    this.servicoService.filtroServico(formulario.filtro, formulario.status, formulario.categoria).subscribe(response => {
       this.listaServicos = response;
       this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
       this.dataSource.paginator = this.paginator;
