@@ -3,13 +3,13 @@
     <div class="col-md-6">
         <mat-form-field class="" appearance="standard" fxFlex="grow">
             <mat-label class="label">Pesquisar serviço</mat-label>
-            <input matInput />
+            <input matInput [formControl]="campoFiltro" /> 
         </mat-form-field>
     </div>
     <div class="col-md-3">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label class="label">Categoria</mat-label>
-            <mat-select>
+            <mat-select [formControl]="campoFiltro">
                 <mat-option value="one">Todas</mat-option>
                 <mat-option value="two">Cabelo</mat-option>
                 <mat-option value="three">Barba</mat-option>
@@ -30,7 +30,8 @@
 
 <div class="row" style="float: right;">
     <div class="col">
-        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow">Limpar <mat-icon>
+        <button style="background-color: #262B39; color: rgb(240, 255, 255);
+        " mat-button fxFlex="grow" (click)="limparFiltro()">Limpar <mat-icon>
                 backspace</mat-icon></button>
     </div>
     <div class="col">

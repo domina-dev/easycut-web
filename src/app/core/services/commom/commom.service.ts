@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root'
 })
 export class CommomService {
+    estabelecimentoId = window.localStorage.getItem("estabelecimento_ID");
+
     constructor(private http: HttpClient) {}
 
     healthCheck(): Observable<any> {

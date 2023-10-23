@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { FormControl } from '@angular/forms';
-import { debounceTime, map, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -50,7 +50,9 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     this.listarServicos();
     this.campoFiltro.valueChanges.pipe(
       map(value => value.trim()),
+      filter(value => value.length > 2),
       debounceTime(200),
+      distinctUntilChanged(),
       tap(value => console.log(value)),
     ).subscribe();
 
@@ -60,13 +62,25 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     let value = this.campoFiltro.value;
   }
 
-  filtrar() {
-    this.servicoService.filtroServico().subscribe(response => {
-
-    }, (error) => {
-      console.log(error);
-    })
+  limparFiltro() {
+    this.campoFiltro.reset();
   }
+
+
+  filtrarServicos(campoFiltro: string, status: string, categoria: string) {
+    this.load = true;
+    this.servicoService.filtroServico(campoFiltro, status, campoFiltro).subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
+        console.log(error)
+      });
+  }
+
 
   listarServicos() {
     this.load = true;
