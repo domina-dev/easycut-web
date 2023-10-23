@@ -8,8 +8,7 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'vex-exibicao-servicos',
