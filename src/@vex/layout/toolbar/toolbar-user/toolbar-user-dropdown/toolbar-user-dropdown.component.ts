@@ -23,7 +23,6 @@ import icLock from '@iconify/icons-ic/twotone-lock';
 import icNotificationsOff from '@iconify/icons-ic/twotone-notifications-off';
 import { Icon } from '@visurel/iconify-angular';
 import { PopoverRef } from '../../../../components/popover/popover-ref';
-import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -127,21 +126,13 @@ export class ToolbarUserDropdownComponent {
         this.cd.markForCheck();
     }
 
-    close(item?: MenuItem) {
+    sair() {
         this.popoverRef.close();
         window.localStorage.clear();
         this.router.navigate(['/login'])
-        if (item) this.openModal(item);
     }
-    openModal(item: MenuItem) {
-        if (item.id == '1') {
-            // Redirecionar para a tela de perfil
-            this.router.navigate(['/perfil']); // Substitua 'perfil' pelo caminho correto para a tela de perfil
-        } else {
-            const dialogRef = this.dialog.open(ConstrucaoModalComponent);
-            dialogRef.afterClosed().subscribe((result) => {
-                if (result) console.log(result);
-            });
-        }
-}
+
+    close() {
+        this.popoverRef.close();
+    }
 }

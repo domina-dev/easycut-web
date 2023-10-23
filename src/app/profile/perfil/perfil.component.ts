@@ -23,23 +23,9 @@ export class PerfilComponent {
 
   links: Link[] = [
     {
-      label: 'ABOUT',
+      label: 'SOBRE',
       route: './',
       routerLinkActiveOptions: { exact: true }
-    },
-    {
-      label: 'TIMELINE',
-      route: './timeline'
-    },
-    {
-      label: 'FRIENDS',
-      route: '',
-      disabled: true
-    },
-    {
-      label: 'PHOTOS',
-      route: '',
-      disabled: true
     }
   ];
   

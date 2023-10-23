@@ -1,19 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router'; // Importe o RouterModule aqui
+import { RouterModule } from '@angular/router';
 import { PerfilComponent } from './perfil.component';
-
-const routes: Routes = [
-  {
-    path: 'perfil',
-    component: PerfilComponent
-  }
-];
+import { PerfilRoutingModule } from './perfil-routing.module'; 
+import { IconModule } from '@visurel/iconify-angular';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRippleModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { PageLayoutModule } from 'src/@vex/components/page-layout/page-layout.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule, // Adicione o RouterModule aos imports
+    RouterModule,
+    PerfilRoutingModule,
+    IconModule,
+    PageLayoutModule,
+    FlexLayoutModule,
+    MatTabsModule,
+    IconModule,
+    MatButtonModule,
+    MatIconModule,
+    MatRippleModule
   ],
   declarations: [PerfilComponent]
 })

@@ -32,7 +32,7 @@
     <div class="dropdown-content">
         <a
             *ngFor="let item of items; trackBy: trackById"
-            (click)="close(item)"
+            (click)="close()"
             [routerLink]="item.route"
             class="notification"
             fxLayout="row"
@@ -84,7 +84,7 @@
                 </span>
             </ng-container>
         </button>
-        <a (click)="close()" color="primary" mat-button>LOGOUT</a>
+        <a (click)="sair()" color="primary" mat-button>LOGOUT</a>
     </div>
 </div>
 

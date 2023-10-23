@@ -55,8 +55,11 @@ const routes: Routes = [
                     import('./views/pages/agenda/agenda.module').then(
                         (m) => m.AgendaModule
                     )
+            },
+            {
+                path: 'perfil',
+                loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
             }
-            
         ]
     },
     {
@@ -74,17 +77,13 @@ const routes: Routes = [
     {
         path: 'cadastro',
         loadChildren: () => import('./views/pages/cadastro/cadastro.module').then(m => m.CadastroModule)
-    },
-    {
-        path: 'perfil',
-        loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
-      },
+    }
 ];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // preloadingStrategy: PreloadAllModules,
+            // preloadingStrategy: PreloadAllModules,|
             scrollPositionRestoration: 'enabled',
             relativeLinkResolution: 'corrected',
             anchorScrolling: 'enabled'
