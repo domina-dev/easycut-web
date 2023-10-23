@@ -58,7 +58,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     window.localStorage.removeItem('agendamentoHoje');
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
-      console.log(this.listaAgendamentos)
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
       this.load = false;
@@ -113,7 +112,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getAgendamentos();
-        //chama sua listagem
       }
     });
   }
