@@ -27,8 +27,8 @@ export class AgendamentoService {
 
   filtrarAgendamentos(filter: string, status: string, dtInicial: string, dtFinal: string): Observable<Agendamento[]> {
     let estabelecimentoID = this.commomService.estabelecimentoId
-    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=4`, {
-      params: { estabelecimento_ID: estabelecimentoID , filtro: filter,status: status, dt_inicial: dtInicial, dt_final: dtFinal}
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/filtro`, {
+      params: { estabelecimento_ID: estabelecimentoID , filtro: filter, status: status, dt_inicial: dtInicial, dt_final: dtFinal}
     })
   }
 }

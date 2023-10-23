@@ -8,7 +8,7 @@ import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamen
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
-import { debounceTime, distinctUntilChanged, filter, map, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -55,13 +55,13 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     EventEmitterService.get("buscarAgendamentos").subscribe(() => this.getAgendamentos());
     this.getAgendamentos();
     this.filter.valueChanges
-    .pipe(
-      map(value => value.trim()),
-      filter(value => value.length > 2),
-      debounceTime(200),
-      distinctUntilChanged(),
-      tap(value => console.log(value)),
-    ).subscribe();
+      .pipe(
+        map(value => value.trim()),
+        filter(value => value.length > 2),
+        debounceTime(200),
+        distinctUntilChanged(),
+        // tap(value => console.log(value)),
+      );
   }
 
   ngAfterViewInit() {
@@ -78,19 +78,24 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         this.dtFinal = data
         break;
     };
-    let dataInicial = this.dtInicial.getFullYear()+"-"+this.dtInicial.getMonth()+1+"-"+this.dtInicial.getDay()
-    let dataFinal = this.dtFinal.getFullYear()+"-"+this.dtFinal.getMonth()+1+"-"+this.dtFinal.getDay()
+    let dataInicial = this.dtInicial.getFullYear() + "-" + this.dtInicial.getMonth() + 1 + "-" + this.dtInicial.getDay();
+    let dataFinal = this.dtFinal.getFullYear() + "-" + this.dtFinal.getMonth() + 1 + "-" + this.dtFinal.getDay()
 
     this.filtrarAgendamentos(this.filter.value, "TODOS", dataInicial, dataFinal)
   }
 
   filtrarAgendamentos(filter: string, status: string, dtInicial: string, dtFinal: string) {
-    this.agendamentoService.filtrarAgendamentos(filter, status, dtInicial, dtFinal).subscribe( response => {
-
-    }, (error) => {
-      console.log(error)
-    });
-
+    this.load = true;
+    this.agendamentoService.filtrarAgendamentos(filter, status, dtInicial, dtFinal).subscribe(response => {
+      this.listaAgendamentos = response;
+      this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
+        console.log(error)
+      });
   }
 
   limparFiltro() {
