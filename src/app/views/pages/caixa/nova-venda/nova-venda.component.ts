@@ -17,7 +17,7 @@ export interface Section {
   styleUrls: ['./nova-venda.component.scss']
 })
 export class NovaVendaComponent implements OnInit {
-  
+
   @Output() trocaTab: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
