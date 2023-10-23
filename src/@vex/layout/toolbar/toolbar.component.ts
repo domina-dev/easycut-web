@@ -29,9 +29,14 @@ import { Style, StyleService } from 'src/@vex/services/style.service';
 })
 export class ToolbarComponent {
 
-  color: ThemePalette = 'primary';
-  Style = Style;
-  checked = true;
+    color: ThemePalette = 'primary';
+    Style = Style;
+    checked = true;
+    planoInf = {
+        plano: "",
+        icone: ""
+    }
+    planoId: number
 
     @Input() mobileQuery: boolean;
 
@@ -77,16 +82,29 @@ export class ToolbarComponent {
         private navigationService: NavigationService,
         private popoverService: PopoverService,
         private styleService: StyleService
-    ) {}
-
+    ) {
+        this.planoId = +window.localStorage.getItem("plano_ID")
+        if (this.planoId == 1) {
+            this.planoInf.icone = "assets/img/icones/basico.svg"
+            this.planoInf.plano = "BASIC"
+        }
+        else if(this.planoId == 2){
+            this.planoInf.icone = "assets/img/icones/premium.svg"
+            this.planoInf.plano = "PREMIUM"
+        }
+        else {
+            this.planoInf.icone = "assets/img/icones/pro.svg"
+            this.planoInf.plano = "PRO"
+        }
+    }
 
     enableDarkMode() {
-      this.styleService.setStyle(Style.dark);
-  }
+        this.styleService.setStyle(Style.dark);
+    }
 
-  disableDarkMode() {
-      this.styleService.setStyle(Style.default);
-  }
+    disableDarkMode() {
+        this.styleService.setStyle(Style.default);
+    }
 
     openQuickpanel() {
         this.layoutService.openQuickpanel();
