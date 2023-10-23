@@ -12,7 +12,7 @@ import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 		fadeInUp400ms
 	]
 })
-export class CompletarCadastroComponent implements OnInit {
+export class CompletarCadastroComponent implements OnInit{
   form: FormGroup;
 
   mostraIcone: boolean = true;
@@ -37,4 +37,3 @@ export class CompletarCadastroComponent implements OnInit {
       });
     }
  }
- 

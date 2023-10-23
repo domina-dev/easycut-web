@@ -39,10 +39,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   listaAgendamentos: Agendamento[] = [];
   agendamentoHoje: number
 
-  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) {}
+  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) { }
 
   ngOnInit(): void {
-    EventEmitterService.get("buscarAgendamentos").subscribe(()=> this.getAgendamentos());
+    EventEmitterService.get("buscarAgendamentos").subscribe(() => this.getAgendamentos());
     this.getAgendamentos()
   }
 
@@ -59,20 +59,21 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
       this.load = false;
-  },
+    },
       (error) => {
         this.load = false;
-        console.log(error)});
+        console.log(error)
+      });
   }
-  openDialog() {
+  abrirModalCadastrarEditar(agendamento?:Agendamento) {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-
+        data: {agendamento:agendamento},
         width: '450px',
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.getAgendamentos();
         //chama sua listagem
       }

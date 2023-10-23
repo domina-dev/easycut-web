@@ -54,7 +54,10 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./views/pages/agenda/agenda.module').then(
                         (m) => m.AgendaModule
-                    )
+                    ),
+                    data: {
+                        toolbarShadowEnabled: true
+                    }
             },
             {
                 path: 'perfil',

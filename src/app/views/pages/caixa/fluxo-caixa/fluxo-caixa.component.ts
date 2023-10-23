@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { FechamentoCaixaComponent } from './../../../../core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -7,14 +9,30 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./fluxo-caixa.component.scss']
 })
 export class FluxoCaixaComponent implements OnInit {
+
+    @Output() trocaTab: EventEmitter<any> = new EventEmitter();
+  
     displayedColumns = ['data', 'descricao', 'status', 'valor'];
     dataSource = ELEMENT_DATA;
-    
+
+    constructor(public dialog: MatDialog){
+
+    }
+
     ngOnInit(): void {
         console.log('Method not implemented');
     }
-    
+
+    fecharCaixa(){
+      const dialogRef = this.dialog.open(FechamentoCaixaComponent)
+      dialogRef.afterClosed().subscribe()
+    }
+
+    trocarTab(){
+        this.trocaTab.emit({data: 0});
+    }
 }
+
 
 export interface FluxoCaixa {
     descricao: string;

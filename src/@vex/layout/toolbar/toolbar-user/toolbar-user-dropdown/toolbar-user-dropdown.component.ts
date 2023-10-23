@@ -1,7 +1,9 @@
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
-    Component
+    Component,
+    Inject,
+    Optional
 } from '@angular/core';
 import { MenuItem } from '../interfaces/menu-item.interface';
 import { trackById } from '../../../../utils/track-by';
@@ -9,11 +11,9 @@ import icPerson from '@iconify/icons-ic/twotone-person';
 import icSettings from '@iconify/icons-ic/twotone-settings';
 import icAccountCircle from '@iconify/icons-ic/twotone-account-circle';
 import icMoveToInbox from '@iconify/icons-ic/twotone-move-to-inbox';
-import icListAlt from '@iconify/icons-ic/twotone-list-alt';
 import icTableChart from '@iconify/icons-ic/twotone-table-chart';
 import icCheckCircle from '@iconify/icons-ic/twotone-check-circle';
 import icAccessTime from '@iconify/icons-ic/twotone-access-time';
-import icDoNotDisturb from '@iconify/icons-ic/twotone-do-not-disturb';
 import icOfflineBolt from '@iconify/icons-ic/twotone-offline-bolt';
 import icChevronRight from '@iconify/icons-ic/twotone-chevron-right';
 import icArrowDropDown from '@iconify/icons-ic/twotone-arrow-drop-down';
@@ -23,14 +23,16 @@ import icLock from '@iconify/icons-ic/twotone-lock';
 import icNotificationsOff from '@iconify/icons-ic/twotone-notifications-off';
 import { Icon } from '@visurel/iconify-angular';
 import { PopoverRef } from '../../../../components/popover/popover-ref';
-import { MatDialog } from '@angular/material/dialog';
+import { ConstrucaoModalComponent } from 'src/app/core/lib/components/modais/construcao-modal/construcao-modal.component';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 export interface OnlineStatus {
-    id: 'online' | 'away' | 'dnd' | 'offline';
+    id: 'aberto' | 'ausente' | 'fechado';
     label: string;
     icon: Icon;
     colorClass: string;
+
 }
 
 @Component({
@@ -45,31 +47,23 @@ export class ToolbarUserDropdownComponent {
             id: '1',
             icon: icAccountCircle,
             label: 'Meu Perfil',
-            description: 'Informações do Perfil',
+            description: 'Informações do Estabelecimento',
             colorClass: 'text-teal',
             route: '/perfil'
         },
         {
             id: '2',
             icon: icMoveToInbox,
-            label: 'My Inbox',
-            description: 'Messages & Latest News',
+            label: 'Caixa de Entrada',
+            description: 'Mensagens e Atualizações',
             colorClass: 'text-primary',
             route: '/apps/chat'
         },
         {
             id: '3',
-            icon: icListAlt,
-            label: 'My Projects',
-            description: 'Tasks & Active Projects',
-            colorClass: 'text-amber',
-            route: '/apps/scrumboard'
-        },
-        {
-            id: '4',
             icon: icTableChart,
-            label: 'Billing Information',
-            description: 'Pricing & Current Plan',
+            label: 'Informações de Cobrança',
+            description: 'Preços e Planos',
             colorClass: 'text-purple',
             route: '/pages/pricing'
         }
@@ -77,32 +71,28 @@ export class ToolbarUserDropdownComponent {
 
     statuses: OnlineStatus[] = [
         {
-            id: 'online',
-            label: 'Online',
+            id: 'aberto',
+            label: 'Aberto',
             icon: icCheckCircle,
             colorClass: 'text-green'
         },
         {
-            id: 'away',
-            label: 'Away',
+            id: 'ausente',
+            label: 'Ausente',
             icon: icAccessTime,
             colorClass: 'text-orange'
         },
         {
-            id: 'dnd',
-            label: 'Do not disturb',
-            icon: icDoNotDisturb,
-            colorClass: 'text-red'
-        },
-        {
-            id: 'offline',
-            label: 'Offline',
+            id: 'fechado',
+            label: 'Fechado',
             icon: icOfflineBolt,
             colorClass: 'text-gray'
         }
     ];
 
     activeStatus: OnlineStatus = this.statuses[0];
+    nomeUsuario: string = window.localStorage.getItem('estabelecimento');
+
 
     trackById = trackById;
     icPerson = icPerson;
@@ -118,7 +108,8 @@ export class ToolbarUserDropdownComponent {
         private cd: ChangeDetectorRef,
         private popoverRef: PopoverRef<ToolbarUserDropdownComponent>,
         public dialog: MatDialog,
-        private router: Router
+        private router: Router,
+        @Optional() @Inject(MAT_DIALOG_DATA) public data: {nomeEstabelecimento: string}
     ) {}
 
     setStatus(status: OnlineStatus) {
@@ -135,4 +126,5 @@ export class ToolbarUserDropdownComponent {
     close() {
         this.popoverRef.close();
     }
+
 }

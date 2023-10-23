@@ -1,0 +1,16 @@
+// Tabela
+.example-container {
+  height: 400px;
+  width: 88%;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+.tabela_fechamento-caixa{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
