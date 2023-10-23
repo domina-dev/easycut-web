@@ -8,6 +8,7 @@ import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamen
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
+import { EditarStatusComponent } from 'src/app/core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -20,6 +21,8 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   form: FormGroup;
 
   load: boolean = false;
+
+  statusInicial: string;
 
   displayedColumns: string[] = [
     'cliente',
@@ -87,6 +90,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       }
     });
 
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // Lógica para excluir o agendamento se o usuário confirmar
@@ -94,6 +98,23 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       }
     });
   }
+
+  abrirModalEditarStatus(agendamento?:Agendamento) {
+    let dialogRef = this.dialog.open(EditarStatusComponent,
+      {
+        data: {
+          agendamento:agendamento,
+        },
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAgendamentos();
+        //chama sua listagem
+      }
+    });
+  }
+
 
   excluirAgendamento(agendamento: Agendamento): void {
     // Implemente a lógica para excluir o agendamento aqui

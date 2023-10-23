@@ -102,7 +102,7 @@
             </ng-container>
 
             <ng-container matColumnDef="status" stickyEnd>
-                <th mat-header-cell *matHeaderCellDef></th>
+                <th mat-header-cell *matHeaderCellDef>Status</th>
                 <td class="tdsticky" [class]="
                         agendamento.status === 'pendente'
                             ? 'pendente'
@@ -111,13 +111,13 @@
                             : 'recusado' " mat-cell *matCellDef="let agendamento">
                     <mat-form-field appearance="standard">
                         <mat-select [(value)]="agendamento.status">
-                            <mat-option value="pendente">Pendente</mat-option>
-                            <mat-option value="aceito">Aceito</mat-option>
-                            <mat-option value="recusado">Recusado</mat-option>
+                            <mat-option value="pendente" (click)="abrirModalEditarStatus(agendamento)">Pendente</mat-option>
+                            <mat-option value="aceito" (click)="abrirModalEditarStatus(agendamento)">Aceito</mat-option>
+                            <mat-option value="recusado" (click)="abrirModalEditarStatus(agendamento)">Recusado</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
-            </ng-container> 
+            </ng-container>
             <!-- Ícone da tabela -->
             <ng-container matColumnDef="icone">
                 <th mat-header-cell *matHeaderCellDef></th>

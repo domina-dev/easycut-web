@@ -100,7 +100,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
     abrirModalCadastrarEditar(produto?: Produto) {
 
-       
+
         const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
             data: {
                 produto: produto
