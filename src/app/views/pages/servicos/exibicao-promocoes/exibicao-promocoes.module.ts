@@ -7,10 +7,11 @@ import { ExibicaoPromocoesComponent } from './exibicao-promocoes.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { ExibicaoServicosModule } from '../exibicao-servicos/exibicao-servicos.module';
 import { ExibicaoProdutosModule } from '../exibicao-produtos/exibicao-produtos.module';
+import { GradePromocoesComponent } from './grade-promocoes.component';
 
 
 @NgModule({
-    declarations: [ExibicaoPromocoesComponent],
+    declarations: [ExibicaoPromocoesComponent, GradePromocoesComponent],
     imports: [CommonModule, ExibicaoPromocoesRoutingModule,MaterialModule,ExibicaoServicosModule,ExibicaoProdutosModule],
     exports: [ExibicaoPromocoesComponent]
 })
