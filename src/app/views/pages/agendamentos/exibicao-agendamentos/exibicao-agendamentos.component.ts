@@ -104,6 +104,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       {
         data: {
           agendamento:agendamento,
+          itens: [agendamento.status]
         },
       });
 

@@ -1,6 +1,11 @@
 <div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
-  <h2 class="title m-0">
-    Tem certeza que deseja MUDAR o status desse agendamento de X para Y ?
+  <h2 class="title m-0" *ngFor="let item of data.itens">
+    Tem certeza que deseja ALTERAR o status desse agendamento de <span>X</span> para <span [class]="
+    item === 'pendenteEditar'
+        ? 'pendenteEditar'
+        : item === 'aceitoEditar'
+        ? 'aceitoEditar'
+        : 'recusadoEditar' ">{{item}} </span>?
   </h2>
 </div>
 <mat-dialog-actions align="end">
