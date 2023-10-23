@@ -22,7 +22,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
   load: boolean = false;
 
-  statusInicial: string;
 
   displayedColumns: string[] = [
     'cliente',
@@ -59,6 +58,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     window.localStorage.removeItem('agendamentoHoje');
     this.agendamentoService.getAgendamentos().subscribe(response => {
       this.listaAgendamentos = response;
+      console.log(this.listaAgendamentos)
       this.dataSource = new MatTableDataSource<Agendamento>(this.listaAgendamentos);
       this.dataSource.paginator = this.paginator;
       this.load = false;
@@ -68,10 +68,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         console.log(error)
       });
   }
-  abrirModalCadastrarEditar(agendamento?:Agendamento) {
+  abrirModalCadastrarEditar(agendamento?: Agendamento) {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        data: {agendamento:agendamento},
+        data: { agendamento: agendamento },
         width: '450px',
       });
 
@@ -99,12 +99,14 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
     });
   }
 
-  abrirModalEditarStatus(agendamento?:Agendamento) {
+  abrirModalEditarStatus(statusFinal:string, agendamento?: Agendamento) {
+    let statusInicial: string = this.listaAgendamentos.find(x => x.id == agendamento.id)?.status;
     let dialogRef = this.dialog.open(EditarStatusComponent,
       {
         data: {
-          agendamento:agendamento,
-          itens: [agendamento.status]
+          statusInicial: statusInicial,
+          statusFinal: statusFinal,
+          agendamento: agendamento
         },
       });
 
