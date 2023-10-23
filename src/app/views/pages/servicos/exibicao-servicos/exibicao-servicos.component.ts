@@ -55,12 +55,10 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       distinctUntilChanged(),
       tap(value => console.log(value)),
     ).subscribe();
+    this.filtrarServicos(this.campoFiltro.value, '', this.campoFiltro.value);
 
   }
 
-  pesquisar() {
-    let value = this.campoFiltro.value;
-  }
 
   limparFiltro() {
     this.campoFiltro.reset();
