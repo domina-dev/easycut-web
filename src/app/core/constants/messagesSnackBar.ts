@@ -3,6 +3,8 @@ export enum  MessagesSnackBar {
     ADICIONAR_AGENDAMENTO= "Agendamento adicionado com sucesso!",
     ERRO_ADICIONAR_AGENDAMENTO= "Erro ao adicionar agendamento!",
     EDITAR_AGENDAMENTO= "Agendamento editado com sucesso!",
+    EDITAR_AGENDAMENTO_STATUS= "Status do agendamento editado com sucesso!",
+    ERRO_EDITAR_AGENDAMENTO_STATUS= "Erro ao editar status do agendamento!",
     ERRO_EDITAR_AGENDAMENTO= "Erro ao editar agendamento!",
     DELETAR_AGENDAMENTO= "Agendamento excluído!",
     ERRO_DELETAR_AGENDAMENTO= "Erro ao excluir agendamento!",

@@ -8,6 +8,7 @@ import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamen
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
+import { EditarStatusComponent } from 'src/app/core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -22,6 +23,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
   form: FormGroup;
 
   load: boolean = false;
+
 
   displayedColumns: string[] = [
     'cliente',
@@ -67,10 +69,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         console.log(error)
       });
   }
-  abrirModalCadastrarEditar(agendamento?:Agendamento) {
+  abrirModalCadastrarEditar(agendamento?: Agendamento) {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
-        data: {agendamento:agendamento},
+        data: { agendamento: agendamento },
         width: '450px',
       });
 
@@ -89,12 +91,32 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       }
     });
 
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.excluirAgendamento(agendamento);
       }
     });
   }
+
+  abrirModalEditarStatus(statusFinal:string, agendamento?: Agendamento) {
+    let statusInicial: string = this.listaAgendamentos.find(x => x.id == agendamento.id)?.status;
+    let dialogRef = this.dialog.open(EditarStatusComponent,
+      {
+        data: {
+          statusInicial: statusInicial,
+          statusFinal: statusFinal,
+          agendamento: agendamento
+        },
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAgendamentos();
+      }
+    });
+  }
+
 
   excluirAgendamento(agendamento: Agendamento): void {
     this.agendamentoService.deletarAgendamento(agendamento.id).subscribe(() => {

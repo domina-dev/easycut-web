@@ -19,9 +19,9 @@ export class AgendamentoService {
       params: { estabelecimento_ID: estabelecimentoID}
     });
   }
-  
+
   getAgendamentosDia(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=4`);
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=1`);
   }
 
   CadastraAgendamentos(agendamento: Agendamento): Observable<Agendamento> {
