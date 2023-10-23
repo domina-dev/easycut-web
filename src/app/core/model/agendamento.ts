@@ -7,7 +7,7 @@ export class Agendamento {
   dtAtendimento: string;
   hrAtendimento: string;
   responsavel: string;
-  status: boolean;
+  status: string;
   estabelecimentoID: number;
 
 }

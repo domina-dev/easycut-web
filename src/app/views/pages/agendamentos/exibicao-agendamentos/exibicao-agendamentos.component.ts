@@ -8,7 +8,10 @@ import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamen
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
-import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { EditarStatusComponent } from 'src/app/core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'vex-exibicao-agendamentos',
@@ -49,7 +52,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService) { }
+  constructor(public dialog: MatDialog, private agendamentoService: AgendamentoService, private snackbar: MatSnackBar,) { }
 
   ngOnInit(): void {
     EventEmitterService.get("buscarAgendamentos").subscribe(() => this.getAgendamentos());
@@ -60,7 +63,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         filter(value => value.length > 2),
         debounceTime(200),
         distinctUntilChanged(),
-        // tap(value => console.log(value)),
       );
   }
 
@@ -117,10 +119,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
         console.log(error)
       });
   }
-
-  openDialog() {
+  abrirModalCadastrarEditar(agendamento?: Agendamento) {
     let dialogRef = this.dialog.open(CadastrarEditarComponent,
       {
+        data: { agendamento: agendamento },
         width: '450px',
       });
 
@@ -140,16 +142,51 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
       }
     });
 
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Lógica para excluir o agendamento se o usuário confirmar
         this.excluirAgendamento(agendamento);
       }
     });
   }
 
+  abrirModalEditarStatus(statusFinal:string, agendamento?: Agendamento) {
+    let statusInicial: string = this.listaAgendamentos.find(x => x.id == agendamento.id)?.status;
+    let dialogRef = this.dialog.open(EditarStatusComponent,
+      {
+        data: {
+          statusInicial: statusInicial,
+          statusFinal: statusFinal,
+          agendamento: agendamento
+        },
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getAgendamentos();
+      }
+    });
+  }
+
+
   excluirAgendamento(agendamento: Agendamento): void {
-    // Implemente a lógica para excluir o agendamento aqui
-    // Chame seu serviço ou método para realizar a exclusão
+    this.agendamentoService.deletarAgendamento(agendamento.id).subscribe(() => {
+      this.getAgendamentos();
+      this.snackbar.open(
+        MessagesSnackBar.DELETAR_AGENDAMENTO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    },(error) => {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_DELETAR_AGENDAMENTO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    })
   }
 }

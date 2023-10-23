@@ -7,7 +7,7 @@ import { Produto } from 'src/app/core/model/produto';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
@@ -27,6 +27,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         'preco',
         'icone'
     ];
+    
 
     listaProduto: Produto[] = [];
 
@@ -48,8 +49,17 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     constructor(
         public dialog: MatDialog,
         private produtoService: ProdutoService,
-        private snackbar: MatSnackBar
-    ) {}
+        private snackbar: MatSnackBar,
+        private fb:FormBuilder
+    ) {
+        this.form = fb.group({
+            filtro: [''],
+            categoria: [''],
+            status: ['']
+          })
+    }
+
+    
 
     listarProdutos() {
         this.load = true;
@@ -69,15 +79,11 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         );
     }
 
-    deletarProduto() {
+    deletarProduto(produto: Produto) {
         this.load = true;
-        this.produtoService.deletaProduto().subscribe(
+        this.produtoService.deletaProduto(produto.id).subscribe(
             (response) => {
-                this.listaProduto = response;
-                this.dataSource = new MatTableDataSource<Produto>(
-                    this.listaProduto
-                );
-                this.dataSource.paginator = this.paginator;
+                this.listarProdutos();
                 this.load = false;
                 this.snackbar.open(MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
                     duration: 10000
@@ -100,7 +106,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
     abrirModalCadastrarEditar(produto?: Produto) {
 
-       
+
         const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
             data: {
                 produto: produto
@@ -125,7 +131,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
 
         dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-                this.deletarProduto();
+                this.deletarProduto(produto);
             }
         });
     }
@@ -202,4 +208,24 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
             }
         });
     }
+
+    limparFiltro() {
+        this.form.reset();
+      }
+    
+    
+      filtrarProdutos() {
+        this.load = true;
+        let formulario = this.form.value;
+        this.produtoService.filtroProduto(formulario.filtro, formulario.status, formulario.categoria).subscribe(response => {
+          this.listaProduto = response;
+          this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
+          this.dataSource.paginator = this.paginator;
+          this.load = false;
+        },
+          (error) => {
+            this.load = false;
+            console.log(error)
+          });
+      }
 }

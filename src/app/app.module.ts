@@ -32,6 +32,8 @@ import { TokenInterceptorService } from 'src/app/core/config/token-Interceptor.s
 import { IconModule } from '@visurel/iconify-angular';
 import { FechamentoCaixaComponent } from './core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
 import { CompletarCadastroComponent } from './core/lib/components/modais/completarCadastro/completarCadastro.component';
+import { DescontoComponent } from './core/lib/components/modais/desconto/desconto.component';
+import { EditarStatusComponent } from './core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -45,7 +47,9 @@ registerLocaleData(localePt, 'pt');
         CadastrarProdutoComponent,
         ConfirmacaoComponent,
         CompletarCadastroComponent,
-        FechamentoCaixaComponent
+        FechamentoCaixaComponent,
+        DescontoComponent,
+        EditarStatusComponent
     ],
     imports: [
         BrowserModule,

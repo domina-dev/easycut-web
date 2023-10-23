@@ -4,18 +4,31 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/internal/operators/take';
 import { Servico } from '../../model/servicos';
+import { CommomService } from '../commom/commom.service';
 
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class ServicoService {
   private readonly API = environment.url_api;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private commonService: CommomService) { }
 
-  obterServicos():Observable<Servico[]>{
+  obterServicos(): Observable<Servico[]> {
     return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
+  }
+
+  filtroServico(campoFiltro: string, status: string, categoriaFiltro: string): Observable<Servico[]> {
+    let estabelecimentoID = this.commonService.estabelecimentoId;
+    return this.http.get<Servico[]>(`${this.API}/servicos/filtro`, {
+      params: {
+        estabelecimento_ID: estabelecimentoID,
+        filtro: campoFiltro,
+        status: status,
+        categoria: categoriaFiltro,
+      }
+    }).pipe(take(1));
   }
 
   cadastrarServico(servico): Observable<Servico[]> {

@@ -8,6 +8,7 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Servico } from 'src/app/core/model/servicos'
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'vex-exibicao-servicos',
@@ -31,16 +32,57 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
   verLista: boolean = true;
   verGrade: boolean = false;
+
   listaServicos: Servico[] = [];
 
+  form: FormGroup;
+  estabelecimentoID: number;
+
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
 
   constructor(public dialog: MatDialog,
     private servicoService: ServicoService,
-    private snackbar: MatSnackBar) { }
+    private snackbar: MatSnackBar,
+    private fb:FormBuilder) {
 
-  ngOnInit(): void { this.listarServicos() }
+      this.form = fb.group({
+        filtro: [''],
+        categoria: [''],
+        status: ['']
+      })
+
+
+    }
+
+  ngOnInit(): void {
+
+    this.listarServicos();
+
+  }
+
+
+  limparFiltro() {
+    this.form.reset();
+  }
+
+
+  filtrarServicos() {
+    this.load = true;
+    let formulario = this.form.value;
+    this.servicoService.filtroServico(formulario.filtro, formulario.status, formulario.categoria).subscribe(response => {
+      this.listaServicos = response;
+      this.dataSource = new MatTableDataSource<Servico>(this.listaServicos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
+        console.log(error)
+      });
+  }
+
 
   listarServicos() {
     this.load = true;
@@ -141,7 +183,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     });
 }
 
-  abrirModalPromocional(servico: Servico): void {
+abrirModalPromocional(servico: Servico): void {
     let mensagem: string = ""
     if (servico.promocional) {
       mensagem = "Tem certeza que deseja retirar este serviço da promoção?"

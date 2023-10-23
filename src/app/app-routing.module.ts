@@ -54,9 +54,15 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./views/pages/agenda/agenda.module').then(
                         (m) => m.AgendaModule
-                    )
+                    ),
+                    data: {
+                        toolbarShadowEnabled: true
+                    }
+            },
+            {
+                path: 'perfil',
+                loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
             }
-            
         ]
     },
     {
@@ -80,7 +86,7 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // preloadingStrategy: PreloadAllModules,
+            // preloadingStrategy: PreloadAllModules,|
             scrollPositionRestoration: 'enabled',
             relativeLinkResolution: 'corrected',
             anchorScrolling: 'enabled'

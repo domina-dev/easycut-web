@@ -14,11 +14,14 @@ export class AgendamentoService {
   constructor(private http: HttpClient, private commomService: CommomService) {}
 
   getAgendamentos(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/todos?estabelecimento_ID=4`);
+    let estabelecimentoID = this.commomService.estabelecimentoId;
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/todos`, {
+      params: { estabelecimento_ID: estabelecimentoID}
+    });
   }
 
   getAgendamentosDia(): Observable<Agendamento[]> {
-    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=4`);
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/hoje?estabelecimento_ID=1`);
   }
 
   CadastraAgendamentos(agendamento: Agendamento): Observable<Agendamento> {
@@ -30,5 +33,13 @@ export class AgendamentoService {
     return this.http.get<Agendamento[]>(`${this.API}/agendamentos/filtro`, {
       params: { estabelecimento_ID: estabelecimentoID , filtro: filter, status: status, dt_inicial: dtInicial, dt_final: dtFinal}
     })
+  }
+
+  alterarAgendamento(agendamento: Agendamento): Observable<Agendamento> {
+    return this.http.put<Agendamento>(`${this.API}/agendamentos`,agendamento)
+  }
+
+  deletarAgendamento(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.API}/agendamentos?agendamento_ID=${id}`);
   }
 }
