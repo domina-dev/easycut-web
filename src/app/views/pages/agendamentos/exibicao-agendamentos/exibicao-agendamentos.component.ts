@@ -6,13 +6,11 @@ import { CadastrarEditarComponent } from 'src/app/core/lib/components/modais/age
 import { Agendamento } from 'src/app/core/model/agendamento';
 import { AgendamentoService } from 'src/app/core/services/agendamentos/agendamentos.service';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { EventEmitterService } from 'src/app/core/services/event.service';
-import { debounceTime, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { EditarStatusComponent } from 'src/app/core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CommomService } from 'src/app/core/services/commom/commom.service';
 
 @Component({
 	selector: 'vex-exibicao-agendamentos',
