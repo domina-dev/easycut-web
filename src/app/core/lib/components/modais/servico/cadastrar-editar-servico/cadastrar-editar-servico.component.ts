@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { Servico } from 'src/app/core/model/servicos';
+import { CommomService } from 'src/app/core/services/commom/commom.service';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
 
 @Component({
@@ -24,18 +25,27 @@ export class CadastrarEditarServicoComponent {
   constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
       private fb: FormBuilder, private servicoService: ServicoService,
       private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
+      private commomService: CommomService,
       private snackbar: MatSnackBar) {
-        this.isCadastro = !data.servico;
-        this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
-        this.form = this.fb.group({
-          nome: [data?.servico?.nome, Validators.required],
-          tempoEstimado: [data?.servico?.tempoEstimado, Validators.required],
-          descricao: [data?.servico?.descricao],
-          categoria: [data?.servico?.categoria, Validators.required],
-          valor: [data?.servico?.valor, Validators.required],
-          valorPromocional: [data?.servico?.valorPromocional, Validators.required],
-          promocional: [data?.servico?.promocional]
-      });
+        this.montaLegendaBotao(data);
+        this.iniciaForm(data);
+  }
+
+  private montaLegendaBotao(data: any) {
+    this.isCadastro = !data.servico;
+    this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
+  }
+
+  private iniciaForm(data: any) {
+    this.form = this.fb.group({
+      nome: [data?.servico?.nome, Validators.required],
+      tempoEstimado: [data?.servico?.tempoEstimado, Validators.required],
+      descricao: [data?.servico?.descricao],
+      categoria: [data?.servico?.categoria, Validators.required],
+      valor: [data?.servico?.valor, Validators.required],
+      valorPromocional: [data?.servico?.valorPromocional, Validators.required],
+      promocional: [data?.servico?.promocional]
+    });
   }
 
   cadastrarEditarServico() {
@@ -44,10 +54,11 @@ export class CadastrarEditarServicoComponent {
 
   cadastrarServico() {
     this.load = true;
-    this.servicoService.cadastrarServico(this.form.value).subscribe(() => {
+    this.montarBody();
+    this.servicoService.cadastrarServico(this.servico).subscribe(() => {
       console.log(this.form.value);
       this.load = false;
-      this.dialogRef.close()
+      this.dialogRef.close(true)
       this.snackbar.open(
         MessagesSnackBar.ADICIONAR_SERVICO,
         "Fechar",
@@ -97,7 +108,7 @@ export class CadastrarEditarServicoComponent {
 
   private montarBody() {
     let id = this.data?.servico?.id;
-    let estabelecimentoID = this.data?.servico?.estabelecimentoID;
+    let estabelecimentoID = this.commomService.estabelecimentoId
     this.servico = this.form.value;
     this.servico.id = id;
     this.servico.estabelecimentoID = estabelecimentoID;
