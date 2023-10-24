@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, OnInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,9 +13,10 @@ import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-	selector: 'vex-exibicao-agendamentos',
-	templateUrl: './exibicao-agendamentos.component.html',
-	styleUrls: ['./exibicao-agendamentos.component.scss'],
+  selector: 'vex-exibicao-agendamentos',
+  templateUrl: './exibicao-agendamentos.component.html',
+  styleUrls: ['./exibicao-agendamentos.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
