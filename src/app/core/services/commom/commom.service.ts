@@ -11,7 +11,7 @@ import { Estabelecimento } from '../../model/estabelecimento';
 export class CommomService {
     
     estabelecimentoId: number = +window.localStorage.getItem("estabelecimento_ID");
-    estabelecimento = new Estabelecimento();
+    estabelecimento: Estabelecimento = this.estabelecimentoSessao();
     
     constructor(public http: HttpClient) {}
 
@@ -19,5 +19,10 @@ export class CommomService {
         return this.http
             .get(`${environment.url_api}/health-check`, { observe: 'response' })
             .pipe(take(1));
+    }
+    
+    estabelecimentoSessao(): Estabelecimento{
+        this.estabelecimento = JSON.parse(window.localStorage.getItem('estabelecimentoLogado'))
+        return this.estabelecimento;
     }
 }
