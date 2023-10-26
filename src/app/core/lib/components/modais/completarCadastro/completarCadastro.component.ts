@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
@@ -36,4 +36,14 @@ export class CompletarCadastroComponent implements OnInit{
         telefone: ['', Validators.required],
       });
     }
+
+    capturarImagem(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const selectedFile = inputElement.files[0];
+    
+    if (selectedFile) {
+      console.log('Imagem selecionada:', selectedFile.name);
+    }
+  }
+
  }
