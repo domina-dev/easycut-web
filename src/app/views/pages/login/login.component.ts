@@ -151,7 +151,8 @@ export class LoginComponent {
 	obterEstabelecimentoPeloId() {
         this.estabelecimentoService.obterEstabelecimentoPeloId().subscribe(
             (response) => {
-                this.commomService.estabelecimento = response;
+				localStorage.setItem("estabelecimentoLogado", JSON.stringify(response))
+                this.commomService.estabelecimentoSessao();
             },
             (error) => {
                 console.log(error);
