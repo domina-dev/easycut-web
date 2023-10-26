@@ -5,7 +5,7 @@ import { ExibicaoServicosRoutingModule } from './exibicao-servicos-routing.modul
 import { ExibicaoServicosComponent } from './exibicao-servicos.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
-import { GradeServicosComponent } from './grade-servicos.component';
+import { GradeServicosComponent } from './grade-servicos/grade-servicos.component';
 
 @NgModule({
     declarations: [ExibicaoServicosComponent, GradeServicosComponent],
