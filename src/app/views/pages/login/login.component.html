@@ -46,7 +46,7 @@
                     <a [routerLink]="['/recuperacao-senha']" class="caption2">Esqueceu sua senha?</a>
                 </div>
 
-                <button class="singin" (click)="login()" color="primary" mat-raised-button type="button">
+                <button class="singin" (click)="login()" (window:keydown.enter)="login()" color="primary" mat-raised-button type="button">
                     ENTRAR
                 </button>
                 <div class="text-secondary text-center">Não tem uma conta?</div>
