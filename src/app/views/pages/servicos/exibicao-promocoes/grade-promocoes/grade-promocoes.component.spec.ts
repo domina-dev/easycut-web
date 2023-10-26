@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GradePromocoesComponent } from './grade-promocoes.component';
+import { GradePromocoesComponent } from '././grade-promocoes.component';
 
 describe('GradePromocoesComponent', () => {
   let component: GradePromocoesComponent;
