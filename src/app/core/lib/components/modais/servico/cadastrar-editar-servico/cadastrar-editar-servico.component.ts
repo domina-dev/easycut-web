@@ -20,6 +20,8 @@ export class CadastrarEditarServicoComponent {
   isCadastro!: boolean ;
 
   servico = new Servico();
+  mostraIcone: boolean = true;
+
 
   constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
       private fb: FormBuilder, private servicoService: ServicoService,

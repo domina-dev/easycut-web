@@ -7,6 +7,16 @@
     #inpN {
         width: 100%;
     }
+    #formul{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #imagemPerf{
+      width: 50%;
+    }
+
     .tempoEs {
         display: flex;
         justify-content: space-between;
@@ -50,3 +60,28 @@
         }
     }
 }
+
+
+
+.foto {
+  cursor: pointer;
+  width: 300px;
+  height: 100%;
+}
+.foto:hover {
+  opacity: 0.3;
+}
+.mat-icon {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+}
+input[type="file"] {
+  display: none;
+}
+
+.centInputImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
