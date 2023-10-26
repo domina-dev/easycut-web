@@ -1,0 +1,90 @@
+// .card {
+//     max-width: 450px;
+//     min-height: 565px;
+//     border-radius: 10px;
+//     border-width: 1.6px;
+//     border-color: rgba(58, 53, 53, 0.103);
+//     box-shadow: none;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
+
+.card{
+  min-width: 27rem;
+  overflow: auto;
+  height: 34rem;
+}
+
+.img{
+  margin-top: 50%;
+}
+
+.pass .mat-icon-button .mat-icon {
+    display: flex !important;
+    font-size: 24px;
+}
+
+.olho {
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.body-2 {
+    color: rgba(0, 0, 0, 0.425);
+    margin-top: -2px;
+    font-size: 14px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.email,
+.password {
+    margin-left: 7px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.445);
+    font-weight: 500;
+}
+
+mat-hint {
+    font-size: 12px;
+    margin-left: 5px;
+    margin-top: -3px;
+    color: rgba(0, 0, 0, 0.815);
+}
+
+mat-error {
+    margin-left: 5px;
+    margin-top: -2px;
+    font-size: 12px;
+}
+
+.caption {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.caption2 {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.camptionx {
+    padding-bottom: 10px;
+}
+
+.singin {
+    border-radius: 18px;
+    background-color: #6366f1;
+}
+
+.text-secondary {
+    font-size: 15px;
+}
+
+.secondary2 {
+    margin-top: -14px;
+}

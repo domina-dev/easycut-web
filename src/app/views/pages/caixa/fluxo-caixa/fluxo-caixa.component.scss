@@ -1,0 +1,61 @@
+// Filtro
+.filter{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    .search{
+        width: 50%;
+        mat-form-field{
+            display: inline;
+        }
+    }
+    .btnAdd{
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    .icon-csv{
+        cursor: pointer;
+    }
+}
+
+
+// Tabela
+.example-container {
+    height: 400px;
+    width: 70%;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+.tabela_fluxo-caixa{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+// Descriçao da venda
+.descricao{
+    .total{
+        h3{
+            margin-bottom: 10px;
+        }
+    }
+    .btn{
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        .btn-fechar_caixa{
+            border-radius: 5px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

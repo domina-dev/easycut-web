@@ -1,0 +1,62 @@
+<div
+    class="w-full h-full bg-pattern"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+>
+    <div [@fadeInUp] class="card overflow-hidden w-full max-w-xs">
+        <div class="p-6 pb-0" fxLayout="column" fxLayoutAlign="center center">
+            <div class="fill-current text-center">
+                <img alt="" class="w-16" src="assets/img/demo/logo.svg" />
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <h2 class="title m-0">Esqueceu sua senha?</h2>
+            <h4 class="body-2 text-secondary m-0">
+                Enviaremos um e-mail para recuperação de senha
+            </h4>
+        </div>
+        <div
+            [formGroup]="form"
+            class="p-6"
+            fxLayout=" column"
+            fxLayoutGap="16px"
+        >
+            <div fxFlex="auto" fxLayout="column">
+                <mat-form-field fxFlex="grow">
+                    <mat-hint>Digite seu e-mail.</mat-hint>
+                    <mat-label class="email">E-Mail</mat-label>
+                    <input formControlName="email" matInput required />
+                    <mat-error *ngIf="form.get('email').hasError('required')">
+                        Não podemos recuperar sua senha, sem seu e-mail.
+                    </mat-error>
+                </mat-form-field>
+                <button
+                    (click)="recuperarSenha()"
+                    class="recSen"
+                    color="primary"
+                    mat-raised-button
+                    type="button"
+                >
+                    Recuperar Senha
+                </button>
+                <div
+                    class="text-secondary secondary2 text-center"
+                    [routerLink]="['/login']"
+                    id="vlogin"
+                >
+                    <strong>Voltar para o login</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LOADING -->
+<div *ngIf="load" id="vex-splash-screen-load">
+  <div class="wrapper">
+      <div class="ball-scale-multiple">
+          <div></div>
+          <div></div>
+          <div></div>
+      </div>
+  </div>
+</div>

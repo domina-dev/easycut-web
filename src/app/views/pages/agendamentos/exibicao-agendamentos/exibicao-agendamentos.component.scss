@@ -1,0 +1,70 @@
+
+// Tabela de Agendamentos
+table {
+  width: 100%;
+}
+
+.pendente {
+  background: rgb(252, 225, 104);
+  width: 5.3rem;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+}
+
+.aceito {
+  background: rgb(74, 197, 74);
+  width: 5.3rem;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+}
+
+.recusado {
+  background: rgb(255, 103, 103);
+  width: 5.3rem;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 3px;
+  margin-bottom: 2px;
+  border-radius: 8px;
+}
+
+th {
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: black !important;
+}
+
+.tdsticky .mat-form-field-underline {
+  opacity: 0;
+}
+
+.aceito .mat-form-field-flex {
+  width: 5.3rem;
+}
+
+.recusado .mat-form-field-flex {
+  width: 5.3rem;
+}
+
+.pendente .mat-form-field-flex {
+  width: 5.3rem;
+}
+
+
+.tdsticky .mat-form-field-wrapper {
+  padding: 0;
+}
+
+.tdsticky .mat-select-arrow-wrapper {
+  height: 1px !important;
+}
+
+.tdsticky .mat-form-field-infix {
+  border: 0 !important;
+}

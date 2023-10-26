@@ -1,46 +1,51 @@
-<div
-    class="toolbar w-full px-gutter"
-    fxLayout="row"
-    fxLayoutAlign="start center"
-    vexContainer
->
-    <button
-        (click)="openSidenav()"
-        [fxHide]="!mobileQuery"
-        mat-icon-button
-        type="button"
-    >
+<div class="toolbar w-full px-gutter" fxLayout="row" fxLayoutAlign="start center" vexContainer>
+    <button (click)="openSidenav()" [fxHide]="!mobileQuery" mat-icon-button type="button">
         <mat-icon [icIcon]="icMenu"></mat-icon>
     </button>
 
-    <div
-        *ngIf="(isVerticalLayout$ | async) && isNavbarInToolbar$ | async"
-        [fxHide]="mobileQuery"
-        class="px-gutter"
-        fxFlex="none"
-        fxLayout="row"
-        fxLayoutAlign="start center"
-    >
-        <vex-navigation-item
-            *ngFor="let item of navigationItems"
-            [item]="item"
-        ></vex-navigation-item>
+    <div *ngIf="(isVerticalLayout$ | async) && isNavbarInToolbar$ | async" [fxHide]="mobileQuery" class="px-gutter"
+        fxFlex="none" fxLayout="row" fxLayoutAlign="start center">
+        <vex-navigation-item *ngFor="let item of navigationItems" [item]="item"></vex-navigation-item>
     </div>
 
     <span fxFlex></span>
 
     <div class="-mx-1 flex items-center">
         <div class="px-1">
+            <button mat-menu-item (click)="
+                    selectedStyle === Style.dark
+                        ? disableDarkMode()
+                        : enableDarkMode()
+                " *ngIf="selectedStyle$ | async as selectedStyle">
+                <mat-icon>invert_colors</mat-icon>
+            </button>
+        </div>
+
+        <div class="px-1">
             <vex-toolbar-notifications></vex-toolbar-notifications>
         </div>
 
+        <div id="agendaDia" class="px-1">
+            <button (click)="openQuickpanel()" mat-icon-button type="button">
+                <mat-icon [icIcon]="icDateRange"></mat-icon>
+            </button>
+        </div>
+        <div #originRef
+            *ngIf="planoId"
+            class="flex items-center rounded relative trans-ease-out select-none py-1 pr-1 pl-3 "
+            matRipple>
+            <div class="body-1 font-medium leading-snug ltr:mr-3 rtl:ml-3" fxHide.xs>
+                {{ planoInf.plano }}
+            </div>
+            <div class="rounded-full h-9 w-9 flex items-center justify-center text-primary bg-primary-light">
+                <img src="{{planoInf.icone}}" alt="">
+            </div>
+        </div>
         <div class="px-1">
             <vex-toolbar-user></vex-toolbar-user>
         </div>
     </div>
 </div>
 
-<vex-navigation
-    *ngIf="(isVerticalLayout$ | async) && isNavbarBelowToolbar$ | async"
-    [fxHide]="mobileQuery"
-></vex-navigation>
+<vex-navigation *ngIf="(isVerticalLayout$ | async) && isNavbarBelowToolbar$ | async"
+    [fxHide]="mobileQuery"></vex-navigation>

@@ -1,0 +1,28 @@
+<vex-page-layout mode="card">
+    <vex-page-layout-header fxLayout="column" fxLayoutAlign="right start">
+        <div vexContainer>
+            <h2 class="title m-0">{{ legenda }}</h2>
+        </div>
+    </vex-page-layout-header>
+    <vex-page-layout-content vexContainer>
+        <div class="card">
+            <mat-tab-group [(selectedIndex)]="tabSelected" (selectedTabChange)="trocaLegenda($event)">
+                <mat-tab label="Nova Venda">
+                    <div class="p-6">
+                        <vex-nova-venda (trocaTab)="trocaTab($event)"></vex-nova-venda>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Fluxo de Caixa">
+                    <div class="p-6">
+                        <vex-fluxo-caixa (trocaTab)="trocaTab($event)"></vex-fluxo-caixa>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Histórico de vendas">
+                    <div class="p-6">
+                        <vex-historico-vendas></vex-historico-vendas>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </vex-page-layout-content>
+</vex-page-layout>

@@ -12,7 +12,7 @@ const defaultConfig: Config = {
         title: 'Easycuty',
         imageUrl: 'assets/img/demo/logo.svg',
         showCollapsePin: true,
-        state: 'expanded'
+        state: 'collapsed'
     },
     toolbar: {
         fixed: true
@@ -21,7 +21,7 @@ const defaultConfig: Config = {
         position: 'below-toolbar'
     },
     footer: {
-        visible: true,
+        visible: false,
         fixed: true
     }
 };

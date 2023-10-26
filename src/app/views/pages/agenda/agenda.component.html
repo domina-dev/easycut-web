@@ -1,0 +1,55 @@
+<div class="h-full flex flex-col">
+  <div class="calendar-bg relative text-contrast-white flex-none">
+    <div class="bg-contrast-black opacity-25 absolute top-0 left-0 right-0 bottom-0 z-0 w-full h-full"></div>
+    <div class="container py-4 px-6 h-40 z-10 relative flex items-end">
+      <div class="flex-auto flex flex-col sm:flex-row justify-between items-center">
+        <div class="headline" style="text-transform: capitalize;">{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-br' }}</div>
+
+        <div class="actions flex flex-col sm:flex-row justify-end items-center">
+          <div class="chevrons">
+            <button [(viewDate)]="viewDate" [view]="view" mat-icon-button mwlCalendarPreviousView>
+              <mat-icon [icIcon]="icChevronLeft"></mat-icon>
+            </button>
+            <button [(viewDate)]="viewDate" [view]="view" mat-icon-button mwlCalendarNextView>
+              <mat-icon [icIcon]="icChevronRight"></mat-icon>
+            </button>
+          </div>
+          <div class="flex">
+            <button (click)="view = CalendarView.Month" mat-button>Mês</button>
+            <button (click)="view = CalendarView.Week" mat-button>Semana</button>
+            <button (click)="view = CalendarView.Day" mat-button>Dia</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <vex-scrollbar [ngSwitch]="view" class="px-0 shadow flex-auto relative" vexContainer>
+    <mwl-calendar-month-view
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      *ngSwitchCase="'month'"
+      [activeDayIsOpen]="activeDayIsOpen"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      *ngSwitchCase="'week'"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      *ngSwitchCase="'day'"
+      [events]="events"
+      [refresh]="refresh"
+      [viewDate]="viewDate">
+    </mwl-calendar-day-view>
+  </vex-scrollbar>
+</div>

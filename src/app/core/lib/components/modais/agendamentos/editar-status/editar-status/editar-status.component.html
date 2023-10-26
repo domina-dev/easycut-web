@@ -1,0 +1,48 @@
+<div class="px-6 py-4 border-b" fxLayout="row" fxLayoutAlign="start center">
+    <h2 class="title m-0">
+        Tem certeza que deseja ALTERAR o status desse agendamento de
+        <span
+            [class]="
+                data.statusInicial === 'pendente'
+                    ? 'pendenteEditar'
+                    : data.statusInicial === 'aceito'
+                    ? 'aceitoEditar'
+                    : 'recusadoEditar'
+            "
+            >{{ data.statusInicial }}</span
+        >
+        para
+        <span
+            [class]="
+                data.statusFinal === 'pendente'
+                    ? 'pendenteEditar'
+                    : data.statusFinal === 'aceito'
+                    ? 'aceitoEditar'
+                    : 'recusadoEditar'
+            "
+            >{{ data.statusFinal }} </span
+        >?
+    </h2>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="editarAgendamento()"
+    >
+        Confirmar
+    </button>
+</mat-dialog-actions>
+
+<!-- LOADING -->
+<div *ngIf="load" id="vex-splash-screen-load">
+    <div class="wrapper">
+        <div class="ball-scale-multiple">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

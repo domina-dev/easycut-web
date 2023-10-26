@@ -1,0 +1,141 @@
+<div class="row" [formGroup]="form">
+    <div class="col-md-6">
+        <mat-form-field class="inptPes" appearance="standard" fxFlex="grow">
+            <mat-label>Pesquisar produto</mat-label>
+            <input matInput formControlName="filtro" (change)="filtrarProdutos()"/>
+        </mat-form-field>
+    </div>
+
+    <div class="col-md-3">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="categoria" (selectionchange)="filtrarProdutos()">
+                <mat-option value="todas">Todas</mat-option>
+                <mat-option value="cabelo">Cabelo</mat-option>
+                <mat-option value="barba">Barba</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="col-md-3">
+        <mat-form-field appearance="standard" fxFlex="grow">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" (selectionchange)="filtrarProdutos()">
+                <mat-option value="one">Todos</mat-option>
+                <mat-option value="two">Promocionais</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</div>
+
+<div class="row" style="float: right;">
+    <div class="col">
+        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow" (click)="limparFiltro()">Limpar
+            <mat-icon>backspace</mat-icon></button>
+    </div>
+    <div class="col">
+        <button mat-button mat-raised-button color="primary" (click)="abrirModalCadastrarEditar()" fxFlex="grow">
+            Adicionar <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="col">
+        <button mat-button (click)="visualizar()" fxFlex="grow">
+            <mat-icon *ngIf="verLista">view_list</mat-icon>
+            <mat-icon *ngIf="verGrade">view_module</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div style="margin-top: 3rem;">
+    <!-- LOADING -->
+    <mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
+    <!-- Tabela de produtos -->
+    <div class="mat-elevation-z8">
+        <table aria-label="tabela-produtos" mat-table [dataSource]="dataSource">
+
+            <!-- Name Produto -->
+            <ng-container matColumnDef="nome">
+                <th class="color-title" mat-header-cell *matHeaderCellDef>
+                    Nome do Produto
+                </th>
+                <td mat-cell *matCellDef="let produto">
+                    {{ produto.nome }}
+                </td>
+            </ng-container>
+
+            <!-- Descrição do produto -->
+            <ng-container matColumnDef="descricao">
+                <th class="color-title" mat-header-cell *matHeaderCellDef>
+                    Descrição do Produto
+                </th>
+                <td mat-cell *matCellDef="let produto">{{ produto.descricao }}</td>
+            </ng-container>
+
+            <!-- Quantidade do produto -->
+            <ng-container matColumnDef="quantidade">
+                <th class="color-title" mat-header-cell *matHeaderCellDef>
+                    Quantidade
+                </th>
+                <td mat-cell *matCellDef="let produto">{{ produto.qtdEstoque }}</td>
+            </ng-container>
+
+            <!-- Preço do produto -->
+            <ng-container matColumnDef="preco">
+                <th class="color-title" mat-header-cell *matHeaderCellDef>Preço</th>
+                <td mat-cell *matCellDef="let produto">{{ produto.promocional? produto.valorPromocional:produto.valor }}
+                </td>
+            </ng-container>
+
+            <!-- Ícone da tabela -->
+            <ng-container matColumnDef="icone">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td class="layout-menu" mat-cell *matCellDef="let produto">
+                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing" (click)="abrirModalCadastrarEditar(produto)">
+                        <mat-icon color="primary"> border_color</mat-icon>
+                    </button>
+                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                        (click)="abrirModalDeletar(produto)">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+
+                        <button *ngIf="produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalOcultar(produto)">
+                            <mat-icon class="icon-color">visibility</mat-icon>
+                            <span class="descricaoicon">Ocultar Produto</span>
+                        </button>
+
+
+                        <button *ngIf="!produto.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalOcultar(produto)">
+                            <mat-icon class="icon-color">visibility_off</mat-icon>
+                            <span class="descricaoicon">Exibir Produto</span>
+                        </button>
+
+                        <button *ngIf="!produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalPromocional(produto)">
+                            <mat-icon class="icon-color">money_off</mat-icon>
+                            <span class="descricaoicon">Tornar Promocional</span>
+                        </button>
+
+                        <button *ngIf="produto.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+                            (click)="abrirModalPromocional(produto)">
+                            <mat-icon class="icon-color">attach_money</mat-icon>
+                            <span class="descricaoicon">Remover Promoção</span>
+                        </button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Selecionar página do produto">
+        </mat-paginator>
+    </div>
+</div>

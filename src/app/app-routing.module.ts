@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
+import { CustomLayoutComponent } from './views/custom-layout/custom-layout.component';
 
 const routes: Routes = [
     {
@@ -10,48 +10,83 @@ const routes: Routes = [
             {
                 path: 'agendamentos',
                 loadChildren: () =>
-                    import('./pages/agendamentos/agendamentos.module').then(
+                    import('./views/pages/agendamentos/agendamentos.module').then(
                         (m) => m.AgendamentosModule
                     )
             },
             {
                 path: 'servicos',
                 loadChildren: () =>
-                    import('./pages/servicos/servicos.module').then(
+                    import('./views/pages/servicos/servicos.module').then(
                         (m) => m.ServicosModule
                     )
             },
             {
                 path: 'caixa',
                 loadChildren: () =>
-                    import('./pages/caixa/caixa.module').then(
+                    import('./views/pages/caixa/caixa.module').then(
                         (m) => m.CaixaModule
                     )
+            },
+            {
+                path: 'config',
+                loadChildren: () =>
+                    import('./views/pages/config/config.module').then(
+                        (m) => m.ConfigModule
+                    )
+            },
+            {
+                path: 'painel',
+                loadChildren: () =>
+                    import('./views/pages/painel/painel.module').then(
+                        (m) => m.PainelModule
+                    )
+            },
+            {
+                path: 'comentarios',
+                loadChildren: () =>
+                    import('./views/pages/comentarios/comentarios.module').then(
+                        (m) => m.ComentariosModule
+                    )
+            },
+            {
+                path: 'agenda',
+                loadChildren: () =>
+                    import('./views/pages/agenda/agenda.module').then(
+                        (m) => m.AgendaModule
+                    ),
+                    data: {
+                        toolbarShadowEnabled: true
+                    }
+            },
+            {
+                path: 'perfil',
+                loadChildren: () => import('src/app/profile/perfil/perfil.module').then(m => m.PerfilModule)
             }
         ]
     },
     {
         path: 'login',
         loadChildren: () =>
-            import('./pages/login/login.module').then((m) => m.LoginModule)
+            import('./views/pages/login/login.module').then((m) => m.LoginModule)
     },
     {
         path: 'recuperacao-senha',
         loadChildren: () =>
-            import('./pages/recuperacao-senha/recuperacao-senha.module').then(
+            import('./views/pages/recuperacao-senha/recuperacao-senha.module').then(
                 (m) => m.RecuperacaoSenhaModule
             )
     },
     {
         path: 'cadastro',
-        loadChildren: () => import('./pages/cadastro/cadastro.module').then(m => m.CadastroModule)
+        loadChildren: () => import('./views/pages/cadastro/cadastro.module').then(m => m.CadastroModule)
     }
 ];
 
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {
-            // preloadingStrategy: PreloadAllModules,
+            // preloadingStrategy: PreloadAllModules,|
             scrollPositionRestoration: 'enabled',
             relativeLinkResolution: 'corrected',
             anchorScrolling: 'enabled'

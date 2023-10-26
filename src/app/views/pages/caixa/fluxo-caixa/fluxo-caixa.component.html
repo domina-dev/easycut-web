@@ -1,0 +1,75 @@
+<!-- Filtro da tabela de fluxo de caixa -->
+<div class="filter">
+    <div class="search">
+        <mat-form-field appearance="standard">
+            <mat-label>Pesquisar venda</mat-label>
+            <input matInput />
+        </mat-form-field>
+    </div>
+
+    <div class="option">
+        <mat-form-field appearance="standard">
+            <mat-label>Status</mat-label>
+            <mat-select>
+                <mat-option value="one">Todas</mat-option>
+                <mat-option value="two">Cabelo</mat-option>
+                <mat-option value="three">Barba</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="btnAdd">
+        <button (click)="trocarTab()" mat-button mat-raised-button color="primary">Adicionar venda <mat-icon>add</mat-icon></button>
+    </div>
+    <div class="icon-csv">
+        <img src="../../../../assets/img/csv.svg" alt="icone csv">
+    </div>
+</div>
+
+<!-- Tebela Fluxo e Caixa -->
+<div class="tabela_fluxo-caixa">
+    <!-- tabela -->
+    <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" aria-label="tabela dados das vendas e serviços">
+
+            <!-- Data -->
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef> Data </th>
+                <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+            </ng-container>
+
+            <!-- Descrição -->
+            <ng-container matColumnDef="descricao">
+                <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+            </ng-container>
+
+            <!-- Status -->
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+            </ng-container>
+
+            <!--Valor -->
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef> Valor </th>
+                <td mat-cell *matCellDef="let element"> {{element.valor}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+    <!-- descrição -->
+    <div class="descricao">
+        <div class="total">
+            <h3>Total Confirmado: <span style="color: #219653;">R$960,00</span></h3>
+            <h3>Total Reservado: <span style="color: #DAAA00;">R$320,00</span></h3>
+            <h3>Total Cancelado: <span>R$180,00</span></h3>
+        </div>
+        <div class="btn">
+            <button mat-button class="btn-fechar_caixa" mat-raised-button color="primary"
+            (click)="fecharCaixa()">Fechar caixa</button>
+        </div>
+    </div>
+</div>
