@@ -1,6 +1,6 @@
 import {
-  ChangeDetectorRef,
-  Component
+	ChangeDetectorRef,
+	Component
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,132 +16,147 @@ import { PlanosComponent } from 'src/app/core/lib/components/modais/planos/plano
 import { LoginModalComponent } from 'src/app/core/lib/components/modais/primeiro-login/login-modal/login-modal.component';
 import { stagger20ms } from 'src/@vex/animations/stagger.animation';
 import { CompletarCadastroComponent } from 'src/app/core/lib/components/modais/completarCadastro/completarCadastro.component';
+import { CommomService } from 'src/app/core/services/commom/commom.service';
 
 @Component({
-  selector: 'vex-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  //importacao
-  animations: [
-    fadeInUp400ms,
-    stagger20ms
-  ]
+	selector: 'vex-login',
+	templateUrl: './login.component.html',
+	styleUrls: ['./login.component.scss'],
+	//importacao
+	animations: [
+		fadeInUp400ms,
+		stagger20ms
+	]
 })
 export class LoginComponent {
-  form: FormGroup;
+	form: FormGroup;
 
-  load: boolean = false;
+	load: boolean = false;
 
-  firstLogin: boolean;
-  planLogin: any;
-  completeRegister: boolean;
+	firstLogin: boolean;
+	planLogin: any;
+	completeRegister: boolean;
 
-  inputType = 'password';
-  visible = false;
+	inputType = 'password';
+	visible = false;
 
-  icVisibility = icVisibility;
-  icVisibilityOff = icVisibilityOff;
+	icVisibility = icVisibility;
+	icVisibilityOff = icVisibilityOff;
 
-  public usuario = new Usuario();
+	public usuario = new Usuario();
 
-  constructor(
-    private router: Router,
-    private fb: FormBuilder,
-    private cd: ChangeDetectorRef,
-    private snackbar: MatSnackBar,
-    private estabelecimentoService: EstabelecimentoService,
-    public dialog: MatDialog
-  ) {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+	constructor(
+		private router: Router,
+		private fb: FormBuilder,
+		private cd: ChangeDetectorRef,
+		private snackbar: MatSnackBar,
+		private estabelecimentoService: EstabelecimentoService,
+		private commomService: CommomService,
+		public dialog: MatDialog
+	) {
+		this.form = this.fb.group({
+			email: ['', Validators.required],
+			password: ['', Validators.required]
+		});
+	}
 
-  login() {
-    this.load = true;
-    this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
-      this.guardaDadosSessao(response);
-      this.firstLogin = response.primeiroLogin;
-      this.planLogin = response.plano_ID;
-      this.completeRegister = response.cadastroCompleto;
-      this.load = false;
-      this.router.navigate(['/']);
-      this.abrirModais(response);
-    },
-      (error) => {
-        this.load = false;
-        this.snackbar.open
-          (
-            'Email ou senha incorretos, ou usuario nao cadastrado',
-            'fechar',
-            {
-              duration: 5000
+	login() {
+		this.load = true;
+		this.estabelecimentoService.saveUsuario(this.usuario).subscribe(response => {
+			this.guardaDadosSessao(response);
+			this.obterEstabelecimentoPeloId();
+			this.firstLogin = response.primeiroLogin;
+			this.planLogin = response.plano_ID;
+			this.completeRegister = response.cadastroCompleto;
+			this.load = false;
+			this.router.navigate(['/']);
+			this.abrirModais(response);
+		},
+			(error) => {
+				this.load = false;
+				this.snackbar.open
+					(
+						'Email ou senha incorretos, ou usuario nao cadastrado',
+						'fechar',
+						{
+							duration: 5000
+						}
+					);
+				console.log(error)
+			});
+	}
+
+	guardaDadosSessao(response: any) {
+		localStorage.setItem("estabelecimento", response.estabelecimento)
+		localStorage.setItem("token", response.token)
+		localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
+		localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
+		localStorage.setItem("plano_ID", response.plano_ID)
+	}
+
+	toggleVisibility() {
+		if (this.visible) {
+			this.inputType = 'password';
+			this.visible = false;
+			this.cd.markForCheck();
+		} else {
+			this.inputType = 'text';
+			this.visible = true;
+			this.cd.markForCheck();
+		}
+	}
+
+	openModalPrimeiroLogin() {
+
+		const dialogRef = this.dialog.open(LoginModalComponent);
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (!this.planLogin) {
+				return this.openModalPlanos();
+			}
+		});
+	}
+
+	openModalPlanos() {
+
+		const dialogRef = this.dialog.open(PlanosComponent, {
+			width: '70%',
+		});
+
+		dialogRef.afterClosed().subscribe(result => {
+			if (!this.completeRegister) {
+				return this.openModalCompletarCadastro();
+			}
+		});
+	}
+
+	abrirModais(response: any) {
+		if (this.firstLogin) {
+			return this.openModalPrimeiroLogin();
+		}
+		else if (!this.planLogin) {
+			return this.openModalPlanos();
+		}
+		else if (!this.completeRegister) {
+			return this.openModalCompletarCadastro();
+		}
+	}
+
+	openModalCompletarCadastro() {
+		this.dialog.open(CompletarCadastroComponent, {
+			width: '600px',
+		});
+	}
+
+	obterEstabelecimentoPeloId() {
+        this.estabelecimentoService.obterEstabelecimentoPeloId().subscribe(
+            (response) => {
+				localStorage.setItem("estabelecimentoLogado", JSON.stringify(response))
+                this.commomService.estabelecimentoSessao();
+            },
+            (error) => {
+                console.log(error);
             }
-          );
-        console.log(error)
-      });
-  }
-
-  guardaDadosSessao(response: any){
-    localStorage.setItem("estabelecimento", response.estabelecimento)
-    localStorage.setItem("token", response.token)
-    localStorage.setItem("estabelecimento_ID", response.estabelecimento_ID)
-    localStorage.setItem("cadastroCompleto", response.cadastroCompleto)
-    localStorage.setItem("plano_ID", response.plano_ID)
-  }
-
-  toggleVisibility() {
-    if (this.visible) {
-      this.inputType = 'password';
-      this.visible = false;
-      this.cd.markForCheck();
-    } else {
-      this.inputType = 'text';
-      this.visible = true;
-      this.cd.markForCheck();
+        );
     }
-  }
-
-  openModalPrimeiroLogin() {
-
-    const dialogRef = this.dialog.open(LoginModalComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (!this.planLogin) {
-        return this.openModalPlanos();
-      }
-    });
-  }
-
-  openModalPlanos() {
-
-    const dialogRef = this.dialog.open(PlanosComponent, {
-      width: '70%',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (!this.completeRegister) {
-        return this.openModalCompletarCadastro();
-      }
-    });
-  }
-
-  abrirModais(response: any) {
-    if (this.firstLogin) {
-      return this.openModalPrimeiroLogin();
-    }
-    else if (!this.planLogin) {
-      return this.openModalPlanos();
-    }
-    else if (!this.completeRegister) {
-      return this.openModalCompletarCadastro();
-    }
-  }
-
-  openModalCompletarCadastro() {
-    this.dialog.open(CompletarCadastroComponent, {
-        width: '600px',
-    });
-  }
 }

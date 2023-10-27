@@ -8,9 +8,9 @@ import { ExibicaoProdutosModule } from './exibicao-produtos/exibicao-produtos.mo
 import { ExibicaoPromocoesModule } from './exibicao-promocoes/exibicao-promocoes.module';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
-import { GradeProdutosModule } from '../servicos/exibicao-produtos/grade-produtos.module';
-import { GradePromocoesModule } from '../servicos/exibicao-promocoes/grade-promocoes.module';
-import { GradeServicosModule } from '../servicos/exibicao-servicos/grade-servicos.module'
+import { GradeProdutosModule } from './exibicao-produtos/grade-produtos/grade-produtos.module';
+import { GradePromocoesModule } from './exibicao-promocoes/grade-promocoes/grade-promocoes.module';
+import { GradeServicosModule } from './exibicao-servicos/grade-servicos/grade-servicos.module'
 
 @NgModule({
     declarations: [ServicosComponent],

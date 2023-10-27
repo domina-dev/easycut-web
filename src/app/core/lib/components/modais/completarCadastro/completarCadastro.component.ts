@@ -36,4 +36,14 @@ export class CompletarCadastroComponent implements OnInit{
         telefone: ['', Validators.required],
       });
     }
+
+    capturarImagem(event: Event, inputType: string) {
+    const inputElement = event.target as HTMLInputElement;
+    const selectedFile = inputElement.files[0];
+    
+    if (selectedFile) {
+      console.log(`${inputType} selecionada:`, selectedFile);
+    }
+  }
+
  }
