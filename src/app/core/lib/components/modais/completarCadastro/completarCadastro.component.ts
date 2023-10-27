@@ -37,12 +37,12 @@ export class CompletarCadastroComponent implements OnInit{
       });
     }
 
-    capturarImagem(event: Event) {
+    capturarImagem(event: Event, inputType: string) {
     const inputElement = event.target as HTMLInputElement;
     const selectedFile = inputElement.files[0];
     
     if (selectedFile) {
-      console.log('Imagem selecionada:', selectedFile.name);
+      console.log(`${inputType} selecionada:`, selectedFile);
     }
   }
 
