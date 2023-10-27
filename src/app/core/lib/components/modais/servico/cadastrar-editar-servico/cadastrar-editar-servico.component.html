@@ -6,68 +6,70 @@
 
   <!-- modal -->
   <mat-dialog-content>
-    <div [formGroup]="form" class="example-form" id="formul">
-
-      <!-- Imagem do servico -->
-      <div id="imagemPerf">
-          <div (click)="imagemPerfil.click()" style="margin-right: 10%;"
-          class="z-10 relative -mt-16 px-gutter flex items-center">
-          <div class="centInputImg">
-            <div class="absolute">
-              <label [hidden]="mostraIcone">
-                <mat-icon>add_a_photo</mat-icon>
-              </label>
-              <input #imagemPerfil type="file" />
-            </div>
-            <div class="rounded-circle">
-              <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
-                class="foto avatar  flex-none align-start sm:block border-3 border-white"
-                src="assets/img/dominadev/logo/logo-circular/png/logo-circular-2.png " alt="Imagem cliente">
-            </div>
-          </div>
-        </div>
-          <div class="textofoto" >
-            <p>Foto do Servico (opcional)</p>
-          </div>
-      </div>
+    <div [formGroup]="form" class="example-form">
 
       <!-- formulario -->
       <div class="formulario">
+        <div id="formul">
+          <!-- Imagem do servico -->
+          <div id="imagemPerf">
+            <div (click)="imagemPerfil.click()" style="margin-right: 10%;" class=" example-full-width">
+              <div class="centInputImg">
+                <div class="absolute">
+                  <label [hidden]="mostraIcone">
+                    <mat-icon>add_a_photo</mat-icon>
+                  </label>
+                  <input #imagemPerfil type="file" />
+                </div>
+                <div class="rounded-circle">
+                  <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
+                    class="foto avatar  flex-none align-start sm:block border-3 border-white"
+                    src="assets/img/dominadev/logo/logo-circular/png/logo-circular-2.png " alt="Imagem cliente">
+                </div>
+              </div>
+            </div>
+            <div class="textofoto">
+              <p>Foto do Servico (opcional)</p>
+            </div>
+          </div>
+          <div>
+            <!-- Nome do servico -->
+            <div class="nome">
+              <mat-form-field class="example-full-width" id="inpN" appearance="standard">
+                <mat-label class="nome">Nome do serviço</mat-label>
+                <input formControlName="nome" matInput required />
+                <mat-error *ngIf="form.get('nome').hasError('required')">
+                  Preencha este campo!
+                </mat-error>
+              </mat-form-field>
+            </div>
 
-        <!-- Nome do servico -->
-        <div class="nome">
-          <mat-form-field class="example-full-width" id="inpN" appearance="standard">
-            <mat-label class="nome">Nome do serviço</mat-label>
-            <input formControlName="nome" matInput required />
-            <mat-error *ngIf="form.get('nome').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
-        </div>
+            <!-- Tempo estimado -->
+            <div class="tempoEs">
+              <mat-form-field id="tempoEst" appearance="standard">
+                <mat-label>Tempo Estimado</mat-label>
+                <input matInput formControlName="tempoEstimado" type="number" placeholder="Digite o Tempo" maxlength="3"
+                  required />
+                <span matTextPrefix class="minutos">Minutos&nbsp;</span>
+                <mat-error *ngIf="form.get('tempoEstimado').hasError('required')">
+                  Preencha este campo!
+                </mat-error>
+              </mat-form-field>
 
-        <!-- Tempo estimado -->
-        <div class="tempoEs">
-          <mat-form-field id="tempoEst" appearance="standard">
-            <mat-label>Tempo Estimado</mat-label>
-            <input matInput formControlName="tempoEstimado" type="number" placeholder="Digite o Tempo" maxlength="3"
-              required />
-            <span matTextPrefix class="minutos">Minutos&nbsp;</span>
-            <mat-error *ngIf="form.get('tempoEstimado').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
+              <!-- Categoria -->
+              <mat-form-field id="categoria" appearance="standard">
+                <mat-label>Categoria</mat-label>
+                <mat-select formControlName="categoria" required>
+                  <mat-option value="cabelo">Cabelo</mat-option>
+                  <mat-option value="barba">Barba</mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.get('categoria').hasError('required')">
+                  Selecione uma opção!
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
 
-          <!-- Categoria -->
-          <mat-form-field id="categoria" appearance="standard">
-            <mat-label>Categoria</mat-label>
-            <mat-select formControlName="categoria" required>
-              <mat-option value="cabelo">Cabelo</mat-option>
-              <mat-option value="barba">Barba</mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.get('categoria').hasError('required')">
-              Selecione uma opção!
-            </mat-error>
-          </mat-form-field>
         </div>
 
         <!-- area de descricao -->
@@ -83,30 +85,32 @@
           <mat-slide-toggle formControlName="promocional"><b>Este serviço mostrará o valor
               promocional</b></mat-slide-toggle>
         </div>
+        <div class="row">
+          <!-- valor e valor promocional -->
+          <div class="valor ">
+            <mat-form-field floatLabel="always" class="intval col" appearance="standard">
+              <mat-label>Valor</mat-label>
+              <span matTextPrefix>R$&nbsp;</span>
+              <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
+                placeholder="0" fxFlex="grow"/>
+              <mat-error *ngIf="form.get('valor').hasError('required')">
+                Preencha este campo!
+              </mat-error>
+            </mat-form-field>
 
-        <!-- valor e valor promocional -->
-        <div class="valor">
-          <mat-form-field floatLabel="always" class="intval" appearance="standard">
-            <mat-label>Valor</mat-label>
-            <span matTextPrefix>R$&nbsp;</span>
-            <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
-              placeholder="0" />
-            <mat-error *ngIf="form.get('valor').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
-
-          <!-- valor promocional -->
-          <mat-form-field floatLabel="always" class="intval" appearance="standard">
-            <mat-label>Valor Promocional</mat-label>
-            <span matTextPrefix>R$&nbsp;</span>
-            <input formControlName="valorPromocional" id="valorPromocional" matInput type="number"
-              class="example-right-align" placeholder="0" />
-            <mat-error *ngIf="form.get('valorPromocional').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
+            <!-- valor promocional -->
+            <mat-form-field floatLabel="always" class="intval col" appearance="standard">
+              <mat-label>Valor Promocional</mat-label>
+              <span matTextPrefix>R$&nbsp;</span>
+              <input formControlName="valorPromocional" id="valorPromocional" matInput type="number"
+                class="example-right-align" placeholder="0" fxFlex="grow" />
+              <mat-error *ngIf="form.get('valorPromocional').hasError('required')">
+                Preencha este campo!
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
+
       </div>
     </div>
   </mat-dialog-content>

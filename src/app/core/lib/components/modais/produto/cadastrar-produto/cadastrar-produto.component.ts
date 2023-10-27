@@ -18,14 +18,14 @@ export class CadastrarProdutoComponent {
   form: FormGroup;
   legendaBotao: string = '';
   isCadastro!: boolean;
-
+  mostraIcone: boolean = true;
   produto = new Produto();
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
     private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.isCadastro = data.produto ? false : true;
+    this.isCadastro = !data.produto;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
     this.form = this.fb.group({
       nome: [data?.produto?.nome, Validators.required],
