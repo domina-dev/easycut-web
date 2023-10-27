@@ -24,6 +24,9 @@ export class NovaVendaComponent implements OnInit {
   selectedmenu: string;
   menus: string[] = ['Serviços', 'Produtos'];
   servicos: boolean;
+  subTotal: number = 0;
+  desconto: number = 0;
+  total: number = 0;
 
   public venda = new Venda();
 
@@ -106,6 +109,7 @@ export class NovaVendaComponent implements OnInit {
     servicos?.forEach(servico => {
       this.selectedTasks.push(servico.value)
     });
+    this.somaValores()
   }
 
   selectedOptionP(servicos: any[]) {
@@ -113,8 +117,17 @@ export class NovaVendaComponent implements OnInit {
     servicos?.forEach(servico => {
       this.selectedProducts.push(servico.value)
     });
+    this.somaValores()
+  }
 
-
+  somaValores() {
+    let selecionados = this.selectedTasks.concat(this.selectedProducts)
+    let soma = 0;
+    selecionados.forEach(element => {
+      soma += element.valor
+    });
+    this.subTotal = soma
+    this.total = this.subTotal - this.desconto
   }
 
   if(_favoriteSeason = 'Serviços') {
@@ -134,7 +147,7 @@ export class NovaVendaComponent implements OnInit {
     console.log('Method not implemented');
   }
 
-  trocarTab(){
-    this.trocaTab.emit({data: 1});
+  trocarTab() {
+    this.trocaTab.emit({ data: 1 });
   }
 }
