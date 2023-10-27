@@ -14,12 +14,11 @@ import { ServicoService } from 'src/app/core/services/servico/servico.service';
 export class CadastrarEditarServicoComponent {
 
   load: boolean = false;
-
   form: FormGroup;
   legendaBotao: string = '';
   isCadastro!: boolean ;
-
   servico = new Servico();
+  mostraIcone: boolean = true;
 
   constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
       private fb: FormBuilder, private servicoService: ServicoService,
