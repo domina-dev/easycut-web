@@ -450,15 +450,15 @@
                 <div class="valores-totais">
                     <div class="valor-final">
                         <h3 class="descricao">Subtotal</h3>
-                        <h3>{{subTotal | currency : "BRL"}}</h3>
+                        <h3>{{ subTotal | currency: 'BRL' }}</h3>
                     </div>
                     <div class="valor-final">
                         <h3 class="descricao">Desconto</h3>
-                        <h3>-{{desconto | currency : "BRL"}}</h3>
+                        <h3>-{{ desconto | currency: 'BRL' }}</h3>
                     </div>
                     <div class="valor-final" style="margin-bottom: -3%">
                         <h3 class="descricao">Total</h3>
-                        <h3>{{total | currency : "BRL"}}</h3>
+                        <h3>{{ total | currency: 'BRL' }}</h3>
                     </div>
                 </div>
             </div>
@@ -478,7 +478,12 @@
                         margin-top: 3%;
                     "
                 >
-                    <button mat-button mat-raised-button color="primary" (click)="trocarTab()">
+                    <button
+                        mat-button
+                        mat-raised-button
+                        color="primary"
+                        (click)="trocarTab()"
+                    >
                         Adicionar Venda
                     </button>
                 </div>

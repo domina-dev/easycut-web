@@ -27,6 +27,7 @@ export class NovaVendaComponent implements OnInit {
   subTotal: number = 0;
   desconto: number = 0;
   total: number = 0;
+  quantidade: number = 1;
 
   public venda = new Venda();
 
@@ -124,7 +125,7 @@ export class NovaVendaComponent implements OnInit {
     let selecionados = this.selectedTasks.concat(this.selectedProducts)
     let soma = 0;
     selecionados.forEach(element => {
-      soma += element.valor
+      soma += (element.valor * this.quantidade)
     });
     this.subTotal = soma
     this.total = this.subTotal - this.desconto
