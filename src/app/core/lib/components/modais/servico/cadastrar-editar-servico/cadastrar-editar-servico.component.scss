@@ -10,9 +10,7 @@
     #formul{
       display: flex;
       justify-content: space-between;
-      // align-items: center;
     }
-
     #imagemPerf{
       margin-right: 15px;
       .foto {
@@ -40,7 +38,6 @@
         align-items: center;
       }
     }
-
     .tempoEs {
         display: flex;
         justify-content: space-between;
@@ -62,6 +59,7 @@
     }
     #descricao {
         width: 100%;
+        margin-top: -2%;
     }
     .toggle{
         margin-bottom: 1rem;
@@ -76,11 +74,9 @@
             max-width: 70%;
         }
         #valor {
-            // float: right;
             width: 50%;
         }
         #valorPromocional {
-            // float: right;
             width: 50%;
         }
     }

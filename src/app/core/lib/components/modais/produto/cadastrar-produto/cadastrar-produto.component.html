@@ -4,23 +4,22 @@
     <h2 class="title m-0">Novo Produto</h2>
   </div>
 
-
   <!-- modal -->
   <mat-dialog-content>
+    <!-- formulario -->
     <div [formGroup]="form" class="example-form">
-
-      <!-- formulario -->
       <div class="formulario">
         <div id="formul">
+
           <!-- Imagem do servico -->
           <div id="imagemPerf">
-            <div (click)="imagemPerfil.click()" style="margin-right: 10%;" class=" example-full-width">
+            <div (click)="imagemProduto.click()" style="margin-right: 10%;" class=" example-full-width">
               <div class="centInputImg">
                 <div class="absolute">
                   <label [hidden]="mostraIcone">
                     <mat-icon>add_a_photo</mat-icon>
                   </label>
-                  <input #imagemPerfil type="file" />
+                  <input #imagemProduto type="file" />
                 </div>
                 <div class="rounded-circle">
                   <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
@@ -30,12 +29,12 @@
               </div>
             </div>
             <div class="textofoto">
-              <p>Foto do Servico (opcional)</p>
+              <p>Foto do Produto (opcional)</p>
             </div>
           </div>
 
+          <!-- Nome do servico -->
           <div>
-            <!-- Nome do servico -->
             <div class="nome">
               <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                 <mat-label class="nome">Nome do produto</mat-label>
@@ -73,6 +72,7 @@
             </div>
           </div>
         </div>
+
         <!-- area de descricao -->
         <div class="descricao">
           <mat-form-field class="example-full-width" id="descricao" appearance="standard">
@@ -85,36 +85,33 @@
         <div class="toggle">
           <mat-slide-toggle><b>Este produto mostrará o valor promocional</b></mat-slide-toggle>
         </div>
+
+        <!-- valor e valor promocional -->
         <div class="row">
-          <!-- valor e valor promocional -->
-        <div class="valor">
-          <mat-form-field floatLabel="always" class="intval col" appearance="standard">
-            <mat-label>Valor</mat-label>
-            <span matTextPrefix>R$&nbsp;</span>
-            <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
-              placeholder="0" />
-            <mat-error *ngIf="form.get('valor').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
+          <div class="valor">
+            <mat-form-field floatLabel="always" class="intval col" appearance="standard">
+              <mat-label>Valor</mat-label>
+              <span matTextPrefix>R$&nbsp;</span>
+              <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
+                placeholder="0" />
+              <mat-error *ngIf="form.get('valor').hasError('required')">
+                Preencha este campo!
+              </mat-error>
+            </mat-form-field>
 
-          <!-- valor promocional -->
-          <mat-form-field floatLabel="always" class="intval col" appearance="standard">
-            <mat-label>Valor Promocional</mat-label>
-            <span matTextPrefix>R$&nbsp;</span>
-            <input formControlName="valorPromocional" id="valorP" matInput type="number" class="example-right-align"
-              placeholder="0" />
-            <mat-error *ngIf="form.get('valorPromocional').hasError('required')">
-              Preencha este campo!
-            </mat-error>
-          </mat-form-field>
+            <!-- valor promocional -->
+            <mat-form-field floatLabel="always" class="intval col" appearance="standard">
+              <mat-label>Valor Promocional</mat-label>
+              <span matTextPrefix>R$&nbsp;</span>
+              <input formControlName="valorPromocional" id="valorP" matInput type="number" class="example-right-align"
+                placeholder="0" />
+              <mat-error *ngIf="form.get('valorPromocional').hasError('required')">
+                Preencha este campo!
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        </div>
-
       </div>
-
-
-
     </div>
   </mat-dialog-content>
 
@@ -125,8 +122,8 @@
       Adicionar
     </button>
   </mat-dialog-actions>
-
 </div>
+
 <!-- LOADING -->
 <div *ngIf="load" id="vex-splash-screen-load">
   <div class="wrapper">

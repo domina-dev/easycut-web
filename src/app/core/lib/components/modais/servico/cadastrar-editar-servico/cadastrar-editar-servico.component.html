@@ -6,25 +6,25 @@
 
   <!-- modal -->
   <mat-dialog-content>
+    <!-- formulario -->
     <div [formGroup]="form" class="example-form">
-
-      <!-- formulario -->
       <div class="formulario">
         <div id="formul">
+
           <!-- Imagem do servico -->
           <div id="imagemPerf">
-            <div (click)="imagemPerfil.click()" style="margin-right: 10%;" class=" example-full-width">
+            <div (click)="imagemServico.click()" style="margin-right: 10%;" class=" example-full-width">
               <div class="centInputImg">
                 <div class="absolute">
                   <label [hidden]="mostraIcone">
                     <mat-icon>add_a_photo</mat-icon>
                   </label>
-                  <input #imagemPerfil type="file" />
+                  <input #imagemServico type="file" />
                 </div>
                 <div class="rounded-circle">
                   <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
                     class="foto avatar  flex-none align-start sm:block border-3 border-white"
-                    src="assets/img/dominadev/logo/logo-circular/png/logo-circular-2.png " alt="Imagem cliente">
+                    src="assets/img/dominadev/logo/logo-circular/png/logo-circular-2.png " alt="Imagem servico">
                 </div>
               </div>
             </div>
@@ -32,8 +32,9 @@
               <p>Foto do Servico (opcional)</p>
             </div>
           </div>
+
+          <!-- Nome do servico -->
           <div>
-            <!-- Nome do servico -->
             <div class="nome">
               <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                 <mat-label class="nome">Nome do serviço</mat-label>
@@ -69,7 +70,6 @@
               </mat-form-field>
             </div>
           </div>
-
         </div>
 
         <!-- area de descricao -->
@@ -85,14 +85,15 @@
           <mat-slide-toggle formControlName="promocional"><b>Este serviço mostrará o valor
               promocional</b></mat-slide-toggle>
         </div>
+
+        <!-- valor e valor promocional -->
         <div class="row">
-          <!-- valor e valor promocional -->
-          <div class="valor ">
+          <div class="valor">
             <mat-form-field floatLabel="always" class="intval col" appearance="standard">
               <mat-label>Valor</mat-label>
               <span matTextPrefix>R$&nbsp;</span>
               <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
-                placeholder="0" fxFlex="grow"/>
+                placeholder="0" fxFlex="grow" />
               <mat-error *ngIf="form.get('valor').hasError('required')">
                 Preencha este campo!
               </mat-error>
@@ -110,7 +111,6 @@
             </mat-form-field>
           </div>
         </div>
-
       </div>
     </div>
   </mat-dialog-content>
@@ -122,8 +122,8 @@
       {{ legendaBotao }}
     </button>
   </mat-dialog-actions>
-
 </div>
+
 <!-- LOADING -->
 <div *ngIf="load" id="vex-splash-screen-load">
   <div class="wrapper">
