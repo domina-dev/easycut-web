@@ -57,7 +57,7 @@
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>CEP</mat-label>
-                        <input formControlName="cep" matInput required>
+                        <input formControlName="cep" (change)="buscarCep($event.target.value)" matInput required>
                     </mat-form-field>
 
                     <mat-form-field fxFlex="grow">

@@ -60,7 +60,7 @@ export class CadastrarEditarComponent {
   cadastrarAgendamento() {
     this.agendamento = this.form.value;
     this.agendamento.estabelecimentoID = +this.estabelecimentoID;
-    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(response => {
+    this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(() => {
       this.dialogRef.close(true);
       this.snackbar.open(
         MessagesSnackBar.ADICIONAR_AGENDAMENTO,
