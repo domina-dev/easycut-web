@@ -62,7 +62,7 @@
                         style="margin-right: 25px"
                         color="primary"
                         *ngFor="let option of menus"
-                        [value]="option"
+                        [value]="option" (change)="listarItens()"
                     >
                         {{ option }}
                     </mat-radio-button>
