@@ -28,7 +28,6 @@ export class NovaVendaComponent implements OnInit {
   subTotal: number = 0;
   desconto: number = 0;
   total: number = 0;
-  quantidade: number = 1;
 
   public venda = new Venda();
 
@@ -111,6 +110,10 @@ export class NovaVendaComponent implements OnInit {
     });
   }
 
+  ngOnInit(): void {
+    console.log('Method not implemented');
+  }
+
   // essa função limpa o array que vem e transforma o resultado do click com o objeto sendo velue o,
   //  e o this.selectedTasks=[] limpa a tabela com o click
 
@@ -151,11 +154,6 @@ export class NovaVendaComponent implements OnInit {
         animal: 'panda',
       },
     });
-  }
-
-
-  ngOnInit(): void {
-    console.log('Method not implemented');
   }
 
   trocarTab() {
