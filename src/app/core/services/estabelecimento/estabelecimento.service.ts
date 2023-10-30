@@ -3,14 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Estabelecimento } from 'src/app/core/model/estabelecimento'
+import { take } from 'rxjs/operators';
+import { CommomService } from '../commom/commom.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EstabelecimentoService {
+export class EstabelecimentoService extends CommomService{
   private readonly API = environment.url_api;
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) {
+    super(http);
+   }
 
   obterEstabelecimento(): Observable<Estabelecimento[]> {
     return this.http.get<Estabelecimento[]>(this.API)
@@ -23,7 +27,7 @@ export class EstabelecimentoService {
   }
 
   saveUsuario(body: any) {
-  return this.http.post<any>(`${this.API}/login`, body)
+    return this.http.post<any>(`${this.API}/login`, body)
   }
 
   contratar(estabelecimento_ID: number, plano_ID: number): Observable<any> {
@@ -39,6 +43,11 @@ export class EstabelecimentoService {
     console.log(estabelecimentoData)
     // Faz a requisição HTTP POST para a rota de cadastro de estabelecimento
     return this.http.post<Estabelecimento>(`${this.API}/estabelecimento`, estabelecimentoData);
+  }
+
+  obterEstabelecimentoPeloId(): Observable<Estabelecimento> {
+    return this.http.get<Estabelecimento>(`${environment.url_api}/estabelecimento`, {
+        params: { id: this.estabelecimentoId}}).pipe(take(1))
   }
 
 }

@@ -20,6 +20,7 @@ import icAssigment from '@iconify/icons-ic/twotone-assignment';
 import icSettings from '@iconify/icons-ic/twotone-settings';
 import icFeedback from '@iconify/icons-ic/twotone-feedback';
 import icDateRange from '@iconify/icons-ic/date-range'
+import { EstabelecimentoService } from './core/services/estabelecimento/estabelecimento.service';
 
 
 @Component({
@@ -41,7 +42,8 @@ export class AppComponent {
         private route: ActivatedRoute,
         private navigationService: NavigationService,
         private splashScreenService: SplashScreenService,
-        private commomService: CommomService
+        private estabelecimentoService: EstabelecimentoService,
+        private commomService: CommomService,
     ) {
         Settings.defaultLocale = this.localeId;
 
@@ -142,16 +144,5 @@ export class AppComponent {
                 icon: icSettings
             }
         ];
-    }
-
-    healthCheck() {
-        this.commomService.healthCheck().subscribe(
-            (response) => {
-                console.log(response);
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
     }
 }

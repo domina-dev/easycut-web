@@ -7,7 +7,7 @@ import { ExibicaoPromocoesComponent } from './exibicao-promocoes.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { ExibicaoServicosModule } from '../exibicao-servicos/exibicao-servicos.module';
 import { ExibicaoProdutosModule } from '../exibicao-produtos/exibicao-produtos.module';
-import { GradePromocoesComponent } from './grade-promocoes.component';
+import { GradePromocoesComponent } from './grade-promocoes/grade-promocoes.component';
 
 
 @NgModule({
