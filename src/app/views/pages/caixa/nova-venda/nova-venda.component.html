@@ -1,488 +1,312 @@
 <div class="corpo">
-    <!-- Espaço do cadastro da venda -->
-    <div class="detalhes">
-        <div class="venda" fxLayout="column" fxLayoutAlign="start start">
-            <h2>Detalhes da venda</h2>
-            <div
-                class="imputVenda"
-                style="width: 100%; margin-top: 5%; margin-bottom: 5%"
-            >
-                <div [formGroup]="form">
-                    <mat-form-field
-                        class="imput"
-                        appearance="standard"
-                        fxFlex="grow"
-                    >
-                        <mat-label class="nome"
-                            >Responsável pela venda</mat-label
-                        >
-                        <input
-                            formControlName="responsavelVenda"
-                            matInput
-                            required
-                            [(ngModel)]="venda.responsavelVenda"
-                        />
-                        <mat-error
-                            *ngIf="
+  <!-- Espaço do cadastro da venda -->
+  <div class="detalhes">
+    <div class="venda" fxLayout="column" fxLayoutAlign="start start">
+      <h2>Detalhes da venda</h2>
+      <div class="imputVenda" style="width: 100%; margin-top: 5%; margin-bottom: 5%">
+        <div [formGroup]="form">
+          <mat-form-field class="imput" appearance="standard" fxFlex="grow">
+            <mat-label class="nome">Responsável pela venda</mat-label>
+            <input formControlName="responsavelVenda" matInput required [(ngModel)]="venda.responsavelVenda" />
+            <mat-error *ngIf="
                                 form
                                     .get('responsavelVenda')
                                     .hasError('required')
-                            "
-                            >Digite o nome do responsável pela venda</mat-error
-                        >
-                    </mat-form-field>
-                </div>
-                <div [formGroup]="form">
-                    <mat-form-field
-                        class="imput"
-                        style="margin-top: -4%"
-                        appearance="standard"
-                        fxFlex="grow"
-                    >
-                        <mat-label class="nome">Cliente</mat-label>
-                        <input
-                            formControlName="cliente"
-                            matInput
-                            required
-                            [(ngModel)]="venda.cliente"
-                        />
-                        <mat-error
-                            *ngIf="form.get('cliente').hasError('required')"
-                            >Digite o nome do cliente</mat-error
-                        >
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="radio">
-                <mat-radio-group
-                    class="example-radio-group"
-                    [(ngModel)]="selectedmenu"
-                >
-                    <mat-radio-button
-                        style="margin-right: 25px"
-                        color="primary"
-                        *ngFor="let option of menus"
-                        [value]="option"
-                    >
-                        {{ option }}
-                    </mat-radio-button>
-                </mat-radio-group>
-            </div>
+                            ">Digite o nome do responsável pela venda</mat-error>
+          </mat-form-field>
+        </div>
+        <div [formGroup]="form">
+          <mat-form-field class="imput" style="margin-top: -4%" appearance="standard" fxFlex="grow">
+            <mat-label class="nome">Cliente</mat-label>
+            <input formControlName="cliente" matInput required [(ngModel)]="venda.cliente" />
+            <mat-error *ngIf="form.get('cliente').hasError('required')">Digite o nome do cliente</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="radio">
+        <mat-radio-group class="example-radio-group" [(ngModel)]="selectedmenu">
+          <mat-radio-button style="margin-right: 25px" color="primary" *ngFor="let option of menus" [value]="option">
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
 
-            <div class="col-md-4" style="width: 100%">
-                <mat-form-field
-                    class="pesquisar"
-                    appearance="standard"
-                    fxFlex="grow"
-                >
-                    <mat-label>Pesquisar {{ selectedmenu }}</mat-label>
-                    <input matInput />
-                </mat-form-field>
-            </div>
+      <div class="col-md-4" style="width: 100%">
+        <mat-form-field class="pesquisar" appearance="standard" fxFlex="grow">
+          <mat-label>Pesquisar {{ selectedmenu }}</mat-label>
+          <input matInput />
+        </mat-form-field>
+      </div>
 
-            <!-- LISTA ESQUERDA -->
-            <div
-                class="servicos"
-                style="margin: 5px 25px 0; overflow: auto; height: 200px"
-                *ngIf="selectedmenu === 'Serviços'"
-            >
-                <mat-list>
-                    <mat-selection-list #servico color="primary">
-                        <mat-list-option
-                            *ngFor="let task of tasks"
-                            [value]="task"
-                            (click)="
+      <!-- LISTA ESQUERDA -->
+      <div class="servicos" style="margin: 5px 25px 0; overflow: auto; height: 200px"
+        *ngIf="selectedmenu === 'Serviços'">
+        <mat-list>
+          <mat-selection-list #servico color="primary">
+            <mat-list-option *ngFor="let task of tasks" [value]="task" (click)="
                                 selectedOptionT(
                                     servico.selectedOptions.selected
                                 )
-                            "
-                        >
-                            <div mat-list-avatar>
-                                <img
-                                    src="{{ task.imagem }}"
-                                    width="50px"
-                                    height="50px"
-                                    alt=""
-                                />
-                            </div>
-                            <div mat-line style="font-size: 14px">
-                                {{ task.descricao }}
-                            </div>
-                            <div mat-line style="font-size: 14px">
-                                {{ task.valor | currency: 'BRL' }}
-                            </div>
-                        </mat-list-option>
-                    </mat-selection-list>
-                </mat-list>
-            </div>
+                            ">
+              <div mat-list-avatar>
+                <img src="{{ task.imagem }}" width="50px" height="50px" alt="" />
+              </div>
+              <div mat-line style="font-size: 14px">
+                {{ task.descricao }}
+              </div>
+              <div mat-line style="font-size: 14px">
+                {{ task.valor | currency: 'BRL' }}
+              </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-list>
+      </div>
 
-            <div
-                class="produtos"
-                style="margin: 5px 25px 0; overflow: auto; height: 200px"
-                *ngIf="selectedmenu === 'Produtos'"
-            >
-                <mat-list>
-                    <mat-selection-list #produtos>
-                        <mat-list-option
-                            *ngFor="let product of products"
-                            [value]="product"
-                            (click)="
+      <div class="produtos" style="margin: 5px 25px 0; overflow: auto; height: 200px"
+        *ngIf="selectedmenu === 'Produtos'">
+        <mat-list>
+          <mat-selection-list #produtos>
+            <mat-list-option *ngFor="let product of products" [value]="product" (click)="
                                 selectedOptionP(
                                     produtos.selectedOptions.selected
                                 )
-                            "
-                        >
-                            <div mat-list-avatar>
-                                <img
-                                    src="{{ product.imagem }}"
-                                    width="50px"
-                                    height="50px"
-                                    alt=""
-                                />
-                            </div>
-                            <div mat-line style="font-size: 14px">
-                                {{ product.descricao }}
-                            </div>
-                            <div mat-line style="font-size: 14px">
-                                {{ product.valor | currency: 'BRL' }}
-                            </div>
-                        </mat-list-option>
-                    </mat-selection-list>
-                </mat-list>
-            </div>
-        </div>
+                            ">
+              <div mat-list-avatar>
+                <img src="{{ product.imagem }}" width="50px" height="50px" alt="" />
+              </div>
+              <div mat-line style="font-size: 14px">
+                {{ product.descricao }}
+              </div>
+              <div mat-line style="font-size: 14px">
+                {{ product.valor | currency: 'BRL' }}
+              </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-list>
+      </div>
+    </div>
 
-        <!-- Espaço para detalhes de pagamento -->
-        <div class="pagamento" fxLayout="column" fxLayoutAlign="start start">
-            <h2>Detalhes do pagamento</h2>
-            <div class="selecionados-total">
-                <div class="coluna" style="display: flex; flex-direction: row">
-                    <span class="coluna-limpa" style="width: 50%"></span>
-                    <span
-                        class="coluna-quantidade"
-                        style="
+    <!-- Espaço para detalhes de pagamento -->
+    <div class="pagamento" fxLayout="column" fxLayoutAlign="start start">
+      <h2>Detalhes do pagamento</h2>
+      <div class="selecionados-total">
+        <div class="coluna" style="display: flex; flex-direction: row">
+          <span class="coluna-limpa" style="width: 50%"></span>
+          <span class="coluna-quantidade" style="
                             width: 20%;
                             display: flex;
                             justify-content: center;
-                        "
-                        ><strong>Quantidade</strong>
-                    </span>
-                    <span
-                        class="coluna-valor"
-                        style="
+                        "><strong>Quantidade</strong>
+          </span>
+          <span class="coluna-valor" style="
                             width: 30%;
                             display: flex;
                             justify-content: end;
                             margin-right: 5%;
-                        "
-                        ><strong>Valor</strong></span
-                    >
-                </div>
+                        "><strong>Valor</strong></span>
+        </div>
 
-                <!-- LISTA DIREITA -->
-                <div class="selecionados-lista">
-                    <div class="dados">
-                        <div class="dado">
-                            <div class="dado1">
-                                <mat-list style="width: 100%">
-                                    <mat-list-item
-                                        *ngFor="let task of selectedTasks"
-                                    >
-                                        <div
-                                            class="descrição"
-                                            style="width: 50%; display: flex"
-                                        >
-                                            <div mat-list-avatar>
-                                                <img
-                                                    src="{{ task.imagem }}"
-                                                    width="50px"
-                                                    height="50px"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div
-                                                style="
+        <!-- LISTA DIREITA -->
+        <div class="selecionados-lista">
+          <div class="dados">
+            <div class="dado">
+              <div class="dado1">
+                <mat-list style="width: 100%">
+                  <mat-list-item *ngFor="let task of selectedTasks">
+                    <div class="descrição" style="width: 50%; display: flex">
+                      <div mat-list-avatar>
+                        <img src="{{ task.imagem }}" width="50px" height="50px" alt="" />
+                      </div>
+                      <div style="
                                                     display: flex;
                                                     flex-direction: column;
                                                     margin-left: 5%;
-                                                "
-                                            >
-                                                <div mat-line>
-                                                    {{ task.descricao }}
-                                                </div>
-                                                <div
-                                                    mat-line
-                                                    style="font-size: 14px"
-                                                >
-                                                    {{
-                                                        task.valor
-                                                            | currency: 'BRL'
-                                                    }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="quantidade"
-                                            style="
-                                                width: 20%;
-                                                display: flex;
-                                                justify-content: center;
-                                            "
-                                        >
-                                            <mat-form-field
-                                                style="width: 25%"
-                                                appearance="standart"
-                                            >
-                                                <select
-                                                    matNativeControl
-                                                    required
-                                                >
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </mat-form-field>
-                                        </div>
-                                        <div
-                                            class="valor"
-                                            style="
-                                                width: 30%;
-                                                display: flex;
-                                                flex-direction: column;
-                                                justify-content: center;
-                                                align-items: end;
-                                            "
-                                        >
-                                            <span>
-                                                {{
-                                                    task.valor | currency: 'BRL'
-                                                }}</span
-                                            >
-                                            <span
-                                                style="
-                                                    cursor: pointer;
-                                                    font-weight: 600;
-                                                "
-                                                (click)="openModalDesconto()"
-                                                >+ adicionar desconto</span
-                                            >
-                                        </div>
-                                    </mat-list-item>
-                                </mat-list>
-                            </div>
+                                                ">
+                        <div mat-line>
+                          {{ task.descricao }}
                         </div>
-
-                        <div class="dado">
-                            <div class="dado2">
-                                <mat-list style="width: 100%">
-                                    <mat-list-item
-                                        *ngFor="let product of selectedProducts"
-                                    >
-                                        <div
-                                            class="descrição"
-                                            style="width: 50%; display: flex"
-                                        >
-                                            <div mat-list-avatar>
-                                                <img
-                                                    src="{{ product.imagem }}"
-                                                    width="50px"
-                                                    height="50px"
-                                                    alt=""
-                                                />
-                                            </div>
-                                            <div
-                                                style="
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    margin-left: 5%;
-                                                "
-                                            >
-                                                <div mat-line>
-                                                    {{ product.descricao }}
-                                                </div>
-                                                <div
-                                                    mat-line
-                                                    style="font-size: 14px"
-                                                >
-                                                    {{
-                                                        product.valor
-                                                            | currency: 'BRL'
-                                                    }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="quantidade"
-                                            style="
-                                                width: 20%;
-                                                display: flex;
-                                                justify-content: center;
-                                            "
-                                        >
-                                            <mat-form-field
-                                                style="width: 25%"
-                                                appearance="standart"
-                                            >
-                                                <select
-                                                    matNativeControl
-                                                    required
-                                                >
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                            </mat-form-field>
-                                        </div>
-                                        <div
-                                            class="valor"
-                                            style="
-                                                width: 30%;
-                                                display: flex;
-                                                flex-direction: column;
-                                                justify-content: center;
-                                                align-items: end;
-                                            "
-                                        >
-                                            <span>
-                                                {{
-                                                    product.valor
-                                                        | currency: 'BRL'
-                                                }}</span
-                                            >
-                                            <span
-                                                style="
-                                                    cursor: pointer;
-                                                    font-weight: 600;
-                                                "
-                                                (click)="openModalDesconto()"
-                                                >+ adicionar desconto</span
-                                            >
-                                        </div>
-                                    </mat-list-item>
-                                </mat-list>
-                            </div>
+                        <div mat-line style="font-size: 14px">
+                          {{
+                          task.valor
+                          | currency: 'BRL'
+                          }}
                         </div>
+                      </div>
                     </div>
-                </div>
+
+                    <div class="quantidade" style="
+                                                width: 20%;
+                                                display: flex;
+                                                justify-content: center;
+                                            ">
+                      <mat-form-field style="width: 25%" appearance="standart">
+                        <mat-select matNativeControl required value={{task.qtdSelecionada}}
+                          (selectionChange)="somaValores($event.value, task)">
+                          <mat-option value="1">1</mat-option>
+                          <mat-option value="2">2</mat-option>
+                          <mat-option value="3">3</mat-option>
+                          <mat-option value="4">4</mat-option>
+                          <mat-option value="5">5</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="valor" style="
+                                                width: 30%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                align-items: end;
+                                            ">
+                      <span>
+                        {{
+                        task.valor | currency: 'BRL'
+                        }}</span>
+                      <span style="
+                                                    cursor: pointer;
+                                                    font-weight: 600;
+                                                " (click)="openModalDesconto()">+ adicionar desconto</span>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
+              </div>
             </div>
 
-            <!-- dados finais do pagamento -->
-            <div
-                class="dados-finais"
-                style="display: flex; flex-direction: row; align-items: center"
-            >
-                <div class="pagamento-parcelamento">
-                    <div [formGroup]="form">
-                        <mat-form-field appearance="standard">
-                            <mat-label>Pagamento</mat-label>
-                            <mat-select
-                                formControlName="pagamento"
-                                matInput
-                                required
-                                [(ngModel)]="venda.pagamento"
-                            >
-                                <mat-option value="dinheiro"
-                                    >Dinheiro</mat-option
-                                >
-                                <mat-option value="cartao"
-                                    >Cartão de Crédito</mat-option
-                                >
-                                <mat-option value="cartao"
-                                    >Cartão de Débito</mat-option
-                                >
-                                <mat-option value="pix">PIX</mat-option>
-                            </mat-select>
-                            <mat-error
-                                *ngIf="
-                                    form.get('pagamento').hasError('required')
-                                "
-                            >
-                                Selecione uma forma de pagamento
-                            </mat-error>
-                        </mat-form-field>
+            <div class="dado">
+              <div class="dado2">
+                <mat-list style="width: 100%">
+                  <mat-list-item *ngFor="let product of selectedProducts">
+                    <div class="descrição" style="width: 50%; display: flex">
+                      <div mat-list-avatar>
+                        <img src="{{ product.imagem }}" width="50px" height="50px" alt="" />
+                      </div>
+                      <div style="
+                                                    display: flex;
+                                                    flex-direction: column;
+                                                    margin-left: 5%;
+                                                ">
+                        <div mat-line>
+                          {{ product.descricao }}
+                        </div>
+                        <div mat-line style="font-size: 14px">
+                          {{
+                          product.valor
+                          | currency: 'BRL'
+                          }}
+                        </div>
+                      </div>
                     </div>
-                    <div
-                        [formGroup]="form"
-                        style="display: flex; margin-top: -10%"
-                    >
-                        <mat-form-field appearance="standard">
-                            <mat-label>Parcelamento</mat-label>
-                            <mat-select
-                                formControlName="parcelamento"
-                                required
-                                [(ngModel)]="venda.parcelamento"
-                            >
-                                <mat-option value="avista">À vista</mat-option>
-                                <mat-option
-                                    *ngIf="venda.pagamento === 'cartao'"
-                                    value="2x"
-                                    >2x</mat-option
-                                >
-                                <mat-option
-                                    *ngIf="venda.pagamento === 'cartao'"
-                                    value="3x"
-                                    >3x</mat-option
-                                >
-                                <mat-option
-                                    *ngIf="venda.pagamento === 'cartao'"
-                                    value="5x"
-                                    >5x</mat-option
-                                >
-                            </mat-select>
-                            <mat-error
-                                *ngIf="
+
+                    <div class="quantidade" style="
+                                                width: 20%;
+                                                display: flex;
+                                                justify-content: center;
+                                            ">
+                      <mat-form-field style="width: 25%" appearance="standart">
+                        <mat-select matNativeControl required value={{product.qtdSelecionada}}
+                          (selectionChange)="somaValores($event.value, product)">
+                          <mat-option value="1">1</mat-option>
+                          <mat-option value="2">2</mat-option>
+                          <mat-option value="3">3</mat-option>
+                          <mat-option value="4">4</mat-option>
+                          <mat-option value="5">5</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="valor" style="
+                                                width: 30%;
+                                                display: flex;
+                                                flex-direction: column;
+                                                justify-content: center;
+                                                align-items: end;
+                                            ">
+                      <span>
+                        {{
+                        product.valor
+                        | currency: 'BRL'
+                        }}</span>
+                      <span style="
+                                                    cursor: pointer;
+                                                    font-weight: 600;
+                                                " (click)="openModalDesconto()">+ adicionar desconto</span>
+                    </div>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- dados finais do pagamento -->
+      <div class="dados-finais" style="display: flex; flex-direction: row; align-items: center">
+        <div class="pagamento-parcelamento">
+          <div [formGroup]="form">
+            <mat-form-field appearance="standard">
+              <mat-label>Pagamento</mat-label>
+              <mat-select formControlName="pagamento" matInput required [(ngModel)]="venda.pagamento">
+                <mat-option value="dinheiro">Dinheiro</mat-option>
+                <mat-option value="cartao">Cartão de Crédito</mat-option>
+                <mat-option value="cartao">Cartão de Débito</mat-option>
+                <mat-option value="pix">PIX</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
+                                    form.get('pagamento').hasError('required')
+                                ">
+                Selecione uma forma de pagamento
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div [formGroup]="form" style="display: flex; margin-top: -10%">
+            <mat-form-field appearance="standard">
+              <mat-label>Parcelamento</mat-label>
+              <mat-select formControlName="parcelamento" required [(ngModel)]="venda.parcelamento">
+                <mat-option value="avista">À vista</mat-option>
+                <mat-option *ngIf="venda.pagamento === 'cartao'" value="2x">2x</mat-option>
+                <mat-option *ngIf="venda.pagamento === 'cartao'" value="3x">3x</mat-option>
+                <mat-option *ngIf="venda.pagamento === 'cartao'" value="5x">5x</mat-option>
+              </mat-select>
+              <mat-error *ngIf="
                                     form
                                         .get('parcelamento')
                                         .hasError('required')
-                                "
-                            >
-                                Selecione a quantidade de parcelas
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                </div>
-                <div class="valores-totais">
-                    <div class="valor-final">
-                        <h3 class="descricao">Subtotal</h3>
-                        <h3>R$ 190,00</h3>
-                    </div>
-                    <div class="valor-final">
-                        <h3 class="descricao">Desconto</h3>
-                        <h3>-R$ 50,00</h3>
-                    </div>
-                    <div class="valor-final" style="margin-bottom: -3%">
-                        <h3 class="descricao">Total</h3>
-                        <h3>R$ 140,00</h3>
-                    </div>
-                </div>
-            </div>
-            <div
-                style="
+                                ">
+                Selecione a quantidade de parcelas
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="valores-totais">
+          <div class="valor-final">
+            <h3 class="descricao">Subtotal</h3>
+            <h3>{{ subTotal | currency: 'BRL' }}</h3>
+          </div>
+          <div class="valor-final">
+            <h3 class="descricao">Desconto</h3>
+            <h3>-{{ desconto | currency: 'BRL' }}</h3>
+          </div>
+          <div class="valor-final" style="margin-bottom: -3%">
+            <h3 class="descricao">Total</h3>
+            <h3>{{ total | currency: 'BRL' }}</h3>
+          </div>
+        </div>
+      </div>
+      <div style="
                     display: flex;
                     align-items: center;
                     width: 100%;
                     justify-content: center;
-                "
-            >
-                <div
-                    style="
+                ">
+        <div style="
                         justify-content: center;
                         align-items: center;
                         display: flex;
                         margin-top: 3%;
-                    "
-                >
-                    <button mat-button mat-raised-button color="primary" (click)="trocarTab()">
-                        Adicionar Venda
-                    </button>
-                </div>
-            </div>
+                    ">
+          <button mat-button mat-raised-button color="primary" (click)="trocarTab()">
+            Adicionar Venda
+          </button>
         </div>
+      </div>
     </div>
+  </div>
 </div>
