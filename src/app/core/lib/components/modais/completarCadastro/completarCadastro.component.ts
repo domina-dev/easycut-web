@@ -1,9 +1,14 @@
+import { Endereco } from './../../../../model/endereco';
 import { CommomService } from 'src/app/core/services/commom/commom.service';
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Estabelecimento } from 'src/app/core/model/estabelecimento';
+import { EnderecoService } from 'src/app/core/services/enderecos/enderecos.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 
 @Component({
   selector: 'vex-completar-cadastro',
@@ -14,32 +19,55 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
     fadeInUp400ms
   ]
 })
-export class CompletarCadastroComponent implements OnInit {
+export class CompletarCadastroComponent /*implements OnInit*/ {
+
+  load: boolean = false;
+
+  endereco = new Endereco();
+  estabelecimento = new Estabelecimento();
+
   form: FormGroup;
 
   mostraIcone: boolean = true;
 
   constructor(
     private fb: FormBuilder,
+    private readonly dialogRef: MatDialogRef<CompletarCadastroComponent>,
+    private enderecoService: EnderecoService,
     private commomService: CommomService,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  ngOnInit(): void {
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private snackbar: MatSnackBar,
+  ) {
     this.form = this.fb.group({
       sobre: [''],
-      cep: ['', Validators.required],
-      numero: ['', Validators.required],
-      complemento: [''],
-      logradouro: ['', Validators.required],
-      bairro: ['', Validators.required],
-      estado: ['', Validators.required],
-      cidade: ['', Validators.required],
-      email: ['', Validators.required],
+      cep: [this.data?.endereco?.cep, Validators.required],
+      numero: [this.data?.endereco?.numero, Validators.required],
+      complemento: [this.data?.endereco?.complemento,],
+      logradouro: [this.data?.endereco?.logradouro, Validators.required],
+      bairro: [this.data?.endereco?.bairro, Validators.required],
+      estado: [this.data?.endereco?.estado, Validators.required],
+      cidade: [this.data?.endereco?.cidade, Validators.required],
+      email: [this.data?.estabelecimento?.email, Validators.required],
       celular: ['', Validators.required],
       telefone: ['', Validators.required],
-    });
-  }
+    })
+   }
+
+  // ngOnInit(): void {
+  //   this.form = this.fb.group({
+  //     sobre: [''],
+  //     cep: ['', Validators.required],
+  //     numero: ['', Validators.required],
+  //     complemento: [''],
+  //     logradouro: ['', Validators.required],
+  //     bairro: ['', Validators.required],
+  //     estado: ['', Validators.required],
+  //     cidade: ['', Validators.required],
+  //     email: ['', Validators.required],
+  //     celular: ['', Validators.required],
+  //     telefone: ['', Validators.required],
+  //   });
+  // }
 
   capturarImagem(event: Event, inputType: string) {
     const inputElement = event.target as HTMLInputElement;
@@ -65,5 +93,33 @@ export class CompletarCadastroComponent implements OnInit {
       estado: data.uf,
       cidade: data.localidade,
     })
+  }
+
+  cadastrarEndereco() {
+    this.load = true;
+    this.endereco = this.form.value;
+    this.enderecoService.cadastraEndereco(this.form.value).subscribe(() => {
+      console.log(this.form.value);
+      this.load = false;
+      this.dialogRef.close(true);
+      this.snackbar.open(
+        MessagesSnackBar.CADASTRO_ENDERECO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      this.load = false;
+      console.log(error);
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_CADASTRAR_ENDERECO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    })
+
   }
 }

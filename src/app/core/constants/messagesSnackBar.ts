@@ -40,6 +40,10 @@ export enum  MessagesSnackBar {
     CADASTRO_ESTABELECIMENTO= "Estabelecimento cadastrado com sucesso!",
     ERRO_CADASTRAR_ESTABELECIMENTO= "Erro ao cadastrar estabelecimento",
 
+    // Endereços
+    CADASTRO_ENDERECO= "Endereço cadastrado com sucesso!",
+    ERRO_CADASTRAR_ENDERECO= "Erro ao cadastrar endereço",
+
     // Login
     ERRO_LOGIN= "Email ou senha incorretos, ou usuario nao cadastrado",
 
