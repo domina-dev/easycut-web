@@ -1,0 +1,47 @@
+
+.card {
+    min-width: 80%;
+    overflow: auto;
+}
+.foto {
+    cursor: pointer;
+}
+.foto:hover {
+    opacity: 0.5;
+}
+.mat-icon {
+    color: white;
+}
+input[type="file"] {
+    display: none;
+}
+
+.centInputImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alteraFundo {
+    float: right;
+    margin-top: 220px;
+    margin-right: 2%;
+    border-radius: 3px;
+    background-color: white;
+
+    width: 40px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.alteraFundo .mat-icon {
+    color: black;
+    opacity: 0.5;
+}
+.alteraFundo:hover .mat-icon {
+    cursor: pointer;
+    color: black;
+    opacity: 1;
+}
