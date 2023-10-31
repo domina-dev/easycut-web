@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Estabelecimento } from '../../model/estabelecimento';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CommomService {
 
