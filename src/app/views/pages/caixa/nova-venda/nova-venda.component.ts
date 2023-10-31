@@ -6,14 +6,6 @@ import { DescontoComponent } from 'src/app/core/lib/components/modais/desconto/d
 import { Produto } from 'src/app/core/model/produto';
 import { Servico } from 'src/app/core/model/servicos';
 
-export interface Section {
-  id: number;
-  imagem: string;
-  descricao: string;
-  valor: number;
-  qtdSelecionada: number;
-}
-
 @Component({
   selector: 'vex-nova-venda',
   templateUrl: './nova-venda.component.html',
@@ -116,7 +108,7 @@ export class NovaVendaComponent implements OnInit {
     console.log('Method not implemented');
   }
 
-  somaValores(qtdSelecionada? : number, itenVenda? : Section) {
+  somaValores(qtdSelecionada? : number, itenVenda? : Produto | Servico) {
     if (itenVenda) itenVenda.qtdSelecionada = qtdSelecionada
     let soma = 0;
     this.itensVenda = this.selectedTasks.concat(this.selectedProducts)
