@@ -98,7 +98,7 @@ export class NovaVendaComponent implements OnInit {
     private fb: FormBuilder,
     public dialog: MatDialog,
     private servicoService: ServicoService,
-    private produto: ProdutoService
+    private produtoService: ProdutoService
   ) {
     this.form = this.fb.group({
       responsavelVenda: ['', Validators.required],
@@ -136,9 +136,22 @@ export class NovaVendaComponent implements OnInit {
   }
 
   listarItens() {
+    if (this.tasks.length == 0 ){
+      this.listarTaks()
+    }
+  }
+
+  listarTaks() {
     this.servicoService.obterServicos().subscribe(response => {
       this.tasks = response;
-      console.log( this.tasks )
+      console.log(this.tasks)
+    })
+  }
+
+  listarProducts() {
+    this.produtoService.obterProdutos().subscribe(response => {
+      this.products = response;
+      console.log(this.products)
     })
   }
 }
