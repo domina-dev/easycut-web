@@ -1,15 +1,15 @@
 <!-- Filtro da tabela -->
-<div class="row">
+<div class="row" [formGroup]="form">
     <div class="col-md-4">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Pesquisar agendamento</mat-label>
-            <input matInput />
+            <input matInput formControlName="filtro" (change)="filtrarAgendamentos()"/>
         </mat-form-field>
     </div>
     <div class="col-md-2">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Status</mat-label>
-            <mat-select>
+            <mat-select formControlName="status" (selectionChange)="filtrarAgendamentos()">
                 <mat-option value="aceito">Aceito</mat-option>
                 <mat-option value="pendente">Pendente</mat-option>
                 <mat-option value="recusado">Recusado</mat-option>
@@ -19,7 +19,7 @@
     <div class="col-md-3">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Data Inicial</mat-label>
-            <input matInput [matDatepicker]="startDate" />
+            <input matInput formControlName="dtInicial" (dateChange)="filtrarAgendamentos()" [matDatepicker]="startDate"/>
             <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
         </mat-form-field>
@@ -27,7 +27,7 @@
     <div class="col-md-3">
         <mat-form-field appearance="standard" fxFlex="grow">
             <mat-label>Data Final</mat-label>
-            <input matInput [matDatepicker]="endDate" />
+            <input formControlName="dtFinal" matInput (dateChange)="filtrarAgendamentos()" [matDatepicker]="endDate" />
             <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
             <mat-datepicker #endDate></mat-datepicker>
         </mat-form-field>
@@ -37,8 +37,7 @@
 
 <div class="row" style="float: right;">
     <div class="col">
-        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow">Limpar
-            <mat-icon>backspace</mat-icon></button>
+        <button style="background-color: #262B39; color: rgb(240, 255, 255);" mat-button fxFlex="grow" type="button" (click)="limparFiltro()">Limpar <mat-icon>backspace</mat-icon></button>
     </div>
     <div class="col">
         <button mat-button mat-raised-button color="primary" (click)="abrirModalCadastrarEditar()" fxFlex="grow">
