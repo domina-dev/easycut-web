@@ -8,11 +8,8 @@
           <mat-form-field class="imput" appearance="standard" fxFlex="grow">
             <mat-label class="nome">Responsável pela venda</mat-label>
             <input formControlName="responsavelVenda" matInput required [(ngModel)]="venda.responsavelVenda" />
-            <mat-error *ngIf="
-                                form
-                                    .get('responsavelVenda')
-                                    .hasError('required')
-                            ">Digite o nome do responsável pela venda</mat-error>
+            <mat-error *ngIf="form.get('responsavelVenda').hasError('required')">
+              Digite o nome do responsável pela venda</mat-error>
           </mat-form-field>
         </div>
         <div [formGroup]="form">
@@ -42,12 +39,8 @@
       <div class="servicos" style="margin: 5px 25px 0; overflow: auto; height: 200px"
         *ngIf="selectedmenu === 'Serviços'">
         <mat-list>
-          <mat-selection-list #servico color="primary">
-            <mat-list-option *ngFor="let task of tasks" [value]="task" (click)="
-                                selectedOptionT(
-                                    servico.selectedOptions.selected
-                                )
-                            ">
+          <mat-selection-list #servico color="primary" [(ngModel)]="selectedTasks">
+            <mat-list-option *ngFor="let task of tasks" [value]="task" (click)="somaValores()">
               <div mat-list-avatar>
                 <img src="{{ task.imagem }}" width="50px" height="50px" alt="" />
               </div>
@@ -65,12 +58,8 @@
       <div class="produtos" style="margin: 5px 25px 0; overflow: auto; height: 200px"
         *ngIf="selectedmenu === 'Produtos'">
         <mat-list>
-          <mat-selection-list #produtos>
-            <mat-list-option *ngFor="let product of products" [value]="product" (click)="
-                                selectedOptionP(
-                                    produtos.selectedOptions.selected
-                                )
-                            ">
+          <mat-selection-list #produtos [(ngModel)]="selectedProducts">
+            <mat-list-option *ngFor="let product of products" [value]="product" (click)="somaValores()">
               <div mat-list-avatar>
                 <img src="{{ product.imagem }}" width="50px" height="50px" alt="" />
               </div>
@@ -112,36 +101,25 @@
             <div class="dado">
               <div class="dado1">
                 <mat-list style="width: 100%">
-                  <mat-list-item *ngFor="let task of selectedTasks">
+                  <mat-list-item *ngFor="let item of itensVenda">
                     <div class="descrição" style="width: 50%; display: flex">
                       <div mat-list-avatar>
-                        <img src="{{ task.imagem }}" width="50px" height="50px" alt="" />
+                        <img src="{{ item.imagem }}" width="50px" height="50px" alt="" />
                       </div>
-                      <div style="
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    margin-left: 5%;
-                                                ">
+                      <div style="display: flex; flex-direction: column; margin-left: 5%;">
                         <div mat-line>
-                          {{ task.descricao }}
+                          {{ item.descricao }}
                         </div>
                         <div mat-line style="font-size: 14px">
-                          {{
-                          task.valor
-                          | currency: 'BRL'
-                          }}
+                          {{ item.valor | currency: 'BRL' }}
                         </div>
                       </div>
                     </div>
 
-                    <div class="quantidade" style="
-                                                width: 20%;
-                                                display: flex;
-                                                justify-content: center;
-                                            ">
+                    <div class="quantidade" style="width: 20%; display: flex; justify-content: center;">
                       <mat-form-field style="width: 25%" appearance="standart">
-                        <mat-select matNativeControl required value={{task.qtdSelecionada}}
-                          (selectionChange)="somaValores($event.value, task)">
+                        <mat-select matNativeControl required value={{item.qtdSelecionada}}
+                          (selectionChange)="somaValores($event.value, item)">
                           <mat-option value="1">1</mat-option>
                           <mat-option value="2">2</mat-option>
                           <mat-option value="3">3</mat-option>
@@ -151,83 +129,18 @@
                       </mat-form-field>
                     </div>
                     <div class="valor" style="
-                                                width: 30%;
-                                                display: flex;
-                                                flex-direction: column;
-                                                justify-content: center;
-                                                align-items: end;
-                                            ">
+                                              width: 30%;
+                                              display: flex;
+                                              flex-direction: column;
+                                              justify-content: center;
+                                              align-items: end;
+                                      ">
                       <span>
-                        {{
-                        task.valor | currency: 'BRL'
-                        }}</span>
+                        {{ item.valor | currency: 'BRL' }}</span>
                       <span style="
-                                                    cursor: pointer;
-                                                    font-weight: 600;
-                                                " (click)="openModalDesconto()">+ adicionar desconto</span>
-                    </div>
-                  </mat-list-item>
-                </mat-list>
-              </div>
-            </div>
-
-            <div class="dado">
-              <div class="dado2">
-                <mat-list style="width: 100%">
-                  <mat-list-item *ngFor="let product of selectedProducts">
-                    <div class="descrição" style="width: 50%; display: flex">
-                      <div mat-list-avatar>
-                        <img src="{{ product.imagem }}" width="50px" height="50px" alt="" />
-                      </div>
-                      <div style="
-                                                    display: flex;
-                                                    flex-direction: column;
-                                                    margin-left: 5%;
-                                                ">
-                        <div mat-line>
-                          {{ product.descricao }}
-                        </div>
-                        <div mat-line style="font-size: 14px">
-                          {{
-                          product.valor
-                          | currency: 'BRL'
-                          }}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="quantidade" style="
-                                                width: 20%;
-                                                display: flex;
-                                                justify-content: center;
-                                            ">
-                      <mat-form-field style="width: 25%" appearance="standart">
-                        <mat-select matNativeControl required value={{product.qtdSelecionada}}
-                          (selectionChange)="somaValores($event.value, product)">
-                          <mat-option value="1">1</mat-option>
-                          <mat-option value="2">2</mat-option>
-                          <mat-option value="3">3</mat-option>
-                          <mat-option value="4">4</mat-option>
-                          <mat-option value="5">5</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
-                    <div class="valor" style="
-                                                width: 30%;
-                                                display: flex;
-                                                flex-direction: column;
-                                                justify-content: center;
-                                                align-items: end;
-                                            ">
-                      <span>
-                        {{
-                        product.valor
-                        | currency: 'BRL'
-                        }}</span>
-                      <span style="
-                                                    cursor: pointer;
-                                                    font-weight: 600;
-                                                " (click)="openModalDesconto()">+ adicionar desconto</span>
+                                cursor: pointer;
+                                font-weight: 600;
+                            " (click)="openModalDesconto()">+ adicionar desconto</span>
                     </div>
                   </mat-list-item>
                 </mat-list>
@@ -249,9 +162,7 @@
                 <mat-option value="cartao">Cartão de Débito</mat-option>
                 <mat-option value="pix">PIX</mat-option>
               </mat-select>
-              <mat-error *ngIf="
-                                    form.get('pagamento').hasError('required')
-                                ">
+              <mat-error *ngIf="form.get('pagamento').hasError('required')">
                 Selecione uma forma de pagamento
               </mat-error>
             </mat-form-field>
@@ -265,11 +176,7 @@
                 <mat-option *ngIf="venda.pagamento === 'cartao'" value="3x">3x</mat-option>
                 <mat-option *ngIf="venda.pagamento === 'cartao'" value="5x">5x</mat-option>
               </mat-select>
-              <mat-error *ngIf="
-                                    form
-                                        .get('parcelamento')
-                                        .hasError('required')
-                                ">
+              <mat-error *ngIf="form.get('parcelamento').hasError('required')">
                 Selecione a quantidade de parcelas
               </mat-error>
             </mat-form-field>
@@ -291,17 +198,17 @@
         </div>
       </div>
       <div style="
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    justify-content: center;
+                  display: flex;
+                  align-items: center;
+                  width: 100%;
+                  justify-content: center;
                 ">
         <div style="
-                        justify-content: center;
-                        align-items: center;
-                        display: flex;
-                        margin-top: 3%;
-                    ">
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    margin-top: 3%;
+                ">
           <button mat-button mat-raised-button color="primary" (click)="trocarTab()">
             Adicionar Venda
           </button>
