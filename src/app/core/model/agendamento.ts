@@ -9,5 +9,4 @@ export class Agendamento {
   responsavel: string;
   status: string;
   estabelecimentoID: number;
-
 }

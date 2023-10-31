@@ -25,4 +25,8 @@ export class CommomService {
         this.estabelecimento = JSON.parse(window.localStorage.getItem('estabelecimentoLogado'))
         return this.estabelecimento;
     }
+
+    buscarViaCep(cep: string): Observable<any> {
+      return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json`);
+    }
 }
