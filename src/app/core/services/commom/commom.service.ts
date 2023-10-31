@@ -9,10 +9,10 @@ import { Estabelecimento } from '../../model/estabelecimento';
     providedIn: 'root'
 })
 export class CommomService {
-    
+
     estabelecimentoId: number = +window.localStorage.getItem("estabelecimento_ID");
     estabelecimento: Estabelecimento = this.estabelecimentoSessao();
-    
+
     constructor(public http: HttpClient) {}
 
     healthCheck(): Observable<any> {
@@ -20,9 +20,13 @@ export class CommomService {
             .get(`${environment.url_api}/health-check`, { observe: 'response' })
             .pipe(take(1));
     }
-    
+
     estabelecimentoSessao(): Estabelecimento{
         this.estabelecimento = JSON.parse(window.localStorage.getItem('estabelecimentoLogado'))
         return this.estabelecimento;
+    }
+
+    buscarViaCep(cep: string): Observable<any> {
+      return this.http.get<any>(`https://viacep.com.br/ws/${cep}/json`);
     }
 }
