@@ -3,6 +3,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DescontoComponent } from 'src/app/core/lib/components/modais/desconto/desconto.component';
+import { Produto } from 'src/app/core/model/produto';
+import { Servico } from 'src/app/core/model/servicos';
 
 export interface Section {
   id: number;
@@ -22,7 +24,7 @@ export class NovaVendaComponent implements OnInit {
   @Output() trocaTab: EventEmitter<any> = new EventEmitter();
 
   form: FormGroup;
-  selectedmenu: string;
+  selectedmenu: string = 'Serviços';
   menus: string[] = ['Serviços', 'Produtos'];
   servicos: boolean;
   subTotal: number = 0;
@@ -31,7 +33,7 @@ export class NovaVendaComponent implements OnInit {
 
   public venda = new Venda();
 
-  tasks: Section[] = [
+  tasks: Servico[] = [
     {
       id: 1,
       imagem: 'https://i.pinimg.com/564x/a0/c1/fa/a0c1fa1f2c55ee6efa2e034c6a2d0fd0.jpg',
@@ -62,7 +64,7 @@ export class NovaVendaComponent implements OnInit {
     },
   ];
 
-  products: Section[] = [
+  products: Produto[] = [
     {
       id: 5,
       imagem: 'https://dcdn.mitiendanube.com/stores/001/276/872/products/pomada-barba-e-cabelo-barbaros1-46f70d07beecdfb85116301659219117-640-0.jpg',
@@ -93,10 +95,10 @@ export class NovaVendaComponent implements OnInit {
     },
   ];
 
-  selectedTasks: Section[] = [
-  ];
-  selectedProducts: Section[] = [
-  ];
+  selectedTasks: Servico[] = [];
+  selectedProducts: Produto[] = [];
+
+  itensVenda: Produto[] | Servico[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -114,39 +116,16 @@ export class NovaVendaComponent implements OnInit {
     console.log('Method not implemented');
   }
 
-  // essa função limpa o array que vem e transforma o resultado do click com o objeto sendo velue o,
-  //  e o this.selectedTasks=[] limpa a tabela com o click
-
-  selectedOptionT(servicos: any[]) {
-    this.selectedTasks = []
-    servicos?.forEach(servico => {
-      this.selectedTasks.push(servico.value)
-    });
-    this.somaValores()
-  }
-
-  selectedOptionP(servicos: any[]) {
-    this.selectedProducts = []
-    servicos?.forEach(servico => {
-      this.selectedProducts.push(servico.value)
-    });
-    this.somaValores()
-  }
-
   somaValores(qtdSelecionada? : number, itenVenda? : Section) {
     if (itenVenda) itenVenda.qtdSelecionada = qtdSelecionada
-    let selecionados = this.selectedTasks.concat(this.selectedProducts)
     let soma = 0;
-    selecionados.forEach(element => {
+    this.itensVenda = this.selectedTasks.concat(this.selectedProducts)
+    this.itensVenda.forEach(element => {
       soma += (element.valor * (+element.qtdSelecionada || 1))
     });
     this.subTotal = soma
     this.total = this.subTotal - this.desconto
   }
-
-  if(_favoriteSeason = 'Serviços') {
-    this.servicos = true
-  };
 
   openModalDesconto() {
     this.dialog.open(DescontoComponent, {
