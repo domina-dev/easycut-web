@@ -39,7 +39,7 @@ export class CadastrarProdutoComponent {
   }
 
   cadastrarEditarProduto() {
-    this.isCadastro? this.cadastrarProduto() : this.editarProduto();
+    this.isCadastro?this.cadastrarProduto() : this.editarProduto();
   }
 
 
@@ -47,8 +47,7 @@ export class CadastrarProdutoComponent {
     this.load = true;
     this.produto = this.form.value;
     this.produto.estabelecimentoID = +this.estabelecimentoID;
-    this.produtoService.cadastrarProduto(this.produto).subscribe(() => {
-      console.log(this.form.value);
+    this.produtoService.cadastrarProduto(this.form.value).subscribe(() => {
       this.load = false;
       this.dialogRef.close(true);
       this.snackbar.open(

@@ -18,7 +18,9 @@ export class ServicoService {
   constructor(private http: HttpClient, private commonService: CommomService) { }
 
   obterServicos(): Observable<Servico[]> {
-    return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=${this.estabelecimentoID}`);
+    return this.http.get<Servico[]>(`${this.API}/servicos/todos`, {
+      params: { estabelecimento_ID: this.estabelecimentoID}
+    });
   }
 
   filtroServico(campoFiltro: string, status: string, categoriaFiltro: string): Observable<Servico[]> {
@@ -33,7 +35,7 @@ export class ServicoService {
     }).pipe(take(1));
   }
 
-  cadastrarServico(servico): Observable<Servico[]> {
+  cadastrarServico(servico: Servico): Observable<Servico[]> {
     return this.http.post<Servico[]>(`${this.API}/servicos`, servico);
   }
 
