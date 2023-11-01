@@ -20,6 +20,7 @@ export class CadastrarProdutoComponent {
   isCadastro!: boolean;
   mostraIcone: boolean = true;
   produto = new Produto();
+  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
   constructor(private fb: FormBuilder, private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
@@ -38,21 +39,22 @@ export class CadastrarProdutoComponent {
   }
 
   cadastrarEditarProduto() {
-    this.isCadastro? this.cadastrarProduto() : this.editarProduto();
+    this.isCadastro?this.cadastrarProduto() : this.editarProduto();
   }
 
 
   cadastrarProduto() {
     this.load = true;
+    this.produto = this.form.value;
+    this.produto.estabelecimentoID = +this.estabelecimentoID;
     this.produtoService.cadastrarProduto(this.form.value).subscribe(() => {
-      console.log(this.form.value);
       this.load = false;
-      this.dialogRef.close();
+      this.dialogRef.close(true);
       this.snackbar.open(
-        'Cadastro de produto realizado com sucesso!',
+        MessagesSnackBar.PRODUTO_CADASTRADO_SUCESSO,
         'FECHAR',
         {
-          duration: 10000
+          duration: 3000
         }
       );
     },
@@ -60,10 +62,10 @@ export class CadastrarProdutoComponent {
         this.load = false;
         console.log(error)
         this.snackbar.open(
-          'Produto não cadastrado.',
+          MessagesSnackBar.ERRO_CADASTRO_PRODUTO,
           'FECHAR',
           {
-            duration: 10000
+            duration: 3000
           }
         );
       })
