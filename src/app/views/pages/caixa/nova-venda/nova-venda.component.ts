@@ -82,14 +82,12 @@ export class NovaVendaComponent implements OnInit {
   listarTaks() {
     this.servicoService.obterServicos().subscribe(response => {
       this.tasks = response;
-      console.log(this.tasks)
     })
   }
 
   listarProducts() {
     this.produtoService.obterProdutos().subscribe(response => {
       this.products = response;
-      console.log(this.products)
     })
   }
 }
