@@ -27,9 +27,9 @@ export class NovaVendaComponent implements OnInit {
 
   public venda = new Venda();
 
-  tasks: Servico[] = [ ];
+  tasks: Servico[] = [];
 
-  products: Produto[] = [ ];
+  products: Produto[] = [];
 
   selectedTasks: Servico[] = [];
 
