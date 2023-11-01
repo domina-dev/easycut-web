@@ -11,11 +11,11 @@ import { CommomService } from '../commom/commom.service';
 })
 export class ProdutoService {
   private readonly API = environment.url_api;
-
+  estabelecimentoID = this.commonService.estabelecimentoId;
   constructor(private http: HttpClient, private commonService: CommomService) { }
 
   obterProdutos(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${this.API}/produtos/todos?estabelecimento_ID=4`);
+    return this.http.get<Produto[]>(`${this.API}/produtos/todos?estabelecimento_ID=${this.estabelecimentoID}`);
   }
 
   deletaProduto(id: number): Observable<Produto[]> {
@@ -32,10 +32,10 @@ export class ProdutoService {
   }
 
   filtroProduto(campoFiltro: string, status: string, categoriaFiltro: string): Observable<Produto[]> {
-    let estabelecimentoID = this.commonService.estabelecimentoId;
+
     return this.http.get<Produto[]>(`${this.API}/produtos/filtro`, {
       params: {
-        estabelecimento_ID: estabelecimentoID,
+        estabelecimento_ID: this.estabelecimentoID,
         filtro: campoFiltro,
         status: status,
         categoria: categoriaFiltro,
