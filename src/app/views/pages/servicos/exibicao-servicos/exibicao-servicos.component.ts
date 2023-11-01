@@ -38,7 +38,7 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
   form: FormGroup;
   estabelecimentoID: number;
 
-  
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
 
