@@ -10,4 +10,7 @@ export class Estabelecimento{
 	enderecoID: number;
 	planoID: number;
 	plano: Plano;
+  descricao?: string;
+  celular?: string;
+  telefone?: string;
 }

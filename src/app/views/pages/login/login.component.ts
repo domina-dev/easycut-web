@@ -68,9 +68,6 @@ export class LoginComponent {
 			this.firstLogin = response.primeiroLogin;
 			this.planLogin = response.plano_ID;
 			this.completeRegister = response.cadastroCompleto;
-			this.load = false;
-			this.router.navigate(['/']);
-			this.abrirModais(response);
 		},
 			(error) => {
 				this.load = false;
@@ -153,6 +150,9 @@ export class LoginComponent {
             (response) => {
 				localStorage.setItem("estabelecimentoLogado", JSON.stringify(response))
                 this.commomService.estabelecimentoSessao();
+                this.load = false;
+                this.router.navigate(['/']);
+                this.abrirModais(response);
             },
             (error) => {
                 console.log(error);
