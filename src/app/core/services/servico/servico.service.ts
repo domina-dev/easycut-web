@@ -13,17 +13,21 @@ import { CommomService } from '../commom/commom.service';
 export class ServicoService {
   private readonly API = environment.url_api;
 
+  estabelecimentoID = this.commonService.estabelecimentoId;
+
   constructor(private http: HttpClient, private commonService: CommomService) { }
 
   obterServicos(): Observable<Servico[]> {
-    return this.http.get<Servico[]>(`${this.API}/servicos/todos?estabelecimento_ID=4`);
+    return this.http.get<Servico[]>(`${this.API}/servicos/todos`, {
+      params: { estabelecimento_ID: this.estabelecimentoID}
+    });
   }
 
   filtroServico(campoFiltro: string, status: string, categoriaFiltro: string): Observable<Servico[]> {
-    let estabelecimentoID = this.commonService.estabelecimentoId;
+
     return this.http.get<Servico[]>(`${this.API}/servicos/filtro`, {
       params: {
-        estabelecimento_ID: estabelecimentoID,
+        estabelecimento_ID: this.estabelecimentoID,
         filtro: campoFiltro,
         status: status,
         categoria: categoriaFiltro,
@@ -31,7 +35,7 @@ export class ServicoService {
     }).pipe(take(1));
   }
 
-  cadastrarServico(servico): Observable<Servico[]> {
+  cadastrarServico(servico: Servico): Observable<Servico[]> {
     return this.http.post<Servico[]>(`${this.API}/servicos`, servico);
   }
 

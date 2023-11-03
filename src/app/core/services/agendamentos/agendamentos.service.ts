@@ -11,12 +11,13 @@ import { CommomService } from '../commom/commom.service';
 export class AgendamentoService {
   private readonly API = environment.url_api;
 
-  constructor(private http: HttpClient, private commonService: CommomService ) {}
+  estabelecimentoID = this.commomService.estabelecimentoId;
+
+  constructor(private http: HttpClient, private commomService: CommomService) {}
 
   getAgendamentos(): Observable<Agendamento[]> {
-    let estabelecimentoID = this.commonService.estabelecimentoId;
     return this.http.get<Agendamento[]>(`${this.API}/agendamentos/todos`, {
-      params: { estabelecimento_ID: estabelecimentoID}
+      params: { estabelecimento_ID: this.estabelecimentoID}
     });
   }
 
@@ -26,6 +27,12 @@ export class AgendamentoService {
 
   CadastraAgendamentos(agendamento: Agendamento): Observable<Agendamento> {
     return this.http.post<Agendamento>(`${this.API}/agendamentos`, agendamento);
+  }
+
+  filtrarAgendamentos(filter: string, status: string, dtInicial: string, dtFinal: string): Observable<Agendamento[]> {
+    return this.http.get<Agendamento[]>(`${this.API}/agendamentos/filtro`, {
+      params: { estabelecimento_ID: this.estabelecimentoID , filtro: filter, status: status, dt_inicial: dtInicial, dt_final: dtFinal}
+    })
   }
 
   alterarAgendamento(agendamento: Agendamento): Observable<Agendamento> {

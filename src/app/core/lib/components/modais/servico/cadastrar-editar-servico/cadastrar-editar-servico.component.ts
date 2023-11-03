@@ -19,6 +19,7 @@ export class CadastrarEditarServicoComponent {
   isCadastro!: boolean ;
   servico = new Servico();
   mostraIcone: boolean = true;
+  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
   constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
       private fb: FormBuilder, private servicoService: ServicoService,
@@ -43,15 +44,16 @@ export class CadastrarEditarServicoComponent {
 
   cadastrarServico() {
     this.load = true;
-    this.servicoService.cadastrarServico(this.form.value).subscribe(() => {
-      console.log(this.form.value);
+    this.servico = this.form.value;
+    this.servico.estabelecimentoID = +this.estabelecimentoID;
+    this.servicoService.cadastrarServico(this.servico).subscribe(() => {
       this.load = false;
-      this.dialogRef.close()
+      this.dialogRef.close(true)
       this.snackbar.open(
         MessagesSnackBar.ADICIONAR_SERVICO,
         "Fechar",
         {
-          duration: 10000
+          duration: 3000
         }
       );
     },
@@ -62,7 +64,7 @@ export class CadastrarEditarServicoComponent {
           MessagesSnackBar.ERRO_ADICIONAR_SERVICO,
           "Tente novamente",
           {
-            duration: 10000
+            duration: 3000
           }
         );
 

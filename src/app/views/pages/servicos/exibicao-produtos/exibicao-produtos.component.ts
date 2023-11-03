@@ -27,7 +27,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         'preco',
         'icone'
     ];
-    
+
 
     listaProduto: Produto[] = [];
 
@@ -59,7 +59,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
           })
     }
 
-    
+
 
     listarProdutos() {
         this.load = true;
@@ -79,24 +79,25 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
         );
     }
 
-    deletarProduto(produto: Produto) {
+    deletarProduto(produto: Produto): void {
         this.load = true;
         this.produtoService.deletaProduto(produto.id).subscribe(
-            (response) => {
+            () => {
                 this.listarProdutos();
                 this.load = false;
-                this.snackbar.open(MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
-                    duration: 10000
+                this.snackbar.open(
+                  MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
+                    duration: 5000
                 });
             },
             (error) => {
                 this.load = false;
-                console.log(error);
+                console.error(error);
                 this.snackbar.open(
                     MessagesSnackBar.ERRO_DELETAR_PRODUTO,
                     'Tenta novamente',
                     {
-                        duration: 10000
+                        duration: 5000
                     }
                 );
             }
@@ -129,7 +130,7 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
             }
         });
 
-        dialogRef.afterClosed().subscribe((result) => {
+        dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.deletarProduto(produto);
             }
@@ -212,8 +213,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     limparFiltro() {
         this.form.reset();
       }
-    
-    
+
+
       filtrarProdutos() {
         this.load = true;
         let formulario = this.form.value;
