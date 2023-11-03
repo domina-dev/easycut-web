@@ -46,7 +46,7 @@
 
                 <mat-form-field fxFlex="grow">
                     <mat-label>Sobre o estabelecimento</mat-label>
-                    <input formControlName="sobre" matInput>
+                    <input formControlName="sobre" matInput [(ngModel)]="estabelecimento.descricao">
                 </mat-form-field>
 
                 <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
@@ -119,20 +119,11 @@
                     <h2 class="title m-0">Contato</h2>
                 </div>
 
-                <mat-form-field fxFlex="grow">
-                    <mat-label>Email</mat-label>
-                    <input formControlName="email" matInput required>
-                    <mat-error *ngIf="form.get('email').hasError('required')">
-                      Preencha este campo!
-                  </mat-error>
-                </mat-form-field>
-
-
                 <div class="group-information" fxLayout.xs="column" fxLayout="row">
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>Celular</mat-label>
-                        <input formControlName="celular" matInput>
+                        <input formControlName="celular" matInput [(ngModel)]="estabelecimento.celular">
                         <mat-error *ngIf="form.get('celular').hasError('required')">
                           Preencha este campo!
                       </mat-error>
@@ -140,7 +131,7 @@
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>Telefone</mat-label>
-                        <input formControlName="telefone" matInput>
+                        <input formControlName="telefone" matInput [(ngModel)]="estabelecimento.telefone">
                         <mat-error *ngIf="form.get('telefone').hasError('required')">
                           Preencha este campo!
                       </mat-error>

@@ -10,22 +10,23 @@ import { EnderecoService } from 'src/app/core/services/enderecos/enderecos.servi
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
-
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
+const appearance: MatFormFieldDefaultOptions = {
+  appearance: 'standard'
+};
 @Component({
   selector: 'vex-completar-cadastro',
   templateUrl: './completarCadastro.component.html',
   styleUrls: ['./completarCadastro.component.scss'],
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: appearance }],
   animations: [
     stagger60ms,
     fadeInUp400ms
   ]
 })
-export class CompletarCadastroComponent /*implements OnInit*/ {
+export class CompletarCadastroComponent implements OnInit {
 
   load: boolean = false;
-
-  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
-  cadastroCompleto = window.localStorage.getItem('cadastroCompleto');
 
   endereco = new Endereco();
   estabelecimento = new Estabelecimento();
@@ -52,27 +53,14 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
       bairro: [this.data?.endereco?.bairro, Validators.required],
       estado: [this.data?.endereco?.estado, Validators.required],
       cidade: [this.data?.endereco?.cidade, Validators.required],
-      email: [this.data?.estabelecimento?.email, Validators.required],
       celular: ['', Validators.required],
       telefone: ['', Validators.required],
     })
    }
 
-  // ngOnInit(): void {
-  //   this.form = this.fb.group({
-  //     sobre: [''],
-  //     cep: ['', Validators.required],
-  //     numero: ['', Validators.required],
-  //     complemento: [''],
-  //     logradouro: ['', Validators.required],
-  //     bairro: ['', Validators.required],
-  //     estado: ['', Validators.required],
-  //     cidade: ['', Validators.required],
-  //     email: ['', Validators.required],
-  //     celular: ['', Validators.required],
-  //     telefone: ['', Validators.required],
-  //   });
-  // }
+  ngOnInit(): void {
+    this.estabelecimento = this.commomService.estabelecimentoSessao()
+  }
 
   capturarImagem(event: Event, inputType: string) {
     const inputElement = event.target as HTMLInputElement;
@@ -103,8 +91,8 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
   cadastrarEndereco() {
     this.load = true;
     this.endereco = this.form.value;
-    this.enderecoService.cadastraEndereco(this.form.value).subscribe(() => {
-      console.log(this.form.value);
+    this.enderecoService.cadastraEndereco(this.endereco).subscribe(response => {
+      this.completarCadastro(response.id);
       this.load = false;
       this.dialogRef.close(true);
       this.snackbar.open(
@@ -128,11 +116,12 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
 
   }
 
-  completarCadastro() {
-    this.estabelecimento = this.form.value;
+  completarCadastro(id: number) {
+    this.estabelecimento.enderecoID = id
+    this.estabelecimento.cadastroCompleto = true
     this.estabelecimentoService.alterarCadastro(this.estabelecimento).subscribe(response => {
       this.snackbar.open(
-        MessagesSnackBar.EDITAR_AGENDAMENTO,
+        MessagesSnackBar.CADASTRO_COMPLETO,
         "Fechar",
         {
           duration: 3000
@@ -141,7 +130,7 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
     }, (error) => {
       console.log(error);
       this.snackbar.open(
-        MessagesSnackBar.ERRO_EDITAR_AGENDAMENTO,
+        MessagesSnackBar.ERRO_CADASTRAR_COMPLETO,
         "Fechar",
         {
           duration: 3000

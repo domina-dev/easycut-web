@@ -50,7 +50,7 @@ export class EstabelecimentoService extends CommomService{
         params: { id: this.estabelecimentoId}}).pipe(take(1))
   }
 
-  alterarCadastro(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
+  alterarCadastro(estabelecimento : Estabelecimento): Observable<Estabelecimento> {
     return this.http.put<Estabelecimento>(`${this.API}/estabelecimento`,estabelecimento)
   }
 
