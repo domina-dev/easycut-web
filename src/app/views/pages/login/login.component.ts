@@ -150,6 +150,9 @@ export class LoginComponent {
             (response) => {
 				localStorage.setItem("estabelecimentoLogado", JSON.stringify(response))
                 this.commomService.estabelecimentoSessao();
+                this.load = false;
+                this.router.navigate(['/']);
+                this.abrirModais(response);
             },
             (error) => {
                 console.log(error);
