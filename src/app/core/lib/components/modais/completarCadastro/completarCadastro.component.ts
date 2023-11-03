@@ -9,6 +9,7 @@ import { Estabelecimento } from 'src/app/core/model/estabelecimento';
 import { EnderecoService } from 'src/app/core/services/enderecos/enderecos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
 
 @Component({
   selector: 'vex-completar-cadastro',
@@ -23,6 +24,9 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
 
   load: boolean = false;
 
+  estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
+  cadastroCompleto = window.localStorage.getItem('cadastroCompleto');
+
   endereco = new Endereco();
   estabelecimento = new Estabelecimento();
 
@@ -34,6 +38,7 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
     private fb: FormBuilder,
     private readonly dialogRef: MatDialogRef<CompletarCadastroComponent>,
     private enderecoService: EnderecoService,
+    private estabelecimentoService: EstabelecimentoService,
     private commomService: CommomService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private snackbar: MatSnackBar,
@@ -122,4 +127,27 @@ export class CompletarCadastroComponent /*implements OnInit*/ {
     })
 
   }
+
+  completarCadastro() {
+    this.estabelecimento = this.form.value;
+    this.estabelecimentoService.alterarCadastro(this.estabelecimento).subscribe(response => {
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_AGENDAMENTO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    }, (error) => {
+      console.log(error);
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_AGENDAMENTO,
+        "Fechar",
+        {
+          duration: 3000
+        }
+      )
+    })
+  }
+
 }
