@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -36,14 +36,14 @@ export class CadastrarEditarComponent {
 
   iniciaFormulario() {
     this.form = this.fb.group({
-      nomeCliente: [this.data?.agendamento?.nomeCliente, Validators.required],
-      nomeServico: [this.data?.agendamento?.nomeServico, Validators.required],
-      tempoEstimado: [this.data?.agendamento?.tempoEstimado, Validators.required],
-      valor: [this.data?.agendamento?.valor, Validators.required],
-      dtAtendimento: [this.data?.agendamento?.dtAtendimento, Validators.required],
-      status: [this.data?.agendamento?.status, Validators.required],
-      hrAtendimento: [this.data?.agendamento?.hrAtendimento, Validators.required],
-      responsavel: [this.data?.agendamento?.responsavel]
+      nomeCliente: new FormControl([this.data?.agendamento?.nomeCliente, [Validators.required]]),
+      nomeServico: new FormControl ([this.data?.agendamento?.nomeServico, Validators.required]),
+      tempoEstimado: new FormControl ([this.data?.agendamento?.tempoEstimado, Validators.required, Validators.pattern("^[0-9]*$")]),
+      valor: new FormControl ([this.data?.agendamento?.valor, Validators.required, Validators.pattern("^[0-9]*$")]),
+      dtAtendimento: new FormControl ([this.data?.agendamento?.dtAtendimento, Validators.required]),
+      status: new FormControl ([this.data?.agendamento?.status, Validators.required]),
+      hrAtendimento: new FormControl ([this.data?.agendamento?.hrAtendimento, Validators.required]),
+      responsavel: new FormControl ([this.data?.agendamento?.responsavel])
     })
   }
   responsavelObrigatorio(event: any) {
@@ -58,6 +58,10 @@ export class CadastrarEditarComponent {
   }
 
   cadastrarAgendamento() {
+    if (this.form.invalid) {
+      return;
+    }
+
     this.agendamento = this.form.value;
     this.agendamento.estabelecimentoID = +this.estabelecimentoID;
     this.agendamentoService.CadastraAgendamentos(this.form.value).subscribe(() => {
@@ -111,7 +115,7 @@ export class CadastrarEditarComponent {
     this.isCadastro ? this.cadastrarAgendamento() : this.editarAgendamento();
   }
 
-  filtrarOpcoes():any[] {
+  filtrarOpcoes(): any[] {
     if (this.isCadastro) {
       return [
         {
