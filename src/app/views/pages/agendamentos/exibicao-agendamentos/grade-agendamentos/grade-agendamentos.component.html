@@ -1,1 +1,11 @@
-<p>grade-agendamentos works!</p>
+<div class="h-full" fxLayout="column">
+
+    <div @stagger class="overflow-y-auto" fxFlex="auto">
+        <div class="p-gutter" vexContainer gdColumns="1fr 1fr 1fr 1fr" gdColumns.lt-md="1fr 1fr" gdColumns.xs="1fr"
+            gdGap="24px">
+            <vex-card *ngFor="let agendamento of listaAgendamentos" [item]="agendamento" @fadeInUp
+                (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.agendamento)"
+                (eventModalDeletar)="abrirModalDeletar($event.agendamento)"></vex-card>
+        </div>
+    </div>
+</div>

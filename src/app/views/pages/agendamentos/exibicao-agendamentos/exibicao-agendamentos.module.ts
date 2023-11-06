@@ -5,6 +5,9 @@ import { ExibicaoAgendamentosComponent } from './exibicao-agendamentos.component
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
 import { GradeAgendamentosComponent } from './grade-agendamentos/grade-agendamentos.component';
+import { GradeAgendamentosModule } from './grade-agendamentos/grade-agendamentos.module';
+import { ListaAgendamentosModule } from './lista-agendamentos/lista-agendamentos.module';
+import { CardModule } from 'src/app/core/lib/shared/card/card.module';
 
 @NgModule({
     declarations: [ExibicaoAgendamentosComponent, GradeAgendamentosComponent],
@@ -13,6 +16,9 @@ import { GradeAgendamentosComponent } from './grade-agendamentos/grade-agendamen
         ExibicaoAgendamentosRoutingModule,
         MaterialModule,
         LibVexModule,
+        GradeAgendamentosModule,
+        ListaAgendamentosModule,
+        CardModule
     ],
     exports: [ExibicaoAgendamentosComponent]
 })
