@@ -59,5 +59,8 @@ export enum  MessagesSnackBar {
 
     //Confirmar Acao
     CONFIRMAR_EXCLUIR= "Tem certeza que deseja EXCLUIR esse item?",
-    CONFIRMAR_EDITAR="Tem certeza que deseja EDITAR esse item?"
+    CONFIRMAR_EDITAR="Tem certeza que deseja EDITAR esse item?",
+
+    //Erro de Cadástro
+    ERRO_VALIDACAO="Preencha todos os campos em vermelho!"
 }
