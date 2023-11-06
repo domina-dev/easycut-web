@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,24 +22,27 @@ export class CadastrarProdutoComponent {
   produto = new Produto();
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
-  constructor(private produtoService: ProdutoService,
+  constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
-    private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
-
+    private readonly fb: FormBuilder,
+    private snackbar: MatSnackBar,
+  ) {
     this.isCadastro = !data.produto;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
-    this.form = new FormGroup({
-      nome: new FormControl(data?.produto?.nome, [Validators.required]),
-      qtdEstoque: new FormControl(data?.produto?.qtdEstoque, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      valor: new FormControl(data?.produto?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      categoria: new FormControl(data?.produto?.categoria, [Validators.required]),
-      descricao: new FormControl(data?.produto?.descricao),
-      valorPromocional: new FormControl(data?.produto?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")])
+    this.form = this.fb.group({
+      nome: [data?.produto?.nome, [Validators.required]],
+      qtdEstoque: [data?.produto?.qtdEstoque, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      valor: [data?.produto?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      categoria: [data?.produto?.categoria, [Validators.required]],
+      descricao: [data?.produto?.descricao],
+      valorPromocional: [data?.produto?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")]]
     });
   }
 
   cadastrarEditarProduto() {
-    this.isCadastro?this.cadastrarProduto() : this.editarProduto();
+    this.isCadastro ? this.cadastrarProduto() : this.editarProduto();
   }
 
 
@@ -89,36 +92,36 @@ export class CadastrarProdutoComponent {
     this.load = true;
     this.montarBody();
     this.produtoService.alterarProduto(this.produto).subscribe(response => {
-        console.log(this.form.value);
-        this.load = false;
-        this.dialogRef.close(true);
-        this.snackbar.open(
-            MessagesSnackBar.EDITAR_PRODUTO,
-            "Fechar",
-            {
-              duration: 10000
-            }
-          );
+      console.log(this.form.value);
+      this.load = false;
+      this.dialogRef.close(true);
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_PRODUTO,
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
 
     }, (error) => {
-        console.log(error)
-        this.load = false;
-        this.snackbar.open(
-            MessagesSnackBar.ERRO_EDITAR_PRODUTO,
-            "Tenta novamente",
-            {
-                duration: 10000
-            }
-        );
+      console.log(error)
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_PRODUTO,
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
     })
-}
+  }
 
-private montarBody() {
-  let id = this.data?.produto?.id;
-  let estabelecimentoID = this.data?.produto?.estabelecimentoID;
-  this.produto = this.form.value;
-  this.produto.id = id;
-  this.produto.estabelecimentoID = estabelecimentoID;
-}
+  private montarBody() {
+    let id = this.data?.produto?.id;
+    let estabelecimentoID = this.data?.produto?.estabelecimentoID;
+    this.produto = this.form.value;
+    this.produto.id = id;
+    this.produto.estabelecimentoID = estabelecimentoID;
+  }
 
 }

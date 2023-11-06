@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -21,20 +21,23 @@ export class CadastrarEditarServicoComponent {
   mostraIcone: boolean = true;
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
-  constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+  constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private servicoService: ServicoService,
     private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
-    private snackbar: MatSnackBar) {
+    private readonly fb: FormBuilder,
+    private snackbar: MatSnackBar
+  ) {
     this.isCadastro = !data.servico;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
-    this.form = new FormGroup({
-      nome: new FormControl(data?.servico?.nome, [Validators.required]),
-      tempoEstimado: new FormControl(data?.servico?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      descricao: new FormControl(data?.servico?.descricao),
-      categoria: new FormControl(data?.servico?.categoria, [Validators.required]),
-      valor: new FormControl(data?.servico?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      valorPromocional: new FormControl(data?.servico?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      promocional: new FormControl(data?.servico?.promocional)
+    this.form = this.fb.group({
+      nome: [data?.servico?.nome, [Validators.required]],
+      tempoEstimado: [data?.servico?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      descricao: [data?.servico?.descricao],
+      categoria: [data?.servico?.categoria, [Validators.required]],
+      valor: [data?.servico?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      valorPromocional: [data?.servico?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      promocional: [data?.servico?.promocional]
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -27,6 +27,7 @@ export class CadastrarEditarComponent {
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private readonly dialogRef: MatDialogRef<CadastrarEditarComponent>,
+    private readonly fb: FormBuilder,
     private agendamentoService: AgendamentoService,
     private snackbar: MatSnackBar,
   ) {
@@ -37,15 +38,15 @@ export class CadastrarEditarComponent {
   }
 
   iniciaFormulario() {
-    this.form = new FormGroup({
-      nomeCliente: new FormControl(this.data?.agendamento?.nomeCliente, [Validators.required]),
-      nomeServico: new FormControl(this.data?.agendamento?.nomeServico, [Validators.required]),
-      tempoEstimado: new FormControl(this.data?.agendamento?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      valor: new FormControl(this.data?.agendamento?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      dtAtendimento: new FormControl(this.data?.agendamento?.dtAtendimento, [Validators.required, this.dateValidator]),
-      status: new FormControl(this.data?.agendamento?.status, [Validators.required]),
-      hrAtendimento: new FormControl(this.data?.agendamento?.hrAtendimento, [Validators.required]),
-      responsavel: new FormControl(this.data?.agendamento?.responsavel)
+    this.form = this.fb.group({
+      nomeCliente: [this.data?.agendamento?.nomeCliente, [Validators.required]],
+      nomeServico: [this.data?.agendamento?.nomeServico, [Validators.required]],
+      tempoEstimado: [this.data?.agendamento?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      valor: [this.data?.agendamento?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      dtAtendimento: [this.data?.agendamento?.dtAtendimento, [Validators.required, this.dateValidator]],
+      status: [this.data?.agendamento?.status, [Validators.required]],
+      hrAtendimento: [this.data?.agendamento?.hrAtendimento, [Validators.required]],
+      responsavel: [this.data?.agendamento?.responsavel]
     })
   }
   responsavelObrigatorio(event: any) {
