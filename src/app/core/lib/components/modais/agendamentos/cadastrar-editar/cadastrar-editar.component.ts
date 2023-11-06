@@ -64,7 +64,7 @@ export class CadastrarEditarComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        { duration: 5000 })
+        { duration: 5000 });
       return;
     }
     this.load = true;
@@ -99,7 +99,7 @@ export class CadastrarEditarComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        { duration: 5000 })
+        { duration: 5000 });
       return;
     }
     this.load = true;

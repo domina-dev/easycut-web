@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from 'src/app/core/services/produtos/produtos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,19 +22,19 @@ export class CadastrarProdutoComponent {
   produto = new Produto();
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService,
+  constructor(private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
     private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
 
     this.isCadastro = !data.produto;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
-    this.form = this.fb.group({
-      nome: [data?.produto?.nome, Validators.required],
-      qtdEstoque: [data?.produto?.qtdEstoque, Validators.required],
-      valor: [data?.produto?.valor, Validators.required],
-      categoria: [data?.produto?.categoria, Validators.required, Validators.required],
-      descricao: [data?.produto?.descricao, Validators.required],
-      valorPromocional: [data?.produto?.valorPromocional, Validators.required]
+    this.form = new FormGroup({
+      nome: new FormControl(data?.produto?.nome, [Validators.required]),
+      qtdEstoque: new FormControl(data?.produto?.qtdEstoque, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      valor: new FormControl(data?.produto?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      categoria: new FormControl(data?.produto?.categoria, [Validators.required]),
+      descricao: new FormControl(data?.produto?.descricao),
+      valorPromocional: new FormControl(data?.produto?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")])
     });
   }
 
@@ -44,6 +44,13 @@ export class CadastrarProdutoComponent {
 
 
   cadastrarProduto() {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 5000 });
+      return;
+    }
     this.load = true;
     this.produto = this.form.value;
     this.produto.estabelecimentoID = +this.estabelecimentoID;
@@ -72,6 +79,13 @@ export class CadastrarProdutoComponent {
   }
 
   editarProduto(): void {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 5000 });
+      return;
+    }
     this.load = true;
     this.montarBody();
     this.produtoService.alterarProduto(this.produto).subscribe(response => {
