@@ -95,7 +95,7 @@ export class CadastrarEditarServicoComponent {
         MessagesSnackBar.EDITAR_SERVICO,
         "Fechar",
         {
-          duration: 10000
+          duration: 3000
         }
       );
     }, (error) => {
@@ -105,7 +105,7 @@ export class CadastrarEditarServicoComponent {
         MessagesSnackBar.ERRO_EDITAR_SERVICO,
         "Tenta novamente",
         {
-          duration: 10000
+          duration: 3000
         }
       );
 
