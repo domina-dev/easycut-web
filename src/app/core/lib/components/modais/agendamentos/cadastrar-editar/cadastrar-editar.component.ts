@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -42,7 +42,7 @@ export class CadastrarEditarComponent {
       nomeServico: new FormControl(this.data?.agendamento?.nomeServico, [Validators.required]),
       tempoEstimado: new FormControl(this.data?.agendamento?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]),
       valor: new FormControl(this.data?.agendamento?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      dtAtendimento: new FormControl(this.data?.agendamento?.dtAtendimento, [Validators.required]),
+      dtAtendimento: new FormControl(this.data?.agendamento?.dtAtendimento, [Validators.required, this.dateValidator]),
       status: new FormControl(this.data?.agendamento?.status, [Validators.required]),
       hrAtendimento: new FormControl(this.data?.agendamento?.hrAtendimento, [Validators.required]),
       responsavel: new FormControl(this.data?.agendamento?.responsavel)
@@ -162,6 +162,18 @@ export class CadastrarEditarComponent {
         }
       ]
     }
+  }
+
+  dateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      return { 'validDate': true };
+    }
+
+    return null;
   }
 
 

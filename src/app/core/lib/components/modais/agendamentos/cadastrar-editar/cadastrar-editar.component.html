@@ -64,9 +64,10 @@
           <input matInput [matDatepicker]="picker" formControlName="dtAtendimento" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="form.get('dtAtendimento').hasError('required') && formDir.submitted">
-            Preencha a data corretamente!
+          <mat-error *ngIf="form.get('dtAtendimento').hasError('required' && 'validDate') && formDir.submitted">
+            Preencha com uma data válida, partindo da data de hoje!
           </mat-error>
+
         </mat-form-field>
 
         <mat-form-field id="categoria" appearance="standard">
