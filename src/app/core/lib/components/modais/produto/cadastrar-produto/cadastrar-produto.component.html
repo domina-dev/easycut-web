@@ -52,7 +52,8 @@
                 <input formControlName="qtdEstoque" type="number" matInput placeholder="Digite a quantidade" maxlength="3"
                   required />
                 <mat-error *ngIf="form.get('qtdEstoque').hasError('required') && formDir.submitted">
-                  Preencha este campo!
+                  Preencha este campo,
+                  use apenas números!
                 </mat-error>
                 <mat-error *ngIf="form.get('qtdEstoque').hasError('pattern')">
                   Preencha apenas com números!
@@ -98,7 +99,8 @@
               <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
                 placeholder="0" />
               <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
-                Preencha este campo!
+                Preencha este campo,
+                use apenas números!
               </mat-error>
               <mat-error *ngIf="form.get('valor').hasError('pattern')">
                 Preencha apenas com números!
@@ -112,7 +114,8 @@
               <input formControlName="valorPromocional" id="valorP" matInput type="number" class="example-right-align"
                 placeholder="0" />
               <mat-error *ngIf="form.get('valorPromocional').hasError('required') && formDir.submitted">
-                Preencha este campo!
+                Preencha este campo,
+                use apenas números!
               </mat-error>
               <mat-error *ngIf="form.get('valorPromocional').hasError('pattern')">
                 Preencha apenas com números!

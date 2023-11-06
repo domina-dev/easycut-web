@@ -36,7 +36,8 @@
             required />
           <span matTextPrefix class="minutos">Minutos&nbsp;</span>
           <mat-error *ngIf="form.get('tempoEstimado').hasError('required') && formDir.submitted">
-            Preencha este campo!
+            Preencha este campo,
+            use apenas números!
           </mat-error>
           <mat-error *ngIf="form.get('tempoEstimado').hasError('pattern')">
             Preencha apenas com números!
@@ -49,7 +50,8 @@
           <mat-label>Valor do Serviço</mat-label>
           <input style="width: 86%;" matInput type="number" formControlName="valor" placeholder="0" required />
           <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
-            Preencha com o valor do serviço!
+            Preencha com o valor do serviço,
+            use apenas números!
           </mat-error>
           <mat-error *ngIf="form.get('valor').hasError('pattern')">
             Preencha apenas com números!
