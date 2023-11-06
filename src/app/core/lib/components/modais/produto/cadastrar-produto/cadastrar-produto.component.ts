@@ -22,28 +22,38 @@ export class CadastrarProdutoComponent {
   produto = new Produto();
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
-  constructor(private fb: FormBuilder, private produtoService: ProdutoService,
+  constructor(
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    private produtoService: ProdutoService,
     private readonly dialogRef: MatDialogRef<CadastrarProdutoComponent>,
-    private snackbar: MatSnackBar, @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
-
+    private readonly fb: FormBuilder,
+    private snackbar: MatSnackBar,
+  ) {
     this.isCadastro = !data.produto;
     this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
     this.form = this.fb.group({
-      nome: [data?.produto?.nome, Validators.required],
-      qtdEstoque: [data?.produto?.qtdEstoque, Validators.required],
-      valor: [data?.produto?.valor, Validators.required],
-      categoria: [data?.produto?.categoria, Validators.required, Validators.required],
-      descricao: [data?.produto?.descricao, Validators.required],
-      valorPromocional: [data?.produto?.valorPromocional, Validators.required]
+      nome: [data?.produto?.nome, [Validators.required]],
+      qtdEstoque: [data?.produto?.qtdEstoque, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      valor: [data?.produto?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]],
+      categoria: [data?.produto?.categoria, [Validators.required]],
+      descricao: [data?.produto?.descricao],
+      valorPromocional: [data?.produto?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")]]
     });
   }
 
   cadastrarEditarProduto() {
-    this.isCadastro?this.cadastrarProduto() : this.editarProduto();
+    this.isCadastro ? this.cadastrarProduto() : this.editarProduto();
   }
 
 
   cadastrarProduto() {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 3850 });
+      return;
+    }
     this.load = true;
     this.produto = this.form.value;
     this.produto.estabelecimentoID = +this.estabelecimentoID;
@@ -72,39 +82,46 @@ export class CadastrarProdutoComponent {
   }
 
   editarProduto(): void {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 3850 });
+      return;
+    }
     this.load = true;
     this.montarBody();
     this.produtoService.alterarProduto(this.produto).subscribe(response => {
-        console.log(this.form.value);
-        this.load = false;
-        this.dialogRef.close(true);
-        this.snackbar.open(
-            MessagesSnackBar.EDITAR_PRODUTO,
-            "Fechar",
-            {
-              duration: 10000
-            }
-          );
+      console.log(this.form.value);
+      this.load = false;
+      this.dialogRef.close(true);
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_PRODUTO,
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
 
     }, (error) => {
-        console.log(error)
-        this.load = false;
-        this.snackbar.open(
-            MessagesSnackBar.ERRO_EDITAR_PRODUTO,
-            "Tenta novamente",
-            {
-                duration: 10000
-            }
-        );
+      console.log(error)
+      this.load = false;
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_PRODUTO,
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
     })
-}
+  }
 
-private montarBody() {
-  let id = this.data?.produto?.id;
-  let estabelecimentoID = this.data?.produto?.estabelecimentoID;
-  this.produto = this.form.value;
-  this.produto.id = id;
-  this.produto.estabelecimentoID = estabelecimentoID;
-}
+  private montarBody() {
+    let id = this.data?.produto?.id;
+    let estabelecimentoID = this.data?.produto?.estabelecimentoID;
+    this.produto = this.form.value;
+    this.produto.id = id;
+    this.produto.estabelecimentoID = estabelecimentoID;
+  }
 
 }

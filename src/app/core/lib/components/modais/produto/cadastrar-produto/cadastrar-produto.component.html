@@ -5,9 +5,9 @@
   </div>
 
   <!-- modal -->
-  <mat-dialog-content>
-    <!-- formulario -->
-    <div [formGroup]="form" class="example-form">
+  <form (ngSubmit)="cadastrarEditarProduto()" [formGroup]="form" #formDir="ngForm" class="example-form">
+    <mat-dialog-content>
+      <!-- formulario -->
       <div class="formulario">
         <div id="formul">
 
@@ -39,7 +39,7 @@
               <mat-form-field class="example-full-width" id="inpN" appearance="standard">
                 <mat-label class="nome">Nome do produto</mat-label>
                 <input formControlName="nome" matInput required />
-                <mat-error *ngIf="form.get('nome').hasError('required')">
+                <mat-error *ngIf="form.get('nome').hasError('required') && formDir.submitted">
                   Preencha este campo!
                 </mat-error>
               </mat-form-field>
@@ -49,10 +49,13 @@
             <div class="quantEstoque">
               <mat-form-field id="quantEstoque" appearance="standard">
                 <mat-label>Quantidade em Estoque</mat-label>
-                <input formControlName="qtdEstoque" type="text" matInput placeholder="Digite a quantidade" maxlength="3"
+                <input formControlName="qtdEstoque" type="number" matInput placeholder="Digite a quantidade" maxlength="3"
                   required />
-                <mat-error *ngIf="form.get('qtdEstoque').hasError('required')">
+                <mat-error *ngIf="form.get('qtdEstoque').hasError('required') && formDir.submitted">
                   Preencha este campo!
+                </mat-error>
+                <mat-error *ngIf="form.get('qtdEstoque').hasError('pattern')">
+                  Preencha apenas com números!
                 </mat-error>
               </mat-form-field>
 
@@ -65,7 +68,7 @@
                   <mat-option value="Unha">Unha</mat-option>
                   <mat-option value="Pele">Pele</mat-option>
                 </mat-select>
-                <mat-error *ngIf="form.get('categoria').hasError('required')">
+                <mat-error *ngIf="form.get('categoria').hasError('required') && formDir.submitted">
                   Selecione uma opção!
                 </mat-error>
               </mat-form-field>
@@ -94,8 +97,11 @@
               <span matTextPrefix>R$&nbsp;</span>
               <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
                 placeholder="0" />
-              <mat-error *ngIf="form.get('valor').hasError('required')">
+              <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
                 Preencha este campo!
+              </mat-error>
+              <mat-error *ngIf="form.get('valor').hasError('pattern')">
+                Preencha apenas com números!
               </mat-error>
             </mat-form-field>
 
@@ -105,23 +111,26 @@
               <span matTextPrefix>R$&nbsp;</span>
               <input formControlName="valorPromocional" id="valorP" matInput type="number" class="example-right-align"
                 placeholder="0" />
-              <mat-error *ngIf="form.get('valorPromocional').hasError('required')">
+              <mat-error *ngIf="form.get('valorPromocional').hasError('required') && formDir.submitted">
                 Preencha este campo!
+              </mat-error>
+              <mat-error *ngIf="form.get('valorPromocional').hasError('pattern')">
+                Preencha apenas com números!
               </mat-error>
             </mat-form-field>
           </div>
         </div>
       </div>
-    </div>
-  </mat-dialog-content>
+    </mat-dialog-content>
 
-  <!-- botoes adicionar e cancelar -->
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-button mat-raised-button color="primary" (click)="cadastrarEditarProduto()">
-      Adicionar
-    </button>
-  </mat-dialog-actions>
+    <!-- botoes adicionar e cancelar -->
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button mat-raised-button color="primary">
+        Adicionar
+      </button>
+    </mat-dialog-actions>
+  </form>
 </div>
 
 <!-- LOADING -->

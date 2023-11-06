@@ -1,101 +1,124 @@
 <div class="form">
-    <!-- Titulo do modal -->
-    <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
-        <h2 class="title m-0">Novo Agendamento</h2>
-    </div>
+  <!-- Titulo do modal -->
+  <div class="px-6 py-4 border-b" id="title" fxLayout="row" fxLayoutAlign="start center">
+    <h2 class="title m-0">Novo Agendamento</h2>
+  </div>
 
-    <!-- modal -->
+  <!-- modal -->
+  <form (ngSubmit)="cadastrarEditarAgendamento()" [formGroup]="form" #formDir="ngForm" class="example-form">
     <mat-dialog-content>
-        <div [formGroup]="form" class="example-form">
-            <!-- cliente -->
-            <div class="cliente">
-                <mat-form-field class="example-full-width" id="inpN" appearance="standard">
-                    <mat-label class="cliente">Cliente</mat-label>
-                    <input formControlName="nomeCliente" matInput required />
-                    <mat-error *ngIf="form.get('nomeCliente').hasError('required')">
-                        Preencha este campo!
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <!-- serviço -->
-            <div class="servico">
-                <mat-form-field class="example-full-width" id="inpN" appearance="standard">
-                    <mat-label class="servico">Serviço</mat-label>
-                    <input formControlName="nomeServico" matInput required />
-                    <mat-error *ngIf="form.get('nomeServico').hasError('required')">
-                        Preencha este campo!
-                    </mat-error>
-                </mat-form-field>
-            </div>
+      <!-- cliente -->
+      <div class="cliente">
+        <mat-form-field class="example-full-width" id="inpN" appearance="standard">
+          <mat-label class="cliente">Cliente</mat-label>
+          <input formControlName="nomeCliente" matInput required />
+          <mat-error *ngIf="form.get('nomeCliente').hasError('required') && formDir.submitted">
+            Preencha este campo!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <!-- serviço -->
+      <div class="servico">
+        <mat-form-field class="example-full-width" id="inpN" appearance="standard">
+          <mat-label class="servico">Serviço</mat-label>
+          <input formControlName="nomeServico" matInput required />
+          <mat-error *ngIf="form.get('nomeServico').hasError('required') && formDir.submitted">
+            Preencha este campo!
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-            <!-- Tempo estimado -->
-            <div class="tempoEs">
-                <mat-form-field id="tempoEst" appearance="standard">
-                    <mat-label>Tempo Estimado</mat-label>
-                    <input formControlName="tempoEstimado" type="text" matInput placeholder="Digite o Tempo"
-                        maxlength="3" required />
-                    <span matTextPrefix class="minutos">Minutos&nbsp;</span>
-                    <mat-error *ngIf="form.get('tempoEstimado').hasError('required')">
-                        Preencha este campo!
-                    </mat-error>
-                </mat-form-field>
+      <!-- Tempo estimado -->
+      <div class="dualInput">
+        <mat-form-field id="tempoEst" appearance="standard">
+          <mat-label>Tempo Estimado</mat-label>
+          <input formControlName="tempoEstimado" type="number" matInput placeholder="Digite o Tempo" maxlength="3"
+            required />
+          <span matTextPrefix class="minutos">Minutos&nbsp;</span>
+          <mat-error *ngIf="form.get('tempoEstimado').hasError('required') && formDir.submitted">
+            Preencha este campo!
+          </mat-error>
+          <mat-error *ngIf="form.get('tempoEstimado').hasError('pattern')">
+            Preencha apenas com números!
+          </mat-error>
+        </mat-form-field>
 
-                <!-- valor -->
-                <mat-form-field id="categoria" appearance="standard">
-                    <mat-label>Valor do Serviço</mat-label>
-                    <input matInput formControlName="valor" required placeholder="Ex. R$ 50,66" />
-                    <mat-error *ngIf="form.get('valor').hasError('required')">
-                        Selecione uma opção!
-                    </mat-error>
-                </mat-form-field>
-            </div>
+        <!-- valor -->
+        <mat-form-field floatLabel="always" id="categoria" appearance="standard">
+          <span matTextPrefix>R$&nbsp;</span>
+          <mat-label>Valor do Serviço</mat-label>
+          <input style="width: 86%;" matInput type="number" formControlName="valor" placeholder="0" required />
+          <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
+            Preencha com o valor do serviço!
+          </mat-error>
+          <mat-error *ngIf="form.get('valor').hasError('pattern')">
+            Preencha apenas com números!
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-            <!-- data e hora -->
-            <div class="tempoEs">
-                <mat-form-field id="tempoEst" appearance="standard">
-                    <mat-label>Data</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="dtAtendimento" />
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="form.get('dtAtendimento').hasError('required')">
-                        Preencha a data corretamente!
-                    </mat-error>
-                </mat-form-field>
+      <!-- data e hora -->
+      <div class="dualInput">
+        <mat-form-field id="data" appearance="standard">
+          <mat-label>Data</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dtAtendimento" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="form.get('dtAtendimento').hasError('required' && 'validDate') && formDir.submitted">
+            Preencha com uma data válida, partindo da data de hoje!
+          </mat-error>
 
-                <mat-form-field id="categoria" appearance="standard">
-                    <mat-label>Hora</mat-label>
-                    <input matInput formControlName="hrAtendimento" placeholder="Ex. 12:30" />
-                    <mat-error *ngIf="form.get('hrAtendimento').hasError('required')">
-                        Preencha o horário corretamente!
-                    </mat-error>
-                </mat-form-field>
-            </div>
+        </mat-form-field>
 
-            <!-- responsável e status -->
-            <div class="tempoEs">
-                <mat-form-field id="tempoEst" appearance="standard">
-                    <mat-label>Responsável</mat-label>
-                    <input matInput formControlName="responsavel" />
-                </mat-form-field>
+        <mat-form-field id="categoria" appearance="standard">
+          <mat-label>Horário</mat-label>
+          <input matInput formControlName="hrAtendimento" placeholder="Ex. 12:30" />
+          <mat-error *ngIf="form.get('hrAtendimento').hasError('required') && formDir.submitted">
+            Preencha o horário corretamente!
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-                <mat-form-field id="categoria" appearance="standard">
-                    <mat-label>Status</mat-label>
-                    <mat-select formControlName="status" required (selectionChange)="responsavelObrigatorio($event)">
-                        <mat-option *ngFor="let status of opcoesStatus" value="{{ status.valor }}">{{ status.nome }}</mat-option>
+      <!-- responsável e status -->
+      <div class="dualInput">
+        <mat-form-field id="resp" appearance="standard">
+          <mat-label>Responsável</mat-label>
+          <input matInput formControlName="responsavel" />
+          <mat-error *ngIf="form.get('responsavel').hasError('required') && formDir.submitted">
+            Preencha este campo!
+          </mat-error>
+        </mat-form-field>
 
-                    </mat-select>
-                    <mat-error *ngIf="form.get('status').hasError('required')">
-                        Selecione uma opção!
-                    </mat-error>
-                </mat-form-field>
-            </div>
-        </div>
+        <mat-form-field id="categoria" appearance="standard">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="status" required (selectionChange)="responsavelObrigatorio($event)">
+            <mat-option *ngFor="let status of opcoesStatus" value="{{ status.valor }}">{{ status.nome }}</mat-option>
+
+          </mat-select>
+          <mat-error *ngIf="form.get('status').hasError('required') && formDir.submitted">
+            Selecione uma opção!
+          </mat-error>
+        </mat-form-field>
+      </div>
     </mat-dialog-content>
+
     <!-- botoes adicionar e cancelar -->
     <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close>Cancelar</button>
-        <button mat-button mat-raised-button color="primary" (click)="cadastrarEditarAgendamento()">
-            Adicionar
-        </button>
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button mat-raised-button color="primary">
+        {{ legendaBotao }}
+      </button>
     </mat-dialog-actions>
+  </form>
+</div>
+
+<!-- LOADING -->
+<div *ngIf="load" id="vex-splash-screen-load">
+  <div class="wrapper">
+    <div class="ball-scale-multiple">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </div>
