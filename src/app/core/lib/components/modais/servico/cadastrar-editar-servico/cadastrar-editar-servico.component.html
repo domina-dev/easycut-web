@@ -6,8 +6,8 @@
 
   <!-- modal -->
   <form (ngSubmit)="cadastrarEditarServico()" [formGroup]="form" #formDir="ngForm" class="example-form">
-  <mat-dialog-content>
-    <!-- formulario -->
+    <mat-dialog-content>
+      <!-- formulario -->
       <div class="formulario">
         <div id="formul">
 
@@ -55,6 +55,9 @@
                 <mat-error *ngIf="form.get('tempoEstimado').hasError('required') && formDir.submitted">
                   Preencha este campo!
                 </mat-error>
+                <mat-error *ngIf="form.get('tempoEstimado').hasError('pattern')">
+                  Preencha apenas com números!
+                </mat-error>
               </mat-form-field>
 
               <!-- Categoria -->
@@ -97,6 +100,9 @@
               <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
                 Preencha este campo!
               </mat-error>
+              <mat-error *ngIf="form.get('valor').hasError('pattern')">
+                Preencha apenas com números!
+              </mat-error>
             </mat-form-field>
 
             <!-- valor promocional -->
@@ -108,6 +114,9 @@
               <mat-error *ngIf="form.get('valorPromocional').hasError('required') && formDir.submitted">
                 Preencha este campo!
               </mat-error>
+              <mat-error *ngIf="form.get('valorPromocional').hasError('pattern')">
+                Preencha apenas com números!
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -117,7 +126,7 @@
     <!-- botoes adicionar e cancelar -->
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>Cancelar</button>
-      <button mat-button mat-raised-button color="primary" (click)="cadastrarEditarServico()">
+      <button mat-button mat-raised-button color="primary">
         {{ legendaBotao }}
       </button>
     </mat-dialog-actions>

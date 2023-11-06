@@ -21,6 +21,7 @@ export class CadastrarEditarComponent {
 
   form: FormGroup;
   isCadastro!: boolean;
+  legendaBotao: string = '';
   opcoesStatus = [];
 
   constructor(
@@ -28,9 +29,9 @@ export class CadastrarEditarComponent {
     private readonly dialogRef: MatDialogRef<CadastrarEditarComponent>,
     private agendamentoService: AgendamentoService,
     private snackbar: MatSnackBar,
-
   ) {
     this.isCadastro = !data?.agendamento;
+    this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
     this.opcoesStatus = this.filtrarOpcoes();
     this.iniciaFormulario();
   }
@@ -63,10 +64,7 @@ export class CadastrarEditarComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        {
-          duration: 5000
-        }
-      )
+        { duration: 5000 })
       return;
     }
     this.load = true;
@@ -101,10 +99,7 @@ export class CadastrarEditarComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        {
-          duration: 5000
-        }
-      )
+        { duration: 5000 })
       return;
     }
     this.load = true;

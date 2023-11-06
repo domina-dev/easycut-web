@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -16,33 +16,40 @@ export class CadastrarEditarServicoComponent {
   load: boolean = false;
   form: FormGroup;
   legendaBotao: string = '';
-  isCadastro!: boolean ;
+  isCadastro!: boolean;
   servico = new Servico();
   mostraIcone: boolean = true;
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
 
   constructor(@Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-      private fb: FormBuilder, private servicoService: ServicoService,
-      private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
-      private snackbar: MatSnackBar) {
-        this.isCadastro = !data.servico;
-        this.legendaBotao = this.isCadastro?"Adicionar" : "Confirmar";
-        this.form = this.fb.group({
-          nome: [data?.servico?.nome, Validators.required],
-          tempoEstimado: [data?.servico?.tempoEstimado, Validators.required],
-          descricao: [data?.servico?.descricao],
-          categoria: [data?.servico?.categoria, Validators.required],
-          valor: [data?.servico?.valor, Validators.required],
-          valorPromocional: [data?.servico?.valorPromocional, Validators.required],
-          promocional: [data?.servico?.promocional]
-      });
+    private servicoService: ServicoService,
+    private readonly dialogRef: MatDialogRef<CadastrarEditarServicoComponent>,
+    private snackbar: MatSnackBar) {
+    this.isCadastro = !data.servico;
+    this.legendaBotao = this.isCadastro ? "Adicionar" : "Confirmar";
+    this.form = new FormGroup({
+      nome: new FormControl(data?.servico?.nome, [Validators.required]),
+      tempoEstimado: new FormControl(data?.servico?.tempoEstimado, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      descricao: new FormControl(data?.servico?.descricao),
+      categoria: new FormControl(data?.servico?.categoria, [Validators.required]),
+      valor: new FormControl(data?.servico?.valor, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      valorPromocional: new FormControl(data?.servico?.valorPromocional, [Validators.required, Validators.pattern("^[0-9]*$")]),
+      promocional: new FormControl(data?.servico?.promocional)
+    });
   }
 
   cadastrarEditarServico() {
-    this.isCadastro?this.cadastrarServico() : this.editarServico()
+    this.isCadastro ? this.cadastrarServico() : this.editarServico()
   }
 
   cadastrarServico() {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 5000 })
+      return;
+    }
     this.load = true;
     this.servico = this.form.value;
     this.servico.estabelecimentoID = +this.estabelecimentoID;
@@ -71,30 +78,39 @@ export class CadastrarEditarServicoComponent {
       })
   }
 
-    editarServico() {
-      this.montarBody();
-      this.servicoService.editarServico(this.servico).subscribe(() => {
-        console.log(this.form.value)
-        this.dialogRef.close(true);
-        this.snackbar.open(
-          MessagesSnackBar.EDITAR_SERVICO,
-          "Fechar",
-          {
-            duration: 10000
-          }
-        );
-      }, (error) => {
-        console.log(error)
-        this.snackbar.open(
-          MessagesSnackBar.ERRO_EDITAR_SERVICO,
-          "Tenta novamente",
-          {
-            duration: 10000
-          }
-        );
-
-      });
+  editarServico() {
+    if (this.form.invalid) {
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_VALIDACAO,
+        "Fechar",
+        { duration: 5000 })
+      return;
     }
+    this.load = true;
+    this.montarBody();
+    this.servicoService.editarServico(this.servico).subscribe(() => {
+      this.load = false;
+      this.dialogRef.close(true);
+      this.snackbar.open(
+        MessagesSnackBar.EDITAR_SERVICO,
+        "Fechar",
+        {
+          duration: 10000
+        }
+      );
+    }, (error) => {
+      this.load = false;
+      console.log(error)
+      this.snackbar.open(
+        MessagesSnackBar.ERRO_EDITAR_SERVICO,
+        "Tenta novamente",
+        {
+          duration: 10000
+        }
+      );
+
+    });
+  }
 
   private montarBody() {
     let id = this.data?.servico?.id;
