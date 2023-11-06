@@ -62,5 +62,5 @@ export enum  MessagesSnackBar {
     CONFIRMAR_EDITAR="Tem certeza que deseja EDITAR esse item?",
 
     //Erro de Cadástro
-    ERRO_VALIDACAO="Preencha todos os campos em vermelho!"
+    ERRO_VALIDACAO="Preencha corretamente os campos em vermelho!"
 }
