@@ -29,8 +29,7 @@ export class GradeAgendamentosComponent implements OnInit {
   constructor(){}
 
   ngOnInit(): void {
-    console.log("testando valores grade::: ", this.listaAgendamentos);
-    
+
   }
 
   abrirModalCadastrarEditar(agendamento: Agendamento) {
@@ -38,7 +37,6 @@ export class GradeAgendamentosComponent implements OnInit {
   }
 
   abrirModalDeletar(agendamento: Agendamento) {
-    console.log("teste::: ", agendamento);
     this.eventModalDeletar.emit({ agendamento: agendamento })
   }
 
