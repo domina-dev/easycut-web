@@ -6,7 +6,6 @@ import { take } from 'rxjs/internal/operators/take';
 import { Servico } from '../../model/servicos';
 import { CommomService } from '../commom/commom.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
