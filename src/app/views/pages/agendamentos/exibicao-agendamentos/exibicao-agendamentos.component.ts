@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';

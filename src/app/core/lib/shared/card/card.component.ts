@@ -3,8 +3,6 @@ import icAttachMoney from '@iconify/icons-ic/attach-money';
 import icBorderColor from '@iconify/icons-ic/border-color';
 import icAccessTime from '@iconify/icons-ic/access-time';
 import icDelete from '@iconify/icons-ic/delete';
-import { Agendamento } from 'src/app/core/model/agendamento';
-
 
 @Component({
   selector: 'vex-card',
