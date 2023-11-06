@@ -172,7 +172,6 @@ export class CadastrarEditarComponent {
     if (selectedDate < today) {
       return { 'validDate': true };
     }
-
     return null;
   }
 
