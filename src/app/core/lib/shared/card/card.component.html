@@ -1,0 +1,28 @@
+<div class="card overflow-hidden">
+	<div class="p-4 text-center hover:bg-hover trans-ease-out relative" matRipple>
+		<img alt="" src="https://i.pinimg.com/564x/a0/c1/fa/a0c1fa1f2c55ee6efa2e034c6a2d0fd0.jpg"
+			class="avatar h-24 w-24 mx-auto">
+
+		<h2 class="title mb-1 mt-3">{{item.nomeServico}}</h2>
+		<div class="alinhar">
+			<div class="body-2 text-secondary">
+				<ic-icon [icon]="icAccessTime" class="ltr:mr-1 rtl:ml-1" inline="true"></ic-icon>
+				<span>{{item.tempoEstimado}}min</span>
+			</div>
+
+			<div class="body-2 text-secondary">
+				<span>{{ item.valor | currency }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-app-bar p-2" fxLayout="row" fxLayoutAlign="space-around center">
+		<button (click)="abrirModalCadastrarEditar()" class="text-secondary" mat-icon-button type="button">
+			<mat-icon [icIcon]="icBorderColor"></mat-icon>
+		</button>
+
+		<button (click)="abrirModalDeletar()" class="text-secondary" mat-icon-button type="button">
+			<mat-icon [icIcon]="icDelete"></mat-icon>
+		</button>
+	</div>
+</div>

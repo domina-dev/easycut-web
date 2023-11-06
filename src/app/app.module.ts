@@ -34,6 +34,7 @@ import { FechamentoCaixaComponent } from './core/lib/components/modais/fechament
 import { CompletarCadastroComponent } from './core/lib/components/modais/completarCadastro/completarCadastro.component';
 import { DescontoComponent } from './core/lib/components/modais/desconto/desconto.component';
 import { EditarStatusComponent } from './core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
+import { CardModule } from 'src/app/core/lib/shared/card/card.module';
 
 registerLocaleData(localePt, 'pt');
 
@@ -66,6 +67,7 @@ registerLocaleData(localePt, 'pt');
         ConfigModule,
         ConstrucaoModalModule,
         IconModule,
+        CardModule,
 
 
         // Vex

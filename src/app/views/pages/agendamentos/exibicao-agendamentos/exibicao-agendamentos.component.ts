@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,22 +13,17 @@ import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'vex-exibicao-agendamentos',
-  templateUrl: './exibicao-agendamentos.component.html',
-  styleUrls: ['./exibicao-agendamentos.component.scss'],
-  encapsulation: ViewEncapsulation.None
+	selector: 'vex-exibicao-agendamentos',
+	templateUrl: './exibicao-agendamentos.component.html',
+	styleUrls: ['./exibicao-agendamentos.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 
-export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
-
-	form: FormGroup;
-	load: boolean = false;
-	currentStatus: any;
-	agendamentoHoje: number;
-	listaAgendamentos: Agendamento[] = [];
-
+export class ExibicaoAgendamentosComponent implements OnInit {
+	
 	dataSource = new MatTableDataSource<Agendamento>();
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
+	listaAgendamentos: Agendamento[] = [];
 	displayedColumns: string[] = [
 		'cliente',
 		'servico',
@@ -39,6 +34,14 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 		'status',
 		'icone',
 	];
+
+	form: FormGroup;
+	currentStatus: any;
+	
+	agendamentoHoje: number;
+	load: boolean = false;
+	verLista: boolean = true;
+	verGrade: boolean = false;
 
 	constructor(public dialog: MatDialog,
 		private agendamentoService: AgendamentoService,
@@ -56,10 +59,6 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 	ngOnInit(): void {
 		EventEmitterService.get("buscarAgendamentos").subscribe(() => this.getAgendamentos());
 		this.getAgendamentos();
-	}
-
-	ngAfterViewInit() {
-		this.dataSource.paginator = this.paginator;
 	}
 
 	filtrarAgendamentos() {
@@ -103,6 +102,7 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 				console.log(error)
 			});
 	}
+	
 	abrirModalCadastrarEditar(agendamento?: Agendamento) {
 		let dialogRef = this.dialog.open(CadastrarEditarComponent,
 			{
@@ -172,5 +172,10 @@ export class ExibicaoAgendamentosComponent implements AfterViewInit, OnInit {
 				}
 			)
 		})
+	}
+
+	visualizar() {
+		this.verLista = !this.verLista;
+		this.verGrade = !this.verGrade;
 	}
 }

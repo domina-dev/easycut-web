@@ -1,0 +1,90 @@
+    <!-- Tabela -->
+    <div class="mat-elevation-z8">
+        <table aria-label="tabela-agendamentos" mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="cliente">
+                <th mat-header-cell *matHeaderCellDef>Cliente</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.nomeCliente }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="servico">
+                <th mat-header-cell *matHeaderCellDef>Serviço</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.nomeServico }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tempo">
+                <th mat-header-cell *matHeaderCellDef>Tempo</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.tempoEstimado }}min
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="valor">
+                <th mat-header-cell *matHeaderCellDef>Valor</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.valor | currency }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="data">
+                <th mat-header-cell *matHeaderCellDef>Data</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.dtAtendimento | date: "dd/MM/YYYY hh:mm" }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="responsavel">
+                <th mat-header-cell *matHeaderCellDef>Responsável</th>
+                <td mat-cell *matCellDef="let agendamento"
+                    [ngStyle]="{'background': agendamento.id === agendamentoHoje? '#d3d3d3':''}">
+                    {{ agendamento.responsavel }}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td class="tdsticky" [class]="
+                        agendamento.status === 'pendente'
+                            ? 'pendente'
+                            : agendamento.status === 'aceito'
+                            ? 'aceito'
+                            : 'recusado' " mat-cell *matCellDef="let agendamento">
+                    <mat-form-field appearance="standard">
+                        <mat-select [value]="agendamento.status" (selectionChange)="abrirModalEditarStatus($event?.value, agendamento)">
+                            <mat-option value="pendente">Pendente</mat-option>
+                            <mat-option value="aceito">Aceito</mat-option>
+                            <mat-option value="recusado">Recusado</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+            <!-- Ícone da tabela -->
+            <ng-container matColumnDef="icone">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td class="layout-menu" mat-cell *matCellDef="let agendamento">
+                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                        (click)="abrirModalCadastrarEditar(agendamento)">
+                        <mat-icon color="primary"> border_color</mat-icon>
+                    </button>
+                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                        (click)="abrirModalDeletar(agendamento)">
+                        <mat-icon color="warn">delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons
+            aria-label="Selecione as páginas de Clientes">
+        </mat-paginator>
+    </div>
