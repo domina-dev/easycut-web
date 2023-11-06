@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
@@ -25,7 +25,6 @@ export class CadastrarEditarComponent {
 
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    private readonly fb: FormBuilder,
     private readonly dialogRef: MatDialogRef<CadastrarEditarComponent>,
     private agendamentoService: AgendamentoService,
     private snackbar: MatSnackBar,
