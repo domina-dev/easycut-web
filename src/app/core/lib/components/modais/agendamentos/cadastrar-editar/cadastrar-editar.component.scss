@@ -1,6 +1,7 @@
 .form {
   padding: 5px;
 
+
   #title {
     margin-bottom: 15px;
     font-size: 30pt;
@@ -10,9 +11,10 @@
     width: 100%;
   }
 
-  .tempoEs {
+  .dualInput {
     display: flex;
     justify-content: space-between;
+    max-width: 100%;
 
     #tempoEst {
       float: left;
@@ -20,8 +22,20 @@
       width: 55%;
     }
 
+    #data {
+      float: left;
+      height: 2px;
+      width: 49%;
+    }
+
+    #resp {
+      float: left;
+      height: 2px;
+      width: 49%;
+    }
+
     #categoria {
-      width: 40%;
+      margin-left: 5%;
     }
 
     .minutos {
@@ -31,10 +45,6 @@
       font-size: 10pt;
       margin-top: -19px;
     }
-  }
-
-  #descricao {
-    width: 100%;
   }
 
   .valor {
@@ -63,7 +73,4 @@
   color: #000000;
   font-size: 13px;
 }
-  .datahora {
-    display: flex;
-  }
 }
