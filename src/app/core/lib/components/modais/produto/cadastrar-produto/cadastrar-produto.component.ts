@@ -48,7 +48,7 @@ export class CadastrarProdutoComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        { duration: 5000 });
+        { duration: 3850 });
       return;
     }
     this.load = true;
@@ -83,7 +83,7 @@ export class CadastrarProdutoComponent {
       this.snackbar.open(
         MessagesSnackBar.ERRO_VALIDACAO,
         "Fechar",
-        { duration: 5000 });
+        { duration: 3850 });
       return;
     }
     this.load = true;
