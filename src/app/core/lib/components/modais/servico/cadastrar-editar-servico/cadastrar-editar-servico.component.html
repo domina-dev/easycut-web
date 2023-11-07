@@ -53,7 +53,8 @@
                   required />
                 <span matTextPrefix class="minutos">Minutos&nbsp;</span>
                 <mat-error *ngIf="form.get('tempoEstimado').hasError('required') && formDir.submitted">
-                  Preencha este campo!
+                  Preencha este campo,
+                  use apenas números!
                 </mat-error>
                 <mat-error *ngIf="form.get('tempoEstimado').hasError('pattern')">
                   Preencha apenas com números!
@@ -98,7 +99,8 @@
               <input formControlName="valor" id="valor" matInput type="number" class="example-right-align"
                 placeholder="0" fxFlex="grow" />
               <mat-error *ngIf="form.get('valor').hasError('required') && formDir.submitted">
-                Preencha este campo!
+                Preencha este campo,
+                use apenas números!
               </mat-error>
               <mat-error *ngIf="form.get('valor').hasError('pattern')">
                 Preencha apenas com números!
@@ -112,7 +114,8 @@
               <input formControlName="valorPromocional" id="valorPromocional" matInput type="number"
                 class="example-right-align" placeholder="0" fxFlex="grow" />
               <mat-error *ngIf="form.get('valorPromocional').hasError('required') && formDir.submitted">
-                Preencha este campo!
+                Preencha este campo,
+                use apenas números!
               </mat-error>
               <mat-error *ngIf="form.get('valorPromocional').hasError('pattern')">
                 Preencha apenas com números!
