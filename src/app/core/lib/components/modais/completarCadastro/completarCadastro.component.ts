@@ -29,6 +29,7 @@ export class CompletarCadastroComponent implements OnInit {
   load: boolean = false;
 
   endereco = new Endereco();
+
   estabelecimento = new Estabelecimento();
 
   form: FormGroup;
@@ -138,5 +139,4 @@ export class CompletarCadastroComponent implements OnInit {
       )
     })
   }
-
 }

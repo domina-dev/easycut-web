@@ -115,6 +115,15 @@ export class CadastrarEditarServicoComponent {
     });
   }
 
+  capturarImagem(event: Event, inputType: string) {
+    const inputElement = event.target as HTMLInputElement;
+    const selectedFile = inputElement.files[0];
+
+    if (selectedFile) {
+      console.log(`${inputType} selecionada:`, selectedFile);
+    }
+  }
+
   private montarBody() {
     let id = this.data?.servico?.id;
     let estabelecimentoID = this.data?.servico?.estabelecimentoID;

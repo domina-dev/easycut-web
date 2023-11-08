@@ -14,7 +14,6 @@ import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 export class CadastrarProdutoComponent {
 
   load: boolean = false;
-
   form: FormGroup;
   legendaBotao: string = '';
   isCadastro!: boolean;
@@ -44,7 +43,6 @@ export class CadastrarProdutoComponent {
   cadastrarEditarProduto() {
     this.isCadastro ? this.cadastrarProduto() : this.editarProduto();
   }
-
 
   cadastrarProduto() {
     if (this.form.invalid) {
@@ -114,6 +112,15 @@ export class CadastrarProdutoComponent {
         }
       );
     })
+  }
+
+  capturarImagem(event: Event, inputType: string) {
+    const inputElement = event.target as HTMLInputElement;
+    const selectedFile = inputElement.files[0];
+
+    if (selectedFile) {
+      console.log(`${inputType} selecionada:`, selectedFile);
+    }
   }
 
   private montarBody() {

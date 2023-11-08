@@ -19,7 +19,7 @@
                   <label [hidden]="mostraIcone">
                     <mat-icon>add_a_photo</mat-icon>
                   </label>
-                  <input #imagemServico type="file" />
+                  <input #imagemServico type="file" (change)="capturarImagem($event,'imagem do servico')" />
                 </div>
                 <div class="rounded-circle">
                   <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
