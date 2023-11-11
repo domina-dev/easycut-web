@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class ExibicaoAgendamentosComponent implements OnInit {
-	
+
 	dataSource = new MatTableDataSource<Agendamento>();
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	listaAgendamentos: Agendamento[] = [];
@@ -37,7 +37,6 @@ export class ExibicaoAgendamentosComponent implements OnInit {
 
 	form: FormGroup;
 	currentStatus: any;
-	
 	agendamentoHoje: number;
 	load: boolean = false;
 	verLista: boolean = true;
@@ -102,7 +101,7 @@ export class ExibicaoAgendamentosComponent implements OnInit {
 				console.log(error)
 			});
 	}
-	
+
 	abrirModalCadastrarEditar(agendamento?: Agendamento) {
 		let dialogRef = this.dialog.open(CadastrarEditarComponent,
 			{

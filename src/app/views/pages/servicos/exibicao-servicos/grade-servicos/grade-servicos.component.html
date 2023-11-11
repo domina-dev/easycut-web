@@ -1,1 +1,12 @@
-<p>grade-servicos works!</p>
+<div class="h-full" fxLayout="column">
+
+  <div @stagger class="overflow-y-auto" fxFlex="auto">
+      <div class="p-gutter" vexContainer gdColumns="1fr 1fr 1fr 1fr" gdColumns.lt-md="1fr 1fr" gdColumns.xs="1fr"
+          gdGap="24px">
+          <vex-card *ngFor="let servico of listaServico" [item]="servico" @fadeInUp
+              (eventModalCadastrarEditar)="modalCadastrarEditar($event.servico)"
+              (eventModalDeletar)="abrirModalDeletar($event.servico)">
+          </vex-card>
+      </div>
+  </div>
+</div>

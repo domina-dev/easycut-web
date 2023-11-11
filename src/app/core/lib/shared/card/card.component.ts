@@ -19,7 +19,6 @@ export class CardComponent implements OnInit {
   icAccessTime = icAccessTime;
   icAttachMoney = icAttachMoney;
   icBorderColor = icBorderColor;
-
   icDelete = icDelete;
 
   constructor() { }
@@ -34,5 +33,5 @@ export class CardComponent implements OnInit {
   abrirModalDeletar() {
     this.eventModalDeletar.emit({ agendamento: this.item })
   }
-  
+
 }

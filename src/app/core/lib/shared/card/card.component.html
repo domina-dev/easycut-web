@@ -3,7 +3,7 @@
 		<img alt="" src="https://i.pinimg.com/564x/a0/c1/fa/a0c1fa1f2c55ee6efa2e034c6a2d0fd0.jpg"
 			class="avatar h-24 w-24 mx-auto">
 
-		<h2 class="title mb-1 mt-3">{{item.nomeServico}}</h2>
+		<h2 class="title mb-1 mt-3">{{item.nomeServico || item.nome}}</h2>
 		<div class="alinhar">
 			<div class="body-2 text-secondary">
 				<ic-icon [icon]="icAccessTime" class="ltr:mr-1 rtl:ml-1" inline="true"></ic-icon>

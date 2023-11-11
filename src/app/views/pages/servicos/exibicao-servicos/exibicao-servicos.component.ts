@@ -17,8 +17,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
 
-  load: boolean = false;
-
+  dataSource = new MatTableDataSource<Servico>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  listaServicos: Servico[] = [];
   displayedColumns: string[] = [
     'aplicacao',
     'servico',
@@ -28,45 +29,28 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     'icone'
   ];
 
-  dataSource = new MatTableDataSource<Servico>();
-
-  verLista: boolean = true;
-  verGrade: boolean = false;
-
-  listaServicos: Servico[] = [];
-
   form: FormGroup;
   estabelecimentoID: number;
-
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
   matDialogActions: any;
+  load: boolean = false;
+  verLista: boolean = true;
+  verGrade: boolean = false;
 
   constructor(public dialog: MatDialog,
     private servicoService: ServicoService,
     private snackbar: MatSnackBar,
     private fb:FormBuilder) {
 
-      this.form = fb.group({
+      this.form = this.fb.group({
         filtro: [''],
         categoria: [''],
         status: ['']
       })
-
-
     }
 
   ngOnInit(): void {
-
     this.listarServicos();
-
   }
-
-
-  limparFiltro() {
-    this.form.reset();
-  }
-
 
   filtrarServicos() {
     this.load = true;
@@ -83,6 +67,9 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
       });
   }
 
+  limparFiltro() {
+    this.form.reset();
+  }
 
   listarServicos() {
     this.load = true;
@@ -165,7 +152,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
     }
     else {
         mensagem = "Tem certeza que deseja mostrar este serviço?"
-
     }
 
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
@@ -178,7 +164,6 @@ export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
         if (result) {
             servico.ativo = !servico.ativo
             this.alterarServico(servico)
-
         }
     });
 }
@@ -190,7 +175,6 @@ abrirModalPromocional(servico: Servico): void {
     }
     else {
       mensagem = "Tem certeza que deseja tornar este serviço promocional?"
-
     }
 
     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
@@ -208,6 +192,7 @@ abrirModalPromocional(servico: Servico): void {
       }
     });
   }
+
   alterarServico(servico: Servico): void {
     this.load = true;
     this.servicoService.editarServico(servico).subscribe(() => {
@@ -220,7 +205,7 @@ abrirModalPromocional(servico: Servico): void {
           duration: 3000
         }
       )
-    }, (error) => {
+    }, () => {
       this.load = false;
       this.snackbar.open(
         MessagesSnackBar.ERRO_EDITAR_SERVICO,
@@ -230,7 +215,6 @@ abrirModalPromocional(servico: Servico): void {
         }
       )
     });
-
   }
 
   visualizar() {

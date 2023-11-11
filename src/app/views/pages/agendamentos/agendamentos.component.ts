@@ -13,8 +13,4 @@ export class AgendamentosComponent {
     trocaLegenda($event) {
         this.legenda = $event.index == 0 ? AGENDAMENTOS : RESERVAS;
     }
-
-
-
-
 }
