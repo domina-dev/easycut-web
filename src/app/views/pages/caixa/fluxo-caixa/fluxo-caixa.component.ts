@@ -1,54 +1,108 @@
 import { FechamentoCaixaComponent } from './../../../../core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
-    selector: 'vex-fluxo-caixa',
-    templateUrl: './fluxo-caixa.component.html',
-    styleUrls: ['./fluxo-caixa.component.scss']
+  selector: 'vex-fluxo-caixa',
+  templateUrl: './fluxo-caixa.component.html',
+  styleUrls: ['./fluxo-caixa.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class FluxoCaixaComponent implements OnInit {
 
-    @Output() trocaTab: EventEmitter<any> = new EventEmitter();
-  
-    displayedColumns = ['data', 'descricao', 'status', 'valor'];
-    dataSource = ELEMENT_DATA;
+  dataSource = ELEMENT_DATA;
+  columnsToDisplay = ['Data', 'Cliente', 'Qtd', 'Valor'];
+  expandedElement: PeriodicElement | null;
 
-    constructor(public dialog: MatDialog){
+  @Output() trocaTab: EventEmitter<any> = new EventEmitter();
 
-    }
+  constructor(public dialog: MatDialog) {
 
-    ngOnInit(): void {
-        console.log('Method not implemented');
-    }
+  }
 
-    fecharCaixa(){
-      const dialogRef = this.dialog.open(FechamentoCaixaComponent)
-      dialogRef.afterClosed().subscribe()
-    }
+  ngOnInit(): void {
+    console.log('Method not implemented');
+  }
 
-    trocarTab(){
-        this.trocaTab.emit({data: 0});
-    }
+  fecharCaixa() {
+    const dialogRef = this.dialog.open(FechamentoCaixaComponent)
+    dialogRef.afterClosed().subscribe()
+  }
+
+  trocarTab() {
+    this.trocaTab.emit({ data: 0 });
+  }
 }
 
-
-export interface FluxoCaixa {
-    descricao: string;
-    data: string;
-    status: string;
-    valor: string;
+export interface PeriodicElement {
+  Data: string;
+  Cliente: string;
+  Qtd: number;
+  Valor: string;
+  detalheNome: string;
+  detalheQtd: string;
+  detalheValor: string;
+  // detalhes: Detalhe[];
 }
-const ELEMENT_DATA: FluxoCaixa[] = [
-    {data: '01/07/2021', descricao: 'Corte simples', status: 'Confirmado', valor: 'R$ 30,00'},
-    {data: '01/07/2021', descricao: 'Pomada modeladora BLACKPOOL (2x)', status: 'Confirmado', valor: 'R$ 30,00'},
-    {data: '02/07/2021', descricao: 'Platinado masculino', status: 'Reservado', valor: 'R$ 90,00'},
-    {data: '02/07/2021', descricao: 'Barba + Corte', status: 'Reservado', valor: 'R$ 90,00'},
-    {data: '03/07/2021', descricao: 'Coloração capilar', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '04/07/2021', descricao: 'Depilação laser', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '07/07/2021', descricao: 'Gel de cabelo EXTRA (1x)', status: 'Confirmado', valor: 'R$ 90,00'},
-    {data: '03/07/2021', descricao: 'Coloração capilar', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '04/07/2021', descricao: 'Depilação laser', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '07/07/2021', descricao: 'Gel de cabelo EXTRA (1x)', status: 'Confirmado', valor: 'R$ 90,00'},
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    Data: '08/11/2023',
+    Cliente: 'Vitor',
+    Qtd: 8,
+    Valor: 'R$ 24,00',
+    detalheNome: `cerveja`,
+    detalheQtd: `2Uni`,
+    detalheValor: `R$ 12,00`,
+  },
+  {
+    Data: '08/11/2023',
+    Cliente: 'Vitor Golçalves',
+    Qtd: 8,
+    Valor: 'R$ 54,00',
+    detalheNome: `cerveja`,
+    detalheQtd: `3Uni`,
+    detalheValor: `R$ 12,00`,
+  },
+  {
+    Data: '08/11/2023',
+    Cliente: 'Vitor',
+    Qtd: 8,
+    Valor: 'R$ 24,00',
+    detalheNome: `cerveja`,
+    detalheQtd: `2Uni`,
+    detalheValor: `R$ 12,00`,
+  },
+  {
+    Data: '08/11/2023',
+    Cliente: 'Vitor',
+    Qtd: 8,
+    Valor: 'R$ 24,00',
+    detalheNome: `cerveja`,
+    detalheQtd: `2Uni`,
+    detalheValor: `R$ 12,00`,
+  },
+  {
+    Data: '08/11/2023',
+    Cliente: 'Vitor Leite',
+    Qtd: 8,
+    Valor: 'R$ 24,00',
+    detalheNome: `cerveja`,
+    detalheQtd: `2Uni`,
+    detalheValor: `R$ 12,00`,
+  },
+
 ];
+
+
+// export interface Detalhe {
+//   detalheNome: string;
+//   detalheQtd: string;
+//   detalheValor: string;
+// };
