@@ -27,7 +27,7 @@ export class CardComponent implements OnInit {
   }
 
   abrirModalCadastrarEditar() {
-    this.eventModalCadastrarEditar.emit({ agendamento: this.item })
+    this.eventModalCadastrarEditar.emit({ agendamento: this.item, servico: this.item })
   }
 
   abrirModalDeletar() {

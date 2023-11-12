@@ -103,7 +103,7 @@ export class ExibicaoAgendamentosComponent implements OnInit {
 	}
 
 	abrirModalCadastrarEditar(agendamento?: Agendamento) {
-		let dialogRef = this.dialog.open(CadastrarEditarComponent,
+		const dialogRef = this.dialog.open(CadastrarEditarComponent,
 			{
 				data: { agendamento: agendamento },
 				width: '450px',
