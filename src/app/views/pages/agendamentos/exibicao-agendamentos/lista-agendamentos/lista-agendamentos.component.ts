@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -39,8 +40,8 @@ export class ListaAgendamentosComponent implements AfterViewInit, OnInit {
 
 	abrirModalEditarStatus(statusFinal: string, agendamento: Agendamento) {
 		this.eventModalEditarStatus.emit(
-			{ statusFinal: statusFinal, 
-			  agendamento: agendamento 
+			{ statusFinal: statusFinal,
+			  agendamento: agendamento
 			})
 	}
 

@@ -29,7 +29,6 @@
 // Tabela
 table {
   margin-left: 10%;
-  width: 100%;
 }
 
 tr.example-detail-row {
@@ -53,30 +52,34 @@ tr.example-element-row:not(.example-expanded-row):active {
   display: flex;
 }
 
+.mat-list-base {
+  padding-top: 0 !important;
+}
+
 .example-element-description {
-  padding-top: 8px;
-  padding-left: 16px;
-  padding-bottom: 16px;
+  padding-top: 0.5px;
+  padding-bottom: 1px;
   display: flex;
   flex-direction: row;
-  min-width: 35rem;
-  font-style: oblique;
-  color: rgb(80, 80, 80);
+  width: 35rem;
+  text-align: left;
 
+  .invisivel {
+    width: 165%;
+  }
 
-    .nome {
-      margin-left: 10px;
-      padding-right: 10px;
-    }
+  .nome {
+    width: 140%;
+  }
 
-    .qtd {
-      margin-left: 10px;
-      padding-right: 10px;
-    }
+  .qtd {
+    width: 70%;
+  }
 
-    .valor {
-      margin-left: 10px;
-    }
+  .valor {
+    width: 100%;
+
+  }
 
 
 }
@@ -93,7 +96,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 // Descriçao da venda
 .descricao {
-
+  margin-top: 5%;
   margin-right: 10%;
 
   .total {
