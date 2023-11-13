@@ -16,6 +16,7 @@ import { CadastroRoutingModule } from './cadastro-routing.module';
 import { ScrollbarModule } from 'src/@vex/components/scrollbar/scrollbar.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
 import { MaterialModule } from 'src/app/core/modules/material.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -37,6 +38,7 @@ import { MaterialModule } from 'src/app/core/modules/material.module';
     ScrollbarModule,
     MaterialModule,
     LibVexModule,
+    NgxMaskModule.forChild()
   ]
 })
 export class CadastroModule { }
