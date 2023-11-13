@@ -56,7 +56,7 @@ export class NovaVendaComponent implements OnInit {
     this.listarProducts();
   }
 
-  somaValores(qtdSelecionada? : number, itenVenda? : Produto | Servico) {
+  somaValores(qtdSelecionada?: number, itenVenda?: Produto | Servico) {
     if (itenVenda) itenVenda.qtdSelecionada = qtdSelecionada
     let soma = 0;
     this.itensVenda = this.selectedTasks.concat(this.selectedProducts)
@@ -75,6 +75,15 @@ export class NovaVendaComponent implements OnInit {
     });
   }
 
+  remover(item: any) {
+    this.itensVenda.forEach((itemLista, index) => {
+      if (itemLista.codigo === item.codigo) {
+        this.itensVenda.splice(index, 1)
+        this.selectedProducts.splice(index, 1)
+      }
+    });
+  }
+
   trocarTab() {
     this.trocaTab.emit({ data: 1 });
   }
@@ -90,4 +99,6 @@ export class NovaVendaComponent implements OnInit {
       this.products = response;
     })
   }
+
+
 }

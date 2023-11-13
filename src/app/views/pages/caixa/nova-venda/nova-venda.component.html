@@ -142,6 +142,12 @@
                                 font-weight: 600;
                             " (click)="openModalDesconto()">+ adicionar desconto</span>
                     </div>
+                    <div>
+                      <button style="margin-left: 8px;" id="excluir" mat-icon-button aria-label="ícone Button"
+                        class="icon-spacing" (click)="remover(item)">
+                        <mat-icon color="warn">delete</mat-icon>
+                      </button>
+                    </div>
                   </mat-list-item>
                 </mat-list>
               </div>
