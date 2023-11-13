@@ -113,7 +113,7 @@ export class FluxoCaixaComponent implements OnInit {
       Valor: 'R$ 200,00',
       detalhes: [
         {
-          detalheNome: `completo promo`,
+          detalheNome: `completo casamento`,
           detalheQtd: `1`,
           detalheValor: 180,
         },
