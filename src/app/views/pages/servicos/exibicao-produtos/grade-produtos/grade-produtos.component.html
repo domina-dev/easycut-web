@@ -1,1 +1,11 @@
-<p>grade-produtos works!</p>
+<div class="h-full" fxLayout="column">
+
+  <div @stagger class="overflow-y-auto" fxFlex="auto">
+      <div class="p-gutter" vexContainer gdColumns="1fr 1fr 1fr 1fr" gdColumns.lt-md="1fr 1fr" gdColumns.xs="1fr"
+          gdGap="24px">
+          <vex-card *ngFor="let produto of listaProdutos" [item]="produto" @fadeInUp
+              (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.produto)"
+              (eventModalDeletar)="abrirModalDeletar($event.produto)"></vex-card>
+      </div>
+  </div>
+</div>
