@@ -56,7 +56,7 @@ export class FluxoCaixaComponent implements OnInit {
       Valor: 'R$ 24,00',
       detalhes: [{
         detalheNome: `cerveja`,
-        detalheQtd: `4`,
+        detalheQtd: 4,
         detalheValor: 24,
       }],
     },
@@ -68,12 +68,12 @@ export class FluxoCaixaComponent implements OnInit {
       detalhes: [
         {
           detalheNome: `barba`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 32,
         },
         {
           detalheNome: `corte simples`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 30,
         },
       ],
@@ -81,27 +81,27 @@ export class FluxoCaixaComponent implements OnInit {
     {
       Data: '09/11/2023',
       Cliente: 'Paulo Vitor',
-      Qtd: 13,
+      Qtd: 14,
       Valor: 'R$ 80,00',
       detalhes: [
         {
           detalheNome: `pomada`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 20,
         },
         {
           detalheNome: `fixa de cinuca`,
-          detalheQtd: `10`,
+          detalheQtd: 10,
           detalheValor: 20,
         },
         {
           detalheNome: `shampoo`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 20,
         },
         {
           detalheNome: `corte infantil`,
-          detalheQtd: `1`,
+          detalheQtd: 2,
           detalheValor: 20,
         },
       ],
@@ -114,12 +114,12 @@ export class FluxoCaixaComponent implements OnInit {
       detalhes: [
         {
           detalheNome: `completo casamento`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 180,
         },
         {
           detalheNome: `cerveja`,
-          detalheQtd: `5`,
+          detalheQtd: 5,
           detalheValor: 60,
         },
       ],
@@ -132,12 +132,12 @@ export class FluxoCaixaComponent implements OnInit {
       detalhes: [
         {
           detalheNome: `fixa sinuca`,
-          detalheQtd: `3`,
+          detalheQtd: 3,
           detalheValor: 6,
         },
         {
           detalheNome: `corte simples`,
-          detalheQtd: `1`,
+          detalheQtd: 1,
           detalheValor: 30,
         },
       ],
