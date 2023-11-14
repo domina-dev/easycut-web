@@ -124,7 +124,7 @@
                     <mat-form-field fxFlex="grow">
                         <mat-label>Celular</mat-label>
                         <input formControlName="celular" matInput [(ngModel)]="estabelecimento.celular"
-                        prefix="+55 " mask="(00) 00000-0000">
+                         prefix="+55 " mask="(00) 00000-0000">
                         <mat-error *ngIf="form.get('celular').hasError('required')">
                           Preencha este campo!
                       </mat-error>
