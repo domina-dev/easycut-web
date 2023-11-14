@@ -17,5 +17,5 @@ detalhes?: Detalhes[];
 export class Detalhes{
   detalheNome?: string;
   detalheQtd?: number;
-  detalheValor?: number;
+  detalheValor?: string;
 }
