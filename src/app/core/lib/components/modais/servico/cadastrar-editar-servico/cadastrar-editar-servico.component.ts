@@ -124,6 +124,10 @@ export class CadastrarEditarServicoComponent {
     }
   }
 
+  alterarFoto() {
+
+  }
+
   removerFoto(){}
 
   private montarBody() {

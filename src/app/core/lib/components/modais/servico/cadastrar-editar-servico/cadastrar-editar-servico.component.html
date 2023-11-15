@@ -13,20 +13,17 @@
 
           <!-- Imagem do servico -->
           <div id="imagemPerf">
-            <div  style="margin-right: 10%;" class=" example-full-width">
+            <div [matMenuTriggerFor]="menu" style="margin-right: 10%;" class=" example-full-width">
               <div class="centInputImg">
                 <div class="absolute">
-                  <label [hidden]="mostraIcone" [matMenuTriggerFor]="menu">
+                  <label [hidden]="mostraIcone">
                     <mat-icon>add_a_photo</mat-icon>
                   </label>
 
                   <mat-menu #menu="matMenu">
                     <button (click)="imagemServico.click()">
-                      <input #imagemServico type="file"
-                      (change)="capturarImagem($event,'imagem do servico')" />
-                      <span>
+                      <input #imagemServico type="file" (change)="capturarImagem($event,'imagem do servico')">
                         Alterar Foto
-                      </span>
                     </button>
                     <button (click)="removerFoto()">
                       <span>
