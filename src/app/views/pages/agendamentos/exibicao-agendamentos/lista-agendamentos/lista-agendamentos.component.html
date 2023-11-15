@@ -50,7 +50,7 @@
             </ng-container>
 
             <ng-container matColumnDef="status" stickyEnd>
-                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <th mat-header-cell *matHeaderCellDef>Status</th>   
                 <td class="tdsticky" [class]="
                         agendamento.status === 'pendente'
                             ? 'pendente'
@@ -62,6 +62,7 @@
                             <mat-option value="pendente">Pendente</mat-option>
                             <mat-option value="aceito">Aceito</mat-option>
                             <mat-option value="cancelado">Cancelado</mat-option>
+                            <mat-option value="concluido">Concluído</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
