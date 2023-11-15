@@ -56,12 +56,12 @@
                             ? 'pendente'
                             : agendamento.status === 'aceito'
                             ? 'aceito'
-                            : 'recusado' " mat-cell *matCellDef="let agendamento">
+                            : 'cancelado' " mat-cell *matCellDef="let agendamento">
                     <mat-form-field appearance="standard">
                         <mat-select [value]="agendamento.status" (selectionChange)="abrirModalEditarStatus($event?.value, agendamento)">
                             <mat-option value="pendente">Pendente</mat-option>
                             <mat-option value="aceito">Aceito</mat-option>
-                            <mat-option value="recusado">Recusado</mat-option>
+                            <mat-option value="cancelado">Cancelado</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
