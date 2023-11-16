@@ -35,6 +35,7 @@ import { CompletarCadastroComponent } from './core/lib/components/modais/complet
 import { DescontoComponent } from './core/lib/components/modais/desconto/desconto.component';
 import { EditarStatusComponent } from './core/lib/components/modais/agendamentos/editar-status/editar-status/editar-status.component';
 import { CardModule } from 'src/app/core/lib/shared/card/card.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 registerLocaleData(localePt, 'pt');
 
@@ -68,8 +69,9 @@ registerLocaleData(localePt, 'pt');
         ConstrucaoModalModule,
         IconModule,
         CardModule,
-
-
+        NgxMaskModule.forRoot({
+            dropSpecialCharacters: true // ao salvar, vai manter a mascara
+          }),
         // Vex
         VexModule,
         CustomLayoutModule
