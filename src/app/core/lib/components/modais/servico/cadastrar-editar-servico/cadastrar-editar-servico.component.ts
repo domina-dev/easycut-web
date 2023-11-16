@@ -128,7 +128,11 @@ export class CadastrarEditarServicoComponent {
 
   }
 
-  removerFoto(){}
+  removerFoto(){
+    console.log(
+      'removeu foto'
+    )
+  }
 
   private montarBody() {
     let id = this.data?.servico?.id;

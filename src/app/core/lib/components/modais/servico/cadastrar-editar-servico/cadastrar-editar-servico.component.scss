@@ -24,7 +24,8 @@
       }
       .mat-icon {
         font-size: 30px;
-        color: rgb (black)
+        color: rgb (black);
+        margin-left: -10px;
       }
       input[type="file"] {
         display: none;
@@ -36,6 +37,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      #menuFoto {
+        display: flex;
+        align-items: center;
+        .menuButton{
+          padding-bottom: 10rem;
+
+        }
       }
     }
     .tempoEs {
