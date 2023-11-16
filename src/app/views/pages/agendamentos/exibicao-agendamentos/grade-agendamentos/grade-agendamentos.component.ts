@@ -18,19 +18,12 @@ import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
     scaleFadeIn400ms
   ]
 })
-export class GradeAgendamentosComponent implements OnInit {
+export class GradeAgendamentosComponent {
   
   @Input() listaAgendamentos: any[];
   
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
-
-  
-  constructor(){}
-
-  ngOnInit(): void {
-
-  }
 
   abrirModalCadastrarEditar(agendamento: Agendamento) {
     this.eventModalCadastrarEditar.emit({ agendamento: agendamento })

@@ -9,7 +9,7 @@ import icDelete from '@iconify/icons-ic/delete';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() item: any;
 
@@ -21,11 +21,6 @@ export class CardComponent implements OnInit {
   icBorderColor = icBorderColor;
 
   icDelete = icDelete;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   abrirModalCadastrarEditar() {
     this.eventModalCadastrarEditar.emit({ agendamento: this.item })

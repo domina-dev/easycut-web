@@ -133,7 +133,7 @@
                     <mat-form-field fxFlex="grow">
                         <mat-label>Telefone</mat-label>
                         <input formControlName="telefone" matInput [(ngModel)]="estabelecimento.telefone"
-                        mask="0000-0000">
+                        mask="(00) 0000-0000">
                         <mat-error *ngIf="form.get('telefone').hasError('required')">
                           Preencha este campo!
                       </mat-error>
