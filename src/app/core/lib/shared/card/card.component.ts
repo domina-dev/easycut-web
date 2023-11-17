@@ -42,7 +42,6 @@ export class CardComponent implements OnInit {
   }
 
   abrirModalPromocional() {
-    this.eventModalPromocional.emit({ servico: this.item })
+    this.eventModalPromocional.emit({ servico: this.item})
   }
-
 }
