@@ -20,8 +20,8 @@
                     <mat-icon>add_a_photo</mat-icon>
                   </label>
                   <input #imagemServico type="file" (change)="capturarImagem($event,'imagem do servico')" accept="image/*"/>
-                  <div id="menuFoto">
-                    <mat-menu #menu="matMenu">
+                  <div >
+                    <mat-menu #menu="matMenu" class="menuFoto" >
                       <div class="menuButton">
                         <button (click)="imagemServico.click()">
 
