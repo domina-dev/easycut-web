@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { fadeInRight400ms } from 'src/@vex/animations/fade-in-right.animation';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { scaleIn400ms } from 'src/@vex/animations/scale-in.animation';
@@ -18,19 +18,12 @@ import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
     scaleFadeIn400ms
   ]
 })
-export class GradeAgendamentosComponent implements OnInit {
+export class GradeAgendamentosComponent {
   
   @Input() listaAgendamentos: any[];
   
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
-
-  
-  constructor(){}
-
-  ngOnInit(): void {
-
-  }
 
   abrirModalCadastrarEditar(agendamento: Agendamento) {
     this.eventModalCadastrarEditar.emit({ agendamento: agendamento })
