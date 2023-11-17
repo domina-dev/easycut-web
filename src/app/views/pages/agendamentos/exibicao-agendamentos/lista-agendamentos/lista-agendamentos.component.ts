@@ -39,8 +39,8 @@ export class ListaAgendamentosComponent implements AfterViewInit, OnInit {
 
 	abrirModalEditarStatus(statusFinal: string, agendamento: Agendamento) {
 		this.eventModalEditarStatus.emit(
-			{ statusFinal: statusFinal, 
-			  agendamento: agendamento 
+			{ statusFinal: statusFinal,
+			  agendamento: agendamento
 			})
 	}
 

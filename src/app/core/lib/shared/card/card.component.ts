@@ -24,15 +24,16 @@ export class CardComponent implements OnInit {
 
   constructor() { }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit() {
   }
 
   abrirModalCadastrarEditar() {
-    this.eventModalCadastrarEditar.emit({ agendamento: this.item })
+    this.eventModalCadastrarEditar.emit({ agendamento: this.item, produto: this.item })
   }
 
   abrirModalDeletar() {
-    this.eventModalDeletar.emit({ agendamento: this.item })
+    this.eventModalDeletar.emit({ agendamento: this.item, servico: this.item })
   }
-  
+
 }

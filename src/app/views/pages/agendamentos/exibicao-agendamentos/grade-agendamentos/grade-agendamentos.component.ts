@@ -19,15 +19,16 @@ import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
   ]
 })
 export class GradeAgendamentosComponent implements OnInit {
-  
+
   @Input() listaAgendamentos: any[];
-  
+
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
 
-  
+
   constructor(){}
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
 
   }
