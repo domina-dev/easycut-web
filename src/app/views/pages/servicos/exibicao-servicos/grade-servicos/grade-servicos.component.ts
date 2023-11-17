@@ -25,6 +25,8 @@ export class GradeServicosComponent implements OnInit {
 
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalOcultar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalPromocional: EventEmitter<any> = new EventEmitter();
 
   constructor(){}
 
@@ -37,5 +39,13 @@ export class GradeServicosComponent implements OnInit {
 
   abrirModalDeletar(servico: Servico) {
     this.eventModalDeletar.emit({ servico: servico })
+  }
+
+  abrirModalOcultar(servico: Servico) {
+    this.eventModalOcultar.emit({ servico: servico })
+  }
+
+  abrirModalPromocional(servico: Servico) {
+    this.eventModalPromocional.emit({ servico: servico })
   }
 }

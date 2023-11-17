@@ -5,7 +5,9 @@
           gdGap="24px">
           <vex-card *ngFor="let servico of listaServico" [item]="servico" @fadeInUp
               (eventModalCadastrarEditar)="modalCadastrarEditar($event.servico)"
-              (eventModalDeletar)="abrirModalDeletar($event.servico)">
+              (eventModalDeletar)="abrirModalDeletar($event.servico)"
+              (eventModalOcultar)="abrirModalOcultar($event.servico)"
+              (eventModalPromocional)="abrirModalPromocional($event.servico)">
           </vex-card>
       </div>
   </div>
