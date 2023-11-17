@@ -74,7 +74,7 @@
 
         <mat-form-field id="categoria" appearance="standard">
           <mat-label>Horário</mat-label>
-          <input matInput formControlName="hrAtendimento" placeholder="Ex. 12:30" />
+          <input matInput formControlName="hrAtendimento" placeholder="Ex. 12:30" mask="Hh:m0" />
           <mat-error *ngIf="form.get('hrAtendimento').hasError('required') && formDir.submitted">
             Preencha o horário corretamente!
           </mat-error>
