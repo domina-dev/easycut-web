@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'vex-exibicao-promocoes',
@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 export class ExibicaoPromocoesComponent {
     exibirProdutos: boolean = false;
     exibirServicos: boolean = true;
+    @Input() tabPromocional: boolean
 
     trocaVisualizacao(valorClicado: string){
         console.log(valorClicado);

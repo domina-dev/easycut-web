@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,7 +16,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./exibicao-servicos.component.scss']
 })
 export class ExibicaoServicosComponent implements AfterViewInit, OnInit {
-
+  @Input() tabPromocional: boolean
   load: boolean = false;
 
   displayedColumns: string[] = [
