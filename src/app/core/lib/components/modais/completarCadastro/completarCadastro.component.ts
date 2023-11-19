@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { EstabelecimentoService } from 'src/app/core/services/estabelecimento/estabelecimento.service';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
+import icDelete from '@iconify/icons-ic/delete';
+import icBorderColor from '@iconify/icons-ic/border-color';
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'standard'
 };
@@ -35,6 +37,9 @@ export class CompletarCadastroComponent implements OnInit {
   form: FormGroup;
 
   mostraIcone: boolean = true;
+
+  icDelete = icDelete;
+  icBorderColor = icBorderColor;
 
   constructor(
     private fb: FormBuilder,
@@ -70,6 +75,10 @@ export class CompletarCadastroComponent implements OnInit {
     if (selectedFile) {
       console.log(`${inputType} selecionada:`, selectedFile);
     }
+  }
+
+  removerFoto(){
+
   }
 
   buscarCep(cep: string) {

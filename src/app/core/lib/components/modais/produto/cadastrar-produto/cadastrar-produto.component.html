@@ -13,13 +13,29 @@
 
           <!-- Imagem do servico -->
           <div id="imagemPerf">
-            <div (click)="imagemProduto.click()" style="margin-right: 10%;" class=" example-full-width">
+            <div [matMenuTriggerFor]="menu" style="margin-right: 10%;" class=" example-full-width">
               <div class="centInputImg">
                 <div class="absolute">
                   <label [hidden]="mostraIcone">
-                    <mat-icon>add_a_photo</mat-icon>
+                    <mat-icon class="icfoto" >add_a_photo</mat-icon>
                   </label>
                   <input #imagemProduto type="file" (change)="capturarImagem($event,'imagem do produto')" />
+
+                  <div>
+                    <mat-menu #menu="matMenu" class="menuFoto">
+                      <div class="menuButton">
+                        <button class="text-secondary" (click)="imagemProduto.click()">
+                          <mat-icon [icIcon]="icBorderColor"></mat-icon>
+                          Alterar Foto
+                        </button>
+                        <br>
+                        <button class="text-secondary" (click)="removerFoto()">
+                          <mat-icon [icIcon]="icDelete"></mat-icon>
+                          Remover Foto
+                        </button>
+                      </div>
+                    </mat-menu>
+                  </div>
                 </div>
                 <div class="rounded-circle">
                   <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
@@ -49,8 +65,8 @@
             <div class="quantEstoque">
               <mat-form-field id="quantEstoque" appearance="standard">
                 <mat-label>Quantidade em Estoque</mat-label>
-                <input formControlName="qtdEstoque" type="number" matInput placeholder="Digite a quantidade" maxlength="3"
-                  required />
+                <input formControlName="qtdEstoque" type="number" matInput placeholder="Digite a quantidade"
+                  maxlength="3" required />
                 <mat-error *ngIf="form.get('qtdEstoque').hasError('required') && formDir.submitted">
                   Preencha este campo,
                   use apenas números!

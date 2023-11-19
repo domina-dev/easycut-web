@@ -17,17 +17,19 @@
               <div class="centInputImg">
                 <div class="absolute">
                   <label [hidden]="mostraIcone" >
-                    <mat-icon>add_a_photo</mat-icon>
+                    <mat-icon class="icfoto" >add_a_photo</mat-icon>
                   </label>
                   <input #imagemServico type="file" (change)="capturarImagem($event,'imagem do servico')" accept="image/*"/>
                   <div >
                     <mat-menu #menu="matMenu" class="menuFoto" >
                       <div class="menuButton">
-                        <button (click)="imagemServico.click()">
+                        <button class="text-secondary" (click)="imagemServico.click()">
+                          <mat-icon [icIcon]="icBorderColor"></mat-icon>
                             Alterar Foto
                         </button>
                         <br>
-                        <button (click)="removerFoto()">
+                        <button class="text-secondary" (click)="removerFoto()">
+                          <mat-icon [icIcon]="icDelete"></mat-icon>
                             Remover Foto
                         </button>
                       </div>

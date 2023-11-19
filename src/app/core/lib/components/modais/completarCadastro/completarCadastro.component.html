@@ -13,18 +13,32 @@
                             <input #imagemFundo type="file" (change)="capturarImagem($event, 'imagem de capa')" />
                         </div>
                     </div>
-
                 </div>
 
-                <div (click)="imagemPerfil.click()" style="margin-right: 10%;"
+                <div [matMenuTriggerFor]="menu"  style="margin-right: 10%;"
                     class="z-10 relative -mt-16 px-gutter flex items-center">
                     <div class="centInputImg">
                         <div class="absolute">
                             <label [hidden]="mostraIcone">
-                                <mat-icon>add_a_photo</mat-icon>
+                                <mat-icon class="icfoto">add_a_photo</mat-icon>
                             </label>
                             <input #imagemPerfil type="file" (change)="capturarImagem($event,'imagem de perfil')" />
+
+                            <mat-menu #menu="matMenu" class="menuFoto" >
+                              <div class="menuButton">
+                                <button class="text-secondary" (click)="imagemPerfil.click()">
+                                  <mat-icon [icIcon]="icBorderColor"></mat-icon>
+                                  Alterar Foto
+                                </button>
+                                <br>
+                                <button class="text-secondary" (click)="removerFoto()">
+                                  <mat-icon [icIcon]="icDelete"></mat-icon>
+                                  Remover Foto
+                                </button>
+                              </div>
+                            </mat-menu>
                         </div>
+
                         <div class="rounded-circle">
                             <img (mouseover)="mostraIcone=false" (mouseout)="mostraIcone=true"
                                 class="foto avatar h-24 w-24 flex-none align-start sm:block border-3 border-white"
@@ -32,11 +46,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
-
 
         <div [formGroup]="form" class="p-6" fxLayout="column" fxLayoutGap="16px">
             <div fxFlex="auto" fxLayout="column">

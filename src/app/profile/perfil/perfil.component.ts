@@ -3,6 +3,8 @@ import { Link } from 'src/@vex/interfaces/link.interface'
 import { scaleIn400ms } from 'src/@vex/animations/scale-in.animation';
 import { fadeInRight400ms } from 'src/@vex/animations/fade-in-right.animation';
 import { CommomService } from 'src/app/core/services/commom/commom.service';
+import icDelete from '@iconify/icons-ic/delete';
+import icBorderColor from '@iconify/icons-ic/border-color';
 
 export interface FriendSuggestion {
   name: string;
@@ -33,6 +35,9 @@ export class PerfilComponent {
   mostraIcone: boolean = true;
   nomeEstabelecimento: string = "";
 
+  icDelete = icDelete;
+  icBorderColor = icBorderColor;
+
 constructor(private commomService:CommomService){
 this.nomeEstabelecimento = commomService.estabelecimento.estabelecimento
 
@@ -45,6 +50,10 @@ this.nomeEstabelecimento = commomService.estabelecimento.estabelecimento
     if (selectedFile) {
       console.log(`${inputType} selecionada:`, selectedFile);
     }
+  }
+
+  removerFoto(){
+
   }
 
 }
