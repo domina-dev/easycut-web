@@ -3,7 +3,7 @@
 		<img alt="" src="https://i.pinimg.com/564x/a0/c1/fa/a0c1fa1f2c55ee6efa2e034c6a2d0fd0.jpg"
 			class="avatar h-24 w-24 mx-auto">
 
-		<h2 class="title mb-1 mt-3">{{item.nomeServico}}</h2>
+		<h2 class="title mb-1 mt-3">{{item.nomeServico || item.nome}}</h2>
 		<div class="alinhar">
 			<div class="body-2 text-secondary">
 				<ic-icon [icon]="icAccessTime" class="ltr:mr-1 rtl:ml-1" inline="true"></ic-icon>
@@ -21,8 +21,38 @@
 			<mat-icon [icIcon]="icBorderColor"></mat-icon>
 		</button>
 
+    <mat-menu #menu="matMenu">
+      <button *ngIf="item.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+          (click)="abrirModalOcultar()">
+          <mat-icon class="icon-color">visibility</mat-icon>
+          <span class="descricaoicon">Ocultar Serviço</span>
+      </button>
+
+      <button *ngIf="!item.ativo" mat-icon-button aria-label="ícone Button" class="iconmenu"
+          (click)="abrirModalOcultar()">
+          <mat-icon class="icon-color">visibility_off</mat-icon>
+          <span class="descricaoicon">Exibir Serviço</span>
+      </button>
+
+      <button *ngIf="!item.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+          (click)="abrirModalPromocional()">
+          <mat-icon class="icon-color">money_off</mat-icon>
+          <span class="descricaoicon">Tornar Promocional</span>
+      </button>
+
+      <button *ngIf="item.promocional" mat-icon-button aria-label="ícone Button" class="iconmenu"
+          (click)="abrirModalPromocional()">
+          <mat-icon class="icon-color">attach_money</mat-icon>
+          <span class="descricaoicon">Remover Promoção</span>
+      </button>
+  </mat-menu>
+
 		<button (click)="abrirModalDeletar()" class="text-secondary" mat-icon-button type="button">
 			<mat-icon [icIcon]="icDelete"></mat-icon>
 		</button>
+
+    <button  *ngIf="item.nome" [matMenuTriggerFor]="menu" class="text-secondary absolute top-3 right-3" mat-icon-button type="button">
+      <mat-icon>more_vert</mat-icon>
+    </button>
 	</div>
 </div>
