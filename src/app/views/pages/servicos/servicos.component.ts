@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 const SERVICOS = 'Meus Serviços';
 const PRODUTOS = 'Meus Produtos';
 const PROMOCOES = 'Minhas Promoções';
@@ -12,13 +13,22 @@ export class ServicosComponent {
     produtos: boolean = false;
     promocoes: boolean = false;
     legenda: string = SERVICOS;
+    tabPromocional: boolean
 
     trocaLegenda($event) {
-        this.legenda =
-            $event.index == 0 ? SERVICOS : this.produtoOuPromocao($event);
+        
+        if($event.index == 0){
+            this.tabPromocional = false
+            this.legenda = SERVICOS
+        } 
+        else if($event.index == 1){
+            this.tabPromocional = false
+            this.legenda = PRODUTOS
+        }
+        else{
+            this.tabPromocional = true
+            this.legenda = PROMOCOES
+        }
     }
 
-    private produtoOuPromocao($event: any): string {
-        return $event.index == 1 ? PRODUTOS : PROMOCOES;
-    }
 }
