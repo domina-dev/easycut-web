@@ -47,7 +47,8 @@
                   <mat-icon color="warn">delete</mat-icon>
               </button>
               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                  <mat-icon>more_vert</mat-icon>
+                <mat-icon *ngIf="!produto.promocional">more_vert</mat-icon>
+                <mat-icon *ngIf="produto.promocional" class="text-amber">more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
 

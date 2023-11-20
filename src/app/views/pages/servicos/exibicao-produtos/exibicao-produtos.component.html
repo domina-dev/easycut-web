@@ -54,14 +54,16 @@
   <!-- LOADING -->
   <mat-progress-bar *ngIf="load" mode="indeterminate"></mat-progress-bar>
 
-  <vex-lista-produtos *ngIf="verLista" [listaProdutos]="listaProdutos" [dataSource]="dataSource" [displayedColumns]="displayedColumns" (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.produto)"
-    (eventModalDeletar)="abrirModalDeletar($event.produto)"
-    (eventModalOcultar)="abrirModalOcultar($event.produto)"
+  <vex-lista-produtos *ngIf="verLista" [listaProdutos]="listaProdutos" [dataSource]="dataSource"
+    [displayedColumns]="displayedColumns" (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.produto)"
+    (eventModalDeletar)="abrirModalDeletar($event.produto)" (eventModalOcultar)="abrirModalOcultar($event.produto)"
     (eventModalPromocional)="abrirModalPromocional($event.produto)">
-    </vex-lista-produtos>
+  </vex-lista-produtos>
 
-    <vex-grade-produtos *ngIf="verGrade && listaProdutos.length" [listaProdutos]="listaProdutos" (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.produto)"
-    (eventModalDeleter)="abrirModalDeletar($event.produto)">
-    </vex-grade-produtos>
+  <vex-grade-produtos *ngIf="verGrade && listaProdutos.length" [listaProdutos]="listaProdutos"
+    (eventModalCadastrarEditar)="abrirModalCadastrarEditar($event.produto)"
+    (eventModalDeletar)="abrirModalDeletar($event.produto)" (eventModalOcultar)="abrirModalOcultar($event.produto)"
+    (eventModalPromocional)="abrirModalPromocional($event.produto)">
+  </vex-grade-produtos>
 
-  </div>
+</div>

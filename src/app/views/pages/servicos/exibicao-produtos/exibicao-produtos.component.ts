@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,23 +9,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { EventEmitterService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'vex-exibicao-produtos',
   templateUrl: './exibicao-produtos.component.html',
-  styleUrls: ['./exibicao-produtos.component.scss']
+  styleUrls: ['./exibicao-produtos.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
+export class ExibicaoProdutosComponent implements OnInit {
   load: boolean = false;
 
   verLista: boolean = true;
   verGrade: boolean = false;
 
-
   dataSource = new MatTableDataSource<Produto>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   listaProdutos: Produto[] = [];
-
+  form: FormGroup;
   displayedColumns: string[] = [
     'nome',
     'descricao',
@@ -33,8 +34,6 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
     'preco',
     'icone'
   ];
-
-  form: FormGroup;
 
   constructor(
     public dialog: MatDialog,
@@ -50,11 +49,8 @@ export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    EventEmitterService.get("buscarProdutos").subscribe(() => this.listarProdutos());
     this.listarProdutos();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
   }
 
   listarProdutos() {

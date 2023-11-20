@@ -15,6 +15,8 @@ export class CardComponent implements OnInit {
 
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalOcultar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalPromocional: EventEmitter<any> = new EventEmitter();
 
   icAccessTime = icAccessTime;
   icAttachMoney = icAttachMoney;
@@ -33,7 +35,15 @@ export class CardComponent implements OnInit {
   }
 
   abrirModalDeletar() {
-    this.eventModalDeletar.emit({ agendamento: this.item, servico: this.item })
+    this.eventModalDeletar.emit({ agendamento: this.item, produto: this.item })
+  }
+
+  abrirModalOcultar() {
+    this.eventModalOcultar.emit({ produto: this.item })
+  }
+
+  abrirModalPromocional() {
+    this.eventModalPromocional.emit({ produto: this.item })
   }
 
 }

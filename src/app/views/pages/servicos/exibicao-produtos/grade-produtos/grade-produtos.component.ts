@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { fadeInRight400ms } from 'src/@vex/animations/fade-in-right.animation';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
@@ -18,18 +18,16 @@ import { Produto } from 'src/app/core/model/produto';
     scaleFadeIn400ms
   ]
 })
-export class GradeProdutosComponent implements OnInit {
+export class GradeProdutosComponent {
 
   @Input() listaProdutos: any[];
 
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalPromocional: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalOcultar: EventEmitter<any> = new EventEmitter();
 
   constructor(){}
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   abrirModalCadastrarEditar(produto: Produto) {
     this.eventModalCadastrarEditar.emit({ produto: produto })
@@ -38,4 +36,13 @@ export class GradeProdutosComponent implements OnInit {
   abrirModalDeletar(produto: Produto) {
     this.eventModalDeletar.emit({ produto: produto })
   }
+
+  abrirModalOcultar(produto: Produto) {
+    this.eventModalPromocional.emit({ produto: produto })
+  }
+
+  abrirModalPromocional(produto: Produto) {
+    this.eventModalPromocional.emit({ produto: produto })
+  }
+
 }
