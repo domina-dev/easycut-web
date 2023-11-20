@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <mat-form-field class="" appearance="standard" fxFlex="grow">
             <mat-label class="label">Pesquisar serviço</mat-label>
-            <input matInput formControlName="filtro" (change)="filtrarServicos()"/> 
+            <input matInput formControlName="filtro" (change)="filtrarServicos()" />
         </mat-form-field>
     </div>
     <div class="col-md-3">
@@ -98,16 +98,20 @@
             <ng-container matColumnDef="icone">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td class="layout-menu" mat-cell *matCellDef="let servico">
-                    <button id="editar" mat-icon-button aria-label="ícone Button" class="icon-spacing"
-                        (click)="modalCadastrarEditar(servico)">
+                    <button *ngIf="!tabPromocional" id="editar" mat-icon-button aria-label="ícone Button"
+                        class="icon-spacing" (click)="modalCadastrarEditar(servico)">
                         <mat-icon color="primary"> border_color</mat-icon>
                     </button>
-                    <button id="excluir" mat-icon-button aria-label="ícone Button" class="icon-spacing"
-                        (click)="abrirModalDeletar(servico)">
+                    <button *ngIf="!tabPromocional" id="excluir" mat-icon-button aria-label="ícone Button"
+                        class="icon-spacing" (click)="abrirModalDeletar(servico)">
                         <mat-icon color="warn">delete</mat-icon>
                     </button>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <button *ngIf="!tabPromocional" mat-icon-button [matMenuTriggerFor]="menu"
+                        aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <button style="width: 1.8rem; margin-right: 3.7rem;" *ngIf="tabPromocional" mat-button mat-raised-button color="primary" (click)="abrirModalPromocional(servico)" fxFlex="grow">
+                        <mat-icon class="icon-color">attach_money</mat-icon>Remover Promoção
                     </button>
 
                     <mat-menu #menu="matMenu">

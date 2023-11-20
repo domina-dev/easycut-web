@@ -92,15 +92,18 @@
             <ng-container matColumnDef="icone">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td class="layout-menu" mat-cell *matCellDef="let produto">
-                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing" (click)="abrirModalCadastrarEditar(produto)">
+                    <button *ngIf="!tabPromocional" mat-icon-button aria-label="ícone Button" class="icon-spacing" (click)="abrirModalCadastrarEditar(produto)">
                         <mat-icon color="primary"> border_color</mat-icon>
                     </button>
-                    <button mat-icon-button aria-label="ícone Button" class="icon-spacing"
+                    <button *ngIf="!tabPromocional" mat-icon-button aria-label="ícone Button" class="icon-spacing"
                         (click)="abrirModalDeletar(produto)">
                         <mat-icon color="warn">delete</mat-icon>
                     </button>
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <button *ngIf="!tabPromocional" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <button style="width: 1.8rem; margin-right: 3.7rem;" *ngIf="tabPromocional" mat-button mat-raised-button color="primary" (click)="abrirModalPromocional(produto)" fxFlex="grow">
+                        <mat-icon class="icon-color">attach_money</mat-icon>Remover Promoção
                     </button>
                     <mat-menu #menu="matMenu">
 
@@ -128,6 +131,7 @@
                             <mat-icon class="icon-color">attach_money</mat-icon>
                             <span class="descricaoicon">Remover Promoção</span>
                         </button>
+
                     </mat-menu>
                 </td>
             </ng-container>
