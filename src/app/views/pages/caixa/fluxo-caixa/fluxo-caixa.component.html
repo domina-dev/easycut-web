@@ -32,8 +32,8 @@
   <div class="">
     <table aria-label="tabela-agendamentos" mat-table [dataSource]="dataSource" multiTemplateDataRows
       class="mat-elevation-z8">
-      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay; let i=index">
+        <th mat-header-cell *matHeaderCellDef> {{i ===2?'Qtd. Item': i ===3? 'Valor Total': column}} </th>
         <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
       </ng-container>
 
@@ -72,7 +72,7 @@
     <div class="total">
       <h3>Vendas Registradas: <span>R$960,00</span></h3>
       <h3>Vendas Canceladas: <span style="color: #da0000;">R$320,00</span></h3>
-      <h3>Total a Receber: <span style="color: #219653;">R$180,00</span></h3>
+      <h3>Total a Receber: <span style="color: #219653;">R$640,00</span></h3>
     </div>
     <div class="btn">
       <button mat-button class="btn-fechar_caixa" mat-raised-button color="primary" (click)="fecharCaixa()">Fechar

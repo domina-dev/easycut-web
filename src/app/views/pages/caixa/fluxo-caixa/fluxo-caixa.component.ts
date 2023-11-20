@@ -21,12 +21,6 @@ export class FluxoCaixaComponent implements OnInit {
 
   dataSource: MatTableDataSource<Venda>;
   columnsToDisplay = ['Data', 'Cliente', 'Qtd', 'Valor'];
-  // columnsToDisplay = [
-  //   { thName: 'Data', attributeName: 'data' },
-  //   { thName: 'Cliente', attributeName: 'cliente' },
-  //   { thName: 'Qtd Item', attributeName: 'qtd' },
-  //   { thName: 'Valor Total', attributeName: 'valor' }
-  // ];
 
   expandedElement: Venda | null;
 
