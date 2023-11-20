@@ -1,5 +1,4 @@
-/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Agendamento } from 'src/app/core/model/agendamento';
@@ -9,7 +8,7 @@ import { Agendamento } from 'src/app/core/model/agendamento';
 	templateUrl: './lista-agendamentos.component.html',
 	styleUrls: ['./lista-agendamentos.component.scss']
 })
-export class ListaAgendamentosComponent implements AfterViewInit, OnInit {
+export class ListaAgendamentosComponent implements AfterViewInit {
 
 	@Input() agendamentoHoje: number;
 	@Input() listaAgendamentos: Agendamento[];
@@ -20,11 +19,6 @@ export class ListaAgendamentosComponent implements AfterViewInit, OnInit {
 	@Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
 	@Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
 	@Output() eventModalEditarStatus: EventEmitter<any> = new EventEmitter();
-
-	constructor() { }
-
-	ngOnInit(): void {
-	}
 
 	ngAfterViewInit() {
 		this.dataSource.paginator = this.paginator;
