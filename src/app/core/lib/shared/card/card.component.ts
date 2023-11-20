@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import icAttachMoney from '@iconify/icons-ic/attach-money';
 import icBorderColor from '@iconify/icons-ic/border-color';
 import icAccessTime from '@iconify/icons-ic/access-time';
@@ -9,7 +9,7 @@ import icDelete from '@iconify/icons-ic/delete';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
   @Input() item: any;
 
@@ -25,10 +25,6 @@ export class CardComponent implements OnInit {
   icDelete = icDelete;
 
   constructor() { }
-
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit() {
-  }
 
   abrirModalCadastrarEditar() {
     this.eventModalCadastrarEditar.emit({ agendamento: this.item, produto: this.item })

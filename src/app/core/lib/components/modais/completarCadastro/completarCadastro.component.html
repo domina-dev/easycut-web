@@ -57,7 +57,7 @@
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>CEP</mat-label>
-                        <input formControlName="cep" (change)="buscarCep($event.target.value)" matInput required>
+                        <input formControlName="cep" (change)="buscarCep($event.target.value)" mask="00000-000" matInput required>
                         <mat-error *ngIf="form.get('cep').hasError('required')">
                           Preencha este campo!
                       </mat-error>
@@ -123,7 +123,8 @@
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>Celular</mat-label>
-                        <input formControlName="celular" matInput [(ngModel)]="estabelecimento.celular">
+                        <input formControlName="celular" matInput [(ngModel)]="estabelecimento.celular"
+                         prefix="+55 " mask="(00) 00000-0000">
                         <mat-error *ngIf="form.get('celular').hasError('required')">
                           Preencha este campo!
                       </mat-error>
@@ -131,7 +132,8 @@
 
                     <mat-form-field fxFlex="grow">
                         <mat-label>Telefone</mat-label>
-                        <input formControlName="telefone" matInput [(ngModel)]="estabelecimento.telefone">
+                        <input formControlName="telefone" matInput [(ngModel)]="estabelecimento.telefone"
+                        mask="(00) 0000-0000">
                         <mat-error *ngIf="form.get('telefone').hasError('required')">
                           Preencha este campo!
                       </mat-error>
