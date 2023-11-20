@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,6 +18,9 @@ import { EventEmitterService } from 'src/app/core/services/event.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ExibicaoProdutosComponent implements OnInit {
+
+  @Input() tabPromocional: boolean
+
   load: boolean = false;
 
   verLista: boolean = true;
