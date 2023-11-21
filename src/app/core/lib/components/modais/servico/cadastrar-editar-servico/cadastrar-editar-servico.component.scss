@@ -22,9 +22,10 @@
         background-color: rgb(0, 0, 0);
         opacity: 0.4;
       }
-      .mat-icon {
+      .icfoto {
         font-size: 30px;
-        color: rgb (black)
+        color: rgb (black);
+        margin-left: -10px;
       }
       input[type="file"] {
         display: none;
@@ -37,6 +38,7 @@
         justify-content: center;
         align-items: center;
       }
+
     }
     .tempoEs {
         display: flex;
@@ -80,6 +82,7 @@
             width: 50%;
         }
     }
+  .mat-menu{
+    width: 50px;
+  }
 }
-
-

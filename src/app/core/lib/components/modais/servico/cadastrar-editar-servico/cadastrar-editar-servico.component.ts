@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
 import { Servico } from 'src/app/core/model/servicos';
 import { ServicoService } from 'src/app/core/services/servico/servico.service';
+import icDelete from '@iconify/icons-ic/delete';
+import icBorderColor from '@iconify/icons-ic/border-color';
 
 @Component({
   selector: 'vex-cadastrar-editar-servico',
@@ -20,6 +22,9 @@ export class CadastrarEditarServicoComponent {
   servico = new Servico();
   mostraIcone: boolean = true;
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
+
+  icDelete = icDelete;
+  icBorderColor = icBorderColor;
 
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
@@ -122,6 +127,12 @@ export class CadastrarEditarServicoComponent {
     if (selectedFile) {
       console.log(`${inputType} selecionada:`, selectedFile);
     }
+  }
+
+  removerFoto() {
+    console.log(
+      'removeu foto'
+    )
   }
 
   private montarBody() {

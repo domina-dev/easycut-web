@@ -5,6 +5,8 @@ import { ProdutoService } from 'src/app/core/services/produtos/produtos.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Produto } from 'src/app/core/model/produto';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import icDelete from '@iconify/icons-ic/delete';
+import icBorderColor from '@iconify/icons-ic/border-color';
 
 @Component({
   selector: 'vex-cadastrar-produto',
@@ -20,6 +22,8 @@ export class CadastrarProdutoComponent {
   mostraIcone: boolean = true;
   produto = new Produto();
   estabelecimentoID = window.localStorage.getItem('estabelecimento_ID');
+  icDelete = icDelete;
+  icBorderColor = icBorderColor;
 
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
@@ -121,6 +125,12 @@ export class CadastrarProdutoComponent {
     if (selectedFile) {
       console.log(`${inputType} selecionada:`, selectedFile);
     }
+  }
+
+  removerFoto(){
+    console.log(
+      'removeu foto'
+    )
   }
 
   private montarBody() {
