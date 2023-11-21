@@ -84,6 +84,11 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 }
 
+.detalheCancelado{
+  text-decoration: line-through;
+  text-decoration-color: red ;
+}
+
 .example-element-description-attribution {
   opacity: 0.5;
 }

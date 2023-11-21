@@ -33,7 +33,14 @@
     <table aria-label="tabela-agendamentos" mat-table [dataSource]="dataSource" multiTemplateDataRows
       class="mat-elevation-z8">
       <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay; let i=index">
-        <th mat-header-cell *matHeaderCellDef> {{i ===2?'Qtd. Item': i ===3? 'Valor Total': column}} </th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{
+          i ===0?'Data':
+          i ===1?'Cliente':
+          i ===2?'Qtd. Item':
+          i ===3? 'Valor Total'
+          : column
+          }} </th>
         <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
       </ng-container>
 
@@ -44,7 +51,8 @@
             <div class="example-element-description">
               <mat-list role="list" style="width: 100%;">
                 <mat-list-item style="font-size: 14px;margin-top: -20px; color: rgb(119, 119, 119);" role="listitem"
-                  *ngFor="let detalhe of element.detalhes">
+                  *ngFor="let detalhe of element.detalhes"
+                  [class]="detalhe.status === 'cancelado' ? 'detalheCancelado' : 'detalheConfirmado' ">
                   <span class="invisivel"></span>
                   <span class="nome">{{detalhe.detalheNome}}</span>
                   <span class="qtd">{{detalhe.detalheQtd}}</span>

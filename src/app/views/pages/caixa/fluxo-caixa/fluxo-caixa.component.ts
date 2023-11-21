@@ -20,7 +20,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class FluxoCaixaComponent implements OnInit {
 
   dataSource: MatTableDataSource<Venda>;
-  columnsToDisplay = ['Data', 'Cliente', 'Qtd', 'Valor'];
+  columnsToDisplay = ['data', 'cliente', 'qtd', 'valor'];
 
   expandedElement: Venda | null;
 
@@ -44,97 +44,108 @@ export class FluxoCaixaComponent implements OnInit {
 
   listaFluxoCaixa: Venda[] = [
     {
-      Data: '08/11/2023',
-      Cliente: 'Vitor',
-      Qtd: 4,
-      Valor: 'R$ 24,00',
+      data: '08/11/2023',
+      cliente: 'Vitor',
+      qtd: 4,
+      valor: 'R$ 24,00',
       detalhes: [
         {
           detalheNome: `cerveja`,
           detalheQtd: 4,
           detalheValor: 'R$ 24,00',
+          status: 'confirmado'
         },
       ],
     },
     {
-      Data: '10/11/2023',
-      Cliente: 'Vitor Algusto',
-      Qtd: 2,
-      Valor: 'R$ 62,00',
+      data: '10/11/2023',
+      cliente: 'Vitor Algusto',
+      qtd: 2,
+      valor: 'R$ 62,00',
       detalhes: [
         {
           detalheNome: `barba`,
           detalheQtd: 1,
           detalheValor: 'R$ 32,00',
+          status: 'confirmado'
         },
         {
           detalheNome: `corte simples`,
           detalheQtd: 1,
           detalheValor: 'R$ 30,00',
+          status: 'cancelado'
         },
       ],
     },
     {
-      Data: '09/11/2023',
-      Cliente: 'Paulo Vitor',
-      Qtd: 14,
-      Valor: 'R$ 100,00',
+      data: '09/11/2023',
+      cliente: 'Paulo Vitor',
+      qtd: 14,
+      valor: 'R$ 100,00',
       detalhes: [
         {
           detalheNome: `pomada`,
           detalheQtd: 1,
           detalheValor: 'R$ 20,00',
+          status: 'cancelado'
         },
         {
           detalheNome: `fixa de cinuca`,
           detalheQtd: 10,
           detalheValor: 'R$ 20,00',
+          status: 'cancelado'
         },
         {
           detalheNome: `shampoo`,
           detalheQtd: 1,
           detalheValor: 'R$ 20,00',
+          status: 'confirmado'
         },
         {
           detalheNome: `corte infantil`,
           detalheQtd: 2,
           detalheValor: 'R$ 40,00',
+          status: 'confirmado'
         },
       ],
     },
     {
-      Data: '10/11/2023',
-      Cliente: 'Vitor Thales',
-      Qtd: 11,
-      Valor: 'R$ 240,00',
+      data: '10/11/2023',
+      cliente: 'Vitor Thales',
+      qtd: 11,
+      valor: 'R$ 240,00',
       detalhes: [
         {
           detalheNome: `completo casamento`,
           detalheQtd: 1,
           detalheValor: 'R$ 180,00',
+          status: 'cancelado'
         },
         {
           detalheNome: `cerveja`,
           detalheQtd: 10,
           detalheValor: 'R$ 60,00',
+          status: 'cancelado'
         },
       ],
     },
     {
-      Data: '10/11/2023',
-      Cliente: 'Vitor Raimundo',
-      Qtd: 4,
-      Valor: 'R$ 36,00',
+      data: '10/11/2023',
+      cliente: 'Vitor Raimundo',
+      qtd: 4,
+      valor: 'R$ 36,00',
       detalhes: [
         {
           detalheNome: `fixa sinuca`,
           detalheQtd: 3,
           detalheValor: 'R$ 6,00',
+          status: 'confirmado'
         },
         {
           detalheNome: `corte simples`,
           detalheQtd: 1,
           detalheValor: 'R$ 30,00',
+          status: 'confirmado'
         },
       ],
     },

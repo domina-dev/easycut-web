@@ -6,11 +6,9 @@ idServico?: number;
 idProduto?: number;
 pagamento?: string;
 parcelamento?: string;
-
-Data?: string;
-Cliente?: string;
-Qtd?: number;
-Valor?: string;
+data?: string;
+qtd?: number;
+valor?: string;
 detalhes?: Detalhes[];
 }
 
@@ -18,4 +16,5 @@ export class Detalhes{
   detalheNome?: string;
   detalheQtd?: number;
   detalheValor?: string;
+  status?: string;
 }
