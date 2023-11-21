@@ -1,61 +1,126 @@
 // Filtro
-.filter{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 30px;
-    .search{
-        width: 50%;
-        mat-form-field{
-            display: inline;
-        }
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+
+  .search {
+    width: 50%;
+
+    mat-form-field {
+      display: inline;
     }
-    .btnAdd{
-        border-radius: 5px;
-        color: #ffffff;
-    }
-    .icon-csv{
-        cursor: pointer;
-    }
+  }
+
+  .btnAdd {
+    border-radius: 5px;
+    color: #ffffff;
+  }
+
+  .icon-csv {
+    cursor: pointer;
+  }
 }
 
 
 // Tabela
-.example-container {
-    height: 400px;
-    width: 70%;
-    overflow: auto;
-}
-
 table {
-    width: 100%;
+  margin-left: 10%;
 }
 
-.tabela_fluxo-caixa{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-list-base {
+  padding-top: 0 !important;
+}
+
+.example-element-description {
+  padding-top: 0.5px;
+  padding-bottom: 1px;
+  display: flex;
+  flex-direction: row;
+  width: 35rem;
+  text-align: left;
+
+  .invisivel {
+    width: 120%;
+  }
+
+  .nome {
+    width: 123%;
+  }
+
+  .qtd {
+    width: 100%;
+  }
+
+  .valor {
+    width: 84%;
+
+  }
+
+
+}
+
+.detalheCancelado{
+  text-decoration: line-through;
+  text-decoration-color: red ;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.tabela_fluxo-caixa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 // Descriçao da venda
-.descricao{
-    .total{
-        h3{
-            margin-bottom: 10px;
-        }
+.descricao {
+  margin-top: 5%;
+  margin-right: 8%;
+
+  .total {
+    h3 {
+      margin-bottom: 10px;
     }
-    .btn{
-        display: flex;
-        justify-content: center;
-        margin-top: 50px;
-        .btn-fechar_caixa{
-            border-radius: 5px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+  }
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+    .btn-fechar_caixa {
+      border-radius: 5px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+  }
 }

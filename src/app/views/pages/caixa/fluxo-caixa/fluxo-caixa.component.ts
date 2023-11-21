@@ -1,54 +1,154 @@
 import { FechamentoCaixaComponent } from './../../../../core/lib/components/modais/fechamento-caixa/fechamento-caixa/fechamento-caixa.component';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Venda } from 'src/app/core/model/nova-venda';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-    selector: 'vex-fluxo-caixa',
-    templateUrl: './fluxo-caixa.component.html',
-    styleUrls: ['./fluxo-caixa.component.scss']
+  selector: 'vex-fluxo-caixa',
+  templateUrl: './fluxo-caixa.component.html',
+  styleUrls: ['./fluxo-caixa.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class FluxoCaixaComponent implements OnInit {
 
-    @Output() trocaTab: EventEmitter<any> = new EventEmitter();
-  
-    displayedColumns = ['data', 'descricao', 'status', 'valor'];
-    dataSource = ELEMENT_DATA;
+  dataSource: MatTableDataSource<Venda>;
+  columnsToDisplay = ['data', 'cliente', 'qtd', 'valor'];
 
-    constructor(public dialog: MatDialog){
+  expandedElement: Venda | null;
 
-    }
+  @Output() trocaTab: EventEmitter<any> = new EventEmitter();
 
-    ngOnInit(): void {
-        console.log('Method not implemented');
-    }
+  constructor(public dialog: MatDialog) {
+  }
 
-    fecharCaixa(){
-      const dialogRef = this.dialog.open(FechamentoCaixaComponent)
-      dialogRef.afterClosed().subscribe()
-    }
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource<Venda>(this.listaFluxoCaixa);
+  }
 
-    trocarTab(){
-        this.trocaTab.emit({data: 0});
-    }
+  fecharCaixa() {
+    const dialogRef = this.dialog.open(FechamentoCaixaComponent)
+    dialogRef.afterClosed().subscribe()
+  }
+
+  trocarTab() {
+    this.trocaTab.emit({ data: 0 });
+  }
+
+  listaFluxoCaixa: Venda[] = [
+    {
+      data: '08/11/2023',
+      cliente: 'Vitor',
+      qtd: 4,
+      valor: 'R$ 24,00',
+      detalhes: [
+        {
+          detalheNome: `cerveja`,
+          detalheQtd: 4,
+          detalheValor: 'R$ 24,00',
+          status: 'confirmado'
+        },
+      ],
+    },
+    {
+      data: '10/11/2023',
+      cliente: 'Vitor Algusto',
+      qtd: 2,
+      valor: 'R$ 62,00',
+      detalhes: [
+        {
+          detalheNome: `barba`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 32,00',
+          status: 'confirmado'
+        },
+        {
+          detalheNome: `corte simples`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 30,00',
+          status: 'cancelado'
+        },
+      ],
+    },
+    {
+      data: '09/11/2023',
+      cliente: 'Paulo Vitor',
+      qtd: 14,
+      valor: 'R$ 100,00',
+      detalhes: [
+        {
+          detalheNome: `pomada`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 20,00',
+          status: 'cancelado'
+        },
+        {
+          detalheNome: `fixa de cinuca`,
+          detalheQtd: 10,
+          detalheValor: 'R$ 20,00',
+          status: 'cancelado'
+        },
+        {
+          detalheNome: `shampoo`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 20,00',
+          status: 'confirmado'
+        },
+        {
+          detalheNome: `corte infantil`,
+          detalheQtd: 2,
+          detalheValor: 'R$ 40,00',
+          status: 'confirmado'
+        },
+      ],
+    },
+    {
+      data: '10/11/2023',
+      cliente: 'Vitor Thales',
+      qtd: 11,
+      valor: 'R$ 240,00',
+      detalhes: [
+        {
+          detalheNome: `completo casamento`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 180,00',
+          status: 'cancelado'
+        },
+        {
+          detalheNome: `cerveja`,
+          detalheQtd: 10,
+          detalheValor: 'R$ 60,00',
+          status: 'cancelado'
+        },
+      ],
+    },
+    {
+      data: '10/11/2023',
+      cliente: 'Vitor Raimundo',
+      qtd: 4,
+      valor: 'R$ 36,00',
+      detalhes: [
+        {
+          detalheNome: `fixa sinuca`,
+          detalheQtd: 3,
+          detalheValor: 'R$ 6,00',
+          status: 'confirmado'
+        },
+        {
+          detalheNome: `corte simples`,
+          detalheQtd: 1,
+          detalheValor: 'R$ 30,00',
+          status: 'confirmado'
+        },
+      ],
+    },
+  ];
+
 }
-
-
-export interface FluxoCaixa {
-    descricao: string;
-    data: string;
-    status: string;
-    valor: string;
-}
-const ELEMENT_DATA: FluxoCaixa[] = [
-    {data: '01/07/2021', descricao: 'Corte simples', status: 'Confirmado', valor: 'R$ 30,00'},
-    {data: '01/07/2021', descricao: 'Pomada modeladora BLACKPOOL (2x)', status: 'Confirmado', valor: 'R$ 30,00'},
-    {data: '02/07/2021', descricao: 'Platinado masculino', status: 'Reservado', valor: 'R$ 90,00'},
-    {data: '02/07/2021', descricao: 'Barba + Corte', status: 'Reservado', valor: 'R$ 90,00'},
-    {data: '03/07/2021', descricao: 'Coloração capilar', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '04/07/2021', descricao: 'Depilação laser', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '07/07/2021', descricao: 'Gel de cabelo EXTRA (1x)', status: 'Confirmado', valor: 'R$ 90,00'},
-    {data: '03/07/2021', descricao: 'Coloração capilar', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '04/07/2021', descricao: 'Depilação laser', status: 'Cancelado', valor: 'R$ 90,00'},
-    {data: '07/07/2021', descricao: 'Gel de cabelo EXTRA (1x)', status: 'Confirmado', valor: 'R$ 90,00'},
-];
