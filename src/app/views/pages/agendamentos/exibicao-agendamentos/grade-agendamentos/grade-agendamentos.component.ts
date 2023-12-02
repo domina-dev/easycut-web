@@ -19,11 +19,14 @@ import { scaleFadeIn400ms } from 'src/@vex/animations/scale-fade-in.animation';
   ]
 })
 export class GradeAgendamentosComponent {
-  
+
   @Input() listaAgendamentos: any[];
-  
+
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
+
+
+  constructor(){}
 
   abrirModalCadastrarEditar(agendamento: Agendamento) {
     this.eventModalCadastrarEditar.emit({ agendamento: agendamento })

@@ -6,6 +6,9 @@ import { ExibicaoProdutosComponent } from './exibicao-produtos.component';
 import { MaterialModule } from 'src/app/core/modules/material.module';
 import { LibVexModule } from 'src/app/core/modules/lib-vex.module';
 import { GradeProdutosComponent } from './grade-produtos/grade-produtos.component';
+import { GradeProdutosModule } from './grade-produtos/grade-produtos.module';
+import { ListaProdutosModule } from './lista-produtos/lista-produtos.module';
+import { CardModule } from 'src/app/core/lib/shared/card/card.module';
 
 @NgModule({
     declarations: [ExibicaoProdutosComponent, GradeProdutosComponent],
@@ -13,7 +16,10 @@ import { GradeProdutosComponent } from './grade-produtos/grade-produtos.componen
         CommonModule,
         ExibicaoProdutosRoutingModule,
         MaterialModule,
-        LibVexModule
+        LibVexModule,
+        GradeProdutosModule,
+        ListaProdutosModule,
+        CardModule
     ],
     exports: [ExibicaoProdutosComponent]
 })

@@ -15,6 +15,8 @@ export class CardComponent {
 
   @Output() eventModalCadastrarEditar: EventEmitter<any> = new EventEmitter();
   @Output() eventModalDeletar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalOcultar: EventEmitter<any> = new EventEmitter();
+  @Output() eventModalPromocional: EventEmitter<any> = new EventEmitter();
 
   icAccessTime = icAccessTime;
   icAttachMoney = icAttachMoney;
@@ -22,12 +24,22 @@ export class CardComponent {
 
   icDelete = icDelete;
 
+  constructor() { }
+
   abrirModalCadastrarEditar() {
-    this.eventModalCadastrarEditar.emit({ agendamento: this.item })
+    this.eventModalCadastrarEditar.emit({ agendamento: this.item, produto: this.item })
   }
 
   abrirModalDeletar() {
-    this.eventModalDeletar.emit({ agendamento: this.item })
+    this.eventModalDeletar.emit({ agendamento: this.item, produto: this.item })
   }
-  
+
+  abrirModalOcultar() {
+    this.eventModalOcultar.emit({ produto: this.item })
+  }
+
+  abrirModalPromocional() {
+    this.eventModalPromocional.emit({ produto: this.item })
+  }
+
 }

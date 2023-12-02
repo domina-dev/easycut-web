@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,225 +9,217 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmacaoComponent } from 'src/app/core/lib/components/modais/confirmacao/confirmacao.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessagesSnackBar } from 'src/app/core/constants/messagesSnackBar';
+import { EventEmitterService } from 'src/app/core/services/event.service';
 
 @Component({
-    selector: 'vex-exibicao-produtos',
-    templateUrl: './exibicao-produtos.component.html',
-    styleUrls: ['./exibicao-produtos.component.scss']
+  selector: 'vex-exibicao-produtos',
+  templateUrl: './exibicao-produtos.component.html',
+  styleUrls: ['./exibicao-produtos.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class ExibicaoProdutosComponent implements AfterViewInit, OnInit {
-    @Input() tabPromocional: boolean
-    load: boolean = false;
+export class ExibicaoProdutosComponent implements OnInit {
 
-    form: FormGroup;
+  @Input() tabPromocional: boolean
 
-    displayedColumns: string[] = [
-        'nome',
-        'descricao',
-        'quantidade',
-        'preco',
-        'icone'
-    ];
+  load: boolean = false;
 
+  verLista: boolean = true;
+  verGrade: boolean = false;
 
-    listaProduto: Produto[] = [];
+  dataSource = new MatTableDataSource<Produto>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  listaProdutos: Produto[] = [];
+  form: FormGroup;
+  displayedColumns: string[] = [
+    'nome',
+    'descricao',
+    'quantidade',
+    'preco',
+    'icone'
+  ];
 
-    dataSource = new MatTableDataSource<Produto>();
+  constructor(
+    public dialog: MatDialog,
+    private produtoService: ProdutoService,
+    private snackbar: MatSnackBar,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      filtro: [''],
+      categoria: [''],
+      status: ['']
+    })
+  }
 
-    verLista: boolean = true;
-    verGrade: boolean = false;
+  ngOnInit(): void {
+    EventEmitterService.get("buscarProdutos").subscribe(() => this.listarProdutos());
+    this.listarProdutos();
+  }
 
-    ngAfterViewInit() {
+  listarProdutos() {
+    this.load = true;
+    this.produtoService.obterProdutos().subscribe(
+      (response) => {
+        this.listaProdutos = response;
+        this.dataSource = new MatTableDataSource<Produto>(
+          this.listaProdutos
+        );
         this.dataSource.paginator = this.paginator;
-    }
+        this.load = false;
+      },
+      (error) => {
+        this.load = false;
+        console.log(error);
+      }
+    );
+  }
 
-    ngOnInit(): void {
+  deletarProduto(produto: Produto): void {
+    this.load = true;
+    this.produtoService.deletaProduto(produto.id).subscribe(
+      () => {
         this.listarProdutos();
-    }
-
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-
-    constructor(
-        public dialog: MatDialog,
-        private produtoService: ProdutoService,
-        private snackbar: MatSnackBar,
-        private fb:FormBuilder
-    ) {
-        this.form = fb.group({
-            filtro: [''],
-            categoria: [''],
-            status: ['']
-          })
-    }
-
-
-
-    listarProdutos() {
-        this.load = true;
-        this.produtoService.obterProdutos().subscribe(
-            (response) => {
-                this.listaProduto = response;
-                this.dataSource = new MatTableDataSource<Produto>(
-                    this.listaProduto
-                );
-                this.dataSource.paginator = this.paginator;
-                this.load = false;
-            },
-            (error) => {
-                this.load = false;
-                console.log(error);
-            }
+        this.load = false;
+        this.snackbar.open(
+          MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
+          duration: 5000
+        });
+      },
+      (error) => {
+        this.load = false;
+        console.error(error);
+        this.snackbar.open(
+          MessagesSnackBar.ERRO_DELETAR_PRODUTO,
+          'Tenta novamente',
+          {
+            duration: 5000
+          }
         );
-    }
-
-    deletarProduto(produto: Produto): void {
-        this.load = true;
-        this.produtoService.deletaProduto(produto.id).subscribe(
-            () => {
-                this.listarProdutos();
-                this.load = false;
-                this.snackbar.open(
-                  MessagesSnackBar.DELETAR_PRODUTO, 'Fechar', {
-                    duration: 5000
-                });
-            },
-            (error) => {
-                this.load = false;
-                console.error(error);
-                this.snackbar.open(
-                    MessagesSnackBar.ERRO_DELETAR_PRODUTO,
-                    'Tenta novamente',
-                    {
-                        duration: 5000
-                    }
-                );
-            }
-        );
-    }
-
-
-    abrirModalCadastrarEditar(produto?: Produto) {
-
-
-        const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
-            data: {
-                produto: produto
-
-            }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.listarProdutos();
-            }
-        });
-    }
-
-    abrirModalDeletar(produto: Produto): void {
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                itens: [produto.nome],
-                legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
-            }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.deletarProduto(produto);
-            }
-        });
-    }
-
-    visualizar() {
-        this.verLista = !this.verLista;
-        this.verGrade = !this.verGrade;
-    }
-
-    abrirModalPromocional(produto: Produto): void {
-        let mensagem: string = '';
-        if (produto.promocional) {
-            mensagem =
-                'Tem certeza que deseja retirar este produto da promoção?';
-        } else {
-            mensagem =
-                'Tem certeza que deseja tornar este produto promocional?';
-        }
-
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                itens: [produto.nome],
-                legendaAcao: mensagem
-            }
-        });
-        dialogRef.afterClosed().subscribe((result) => {
-            if (result) {
-                produto.promocional = !produto.promocional;
-                this.alterarProduto(produto);
-            }
-        });
-    }
-
-    alterarProduto(produto: Produto): void {
-        this.load = true;
-        this.produtoService.alterarProduto(produto).subscribe(
-            (response) => {
-                this.listarProdutos();
-                this.load = false;
-                this.snackbar.open(MessagesSnackBar.EDITAR_PRODUTO, 'Fechar', {
-                    duration: 3000
-                });
-            },
-            (error) => {
-                this.load = false;
-                this.snackbar.open(
-                    MessagesSnackBar.ERRO_EDITAR_PRODUTO,
-                    'Fechar',
-                    {
-                        duration: 3000
-                    }
-                );
-            }
-        );
-    }
-    abrirModalOcultar(produto: Produto): void {
-        let mensagem: string = '';
-        if (produto.ativo) {
-            mensagem = 'Tem certeza que deseja ocultar este produto?';
-        } else {
-            mensagem = 'Tem certeza que deseja mostrar este produto?';
-        }
-
-        const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-            data: {
-                itens: [produto.nome],
-                legendaAcao: mensagem
-            }
-        });
-        dialogRef.afterClosed().subscribe((result) => {
-            if (result) {
-                produto.ativo = !produto.ativo;
-                this.alterarProduto(produto);
-            }
-        });
-    }
-
-    limparFiltro() {
-        this.form.reset();
       }
+    );
+  }
 
 
-      filtrarProdutos() {
-        this.load = true;
-        let formulario = this.form.value;
-        this.produtoService.filtroProduto(formulario.filtro, formulario.status, formulario.categoria).subscribe(response => {
-          this.listaProduto = response;
-          this.dataSource = new MatTableDataSource<Produto>(this.listaProduto);
-          this.dataSource.paginator = this.paginator;
-          this.load = false;
-        },
-          (error) => {
-            this.load = false;
-            console.log(error)
-          });
+  abrirModalCadastrarEditar(produto?: Produto) {
+    const dialogRef = this.dialog.open(CadastrarProdutoComponent, {
+      data: {
+        produto: produto
+
       }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.listarProdutos();
+      }
+    });
+  }
+
+  abrirModalDeletar(produto: Produto): void {
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [produto.nome],
+        legendaAcao: MessagesSnackBar.CONFIRMAR_EXCLUIR
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deletarProduto(produto);
+      }
+    });
+  }
+
+  abrirModalPromocional(produto: Produto): void {
+    let mensagem: string = '';
+    if (produto.promocional) {
+      mensagem =
+        'Tem certeza que deseja retirar este produto da promoção?';
+    } else {
+      mensagem =
+        'Tem certeza que deseja tornar este produto promocional?';
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [produto.nome],
+        legendaAcao: mensagem
+      }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        produto.promocional = !produto.promocional;
+        this.alterarProduto(produto);
+      }
+    });
+  }
+
+  alterarProduto(produto: Produto): void {
+    this.load = true;
+    this.produtoService.alterarProduto(produto).subscribe(
+      (response) => {
+        this.listarProdutos();
+        this.load = false;
+        this.snackbar.open(MessagesSnackBar.EDITAR_PRODUTO, 'Fechar', {
+          duration: 3000
+        });
+      },
+      (error) => {
+        this.load = false;
+        this.snackbar.open(
+          MessagesSnackBar.ERRO_EDITAR_PRODUTO,
+          'Fechar',
+          {
+            duration: 3000
+          }
+        );
+      }
+    );
+  }
+
+  abrirModalOcultar(produto: Produto): void {
+    let mensagem: string = '';
+    if (produto.ativo) {
+      mensagem = 'Tem certeza que deseja ocultar este produto?';
+    } else {
+      mensagem = 'Tem certeza que deseja mostrar este produto?';
+    }
+
+    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+      data: {
+        itens: [produto.nome],
+        legendaAcao: mensagem
+      }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        produto.ativo = !produto.ativo;
+        this.alterarProduto(produto);
+      }
+    });
+  }
+
+  filtrarProdutos() {
+    this.load = true;
+    let formulario = this.form.value;
+    this.produtoService.filtroProduto(formulario.filtro, formulario.status, formulario.categoria).subscribe(response => {
+      this.listaProdutos = response;
+      this.dataSource = new MatTableDataSource<Produto>(this.listaProdutos);
+      this.dataSource.paginator = this.paginator;
+      this.load = false;
+    },
+      (error) => {
+        this.load = false;
+        console.log(error)
+      });
+  }
+
+  limparFiltro() {
+    this.form.reset();
+  }
+
+  visualizar() {
+    this.verLista = !this.verLista;
+    this.verGrade = !this.verGrade;
+  }
 }
